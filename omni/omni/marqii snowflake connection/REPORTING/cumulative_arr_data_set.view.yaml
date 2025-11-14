@@ -1,0 +1,3055 @@
+# Reference this view as reporting__cumulative_arr_data_set
+schema: REPORTING
+table_name: CUMULATIVE_ARR_DATA_SET
+
+dimensions:
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  num_account_locations:
+    sql: '"NUM_ACCOUNT_LOCATIONS"'
+
+  net_num_account_locations:
+    sql: '"NET_NUM_ACCOUNT_LOCATIONS"'
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+
+  account_owner_team:
+    sql: '"ACCOUNT_OWNER_TEAM"'
+
+  record_type:
+    sql: '"RECORD_TYPE"'
+
+  month_date_rev_reporting:
+    sql: '"MONTH_DATE_REV_REPORTING"'
+
+  arr:
+    sql: '"ARR"'
+
+  mrr:
+    sql: '"MRR"'
+
+  cumulative_mrr_sum:
+    sql: '"CUMULATIVE_MRR_SUM"'
+
+  account_churn_amount:
+    sql: '"ACCOUNT_CHURN_AMOUNT"'
+    label: Account Churn ARR
+    description: Does not include downgrades
+    group_label: Revenue Fields
+    ai_context: account churn revenue
+
+  account_downgrade_amount:
+    sql: '"ACCOUNT_DOWNGRADE_AMOUNT"'
+    label: Downgrade ARR
+    description: Does not include account churn arr
+    group_label: Revenue Fields
+    ai_context: downgrade revenue
+
+  account_upgrade_reactivation_amount:
+    sql: '"ACCOUNT_UPGRADE_REACTIVATION_AMOUNT"'
+
+  account_new_revenue_amount:
+    sql: '"ACCOUNT_NEW_REVENUE_AMOUNT"'
+
+  account_uncategorized_amount:
+    sql: '"ACCOUNT_UNCATEGORIZED_AMOUNT"'
+
+  num_new_accounts:
+    sql: '"NUM_NEW_ACCOUNTS"'
+
+  num_upgrade_accounts:
+    sql: '"NUM_UPGRADE_ACCOUNTS"'
+
+  filled_cumulative_mrr:
+    sql: '"FILLED_CUMULATIVE_MRR"'
+
+  formatted_filled_cumulative_mrr:
+    sql: '"FORMATTED_FILLED_CUMULATIVE_MRR"'
+
+  nrr_date:
+    sql: '"NRR_DATE"'
+
+  month_of_initial_close:
+    sql: '"MONTH_OF_INITIAL_CLOSE"'
+
+  cumulative_filled_arr:
+    sql: '"CUMULATIVE_FILLED_ARR"'
+
+  lagged_arr:
+    sql: '"LAGGED_ARR"'
+
+  final_month_quarter:
+    sql: '"FINAL_MONTH_QUARTER"'
+
+  total_churn_amount:
+    sql: '"TOTAL_CHURN_AMOUNT"'
+
+  rolling_12_month_churn_amount:
+    sql: '"ROLLING_12_MONTH_CHURN_AMOUNT"'
+
+  churn_coalesced:
+    sql: '"CHURN_COALESCED"'
+
+  downgrade_coalesced:
+    sql: '"DOWNGRADE_COALESCED"'
+
+  net_added_amount:
+    sql: '"NET_ADDED_AMOUNT"'
+
+  rolling_12_month_net_amount:
+    sql: '"ROLLING_12_MONTH_NET_AMOUNT"'
+
+  rolling_3_month_churn_amount:
+    sql: '"ROLLING_3_MONTH_CHURN_AMOUNT"'
+
+  rolling_3_month_upgrade_amount:
+    sql: '"ROLLING_3_MONTH_UPGRADE_AMOUNT"'
+
+  rolling_3_month_new_accounts:
+    sql: '"ROLLING_3_MONTH_NEW_ACCOUNTS"'
+
+  rolling_3_account_new_revenue_amount:
+    sql: '"ROLLING_3_ACCOUNT_NEW_REVENUE_AMOUNT"'
+
+  reolling_3_month_total_added:
+    sql: '"REOLLING_3_MONTH_TOTAL_ADDED"'
+
+  revenue_payroll:
+    sql: '"REVENUE_PAYROLL"'
+
+  marketing_expenses:
+    sql: '"MARKETING_EXPENSES"'
+    label: raw cac expenses
+
+  marketing_payroll:
+    sql: '"MARKETING_PAYROLL"'
+    label: raw cac expenses
+
+  total_acquisition_cost:
+    sql: '"TOTAL_ACQUISITION_COST"'
+
+  pnl_gross_sales:
+    sql: '"PNL_GROSS_SALES"'
+    group_label: Raw Fields
+
+  pnl_gross_profit:
+    sql: '"PNL_GROSS_PROFIT"'
+    group_label: Raw Fields
+
+  rolling_3_revenue_payroll:
+    sql: '"ROLLING_3_REVENUE_PAYROLL"'
+
+  rolling_3_marketing_expenses:
+    sql: '"ROLLING_3_MARKETING_EXPENSES"'
+
+  rolling_3_marketing_payroll:
+    sql: '"ROLLING_3_MARKETING_PAYROLL"'
+
+  rolling_3_total_acquisition_cost:
+    sql: '"ROLLING_3_TOTAL_ACQUISITION_COST"'
+
+  rolling_3_pnl_gross_sales:
+    sql: '"ROLLING_3_PNL_GROSS_SALES"'
+    group_label: Raw Fields
+
+  rolling_3_pnl_gross_profit:
+    sql: '"ROLLING_3_PNL_GROSS_PROFIT"'
+    group_label: Raw Fields
+
+  business_segments_independent_commercial_mid_market:
+    sql: |+
+      case when ${reporting__cumulative_arr_data_set.net_num_account_locations} =1 or ${reporting__cumulative_arr_data_set.net_num_account_locations} = 2 then '1-2 Independents'
+
+      when ${reporting__cumulative_arr_data_set.net_num_account_locations} <50  then '3-49 Commercial'
+
+      when ${reporting__cumulative_arr_data_set.net_num_account_locations} >49  then '50+ Mid Market' end
+
+
+    label: "Business Segments: Independent, Commercial, Mid Market"
+    description: Business segments that have been standard since 2024 reporting.
+      Uses net locations to determine segment. Does not split out partner
+    group_label: Business Segments
+    all_values: [ 1-2 Independents, 3-49 Commercial, 50+ Mid Market ]
+    synonyms:
+      [
+        Segment,
+        " Cohort",
+        " Business Cohort",
+        " Business Segment",
+        " Business Line",
+        " Indy",
+        " Commercial",
+        " Mid Market"
+      ]
+    ai_context: Used for splitting up our business basted on locations.
+
+  business_segments_independent_commercial_mid_market_copy:
+    sql: |+
+      case
+        when lower(${reporting__cumulative_arr_data_set.record_type}) = 'partner' then 'partner'
+        when ${reporting__cumulative_arr_data_set.net_num_account_locations} =1 or ${reporting__cumulative_arr_data_set.net_num_account_locations} = 2 then '1-2 Independents'
+
+      when ${reporting__cumulative_arr_data_set.net_num_account_locations} <50  then '3-49 Commercial'
+
+      when ${reporting__cumulative_arr_data_set.net_num_account_locations} >49  then '50+ Mid Market' end
+
+
+    label: "Business Segments: Partner, Location Segments"
+    description: Business segments that have been standard since 2024 reporting.
+      Uses net locations to determine segment. Splits out Partner accounts
+    group_label: Business Segments
+    all_values: [ 1-2 Independents, 3-49 Commercial, 50+ Mid Market, partner ]
+
+  month_string_formatted:
+    sql: ${reporting__cumulative_arr_data_set.month_date_rev_reporting[month]}::STRING
+    label: Month - String Formatted
+    group_label: Text Formatted Date Fields
+
+  text_formatted_fiscal_quarter:
+    sql: ${reporting__cumulative_arr_data_set.month_date_rev_reporting[fiscal_quarter]}::STRING
+    label: Text Formatted Fiscal Quarter
+    group_label: Text Formatted Date Fields
+
+  string_fiscal_year:
+    sql: |-
+      case when month(${reporting__cumulative_arr_data_set.month_date_rev_reporting}) = 1 
+        then    (EXTRACT(YEAR FROM ${reporting__cumulative_arr_data_set.month_date_rev_reporting})-1)::STRING
+      else (EXTRACT(YEAR FROM ${reporting__cumulative_arr_data_set.month_date_rev_reporting}))::STRING end
+    label: String Fiscal Year
+    group_label: Text Formatted Date Fields
+    all_values:
+      [
+        "2022",
+        "2021",
+        "2025",
+        "2019",
+        "2020",
+        "2023",
+        "2018",
+        "2024",
+        "2017",
+        "2026"
+      ]
+
+  same_quarter_deal_:
+    sql: ${reporting__cumulative_arr_data_set.month_of_initial_close[fiscal_quarter]}
+      = ${reporting__cumulative_arr_data_set.text_formatted_fiscal_quarter}
+    label: Same Quarter Deal?
+
+  gross_sales_quarter_fixed:
+    sql: ${reporting__cumulative_arr_data_set.pnl_gross_sales}
+    label: "Gross Sales: Quarter Fixed"
+    group_label: Raw Fields
+    group_by:
+      aggregate_type: sum
+      fixed:
+        [
+          "reporting__cumulative_arr_data_set.month_date_rev_reporting[fiscal\
+            _quarter]"
+        ]
+
+  gross_margin_fixed:
+    sql: |-
+      case when 
+      ${reporting__cumulative_arr_data_set.gross_sales_quarter_fixed} is null or ${reporting__cumulative_arr_data_set.gross_sales_quarter_fixed} = 0 then null else 
+
+      ${reporting__cumulative_arr_data_set.gross_profit_level_of_detail}/${reporting__cumulative_arr_data_set.gross_sales_quarter_fixed} end
+    label: Gross Margin Fixed
+
+  gross_profit_level_of_detail:
+    sql: ${reporting__cumulative_arr_data_set.pnl_gross_profit}
+    label: Gross Profit Quarter Fixed
+    group_label: Raw Fields
+    group_by:
+      aggregate_type: sum
+      fixed:
+        [
+          "reporting__cumulative_arr_data_set.month_date_rev_reporting[fiscal\
+            _quarter]"
+        ]
+
+  gross_margin_actuals_or_assumed_rate:
+    sql: COALESCE(${reporting__cumulative_arr_data_set.gross_margin_fixed},.65)
+    label: Gross Margin % Actuals or Assumed Rate
+
+  location_segment_cost_allocation:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market}
+      = '3-49 Commercial' THEN 0.6 ELSE 0.2 END
+    label: Location Segment % Cost Allocation
+
+  acquisition_cost_allocation:
+    sql: COALESCE(${reporting__cumulative_arr_data_set.total_acquisition_cost_quarter},
+      0) *
+      COALESCE(${reporting__cumulative_arr_data_set.location_segment_cost_allocation},
+      0)
+    label: Acquisition Cost Allocation
+
+  total_acquisition_cost_quarter:
+    sql: ${reporting__cumulative_arr_data_set.total_acquisition_cost}
+    label: "Total Acquisition Cost: Quarter"
+    format: USDCURRENCY_2
+    group_by:
+      aggregate_type: sum
+      fixed:
+        [
+          "reporting__cumulative_arr_data_set.month_date_rev_reporting[fiscal\
+            _quarter]"
+        ]
+      cancel_query_filters: true
+
+  commercial_cac_allocation_loc_segments:
+    sql: ".6"
+    label: "Location Segment % Cost Allocation: Commercial"
+    format: PERCENT_0
+    group_label: Cost Allocation
+
+  indy_cac_allocation_loc_segments:
+    sql: ".2"
+    label: "Location Segment % Cost Allocation: Independent"
+    format: PERCENT_0
+    group_label: Cost Allocation
+
+  mm_cac_allocation_loc_segments:
+    sql: ".2"
+    label: "Location Segment % Cost Allocation: Mid Market"
+    format: PERCENT_0
+    group_label: Cost Allocation
+
+  location_segment_cost_allocation_partner:
+    sql: |-
+      CASE WHEN ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy} = '3-49 Commercial' THEN 0.6 
+       when ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}  = 'Partner' THEN 0.1
+       when  ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy} = '1-2 Independents' THEN 0.1
+        ELSE 0.2 END
+    label: Location Segment % Cost Allocation Partner Breakout
+    format: PERCENT
+
+  acquisition_cost_allocation_partner:
+    sql: COALESCE(${reporting__cumulative_arr_data_set.total_acquisition_cost_quarter},
+      0) *
+      COALESCE(${reporting__cumulative_arr_data_set.location_segment_cost_allocation_partner},
+      0)
+    label: Acquisition Cost Allocation partner
+
+  acquisition_cost_allocation_partner_calc:
+    sql: COALESCE(${reporting__cumulative_arr_data_set.total_acquisition_cost_quarter},
+      0) *
+      COALESCE(${reporting__cumulative_arr_data_set.acquisition_cost_allocation_partner},
+      0)
+
+  measure_name:
+    sql: CASE WHEN 1 = 1 THEN 'LTV:CAC' WHEN 1 = 2 THEN 'CAC' WHEN 1 = 3 THEN
+      'Payback Period' WHEN 1 = 4 THEN 'GRR%' WHEN 1 = 5 THEN 'NRR%' ELSE NULL
+      END
+    groups:
+      - filter:
+          is: LTV:CAC
+        name: LTV:CAC
+      - filter:
+          is: CAC
+        name: CAC
+      - filter:
+          is: Payback Period
+        name: Payback Period
+      - filter:
+          is: GRR%
+        name: GRR%
+      - filter:
+          is: NRR%
+        name: NRR%
+
+  string_fiscal_quarter:
+    sql: ${reporting__cumulative_arr_data_set.month_date_rev_reporting[fiscal_quarter]}::STRING
+    label: String Fiscal Quarter
+
+  commercial_segment_refined:
+    sql: |
+      CASE
+        WHEN ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy} = '1-2 Independents' THEN '01-02 Independents'
+        WHEN ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy} = '50+ Mid Market' THEN '50+ Mid Market'
+        WHEN ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy} = 'partner' THEN 'partner'
+        WHEN ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy} = '3-49 Commercial' THEN
+          CASE
+            WHEN ${reporting__cumulative_arr_data_set.net_num_account_locations} BETWEEN 3 AND 5 THEN '03-05 Commercial'
+            WHEN ${reporting__cumulative_arr_data_set.net_num_account_locations} BETWEEN 6 AND 10 THEN '06-10 Commercial'
+            WHEN ${reporting__cumulative_arr_data_set.net_num_account_locations} BETWEEN 11 AND 30 THEN '11-30 Commercial'
+            WHEN ${reporting__cumulative_arr_data_set.net_num_account_locations} BETWEEN 31 AND 49 THEN '31-49 Commercial'
+            ELSE '03-49 Commercial (Unclassified)'
+          END
+        ELSE ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      END
+    label: Commercial Segment Refined (Location-Based)
+    group_label: Business Segments
+
+  quarter_ending_revenue_fixed:
+    sql: ${reporting__cumulative_arr_data_set.cumulative_filled_arr}
+    label: Quarter Ending Revenue (Fixed)
+    format: BIGUSDCURRENCY_2
+    group_by:
+      aggregate_type: sum
+      fixed:
+        [
+          "reporting__cumulative_arr_data_set.month_date_rev_reporting[fiscal\
+            _quarter]"
+        ]
+
+  rolling_3_month_account_churn_amount:
+    sql: '"ROLLING_3_MONTH_ACCOUNT_CHURN_AMOUNT"'
+
+  previous_total_acquisition_cost:
+    sql: '"PREVIOUS_TOTAL_ACQUISITION_COST"'
+
+  total_income:
+    sql: '"TOTAL_INCOME"'
+
+  prior_quarter_total_income:
+    sql: '"PRIOR_QUARTER_TOTAL_INCOME"'
+
+  previous_total_acquisition_cost_level_of_detail:
+    sql: ${reporting__cumulative_arr_data_set.previous_total_acquisition_cost}
+    label: Previous Quarter Acquisition Cost
+    group_by:
+      aggregate_type: sum
+      fixed:
+        [
+          "reporting__cumulative_arr_data_set.month_date_rev_reporting[fiscal\
+            _quarter]"
+        ]
+      cancel_query_filters: true
+
+  fixed_beginning_revenue:
+    sql: ${reporting__cumulative_arr_data_set.lagged_arr}
+    label: Fixed Beginning Revenue
+    format: BIGUSDCURRENCY_2
+    group_by:
+      aggregate_type: average
+      fixed:
+        [
+          "reporting__cumulative_arr_data_set.month_date_rev_reporting[fiscal\
+            _quarter]"
+        ]
+
+measures:
+  total_acquisition_cost:
+    sql: ${reporting__cumulative_arr_data_set.marketing_payroll_sum}+${reporting__cumulative_arr_data_set.revenue_payroll_sum}+${reporting__cumulative_arr_data_set.marketing_expenses_sum}
+    label: Total Acquisition Cost
+    group_label: Acquisition Cost
+    description: Total Acquisition Cost
+
+  arr_sum:
+    sql: ${reporting__cumulative_arr_data_set.arr}
+    aggregate_type: sum
+
+  cumulative_filled_arr_sum:
+    sql: ${reporting__cumulative_arr_data_set.cumulative_filled_arr}
+    label: Ending Revenue
+    group_label: Ending ARR
+    format: USDCURRENCY_0
+    aggregate_type: sum
+
+  rolling_12_month_net_amount_sum:
+    sql: ${reporting__cumulative_arr_data_set.rolling_12_month_net_amount}
+    aggregate_type: sum
+
+  rolling_12_month_churn_amount_sum:
+    sql: ${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount}
+    group_label: "Rolling 12 Month Churn: Location Segments"
+    aggregate_type: sum
+
+  lagged_arr_sum:
+    sql: ${reporting__cumulative_arr_data_set.lagged_arr}
+    label: Beginning Revenue
+    description: Revenue at the start of the quarter
+    drill_fields: []
+    aggregate_type: sum
+
+  grr_:
+    sql: CASE WHEN ${reporting__cumulative_arr_data_set.lagged_arr_sum} = 0 THEN
+      NULL ELSE COALESCE(${reporting__cumulative_arr_data_set.grr_amount}, 0) /
+      ${reporting__cumulative_arr_data_set.lagged_arr_sum} END
+    label: GRR%
+    group_label: Retention Calculations
+    format: PERCENT_1
+    description: Quarterly calculated GRR
+    drill_fields: []
+    ai_context: "% calculation important for retention"
+
+  grr_amount:
+    sql: COALESCE(${reporting__cumulative_arr_data_set.lagged_arr_sum}, 0) +
+      COALESCE(${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount_sum},
+      0)
+    label: GRR Amount
+    group_label: Retention Calculations
+    format: BIGUSDCURRENCY_2
+    description: Quarterly calculated GRR
+    drill_fields: []
+
+  total_churn_amount_sum:
+    sql: ${reporting__cumulative_arr_data_set.total_churn_amount}
+    label: Total Churn
+    group_label: Non Cumulative Revenue Metrics
+    description: Includes downgrades and account churn.
+    drill_fields: []
+    aggregate_type: sum
+
+  nrr_amount_2:
+    sql: COALESCE(${reporting__cumulative_arr_data_set.grr_amount}, 0) +
+      COALESCE(${reporting__cumulative_arr_data_set.rolling_3_month_upgrade_amount_sum},
+      0)
+    label: NRR Amount
+    group_label: Retention Calculations
+    format: BIGUSDCURRENCY_2
+    drill_fields: []
+
+  account_upgrade_reactivation_amount_sum:
+    sql: ${reporting__cumulative_arr_data_set.account_upgrade_reactivation_amount}
+    label: Total Upgrades
+    group_label: Non Cumulative Revenue Metrics
+    format: BIGNUMBER_2
+    description: Total upgrades includes reactivations and upgrades
+    drill_fields: []
+    aggregate_type: sum
+
+  nrr_:
+    sql: CASE WHEN ${reporting__cumulative_arr_data_set.lagged_arr_sum} = 0 THEN
+      NULL ELSE COALESCE(${reporting__cumulative_arr_data_set.nrr_amount_2}, 0)
+      / ${reporting__cumulative_arr_data_set.lagged_arr_sum} END
+    label: NRR%
+    group_label: Retention Calculations
+    format: PERCENT_1
+    description: Quarterly calculated NRR
+    drill_fields: []
+    ai_context: "% calculation important for retention"
+
+  rolling_3_month_churn_amount_sum:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount}
+    label: Rolling 3 Month Churn
+    group_label: 3 Month Rolling Calcs
+    format: BIGUSDCURRENCY_2
+    description: This is used in the grr and nrr calculations
+    drill_fields: []
+    aggregate_type: sum
+
+  rolling_3_month_upgrade_amount_sum:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_upgrade_amount}
+    label: Rolling 3 Month Upgrades
+    group_label: 3 Month Rolling Calcs
+    format: BIGUSDCURRENCY_2
+    description: Using in NRR calculations
+    drill_fields: []
+    aggregate_type: sum
+
+  grr__1_2_independents:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.lagged_arr_sum_1_2_independents} = 0
+      THEN NULL ELSE
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.lagged_arr_sum_1_2_independents},
+      0) +
+      COALESCE(${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount_sum_1_2_independents},
+      0), 0) /
+      ${reporting__cumulative_arr_data_set.lagged_arr_sum_1_2_independents} END
+    label: GRR% 1-2 Independents
+    group_label: Retention Calculations
+    format: PERCENT_1
+    description: Quarterly calculated GRR
+    drill_fields: []
+
+  lagged_arr_sum_1_2_independents:
+    sql: ${reporting__cumulative_arr_data_set.lagged_arr}
+    label: Beginning Revenue 1-2 Independents
+    description: Revenue at the start of the quarter
+    drill_fields: []
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 1-2 Independents
+
+  rolling_3_month_churn_amount_sum_1_2_independents:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount}
+    label: Rolling 3 Month Churn 1-2 Independents
+    group_label: 3 Month Rolling Calcs
+    format: BIGUSDCURRENCY_2
+    description: This is used in the grr and nrr calculations
+    drill_fields: []
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 1-2 Independents
+
+  nrr__1_2_independents:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.lagged_arr_sum_1_2_independents} = 0
+      THEN NULL ELSE
+      COALESCE(COALESCE(COALESCE(${reporting__cumulative_arr_data_set.lagged_arr_sum_1_2_independents},
+      0) +
+      COALESCE(${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount_sum_1_2_independents},
+      0), 0) +
+      COALESCE(${reporting__cumulative_arr_data_set.rolling_3_month_upgrade_amount_sum_1_2_independents},
+      0), 0) /
+      ${reporting__cumulative_arr_data_set.lagged_arr_sum_1_2_independents} END
+    label: NRR% 1-2 Independents
+    group_label: Retention Calculations
+    format: PERCENT_1
+    drill_fields: []
+    ai_context: "% calculation important for retention"
+
+  rolling_3_month_upgrade_amount_sum_1_2_independents:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_upgrade_amount}
+    label: Rolling 3 Month Upgrades 1-2 Independents
+    group_label: 3 Month Rolling Calcs
+    format: BIGUSDCURRENCY_2
+    description: Using in NRR calculations
+    drill_fields: []
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 1-2 Independents
+
+  grr__3_49_commercial:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.lagged_arr_sum_3_49_commercial} = 0
+      THEN NULL ELSE
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.lagged_arr_sum_3_49_commercial},
+      0) +
+      COALESCE(${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount_sum_3_49_commercial},
+      0), 0) /
+      ${reporting__cumulative_arr_data_set.lagged_arr_sum_3_49_commercial} END
+    label: GRR% 3-49 Commercial
+    group_label: Retention Calculations
+    format: PERCENT_1
+    description: Quarterly calculated GRR
+    drill_fields: []
+    ai_context: "% calculation important for retention"
+
+  lagged_arr_sum_3_49_commercial:
+    sql: ${reporting__cumulative_arr_data_set.lagged_arr}
+    label: Beginning Revenue 3-49 Commercial
+    description: Revenue at the start of the quarter
+    drill_fields: []
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 3-49 Commercial
+
+  rolling_3_month_churn_amount_sum_3_49_commercial:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount}
+    label: Rolling 3 Month Churn 3-49 Commercial
+    group_label: 3 Month Rolling Calcs
+    format: BIGUSDCURRENCY_2
+    description: This is used in the grr and nrr calculations
+    drill_fields: []
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 3-49 Commercial
+
+  nrr__3_49_commercial:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.lagged_arr_sum_3_49_commercial} = 0
+      THEN NULL ELSE
+      COALESCE(COALESCE(COALESCE(${reporting__cumulative_arr_data_set.lagged_arr_sum_3_49_commercial},
+      0) +
+      COALESCE(${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount_sum_3_49_commercial},
+      0), 0) +
+      COALESCE(${reporting__cumulative_arr_data_set.rolling_3_month_upgrade_amount_sum_3_49_commercial},
+      0), 0) /
+      ${reporting__cumulative_arr_data_set.lagged_arr_sum_3_49_commercial} END
+    label: NRR% 3-49 Commercial
+    group_label: Retention Calculations
+    format: PERCENT_1
+    description: Quarterly calculated NRR
+    drill_fields: []
+
+  rolling_3_month_upgrade_amount_sum_3_49_commercial:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_upgrade_amount}
+    label: Rolling 3 Month Upgrades 3-49 Commercial
+    group_label: 3 Month Rolling Calcs
+    format: BIGUSDCURRENCY_2
+    description: Using in NRR calculations
+    drill_fields: []
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 3-49 Commercial
+
+  grr__50__mid_market:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.lagged_arr_sum_50__mid_market} = 0
+      THEN NULL ELSE
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.lagged_arr_sum_50__mid_market},
+      0) +
+      COALESCE(${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount_sum_50__mid_market},
+      0), 0) /
+      ${reporting__cumulative_arr_data_set.lagged_arr_sum_50__mid_market} END
+    label: GRR% 50+ Mid Market
+    group_label: Retention Calculations
+    format: PERCENT_1
+    description: Quarterly calculated GRR
+    drill_fields: []
+    ai_context: "% calculation important for retention"
+
+  lagged_arr_sum_50__mid_market:
+    sql: ${reporting__cumulative_arr_data_set.lagged_arr}
+    label: Beginning Revenue 50+ Mid Market
+    description: Revenue at the start of the quarter
+    drill_fields: []
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 50+ Mid Market
+
+  rolling_3_month_churn_amount_sum_50__mid_market:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount}
+    label: Rolling 3 Month Churn 50+ Mid Market
+    group_label: 3 Month Rolling Calcs
+    format: BIGUSDCURRENCY_2
+    description: This is used in the grr and nrr calculations
+    drill_fields: []
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 50+ Mid Market
+
+  nrr__50__mid_market:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.lagged_arr_sum_50__mid_market} = 0
+      THEN NULL ELSE
+      COALESCE(COALESCE(COALESCE(${reporting__cumulative_arr_data_set.lagged_arr_sum_50__mid_market},
+      0) +
+      COALESCE(${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount_sum_50__mid_market},
+      0), 0) +
+      COALESCE(${reporting__cumulative_arr_data_set.rolling_3_month_upgrade_amount_sum_50__mid_market},
+      0), 0) /
+      ${reporting__cumulative_arr_data_set.lagged_arr_sum_50__mid_market} END
+    label: NRR% 50+ Mid Market
+    group_label: Retention Calculations
+    format: PERCENT_1
+    description: Quarterly calculated NRR
+    drill_fields: []
+    ai_context: "% calculation important for retention"
+
+  rolling_3_month_upgrade_amount_sum_50__mid_market:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_upgrade_amount}
+    label: Rolling 3 Month Upgrades 50+ Mid Market
+    group_label: 3 Month Rolling Calcs
+    format: BIGUSDCURRENCY_2
+    description: Using in NRR calculations
+    drill_fields: []
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 50+ Mid Market
+
+  cumulative_filled_arr_sum_true:
+    sql: ${reporting__cumulative_arr_data_set.cumulative_filled_arr}
+    label: Ending Revenue - Removed Same Deals
+    group_label: Ending ARR
+    aggregate_type: sum
+    filters:
+      same_quarter_deal_:
+        is: true
+
+  marketing_payroll_sum:
+    sql: ${reporting__cumulative_arr_data_set.marketing_payroll}
+    label: $Marketing Payroll
+    group_label: Acquisition Cost
+    format: BIGUSDCURRENCY_2
+    description: Marketing Payroll
+    drill_fields: []
+    aggregate_type: sum
+    ai_context: Used for cost of acquisition - marketing
+
+  revenue_payroll_sum:
+    sql: ${reporting__cumulative_arr_data_set.revenue_payroll}
+    label: $ Revenue Payroll
+    group_label: Acquisition Cost
+    format: BIGUSDCURRENCY_2
+    drill_fields: []
+    aggregate_type: sum
+
+  marketing_expenses_sum:
+    sql: ${reporting__cumulative_arr_data_set.marketing_expenses}
+    label: $ Marketing Expense
+    group_label: Acquisition Cost
+    format: BIGUSDCURRENCY_2
+    drill_fields: []
+    aggregate_type: sum
+
+  churn_rate_denominator_rolling_12:
+    sql: COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum},
+      0) * -1, 0)
+    label: "Churn Rate Denominator: Rolling 12"
+    group_label: churn rate
+
+  annual_churn_rate_rolling_12:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12} =
+      0 THEN NULL ELSE
+      COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum},
+      0) /
+      ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12}
+      END
+    label: "Annual Churn Rate: Rolling 12"
+
+  monhly_churn_rate_rolling_12m:
+    sql: CASE WHEN 12 = 0 THEN NULL ELSE
+      COALESCE(${reporting__cumulative_arr_data_set.annual_churn_rate_rolling_12},
+      0) / 12 END
+    label: "Monhly Churn Rate: Rolling 12M"
+    group_label: churn rate
+
+  customer_lifetime_rolling_12m:
+    sql: COALESCE(CASE WHEN
+      ${reporting__cumulative_arr_data_set.monhly_churn_rate_rolling_12m} = 0
+      THEN NULL ELSE 1 /
+      ${reporting__cumulative_arr_data_set.monhly_churn_rate_rolling_12m} END,
+      0) * -1
+    label: "Customer Lifetime: Rolling 12M"
+    group_label: Customer Lifetime
+
+  new_and_upgrade_arr:
+    sql: ${reporting__cumulative_arr_data_set.account_upgrade_reactivation_amount_sum}
+      + ${reporting__cumulative_arr_data_set.num_new_accounts_sum}
+    label: New and Upgrade ARR
+
+  num_new_accounts_sum:
+    sql: ${reporting__cumulative_arr_data_set.num_new_accounts}
+    group_label: Raw Fields
+    drill_fields: []
+    aggregate_type: sum
+
+  account_new_revenue_amount_sum:
+    sql: ${reporting__cumulative_arr_data_set.account_new_revenue_amount}
+    label: New Revenue Amount
+    group_label: Revenue Fields
+    format: BIGUSDCURRENCY_1
+    description: Revenue or ARR associated with new deals.
+    drill_fields: []
+    aggregate_type: sum
+
+  rolling_3_account_new_revenue_amount_sum:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_account_new_revenue_amount}
+    group_label: New Account Fields
+    aggregate_type: sum
+
+  reolling_3_month_total_added_sum:
+    sql: ${reporting__cumulative_arr_data_set.reolling_3_month_total_added}
+    group_label: New Accounts
+    aggregate_type: sum
+
+  rolling_3_total_acquisition_cost_sum:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_total_acquisition_cost}
+    group_label: Acquisition Cost
+    drill_fields: []
+    aggregate_type: sum
+
+  avg_new_and_upgraded_mrr_by_customer:
+    sql: |-
+      case when ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum} =0 or ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum} is null then null else (${reporting__cumulative_arr_data_set.new_and_upgrade_mrr})
+        /${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum} end
+    label: Avg New and Upgraded MRR By Customer
+    group_label: Payback Calcs
+    format: USDCURRENCY_2
+    description: Used in payback period calculation. Divides new deal arr and
+      upgrade arr by the number of new accounts
+    drill_fields: []
+
+  rolling_3_month_new_accounts_sum:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts}
+    group_label: New Accounts
+    aggregate_type: sum
+
+  new_and_upgrade_mrr:
+    sql: ${reporting__cumulative_arr_data_set.reolling_3_month_total_added_sum}/12
+    label: New and Upgrade MRR
+    group_label: Payback Calcs
+    format: USDCURRENCY_2
+    description: Used in payback period calculation. new deal arr and upgrade arr
+
+  rolling_3_pnl_gross_sales_sum:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_pnl_gross_sales}
+    group_label: Gross Margin Fields
+    aggregate_type: sum
+
+  rolling_3_pnl_gross_profit_sum:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_pnl_gross_profit}
+    group_label: Gross Margin Fields
+    aggregate_type: sum
+
+  avg_new_mrr_by_customer:
+    sql: |-
+      case when ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum} =0 or ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum} is null then null else (${reporting__cumulative_arr_data_set.new_mrr})
+        /${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum} end
+    label: Avg New MRR By Customer
+    group_label: Payback Calcs
+    format: USDCURRENCY_2
+    drill_fields: []
+
+  new_mrr:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_account_new_revenue_amount_sum}/12
+    label: "New MRR "
+    group_label: Payback Calcs
+    format: USDCURRENCY_2
+    description: Used in LTV calculations, does not include upgrades
+    drill_fields: []
+
+  avg_new_mrr_margin_adjusted:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer} *
+      ${reporting__cumulative_arr_data_set.gross_margin_actuals_or_assumption}
+    label: Avg New MRR Margin Adjusted
+    group_label: Payback Calcs
+    description: Adjusts the average new mrr per customer by the gross margin
+      (actuals if available)
+    ai_context: Adjusts the average new mrr per customer by the gross margin
+      (actuals if available)
+
+  gross_margin_actuals_or_assumption:
+    sql: COALESCE(${reporting__cumulative_arr_data_set.gross_margin_actuals},.65)
+    label: "Gross Margin %: Actuals or Assumption"
+    group_label: Gross Margin Fields
+    format: PERCENT
+    drill_fields: []
+
+  gross_margin_actuals:
+    sql: |-
+      case when ${reporting__cumulative_arr_data_set.rolling_3_pnl_gross_sales_sum} =0 or ${reporting__cumulative_arr_data_set.rolling_3_pnl_gross_sales_sum} is null then null else  
+       ${reporting__cumulative_arr_data_set.rolling_3_pnl_gross_profit_sum}/
+        ${reporting__cumulative_arr_data_set.rolling_3_pnl_gross_sales_sum} end
+    label: Gross Margin % - Actuals
+    group_label: Gross Margin Fields
+    format: PERCENT
+
+  customer_lifetime_value:
+    sql: ${reporting__cumulative_arr_data_set.customer_lifetime_rolling_12m}*${reporting__cumulative_arr_data_set.avg_new_mrr_margin_adjusted}
+    label: Customer Lifetime Value
+    group_label: Lifetime Value
+    format: USDCURRENCY_2
+    description: Using the 12 month churn rate determine lifetime (months) and the
+      new revenue mrr (margin adjusted)
+    drill_fields: []
+
+  ltv_cac:
+    sql: case when ${reporting__cumulative_arr_data_set.cac} = 0 or
+      ${reporting__cumulative_arr_data_set.cac} is null then null else
+      ${reporting__cumulative_arr_data_set.customer_lifetime_value} /
+      ${reporting__cumulative_arr_data_set.cac} end
+    label: LTV:CAC
+    group_label: Lifetime Value
+    format: NUMBER_2
+    drill_fields: []
+
+  cac:
+    sql: |-
+      case when ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum} is null or 
+       ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum}  = 0 then null  else
+       ${reporting__cumulative_arr_data_set.rolling_3_total_acquisition_cost_sum} / ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum}  end
+    label: CAC
+    group_label: Acquisition Cost
+
+  avg_new_upgrade_mrr_margin_adjusted_1:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer}
+      * ${reporting__cumulative_arr_data_set.gross_margin_actuals_or_assumption}
+    label: Avg New and Upgrade MRR Margin Adjusted
+    group_label: Payback Calcs
+    format: USDCURRENCY_2
+    drill_fields: []
+
+  avg_new_and_upgraded_mrr_by_customer_50__mid_market:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.reolling_3_month_total_added_sum_50__mid_market}
+      / 12 /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market}
+      END
+    label: Avg New and Upgraded MRR By Customer 50+ Mid Market
+    group_label: Payback Calcs
+    format: USDCURRENCY_2
+    description: Used in payback period calculation. Divides new deal arr and
+      upgrade arr by the number of new accounts
+    drill_fields: []
+
+  rolling_3_month_new_accounts_sum_50__mid_market:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts}
+    label: Rolling 3 Month New Accounts Sum 50+ Mid Market
+    group_label: New Accounts
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 50+ Mid Market
+
+  reolling_3_month_total_added_sum_50__mid_market:
+    sql: ${reporting__cumulative_arr_data_set.reolling_3_month_total_added}
+    label: Reolling 3 Month Total Added Sum 50+ Mid Market
+    group_label: New Accounts
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 50+ Mid Market
+
+  rolling_3_month_new_accounts_sum_1_2_independents:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts}
+    label: Rolling 3 Month New Accounts Sum 1-2 Independents
+    group_label: New Accounts
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 1-2 Independents
+
+  reolling_3_month_total_added_sum_1_2_independents:
+    sql: ${reporting__cumulative_arr_data_set.reolling_3_month_total_added}
+    label: Reolling 3 Month Total Added Sum 1-2 Independents
+    group_label: New Accounts
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 1-2 Independents
+
+  rolling_3_account_new_revenue_amount_sum_1_2_independents:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_account_new_revenue_amount}
+    label: Rolling 3 Account New Revenue Amount Sum 1-2 Independents
+    group_label: New Account Fields
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 1-2 Independents
+
+  new_and_upgrade_mrr_1_2_independents:
+    sql: ${reporting__cumulative_arr_data_set.reolling_3_month_total_added_sum_1_2_independents}
+      / 12
+    label: New and Upgrade MRR 1-2 Independents
+    group_label: Payback Calcs
+    format: USDCURRENCY_2
+    description: Used in payback period calculation. new deal arr and upgrade arr
+
+  new_mrr_1_2_independents:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_account_new_revenue_amount_sum_1_2_independents}
+      / 12
+    label: New MRR  1-2 Independents
+    group_label: Payback Calcs
+    format: USDCURRENCY_2
+    drill_fields: []
+    ai_context: Used in LTV calculations, does not include upgrades
+
+  avg_new_mrr_by_customer_1_2_independents:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.rolling_3_account_new_revenue_amount_sum_1_2_independents}
+      / 12 /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents}
+      END
+    label: Avg New MRR By Customer 1-2 Independents
+    group_label: Payback Calcs
+    format: USDCURRENCY_2
+    description: Adjusts the average new mrr per customer by the gross margin
+      (actuals if available)
+    drill_fields: []
+    ai_context: Adjusts the average new mrr per customer by the gross margin
+      (actuals if available)
+
+  avg_new_and_upgraded_mrr_by_customer_1_2_independents:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.reolling_3_month_total_added_sum_1_2_independents}
+      / 12 /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents}
+      END
+    label: Avg New and Upgraded MRR By Customer 1-2 Independents
+    group_label: Payback Calcs
+    format: USDCURRENCY_2
+    description: Used in payback period calculation. Divides new deal arr and
+      upgrade arr by the number of new accounts
+    drill_fields: []
+
+  rolling_3_month_new_accounts_sum_3_49_commercial:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts}
+    label: Rolling 3 Month New Accounts Sum 3-49 Commercial
+    group_label: New Accounts
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 3-49 Commercial
+
+  reolling_3_month_total_added_sum_3_49_commercial:
+    sql: ${reporting__cumulative_arr_data_set.reolling_3_month_total_added}
+    label: Reolling 3 Month Total Added Sum 3-49 Commercial
+    group_label: New Accounts
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 3-49 Commercial
+
+  rolling_3_account_new_revenue_amount_sum_3_49_commercial:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_account_new_revenue_amount}
+    label: Rolling 3 Account New Revenue Amount Sum 3-49 Commercial
+    group_label: New Account Fields
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 3-49 Commercial
+
+  new_and_upgrade_mrr_3_49_commercial:
+    sql: ${reporting__cumulative_arr_data_set.reolling_3_month_total_added_sum_3_49_commercial}
+      / 12
+    label: New and Upgrade MRR 3-49 Commercial
+    group_label: Payback Calcs
+    format: USDCURRENCY_2
+    description: Used in payback period calculation. new deal arr and upgrade arr
+
+  new_mrr_3_49_commercial:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_account_new_revenue_amount_sum_3_49_commercial}
+      / 12
+    label: New MRR  3-49 Commercial
+    group_label: Payback Calcs
+    format: USDCURRENCY_2
+    description: Used in LTV calculations, does not include upgrades
+    drill_fields: []
+    ai_context: Used in LTV calculations, does not include upgrades
+
+  avg_new_mrr_by_customer_3_49_commercial:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.rolling_3_account_new_revenue_amount_sum_3_49_commercial}
+      / 12 /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial}
+      END
+    label: Avg New MRR By Customer 3-49 Commercial
+    group_label: Payback Calcs
+    format: USDCURRENCY_2
+    drill_fields: []
+    ai_context: Adjusts the average new mrr per customer by the gross margin
+      (actuals if available)
+
+  avg_new_and_upgraded_mrr_by_customer_3_49_commercial:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.reolling_3_month_total_added_sum_3_49_commercial}
+      / 12 /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial}
+      END
+    label: Avg New and Upgraded MRR By Customer 3-49 Commercial
+    group_label: Payback Calcs
+    format: USDCURRENCY_2
+    description: Used in payback period calculation. Divides new deal arr and
+      upgrade arr by the number of new accounts
+    drill_fields: []
+
+  rolling_3_account_new_revenue_amount_sum_50__mid_market:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_account_new_revenue_amount}
+    label: Rolling 3 Account New Revenue Amount Sum 50+ Mid Market
+    group_label: New Account Fields
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 50+ Mid Market
+
+  new_and_upgrade_mrr_50__mid_market:
+    sql: ${reporting__cumulative_arr_data_set.reolling_3_month_total_added_sum_50__mid_market}
+      / 12
+    label: New and Upgrade MRR 50+ Mid Market
+    group_label: Payback Calcs
+    format: USDCURRENCY_2
+    description: Used in payback period calculation. new deal arr and upgrade arr
+    ai_context: Used in payback period calculation. Divides new deal arr and upgrade
+      arr by the number of new accounts
+
+  new_mrr_50__mid_market:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_account_new_revenue_amount_sum_50__mid_market}
+      / 12
+    label: New MRR  50+ Mid Market
+    group_label: Payback Calcs
+    format: USDCURRENCY_2
+    description: Used in LTV calculations, does not include upgrades
+    drill_fields: []
+    ai_context: Used in LTV calculations, does not include upgrades
+
+  avg_new_mrr_by_customer_50__mid_market:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.rolling_3_account_new_revenue_amount_sum_50__mid_market}
+      / 12 /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market}
+      END
+    label: Avg New MRR By Customer 50+ Mid Market
+    group_label: Payback Calcs
+    format: USDCURRENCY_2
+    description: Adjusts the average new mrr per customer by the gross margin
+      (actuals if available)
+    drill_fields: []
+    ai_context: Adjusts the average new mrr per customer by the gross margin
+      (actuals if available)
+
+  avg_new_and_upgraded_mrr_by_customer_1_2_independents_margin_adjusted:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_1_2_independents}
+      *
+      AVG(${reporting__cumulative_arr_data_set.gross_margin_actuals_or_assumed_rate})
+    label: Avg New and Upgraded MRR By Customer 1-2 Independents Margin Adjusted
+    group_label: Avg Customer MRR
+
+  avg_new_mrr_by_customer_1_2_independents_margin_adjusted:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_1_2_independents}
+      *
+      AVG(${reporting__cumulative_arr_data_set.gross_margin_actuals_or_assumed_rate})
+    label: Avg New MRR By Customer 1-2 Independents Margin Adjusted
+    group_label: Avg Customer MRR
+
+  avg_new_mrr_by_customer_3_49_commercial_margin_adjusted:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_3_49_commercial}
+      *
+      AVG(${reporting__cumulative_arr_data_set.gross_margin_actuals_or_assumed_rate})
+    label: Avg New MRR By Customer 3-49 Commercial Margin Adjusted
+    group_label: Avg Customer MRR
+
+  avg_new_mrr_by_customer_50__mid_market_margin_adjusted:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_50__mid_market}
+      *
+      AVG(${reporting__cumulative_arr_data_set.gross_margin_actuals_or_assumed_rate})
+    label: Avg New MRR By Customer 50+ Mid Market Margin Adjusted
+    group_label: Avg Customer MRR
+
+  avg_new_and_upgraded_mrr_by_customer_3_49_commercial_margin_adjusted:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_3_49_commercial}
+      *
+      AVG(${reporting__cumulative_arr_data_set.gross_margin_actuals_or_assumed_rate})
+    label: Avg New and Upgraded MRR By Customer 3-49 Commercial Margin Adjusted
+    group_label: Avg Customer MRR
+
+  avg_new_and_upgraded_mrr_by_customer_50__mid_market_margin_adjusted:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_50__mid_market}
+      *
+      AVG(${reporting__cumulative_arr_data_set.gross_margin_actuals_or_assumed_rate})
+    label: Avg New and Upgraded MRR By Customer 50+ Mid Market Margin Adjusted
+    group_label: Avg Customer MRR
+
+  acquisition_cost_allocation_sum:
+    sql: ${reporting__cumulative_arr_data_set.acquisition_cost_allocation}
+    label: Acquisition Cost Allocation Sum
+    aggregate_type: sum
+
+  acquisition_cost_allocation_average:
+    sql: ${reporting__cumulative_arr_data_set.acquisition_cost_allocation}
+    label: Acquisition Cost Allocation Average
+    group_label: CAC Allocation
+    aggregate_type: average
+
+  acquisition_cost_allocation_average_3_49_commercial:
+    sql: ${reporting__cumulative_arr_data_set.acquisition_cost_allocation}
+    label: Acquisition Cost Allocation Average 3-49 Commercial
+    group_label: Cost Allocation
+    aggregate_type: average
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 3-49 Commercial
+
+  acquisition_cost_allocation_average_50__mid_market:
+    sql: ${reporting__cumulative_arr_data_set.acquisition_cost_allocation}
+    label: Acquisition Cost Allocation Average 50+ Mid Market
+    group_label: Cost Allocation
+    aggregate_type: average
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 50+ Mid Market
+
+  cac_50__mid_market:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market}
+      = 0 THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.acquisition_cost_allocation_average_50__mid_market}
+      /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market}
+      END
+    label: CAC 50+ Mid Market
+    group_label: CAC
+
+  segment_monthly_churn_rate:
+    sql: CASE WHEN 12 = 0 THEN NULL ELSE COALESCE(CASE WHEN
+      ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12} =
+      0 THEN NULL ELSE
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum},
+      0) * -1, 0) /
+      ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12}
+      END, 0) / 12 END
+    label: Segment Monthly CHurn Rate
+
+  segment_customer_life:
+    sql: CASE WHEN ${reporting__cumulative_arr_data_set.segment_monthly_churn_rate}
+      = 0 THEN NULL ELSE 1 /
+      ${reporting__cumulative_arr_data_set.segment_monthly_churn_rate} END
+    label: Segment Customer Life
+    group_label: Customer Life Fields
+    description: "This field leverages the rolling 12 months calculation for churn. "
+
+  cumulative_filled_arr_sum_1_2_independents:
+    sql: ${reporting__cumulative_arr_data_set.cumulative_filled_arr}
+    label: Ending Revenue 1-2 Independents
+    group_label: Ending ARR
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 1-2 Independents
+
+  rolling_12_month_churn_amount_sum_1_2_independents:
+    sql: ${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount}
+    label: Rolling 12 Month Churn Amount Sum 1-2 Independents
+    group_label: "Rolling 12 Month Churn: Location Segments"
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 1-2 Independents
+
+  churn_rate_denominator_rolling_12_1_2_independents:
+    sql: COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_1_2_independents},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_1_2_independents},
+      0) * -1, 0)
+    label: "Churn Rate Denominator: Rolling 12 1-2 Independents"
+    group_label: churn rate
+
+  segment_monthly_churn_rate_1_2_independents:
+    sql: CASE WHEN 12 = 0 THEN NULL ELSE COALESCE(CASE WHEN
+      COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_1_2_independents},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_1_2_independents},
+      0) * -1, 0) = 0 THEN NULL ELSE
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_1_2_independents},
+      0) * -1, 0) /
+      (COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_1_2_independents},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_1_2_independents},
+      0) * -1, 0)) END, 0) / 12 END
+    label: Segment Monthly CHurn Rate 1-2 Independents
+    description: "This field leverages the rolling 12 months calculation for churn. "
+
+  segment_customer_life_1_2_independents:
+    sql: CASE WHEN CASE WHEN 12 = 0 THEN NULL ELSE COALESCE(CASE WHEN
+      COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_1_2_independents},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_1_2_independents},
+      0) * -1, 0) = 0 THEN NULL ELSE
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_1_2_independents},
+      0) * -1, 0) /
+      (COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_1_2_independents},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_1_2_independents},
+      0) * -1, 0)) END, 0) / 12 END = 0 THEN NULL ELSE 1 / CASE WHEN 12 = 0 THEN
+      NULL ELSE COALESCE(CASE WHEN
+      COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_1_2_independents},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_1_2_independents},
+      0) * -1, 0) = 0 THEN NULL ELSE
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_1_2_independents},
+      0) * -1, 0) /
+      (COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_1_2_independents},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_1_2_independents},
+      0) * -1, 0)) END, 0) / 12 END END
+    label: Segment Customer Life 1-2 Independents
+    group_label: Customer Life Fields
+    description: "This field leverages the rolling 12 months calculation for churn. "
+
+  churn_rate_denominator_rolling_12_3_49_commercial:
+    sql: COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_3_49_commercial},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_3_49_commercial},
+      0) * -1, 0)
+    label: "Churn Rate Denominator: Rolling 12 3-49 Commercial"
+    group_label: churn rate
+
+  cumulative_filled_arr_sum_3_49_commercial:
+    sql: ${reporting__cumulative_arr_data_set.cumulative_filled_arr}
+    label: Ending Revenue 3-49 Commercial
+    group_label: Ending ARR
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 3-49 Commercial
+
+  rolling_12_month_churn_amount_sum_3_49_commercial:
+    sql: ${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount}
+    label: Rolling 12 Month Churn Amount Sum 3-49 Commercial
+    group_label: "Rolling 12 Month Churn: Location Segments"
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 3-49 Commercial
+
+  segment_monthly_churn_rate_3_49_commercial:
+    sql: CASE WHEN 12 = 0 THEN NULL ELSE COALESCE(CASE WHEN
+      COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_3_49_commercial},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_3_49_commercial},
+      0) * -1, 0) = 0 THEN NULL ELSE
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_3_49_commercial},
+      0) * -1, 0) /
+      (COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_3_49_commercial},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_3_49_commercial},
+      0) * -1, 0)) END, 0) / 12 END
+    label: Segment Monthly CHurn Rate 3-49 Commercial
+
+  segment_customer_life_3_49_commercial:
+    sql: CASE WHEN CASE WHEN 12 = 0 THEN NULL ELSE COALESCE(CASE WHEN
+      COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_3_49_commercial},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_3_49_commercial},
+      0) * -1, 0) = 0 THEN NULL ELSE
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_3_49_commercial},
+      0) * -1, 0) /
+      (COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_3_49_commercial},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_3_49_commercial},
+      0) * -1, 0)) END, 0) / 12 END = 0 THEN NULL ELSE 1 / CASE WHEN 12 = 0 THEN
+      NULL ELSE COALESCE(CASE WHEN
+      COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_3_49_commercial},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_3_49_commercial},
+      0) * -1, 0) = 0 THEN NULL ELSE
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_3_49_commercial},
+      0) * -1, 0) /
+      (COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_3_49_commercial},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_3_49_commercial},
+      0) * -1, 0)) END, 0) / 12 END END
+    label: Segment Customer Life 3-49 Commercial
+    group_label: Customer Life Fields
+    description: "This field leverages the rolling 12 months calculation for churn. "
+
+  churn_rate_denominator_rolling_12_50__mid_market:
+    sql: COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_50__mid_market},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_50__mid_market},
+      0) * -1, 0)
+    label: "Churn Rate Denominator: Rolling 12 50+ Mid Market"
+    group_label: churn rate
+
+  cumulative_filled_arr_sum_50__mid_market:
+    sql: ${reporting__cumulative_arr_data_set.cumulative_filled_arr}
+    label: Ending Revenue 50+ Mid Market
+    group_label: Ending ARR
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 50+ Mid Market
+
+  rolling_12_month_churn_amount_sum_50__mid_market:
+    sql: ${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount}
+    label: Rolling 12 Month Churn Amount Sum 50+ Mid Market
+    group_label: "Rolling 12 Month Churn: Location Segments"
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 50+ Mid Market
+
+  segment_monthly_churn_rate_50__mid_market:
+    sql: CASE WHEN 12 = 0 THEN NULL ELSE COALESCE(CASE WHEN
+      COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_50__mid_market},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_50__mid_market},
+      0) * -1, 0) = 0 THEN NULL ELSE
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_50__mid_market},
+      0) * -1, 0) /
+      (COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_50__mid_market},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_50__mid_market},
+      0) * -1, 0)) END, 0) / 12 END
+    label: Segment Monthly CHurn Rate 50+ Mid Market
+    description: "This field leverages the rolling 12 months calculation for churn. "
+
+  segment_customer_life_50__mid_market:
+    sql: CASE WHEN CASE WHEN 12 = 0 THEN NULL ELSE COALESCE(CASE WHEN
+      COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_50__mid_market},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_50__mid_market},
+      0) * -1, 0) = 0 THEN NULL ELSE
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_50__mid_market},
+      0) * -1, 0) /
+      (COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_50__mid_market},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_50__mid_market},
+      0) * -1, 0)) END, 0) / 12 END = 0 THEN NULL ELSE 1 / CASE WHEN 12 = 0 THEN
+      NULL ELSE COALESCE(CASE WHEN
+      COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_50__mid_market},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_50__mid_market},
+      0) * -1, 0) = 0 THEN NULL ELSE
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_50__mid_market},
+      0) * -1, 0) /
+      (COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_50__mid_market},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_50__mid_market},
+      0) * -1, 0)) END, 0) / 12 END END
+    label: Segment Customer Life 50+ Mid Market
+    group_label: Customer Life Fields
+    description: "This field leverages the rolling 12 months calculation for churn. "
+
+  lifetime_value_50__mid_market:
+    sql: ${reporting__cumulative_arr_data_set.customer_lifetime_rolling_12m_50__mid_market}
+      *
+      ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_50__mid_market_margin_adjusted}
+    label: Lifetime Value 50+ Mid Market
+    group_label: Lifetime Value
+
+  customer_lifetime_rolling_12m_50__mid_market:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.segment_monthly_churn_rate_50__mid_market}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.segment_monthly_churn_rate_50__mid_market}
+      = 0 THEN NULL ELSE  1
+      /${reporting__cumulative_arr_data_set.segment_monthly_churn_rate_50__mid_market}  end
+    label: Customer Lifetime Rolling 12M 50+ Mid Market
+    group_label: Customer Lifetime
+    format: NUMBER_2
+    drill_fields: []
+
+  lifetime_value_1_2_independents:
+    sql: ${reporting__cumulative_arr_data_set.customer_lifetime_rolling_12m_1_2_independents}
+      *
+      ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_1_2_independents_margin_adjusted}
+    label: Lifetime Value 1-2 Independents
+    group_label: Lifetime Value
+
+  customer_lifetime_rolling_12m_1_2_independents:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.segment_monthly_churn_rate_1_2_independents}=
+      0 OR
+      ${reporting__cumulative_arr_data_set.segment_monthly_churn_rate_1_2_independents}
+      = 0 THEN NULL ELSE 1/
+      ${reporting__cumulative_arr_data_set.segment_monthly_churn_rate_1_2_independents}
+      end
+    label: Customer Lifetime Rolling 12M 1-2 Independents
+    group_label: Customer Lifetime
+    format: NUMBER_2
+    drill_fields: []
+
+  lifetime_value_3_49_commercial:
+    sql: ${reporting__cumulative_arr_data_set.customer_lifetime_rolling_12m_3_49_commercial}
+      *
+      ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_3_49_commercial_margin_adjusted}
+    label: Lifetime Value 3-49 Commercial
+    group_label: Lifetime Value
+
+  customer_lifetime_rolling_12m_3_49_commercial:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.segment_monthly_churn_rate_3_49_commercial}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.segment_monthly_churn_rate_3_49_commercial}
+      = 0 THEN NULL ELSE 1
+      /${reporting__cumulative_arr_data_set.segment_monthly_churn_rate_3_49_commercial}
+      end
+    label: Customer Lifetime Rolling 12M 3-49 Commercial
+    group_label: Customer Lifetime
+    format: NUMBER_2
+    drill_fields: []
+
+  payback_period_months_:
+    sql: |-
+      ${reporting__cumulative_arr_data_set.cac}
+        /${reporting__cumulative_arr_data_set.avg_new_upgrade_mrr_margin_adjusted_1}
+    label: Payback Period (Months)
+    group_label: Payback Calcs
+    format: NUMBER_2
+    description: "Payback Period uses upgrade mrr and new mrr. "
+    drill_fields: []
+
+  payback_period_1_2_independents_final:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_1_2_independents_margin_adjusted}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_1_2_independents_margin_adjusted}
+      IS NULL OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents}
+      = 0 THEN NULL ELSE
+      (${reporting__cumulative_arr_data_set.acquisition_cost_allocation_average_1_2_independents}
+      /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents})
+      /
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_1_2_independents_margin_adjusted}
+      END
+    label: Payback Period 1-2 Independents (Months)
+    group_label: Payback Calcs
+    format: NUMBER_2
+    description: "Payback Period uses upgrade mrr and new mrr. "
+    drill_fields: []
+
+  acquisition_cost_allocation_average_1_2_independents:
+    sql: ${reporting__cumulative_arr_data_set.acquisition_cost_allocation}
+    label: Acquisition Cost Allocation Average 1-2 Independents
+    group_label: Cost Allocation
+    drill_fields: []
+    aggregate_type: average
+    filters:
+      business_segments_independent_commercial_mid_market:
+        is: 1-2 Independents
+
+  payback_period_50__mid_market_final:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_50__mid_market_margin_adjusted}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_50__mid_market_margin_adjusted}
+      IS NULL OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market}
+      = 0 THEN NULL ELSE
+      (${reporting__cumulative_arr_data_set.acquisition_cost_allocation_average_50__mid_market}
+      /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market})
+      /
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_50__mid_market_margin_adjusted}
+      END
+    label: Payback Period 50+ Mid Market (Months)
+    group_label: Payback Calcs
+    format: NUMBER_2
+    description: "Payback Period uses upgrade mrr and new mrr. "
+    drill_fields: []
+
+  ltv_cac_50__mid_market:
+    sql: CASE WHEN ${reporting__cumulative_arr_data_set.cac_50__mid_market} = 0 OR
+      ${reporting__cumulative_arr_data_set.cac_50__mid_market} IS NULL THEN NULL
+      ELSE ${reporting__cumulative_arr_data_set.lifetime_value_50__mid_market} /
+      ${reporting__cumulative_arr_data_set.cac_50__mid_market} END
+    label: LTV:CAC 50+ Mid Market
+    group_label: LTV:CAC
+    format: NUMBER_2
+    drill_fields:
+      [
+        "reporting__cumulative_arr_data_set.month_date_rev_reporting[month]",
+        reporting__cumulative_arr_data_set.ltv_cac_50__mid_market,
+        reporting__cumulative_arr_data_set.cac_50__mid_market,
+        reporting__cumulative_arr_data_set.lifetime_value_50__mid_market,
+        reporting__cumulative_arr_data_set.location_segment_cost_allocation,
+        reporting__cumulative_arr_data_set.acquisition_cost_allocation_average_50__mid_market,
+        reporting__cumulative_arr_data_set.acquisition_cost_allocation
+      ]
+
+  ltv_cac_3_49_commercial:
+    sql: CASE WHEN ${reporting__cumulative_arr_data_set.cac_3_49_commercial} = 0 OR
+      ${reporting__cumulative_arr_data_set.cac_3_49_commercial} IS NULL THEN
+      NULL ELSE
+      ${reporting__cumulative_arr_data_set.lifetime_value_3_49_commercial} /
+      ${reporting__cumulative_arr_data_set.cac_3_49_commercial} END
+    label: LTV:CAC 3-49 Commercial
+    group_label: LTV:CAC
+    format: NUMBER_2
+    drill_fields:
+      [
+        reporting__cumulative_arr_data_set.cac_3_49_commercial,
+        reporting__cumulative_arr_data_set.ltv_cac_3_49_commercial,
+        reporting__cumulative_arr_data_set.lifetime_value_3_49_commercial,
+        reporting__cumulative_arr_data_set.location_segment_cost_allocation,
+        reporting__cumulative_arr_data_set.acquisition_cost_allocation_average_3_49_commercial,
+        "reporting__cumulative_arr_data_set.month_date_rev_reporting[month]"
+      ]
+
+  cac_3_49_commercial:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial}
+      = 0 THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.acquisition_cost_allocation_average_3_49_commercial}
+      /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial}
+      END
+    label: CAC 3-49 Commercial
+    group_label: CAC
+    format: BIGUSDCURRENCY_2
+    drill_fields: []
+
+  ltv_cac_1_2_independents:
+    sql: CASE WHEN ${reporting__cumulative_arr_data_set.cac_1_2_independents} = 0 OR
+      ${reporting__cumulative_arr_data_set.cac_1_2_independents} IS NULL THEN
+      NULL ELSE
+      ${reporting__cumulative_arr_data_set.lifetime_value_1_2_independents} /
+      ${reporting__cumulative_arr_data_set.cac_1_2_independents} END
+    label: LTV:CAC 1-2 Independents
+    group_label: LTV:CAC
+    format: NUMBER_2
+    drill_fields:
+      [
+        "reporting__cumulative_arr_data_set.month_date_rev_reporting[month]",
+        reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market,
+        reporting__cumulative_arr_data_set.cac_1_2_independents,
+        reporting__cumulative_arr_data_set.ltv_cac_1_2_independents,
+        reporting__cumulative_arr_data_set.lifetime_value_1_2_independents,
+        reporting__cumulative_arr_data_set.location_segment_cost_allocation,
+        reporting__cumulative_arr_data_set.acquisition_cost_allocation_average_1_2_independents
+      ]
+
+  cac_1_2_independents:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents}
+      = 0 THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.acquisition_cost_allocation_average_1_2_independents}
+      /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents}
+      END
+    label: CAC 1-2 Independents
+    group_label: CAC
+    format: BIGUSDCURRENCY_2
+    drill_fields: []
+
+  total_acquisition_cost_quarter_max:
+    sql: ${reporting__cumulative_arr_data_set.total_acquisition_cost_quarter}
+    label: "Total Acquisition Cost: Quarter Max"
+    format: USDCURRENCY_2
+    aggregate_type: max
+
+  total_acquisition_cost_quarter_sum:
+    sql: ${reporting__cumulative_arr_data_set.total_acquisition_cost_quarter}
+    label: "Total Acquisition Cost: Quarter Sum"
+    format: USDCURRENCY_2
+    aggregate_type: sum
+
+  payback_period_3_49_commercial_final:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_3_49_commercial_margin_adjusted}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_3_49_commercial_margin_adjusted}
+      IS NULL OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial}
+      = 0 THEN NULL ELSE
+      (${reporting__cumulative_arr_data_set.acquisition_cost_allocation_average_3_49_commercial}
+      /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial})
+      /
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_3_49_commercial_margin_adjusted}
+      END
+    label: Payback Period 3-49 Commercial (Months)
+    group_label: Payback Calcs
+    format: NUMBER_2
+    description: "Payback Period uses upgrade mrr and new mrr. "
+    drill_fields: []
+    ai_context: "Payback Period uses upgrade mrr and new mrr. "
+
+  ending_revenue_ex_same_quarter_deals:
+    sql: COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum},
+      0) -
+      COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_true},
+      0)
+    label: "Ending Revenue: Ex Same Quarter Deals"
+    group_label: Ending ARR
+
+  am_retention__:
+    sql: COALESCE(COALESCE(${reporting__cumulative_arr_data_set.ending_revenue_ex_same_quarter_deals},
+      0) - COALESCE(${reporting__cumulative_arr_data_set.lagged_arr_sum}, 0), 0)
+    label: AM Retention $
+    group_label: Retention
+    format: USDCURRENCY_2
+    drill_fields: []
+
+  am_retention:
+    sql: CASE WHEN ${reporting__cumulative_arr_data_set.lagged_arr_sum} = 0 THEN
+      NULL ELSE
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.ending_revenue_ex_same_quarter_deals},
+      0) - COALESCE(${reporting__cumulative_arr_data_set.lagged_arr_sum}, 0), 0)
+      / ${reporting__cumulative_arr_data_set.lagged_arr_sum} END
+    label: AM Retention %
+    group_label: Retention
+    format: PERCENT_1
+    drill_fields:
+      [
+        "reporting__cumulative_arr_data_set.month_date_rev_reporting[month]",
+        reporting__cumulative_arr_data_set.account_id,
+        reporting__cumulative_arr_data_set.account_name,
+        reporting__cumulative_arr_data_set.account_owner_team,
+        "reporting__cumulative_arr_data_set.month_of_initial_close[month]"
+      ]
+
+  nrr_1_2_independents_partner_segment:
+    sql: CASE WHEN SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '1-2 Independents' THEN ${reporting__cumulative_arr_data_set.lagged_arr}
+      ELSE 0 END) = 0 THEN NULL ELSE COALESCE(COALESCE(COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '1-2 Independents' THEN ${reporting__cumulative_arr_data_set.lagged_arr}
+      ELSE 0 END), 0) + COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '1-2 Independents' THEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount} ELSE 0
+      END), 0), 0) + COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '1-2 Independents' THEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_upgrade_amount} ELSE
+      0 END), 0), 0) / SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '1-2 Independents' THEN ${reporting__cumulative_arr_data_set.lagged_arr}
+      ELSE 0 END) END
+    label: NRR% 1-2 Independents Partner Segment
+    group_label: NRR Calcs - Partner Breakout
+    format: PERCENT_2
+    drill_fields:
+      [
+        reporting__cumulative_arr_data_set.account_id,
+        reporting__cumulative_arr_data_set.account_name,
+        reporting__cumulative_arr_data_set.account_new_revenue_amount,
+        reporting__cumulative_arr_data_set.account_owner_name,
+        reporting__cumulative_arr_data_set.account_owner_team,
+        reporting__cumulative_arr_data_set.account_uncategorized_amount,
+        reporting__cumulative_arr_data_set.arr,
+        reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market
+      ]
+    ai_context: NRR new business segmentation
+
+  nrr_3_49_commercial_partner_segment:
+    sql: CASE WHEN SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '3-49 Commercial' THEN ${reporting__cumulative_arr_data_set.lagged_arr}
+      ELSE 0 END) = 0 THEN NULL ELSE COALESCE(COALESCE(COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '3-49 Commercial' THEN ${reporting__cumulative_arr_data_set.lagged_arr}
+      ELSE 0 END), 0) + COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '3-49 Commercial' THEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount} ELSE 0
+      END), 0), 0) + COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '3-49 Commercial' THEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_upgrade_amount} ELSE
+      0 END), 0), 0) / SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '3-49 Commercial' THEN ${reporting__cumulative_arr_data_set.lagged_arr}
+      ELSE 0 END) END
+    label: NRR% 3-49 Commercial Partner Segment
+    group_label: NRR Calcs - Partner Breakout
+    format: PERCENT_2
+
+  nrr_50_mid_market_partner_segment:
+    sql: CASE WHEN SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '50+ Mid Market' THEN ${reporting__cumulative_arr_data_set.lagged_arr}
+      ELSE 0 END) = 0 THEN NULL ELSE COALESCE(COALESCE(COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '50+ Mid Market' THEN ${reporting__cumulative_arr_data_set.lagged_arr}
+      ELSE 0 END), 0) + COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '50+ Mid Market' THEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount} ELSE 0
+      END), 0), 0) + COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '50+ Mid Market' THEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_upgrade_amount} ELSE
+      0 END), 0), 0) / SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '50+ Mid Market' THEN ${reporting__cumulative_arr_data_set.lagged_arr}
+      ELSE 0 END) END
+    label: NRR% 50+ Mid Market Partner Segment
+    group_label: NRR Calcs - Partner Breakout
+    format: PERCENT_2
+
+  nrr_partner_segment:
+    sql: CASE WHEN SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = 'partner' THEN ${reporting__cumulative_arr_data_set.lagged_arr} ELSE 0
+      END) = 0 THEN NULL ELSE COALESCE(COALESCE(COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = 'partner' THEN ${reporting__cumulative_arr_data_set.lagged_arr} ELSE 0
+      END), 0) + COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = 'partner' THEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount} ELSE 0
+      END), 0), 0) + COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = 'partner' THEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_upgrade_amount} ELSE
+      0 END), 0), 0) / SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = 'partner' THEN ${reporting__cumulative_arr_data_set.lagged_arr} ELSE 0
+      END) END
+    label: NRR% Partner Segment
+    group_label: NRR Calcs - Partner Breakout
+    format: PERCENT_2
+
+  grr_partner_segment:
+    sql: CASE WHEN SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = 'partner' THEN ${reporting__cumulative_arr_data_set.lagged_arr} ELSE 0
+      END) = 0 THEN NULL ELSE (COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = 'partner' THEN ${reporting__cumulative_arr_data_set.lagged_arr} ELSE 0
+      END), 0) + COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = 'partner' THEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount} ELSE 0
+      END), 0)) / SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = 'partner' THEN ${reporting__cumulative_arr_data_set.lagged_arr} ELSE 0
+      END) END
+    label: GRR% Partner Segment
+    group_label: GRR Partner Breakout
+
+  grr_1_2_independents_partner_segment:
+    sql: CASE WHEN SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '1-2 Independents' THEN ${reporting__cumulative_arr_data_set.lagged_arr}
+      ELSE 0 END) = 0 THEN NULL ELSE (COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '1-2 Independents' THEN ${reporting__cumulative_arr_data_set.lagged_arr}
+      ELSE 0 END), 0) + COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '1-2 Independents' THEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount} ELSE 0
+      END), 0)) / SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '1-2 Independents' THEN ${reporting__cumulative_arr_data_set.lagged_arr}
+      ELSE 0 END) END
+    label: GRR% 1-2 Independents Partner Segment
+    group_label: GRR Partner Breakout
+    format: PERCENT_2
+
+  grr_50_mid_market_partner_segment:
+    sql: CASE WHEN SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '50+ Mid Market' THEN ${reporting__cumulative_arr_data_set.lagged_arr}
+      ELSE 0 END) = 0 THEN NULL ELSE (COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '50+ Mid Market' THEN ${reporting__cumulative_arr_data_set.lagged_arr}
+      ELSE 0 END), 0) + COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '50+ Mid Market' THEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount} ELSE 0
+      END), 0)) / SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '50+ Mid Market' THEN ${reporting__cumulative_arr_data_set.lagged_arr}
+      ELSE 0 END) END
+    label: GRR% 50+ Mid Market Partner Segment
+    group_label: GRR Partner Breakout
+    format: PERCENT_2
+
+  grr_3_49_commercial_partner_segment:
+    sql: CASE WHEN SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '3-49 Commercial' THEN ${reporting__cumulative_arr_data_set.lagged_arr}
+      ELSE 0 END) = 0 THEN NULL ELSE (COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '3-49 Commercial' THEN ${reporting__cumulative_arr_data_set.lagged_arr}
+      ELSE 0 END), 0) + COALESCE(SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '3-49 Commercial' THEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount} ELSE 0
+      END), 0)) / SUM(CASE WHEN
+      ${reporting__cumulative_arr_data_set.business_segments_independent_commercial_mid_market_copy}
+      = '3-49 Commercial' THEN ${reporting__cumulative_arr_data_set.lagged_arr}
+      ELSE 0 END) END
+    label: GRR% 3-49 Commercial Partner Segment
+    group_label: GRR Partner Breakout
+    format: PERCENT_2
+
+  acquisition_cost_allocation_partner_avg:
+    sql: ${reporting__cumulative_arr_data_set.acquisition_cost_allocation_partner_calc}
+    label: Acquisition Cost Allocation Partner Average
+    aggregate_type: average
+
+  partner_acquisition_cost_allocation_average_1_2_independents:
+    sql: ${reporting__cumulative_arr_data_set.acquisition_cost_allocation}
+    label: Partner Acquisition Cost Allocation Average 1-2 Independents (Partner/Loc
+      Segment)
+    aggregate_type: average
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 1-2 Independents
+
+  partner_acquisition_cost_allocation_average_3_49_commercial:
+    sql: ${reporting__cumulative_arr_data_set.acquisition_cost_allocation}
+    label: Partner Acquisition Cost Allocation Average 3-49 Commercial (Partner/Loc
+      Segment)
+    aggregate_type: average
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 3-49 Commercial
+
+  partner_acquisition_cost_allocation_average_50__mid_market:
+    sql: ${reporting__cumulative_arr_data_set.acquisition_cost_allocation}
+    label: Partner Acquisition Cost Allocation Average 50+ Mid Market (Partner/Loc
+      Segment)
+    aggregate_type: average
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 50+ Mid Market
+
+  partner_acquisition_cost_allocation_average_partner:
+    sql: ${reporting__cumulative_arr_data_set.acquisition_cost_allocation}
+    label: Partner Acquisition Cost Allocation Average Partner (Partner/Loc Segment)
+    aggregate_type: average
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: Partner
+
+  rolling_3_month_new_accounts_sum_1_2_independents_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts}
+    label: rolling_3_month_new_accounts_sum_1_2_independents_non_partner
+      (Partner/Loc Segment)
+    group_label: New Account Fields
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 1-2 Independents
+
+  rolling_3_month_new_accounts_sum_3_49_commercial_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts}
+    label: rolling_3_month_new_accounts_sum_3_49_commercial_non_partner (Partner/Loc
+      Segment)
+    group_label: New Account Fields
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 3-49 Commercial
+
+  rolling_3_month_new_accounts_sum_50__mid_market_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts}
+    label: rolling_3_month_new_accounts_sum_50__mid_market_non_partner (Partner/Loc
+      Segment)
+    group_label: New Account Fields
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 50+ Mid Market
+
+  rolling_3_month_new_accounts_sum_partner_accounts:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts}
+    group_label: New Account Fields
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: Partner
+
+  partner_cac_1_2_independents_non_partner_corrected:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents_non_partner}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents_non_partner}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.partner_acquisition_cost_allocation_average_1_2_independents}
+      /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents_non_partner}
+      END
+    label: Partner CAC 1-2 Independents (Non-Partner) Corrected
+
+  partner_cac_3_49_commercial_non_partner_corrected:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial_non_partner}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial_non_partner}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.partner_acquisition_cost_allocation_average_3_49_commercial}
+      /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial_non_partner}
+      END
+    label: Partner CAC 3-49 Commercial (Non-Partner) Corrected
+
+  partner_cac_50__mid_market_non_partner_corrected:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market_non_partner}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market_non_partner}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.partner_acquisition_cost_allocation_average_50__mid_market}
+      /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market_non_partner}
+      END
+    label: Partner CAC 50+ Mid Market (Non-Partner) Corrected
+
+  partner_cac_partner_corrected:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_partner_accounts}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_partner_accounts}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.partner_acquisition_cost_allocation_average_partner}
+      /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_partner_accounts}
+      END
+    label: Partner CAC Partner Segment Corrected
+
+  rolling_12_month_churn_amount_sum_1_2_independents_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount}
+    label: Rolling 12 Month Churn Amount Sum 1-2 Independents Non-Partner
+      (Partner/Loc Segment)
+    group_label: "Rolling Churn: Partner Breakout"
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 1-2 Independents
+
+  rolling_12_month_churn_amount_sum_3_49_commercial_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount}
+    label: Rolling 12 Month Churn Amount Sum 3-49 Commercial Non-Partner
+      (Partner/Loc Segment)
+    group_label: "Rolling Churn: Partner Breakout"
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 3-49 Commercial
+
+  rolling_12_month_churn_amount_sum_50__mid_market_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount}
+    label: Rolling 12 Month Churn Amount Sum 50+ Mid Market Non-Partner (Partner/Loc
+      Segment)
+    group_label: "Rolling Churn: Partner Breakout"
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 50+ Mid Market
+
+  cumulative_filled_arr_sum_1_2_independents_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.cumulative_filled_arr}
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 1-2 Independents
+
+  cumulative_filled_arr_sum_3_49_commercial_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.cumulative_filled_arr}
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 3-49 Commercial
+
+  cumulative_filled_arr_sum_50__mid_market_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.cumulative_filled_arr}
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 50+ Mid Market
+
+  churn_rate_denominator_rolling_12_1_2_independents_non_partner:
+    sql: COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_1_2_independents_non_partner},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_1_2_independents_non_partner},
+      0) * -1, 0)
+    label: Churn Rate Denominator Rolling 12 1-2 Independents Non-Partner
+      (Partner/Loc Segment)
+
+  churn_rate_denominator_rolling_12_3_49_commercial_non_partner:
+    sql: COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_3_49_commercial_non_partner},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_3_49_commercial_non_partner},
+      0) * -1, 0)
+    label: Churn Rate Denominator Rolling 12 3-49 Commercial Non-Partner
+      (Partner/Loc Segment)
+
+  churn_rate_denominator_rolling_12_50__mid_market_non_partner:
+    sql: COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_50__mid_market_non_partner},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_50__mid_market_non_partner},
+      0) * -1, 0)
+    label: Churn Rate Denominator Rolling 12 50+ Mid Market Non-Partner (Partner/Loc
+      Segment)
+
+  churn_rate_denominator_rolling_12_partner:
+    sql: COALESCE(${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_partner},
+      0) +
+      COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_partner},
+      0) * -1, 0)
+    label: Churn Rate Denominator Rolling 12 Partner (Partner/Loc Segment)
+
+  cumulative_filled_arr_sum_partner:
+    sql: ${reporting__cumulative_arr_data_set.cumulative_filled_arr}
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: [ Partner, partner ]
+
+  rolling_12_month_churn_amount_sum_partner:
+    sql: ${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount}
+    label: Rolling 12 Month Churn Amount Sum Partner (Partner/Loc Segment)
+    group_label: "Rolling Churn: Partner Breakout"
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: [ Partner, partner ]
+
+  customer_lifetime_rolling_12m_1_2_independents_non_partner:
+    sql: CASE WHEN
+      ABS(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_1_2_independents_non_partner})
+      = 0 THEN NULL ELSE 1 /
+      (ABS(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_1_2_independents_non_partner})
+      /
+      ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12_1_2_independents_non_partner}
+      / 12) END
+    label: Customer Lifetime Rolling 12M 1-2 Independents Non-Partner (Partner/Loc
+      Segment)
+
+  customer_lifetime_rolling_12m_3_49_commercial_non_partner:
+    sql: CASE WHEN
+      ABS(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_3_49_commercial_non_partner})
+      = 0 THEN NULL ELSE 1 /
+      (ABS(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_3_49_commercial_non_partner})
+      /
+      ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12_3_49_commercial_non_partner}
+      / 12) END
+    label: Customer Lifetime Rolling 12M 3-49 Commercial Non-Partner (Partner/Loc
+      Segment)
+
+  customer_lifetime_rolling_12m_50__mid_market_non_partner:
+    sql: CASE WHEN
+      ABS(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_50__mid_market_non_partner})
+      = 0 THEN NULL ELSE 1 /
+      (ABS(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_50__mid_market_non_partner})
+      /
+      ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12_50__mid_market_non_partner}
+      / 12) END
+    label: Customer Lifetime Rolling 12M 50+ Mid Market Non-Partner (Partner/Loc
+      Segment)
+
+  customer_lifetime_rolling_12m_partner:
+    sql: CASE WHEN
+      ABS(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_partner})
+      = 0 THEN NULL ELSE 1 /
+      (ABS(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_partner})
+      /
+      ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12_partner}
+      / 12) END
+    label: Customer Lifetime Rolling 12M Partner (Partner/Loc Segment)
+
+  rolling_3_month_total_added_sum_1_2_independents_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.reolling_3_month_total_added}
+    label: rolling_3_month_total_added_sum_1_2_independents_non_partner (Partner/Loc
+      Segment)
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 1-2 Independents
+
+  rolling_3_month_total_added_sum_3_49_commercial_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.reolling_3_month_total_added}
+    label: rolling_3_month_total_added_sum_3_49_commercial_non_partner (Partner/Loc
+      Segment)
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 3-49 Commercial
+
+  rolling_3_month_total_added_sum_50__mid_market_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.reolling_3_month_total_added}
+    label: rolling_3_month_total_added_sum_50__mid_market_non_partner (Partner/Loc
+      Segment)
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 50+ Mid Market
+
+  rolling_3_month_total_added_sum_partner:
+    sql: ${reporting__cumulative_arr_data_set.reolling_3_month_total_added}
+    label: rolling_3_month_total_added_sum_partner (Partner/Loc Segment)
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: Partner
+
+  rolling_3_month_new_accounts_sum_partner:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts}
+    label: rolling_3_month_new_accounts_sum_partner (Partner/Loc Segment)
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: Partner
+
+  avg_new_and_upgraded_mrr_by_customer_1_2_independents_non_partner:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents_non_partner}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents_non_partner}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.rolling_3_month_total_added_sum_1_2_independents_non_partner}
+      / 12 /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents_non_partner}
+      END
+    label: avg_new_and_upgraded_mrr_by_customer_1_2_independents_non_partner
+      (Partner/Loc Segment)
+
+  avg_new_and_upgraded_mrr_by_customer_3_49_commercial_non_partner:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial_non_partner}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial_non_partner}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.rolling_3_month_total_added_sum_3_49_commercial_non_partner}
+      / 12 /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial_non_partner}
+      END
+    label: avg_new_and_upgraded_mrr_by_customer_3_49_commercial_non_partner
+      (Partner/Loc Segment)
+
+  avg_new_and_upgraded_mrr_by_customer_50__mid_market_non_partner:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market_non_partner}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market_non_partner}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.rolling_3_month_total_added_sum_50__mid_market_non_partner}
+      / 12 /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market_non_partner}
+      END
+    label: avg_new_and_upgraded_mrr_by_customer_50__mid_market_non_partner
+      (Partner/Loc Segment)
+
+  avg_new_and_upgraded_mrr_by_customer_partner:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_partner}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_partner}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.rolling_3_month_total_added_sum_partner}
+      / 12 /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_partner}
+      END
+    label: avg_new_and_upgraded_mrr_by_customer_partner (Partner/Loc Segment)
+
+  avg_new_mrr_by_customer_1_2_independents_non_partner:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents_non_partner}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents_non_partner}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.rolling_3_account_new_revenue_amount_sum_1_2_independents}
+      / 12 /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents_non_partner}
+      END
+    label: Avg New MRR By Customer 1-2 Independents Non-Partner (Partner/Loc Segment)
+
+  avg_new_mrr_by_customer_3_49_commercial_non_partner:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial_non_partner}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial_non_partner}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.rolling_3_account_new_revenue_amount_sum_3_49_commercial}
+      / 12 /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial_non_partner}
+      END
+    label: Avg New MRR By Customer 3-49 Commercial Non-Partner (Partner/Loc Segment)
+
+  avg_new_mrr_by_customer_50__mid_market_non_partner:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market_non_partner}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market_non_partner}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.rolling_3_account_new_revenue_amount_sum_50__mid_market}
+      / 12 /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market_non_partner}
+      END
+    label: Avg New MRR By Customer 50+ Mid Market Non-Partner (Partner/Loc Segment)
+
+  avg_new_mrr_by_customer_partner:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_partner}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_partner}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.rolling_3_account_new_revenue_amount_sum_1_2_independents}
+      / 12 /
+      ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_partner}
+      END
+    label: Avg New MRR By Customer Partner (Partner/Loc Segment)
+
+  avg_new_mrr_by_customer_1_2_independents_non_partner_margin_adjusted:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_1_2_independents_non_partner}
+      *
+      AVG(${reporting__cumulative_arr_data_set.gross_margin_actuals_or_assumed_rate})
+    label: Avg New MRR By Customer 1-2 Independents Non-Partner Margin Adjusted
+      (Partner/Loc Segment)
+
+  avg_new_mrr_by_customer_3_49_commercial_non_partner_margin_adjusted:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_3_49_commercial_non_partner}
+      *
+      AVG(${reporting__cumulative_arr_data_set.gross_margin_actuals_or_assumed_rate})
+    label: Avg New MRR By Customer 3-49 Commercial Non-Partner Margin Adjusted
+      (Partner/Loc Segment)
+
+  avg_new_mrr_by_customer_50__mid_market_non_partner_margin_adjusted:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_50__mid_market_non_partner}
+      *
+      AVG(${reporting__cumulative_arr_data_set.gross_margin_actuals_or_assumed_rate})
+    label: Avg New MRR By Customer 50+ Mid Market Non-Partner Margin Adjusted
+      (Partner/Loc Segment)
+
+  avg_new_mrr_by_customer_partner_margin_adjusted:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_partner} *
+      AVG(${reporting__cumulative_arr_data_set.gross_margin_actuals_or_assumed_rate})
+    label: Avg New MRR By Customer Partner Margin Adjusted (Partner/Loc Segment)
+
+  avg_new_and_upgraded_mrr_by_customer_1_2_independents_non_partner_margin_adjusted:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_1_2_independents_non_partner}
+      *
+      AVG(${reporting__cumulative_arr_data_set.gross_margin_actuals_or_assumed_rate})
+    label: Avg New and Upgraded MRR By Customer 1-2 Independents Non-Partner Margin
+      Adjusted (Partner/Loc Segment)
+
+  avg_new_and_upgraded_mrr_by_customer_3_49_commercial_non_partner_margin_adjusted:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_3_49_commercial_non_partner}
+      *
+      AVG(${reporting__cumulative_arr_data_set.gross_margin_actuals_or_assumed_rate})
+    label: Avg New and Upgraded MRR By Customer 3-49 Commercial Non-Partner Margin
+      Adjusted (Partner/Loc Segment)
+
+  avg_new_and_upgraded_mrr_by_customer_50__mid_market_non_partner_margin_adjusted:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_50__mid_market_non_partner}
+      *
+      AVG(${reporting__cumulative_arr_data_set.gross_margin_actuals_or_assumed_rate})
+    label: Avg New and Upgraded MRR By Customer 50+ Mid Market Non-Partner Margin
+      Adjusted (Partner/Loc Segment)
+
+  avg_new_and_upgraded_mrr_by_customer_partner_margin_adjusted:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_partner}
+      *
+      AVG(${reporting__cumulative_arr_data_set.gross_margin_actuals_or_assumed_rate})
+    label: Avg New and Upgraded MRR By Customer Partner Margin Adjusted (Partner/Loc
+      Segment)
+
+  customer_lifetime_value_1_2_independents_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.customer_lifetime_rolling_12m_1_2_independents_non_partner}
+      *
+      ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_1_2_independents_non_partner_margin_adjusted}
+    label: Customer Lifetime Value 1-2 Independents Non-Partner (Partner/Loc Segment)
+
+  customer_lifetime_value_3_49_commercial_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.customer_lifetime_rolling_12m_3_49_commercial_non_partner}
+      *
+      ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_3_49_commercial_non_partner_margin_adjusted}
+    label: Customer Lifetime Value 3-49 Commercial Non-Partner (Partner/Loc Segment)
+
+  customer_lifetime_value_50__mid_market_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.customer_lifetime_rolling_12m_50__mid_market_non_partner}
+      *
+      ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_50__mid_market_non_partner_margin_adjusted}
+    label: Customer Lifetime Value 50+ Mid Market Non-Partner (Partner/Loc Segment)
+
+  customer_lifetime_value_partner:
+    sql: ${reporting__cumulative_arr_data_set.customer_lifetime_rolling_12m_partner}
+      *
+      ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_partner_margin_adjusted}
+    label: Customer Lifetime Value Partner (Partner/Loc Segment)
+
+  ltv_cac_1_2_independents_non_partner:
+    sql: CASE WHEN ${reporting__cumulative_arr_data_set.cac_1_2_independents} = 0 OR
+      ${reporting__cumulative_arr_data_set.cac_1_2_independents} IS NULL THEN
+      NULL ELSE
+      ${reporting__cumulative_arr_data_set.ltv_1_2_independents_non_partner} /
+      ${reporting__cumulative_arr_data_set.cac_1_2_independents} END
+    label: LTV:CAC 1-2 Independents Non-Partner
+    group_label: LTV:CAC Partner Split out
+    format: NUMBER_2
+
+  ltv_cac_3_49_commercial_non_partner:
+    sql: CASE WHEN ${reporting__cumulative_arr_data_set.cac_3_49_commercial} = 0 OR
+      ${reporting__cumulative_arr_data_set.cac_3_49_commercial} IS NULL THEN
+      NULL ELSE
+      ${reporting__cumulative_arr_data_set.ltv_3_49_commercial_non_partner} /
+      ${reporting__cumulative_arr_data_set.cac_3_49_commercial} END
+    label: LTV:CAC 3-49 Commercial Non-Partner
+    group_label: LTV:CAC Partner Split out
+    format: NUMBER_2
+
+  ltv_cac_50__mid_market_non_partner:
+    sql: CASE WHEN ${reporting__cumulative_arr_data_set.cac_50__mid_market} = 0 OR
+      ${reporting__cumulative_arr_data_set.cac_50__mid_market} IS NULL THEN NULL
+      ELSE ${reporting__cumulative_arr_data_set.ltv_50__mid_market_non_partner}
+      / ${reporting__cumulative_arr_data_set.cac_50__mid_market} END
+    label: LTV:CAC 50+ Mid Market Non-Partner
+    group_label: LTV:CAC Partner Split out
+    format: NUMBER_2
+
+  ltv_cac_partner:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.partner_cac_partner_corrected} = 0 OR
+      ${reporting__cumulative_arr_data_set.partner_cac_partner_corrected} IS
+      NULL THEN NULL ELSE ${reporting__cumulative_arr_data_set.ltv_partner} /
+      ${reporting__cumulative_arr_data_set.partner_cac_partner_corrected} END
+    label: LTV:CAC Partner
+    group_label: LTV:CAC Partner Split out
+    format: NUMBER_2
+
+  payback_period_1_2_independents_non_partner:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_1_2_independents_non_partner_margin_adjusted}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_1_2_independents_non_partner_margin_adjusted}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.partner_cac_1_2_independents_non_partner_corrected}
+      /
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_1_2_independents_non_partner_margin_adjusted}
+      END
+    label: Payback Period 1-2 Independents Non-Partner (Partner/Loc Segment) (Months)
+    group_label: Payback Calculations - Partner Breakout
+
+  payback_period_3_49_commercial_non_partner:
+    sql: |-
+      CASE 
+        WHEN
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_3_49_commercial_non_partner_margin_adjusted} = 0 OR ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_3_49_commercial_non_partner_margin_adjusted} IS NULL THEN NULL ELSE ${reporting__cumulative_arr_data_set.partner_cac_3_49_commercial_non_partner_corrected} / ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_3_49_commercial_non_partner_margin_adjusted} END
+    label: Payback Period 3-49 Commercial Non-Partner (Partner/Loc Segment) (Months)
+    group_label: Payback Calculations - Partner Breakout
+
+  payback_period_50__mid_market_non_partner:
+    sql: |-
+      CASE 
+        WHEN ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_50__mid_market_non_partner_margin_adjusted} = 0
+        OR ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_50__mid_market_non_partner_margin_adjusted} IS NULL THEN NULL ELSE ${reporting__cumulative_arr_data_set.partner_cac_50__mid_market_non_partner_corrected} / ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_50__mid_market_non_partner_margin_adjusted} END
+    label: Payback Period 50+ Mid Market Non-Partner (Partner/Loc Segment) (Months)
+    group_label: Payback Calculations - Partner Breakout
+
+  payback_period_partner:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_partner_margin_adjusted}
+      = 0 OR
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_partner_margin_adjusted}
+      IS NULL THEN NULL ELSE
+      ${reporting__cumulative_arr_data_set.partner_cac_partner_corrected} /
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_partner_margin_adjusted}
+      END
+    label: Payback Period Partner (Partner/Loc Segment) (Months)
+    group_label: Payback Calculations - Partner Breakout
+
+  partner_acquisition_cost_allocation_percent:
+    sql: "10"
+    label: Partner Acquisition Cost Allocation %
+
+  commercial_acquisition_cost_allocation_percent:
+    sql: "60"
+    label: Commercial Acquisition Cost Allocation %
+
+  independents_acquisition_cost_allocation_percent:
+    sql: "10"
+    label: Independents Acquisition Cost Allocation %
+
+  mid_market_acquisition_cost_allocation_percent:
+    sql: "20"
+    label: Mid Market Acquisition Cost Allocation %
+
+  measure_value:
+    sql: COALESCE(${reporting__cumulative_arr_data_set.ltv_cac},
+      ${reporting__cumulative_arr_data_set.cac},
+      ${reporting__cumulative_arr_data_set.payback_period_months_},
+      ${reporting__cumulative_arr_data_set.grr_},
+      ${reporting__cumulative_arr_data_set.nrr_})
+
+  new_acv_1_2_independents:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_1_2_independents_non_partner}
+      * 12
+
+  new_acv_3_49_commercial:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_3_49_commercial_non_partner}
+      * 12
+
+  new_acv_50_mid_market:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_50__mid_market_non_partner}
+      * 12
+
+  new_acv_partner:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_partner} * 12
+
+  new_average_contract_value_arr_:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer}*12
+    label: New Average Contract Value (ARR)
+    description: ACV
+
+  quarter_ending_revenue_fixed_max:
+    sql: ${reporting__cumulative_arr_data_set.quarter_ending_revenue_fixed}
+    label: Quarter Ending Revenue (Fixed) Max
+    format: BIGUSDCURRENCY_2
+    aggregate_type: max
+
+  omni__of_ending_revenue:
+    sql: ${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum}/${reporting__cumulative_arr_data_set.quarter_ending_revenue_fixed_max}
+    label: "% Of Ending Revenue"
+
+  account_downgrade_amount_sum:
+    sql: ${reporting__cumulative_arr_data_set.account_downgrade_amount}
+    label: Downgrade ARR Sum
+    description: "(Sum) Downgrade ARR: Does not include account churn arr"
+    aggregate_type: sum
+
+  total_acquisition_cost_sum:
+    sql: ${reporting__cumulative_arr_data_set.total_acquisition_cost}
+    aggregate_type: sum
+
+  exit_revenue_growth_:
+    sql: ${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum} -
+      ${reporting__cumulative_arr_data_set.lagged_arr_sum}
+    label: Exit Revenue Growth ($)
+    group_label: Magic Number
+    description: Cumulative or ending revenue growth. Used in the numerator of the
+      magic number
+
+  previous_total_acquisition_cost_level_of_detail_max:
+    sql: ${reporting__cumulative_arr_data_set.previous_total_acquisition_cost_level_of_detail}
+    label: Previous Quarter Acquisition Cost Max
+    group_label: Magic Number
+    format: BIGUSDCURRENCY_2
+    aggregate_type: max
+
+  magic_number:
+    sql: |-
+      case when ${reporting__cumulative_arr_data_set.previous_total_acquisition_cost_level_of_detail_max}
+      is null or ${reporting__cumulative_arr_data_set.previous_total_acquisition_cost_level_of_detail_max} = 0 then null else
+        
+      (  ${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum_copy} -    ${reporting__cumulative_arr_data_set.lagged_arr_sum_copy}) / ${reporting__cumulative_arr_data_set.previous_total_acquisition_cost_level_of_detail_max} end
+    label: Magic Number - ARR Method
+    group_label: "Magic Number: ARR Approach"
+    format: NUMBER_2
+    description: this magic number approach takes the difference between our
+      beginning and exit arr and divides it by the prior quarter's acquisition
+      cost.
+
+  net_added_amount_sum:
+    sql: ${reporting__cumulative_arr_data_set.net_added_amount}
+    label: Gross Added (SUM)
+    aggregate_type: sum
+
+  beginning_revenue_mrr:
+    sql: ${reporting__cumulative_arr_data_set.lagged_arr_sum}/12
+    label: Beginning Revenue MRR
+    group_label: Magic Number
+    format: USDCURRENCY_2
+
+  exit_revenue_mrr:
+    sql: ${reporting__cumulative_arr_data_set.cumulative_filled_arr_sum}/12
+    label: Exit Revenue MRR
+    group_label: Magic Number
+    format: USDCURRENCY_2
+
+  recurring_revenue_magic_number_numerator:
+    sql: (   ${reporting__cumulative_arr_data_set.exit_revenue_mrr} -
+      ${reporting__cumulative_arr_data_set.beginning_revenue_mrr} )*4
+    label: MRR Magic Number Numerator
+    group_label: "Magic Number: Recurring Revenue"
+
+  magic_number_recurring_revenue_approach:
+    sql: |-
+      case
+        when
+        COALESCE (${reporting__cumulative_arr_data_set.previous_total_acquisition_cost_level_of_detail_max},0) = 0 then null else
+        
+        
+        ${reporting__cumulative_arr_data_set.recurring_revenue_magic_number_numerator} / ${reporting__cumulative_arr_data_set.previous_total_acquisition_cost_level_of_detail_max} END
+    label: "Magic Number: MRR approach"
+    group_label: "Magic Number: Recurring Revenue"
+    format: NUMBER_2
+    description: This calculation gets the MRR from our period's beginning and
+      ending revenue for each quarter. We then multiply the difference by 4 and
+      divide the prior quarter's acquisition cost.
+
+  fixed_beginning_revenue_max:
+    sql: ${reporting__cumulative_arr_data_set.fixed_beginning_revenue}
+    label: Fixed Beginning Revenue Max
+    format: BIGUSDCURRENCY_2
+    aggregate_type: max
+
+  lagged_arr_sum_copy:
+    sql: ${reporting__cumulative_arr_data_set.lagged_arr}
+    label: Beginning Revenue Copy
+    group_label: "Magic Number: ARR Approach"
+    format: BIGUSDCURRENCY_2
+    description: Revenue at the start of the quarter
+    drill_fields: []
+    aggregate_type: sum
+    filters:
+      final_month_quarter:
+        is: final month in quarter
+
+  cumulative_filled_arr_sum_copy:
+    sql: ${reporting__cumulative_arr_data_set.cumulative_filled_arr}
+    label: Ending Revenue Copy
+    group_label: "Magic Number: ARR Approach"
+    format: BIGUSDCURRENCY_2
+    aggregate_type: sum
+    filters:
+      final_month_quarter:
+        is: final month in quarter
+
+  magic_number_numerator_pnl_revenue:
+    sql: COALESCE(COALESCE(${reporting__cumulative_arr_data_set.total_income_sum},
+      0) -
+      COALESCE(${reporting__cumulative_arr_data_set.prior_quarter_total_income_sum},
+      0), 0) * 4
+    label: "Magic Number Numerator:  PnL Revenue"
+    group_label: "Magic Number: PnL Approach"
+    description: Magic number that takes the booked revenue from our command center PnL.
+
+  total_income_sum:
+    sql: ${reporting__cumulative_arr_data_set.total_income}
+    group_label: "Magic Number: PnL Approach"
+    format: USDCURRENCY_2
+    aggregate_type: sum
+
+  prior_quarter_total_income_sum:
+    sql: ${reporting__cumulative_arr_data_set.prior_quarter_total_income}
+    group_label: "Magic Number: PnL Approach"
+    format: USDCURRENCY_2
+    aggregate_type: sum
+
+  magic_number_pnl_calculation:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.previous_total_acquisition_cost_level_of_detail_max}
+      = 0 THEN NULL ELSE
+      COALESCE(${reporting__cumulative_arr_data_set.magic_number_numerator_pnl_revenue},
+      0) /
+      ${reporting__cumulative_arr_data_set.previous_total_acquisition_cost_level_of_detail_max}
+      END
+    label: "Magic Number: PnL Calculation"
+    group_label: "Magic Number: PnL Approach"
+    format: NUMBER_2
+
+  previous_total_acquisition_cost_sum:
+    sql: ${reporting__cumulative_arr_data_set.previous_total_acquisition_cost}
+    aggregate_type: sum
+
+  gross_margin_actuals_or_assumed_rate_average:
+    sql: ${reporting__cumulative_arr_data_set.gross_margin_actuals_or_assumed_rate}
+    label: Gross Margin % Actuals or Assumed Rate Average
+    aggregate_type: average
+
+  quarterly_churn_rate:
+    sql: case
+      when    COALESCE(${reporting__cumulative_arr_data_set.lagged_arr_sum},0) =
+      0 then null else
+      (${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount_sum}
+      / ${reporting__cumulative_arr_data_set.lagged_arr_sum})/3 end
+    label: Quarterly Churn Rate
+    group_label: Quarterly Churn Rates
+    format: PERCENT
+    description: Churn Rate that uses the total churn over the beginning revenue for
+      each period
+
+  quarterly_customer_lifetime:
+    sql: |-
+      case when COALESCE   (${reporting__cumulative_arr_data_set.quarterly_churn_rate},0)   = 0
+        then null else
+        
+        1 / ${reporting__cumulative_arr_data_set.quarterly_churn_rate} * -1 end
+    label: Quarterly Customer Lifetime
+    group_label: Quarterly Customer Lifetime
+
+  rolling_3_month_churn_sum_1_2_independents_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount}
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 1-2 Independents
+
+  rolling_3_month_churn_sum_3_49_commercial_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount}
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 3-49 Commercial
+
+  rolling_3_month_churn_sum_50__mid_market_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount}
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 50+ Mid Market
+
+  rolling_3_month_churn_sum_partner:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount}
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: partner
+
+  lagged_arr_sum_1_2_independents_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.lagged_arr}
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 1-2 Independents
+
+  lagged_arr_sum_3_49_commercial_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.lagged_arr}
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 3-49 Commercial
+
+  quarterly_churn_rate_partner:
+    sql: |-
+      case when COALESCE(${reporting__cumulative_arr_data_set.lagged_arr_sum_partner},0) = 0 then
+        null 
+        else     ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_partner} / ${reporting__cumulative_arr_data_set.lagged_arr_sum_partner} end
+    label: Quarterly Churn Rate Partner
+
+  lagged_arr_sum_partner:
+    sql: ${reporting__cumulative_arr_data_set.lagged_arr}
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: partner
+
+  lagged_arr_sum_50__mid_market_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.lagged_arr}
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 50+ Mid Market
+
+  segment_monthly_churn_rate_1_2_independents_non_partner:
+    sql: CASE WHEN 12 = 0 THEN NULL ELSE COALESCE(CASE WHEN
+      ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12_1_2_independents_non_partner}
+      = 0 THEN NULL ELSE
+      ABS(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_1_2_independents_non_partner})
+      /
+      ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12_1_2_independents_non_partner}
+      END, 0) / 12 END
+
+  segment_monthly_churn_rate_3_49_commercial_non_partner:
+    sql: CASE WHEN 12 = 0 THEN NULL ELSE COALESCE(CASE WHEN
+      ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12_3_49_commercial_non_partner}
+      = 0 THEN NULL ELSE
+      ABS(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_3_49_commercial_non_partner})
+      /
+      ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12_3_49_commercial_non_partner}
+      END, 0) / 12 END
+
+  segment_monthly_churn_rate_50__mid_market_non_partner:
+    sql: CASE WHEN 12 = 0 THEN NULL ELSE COALESCE(CASE WHEN
+      ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12_50__mid_market_non_partner}
+      = 0 THEN NULL ELSE
+      ABS(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_50__mid_market_non_partner})
+      /
+      ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12_50__mid_market_non_partner}
+      END, 0) / 12 END
+
+  segment_monthly_churn_rate_partner:
+    sql: CASE WHEN 12 = 0 THEN NULL ELSE COALESCE(CASE WHEN
+      ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12_partner}
+      = 0 THEN NULL ELSE
+      ABS(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_partner})
+      /
+      ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12_partner}
+      END, 0) / 12 END
+
+  quarterly_churn_rate_1_2_independents_non_partner:
+    sql: |-
+      case 
+        when COALESCE (${reporting__cumulative_arr_data_set.lagged_arr_sum_1_2_independents_non_partner},0) = 0
+        then null else 
+        ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_1_2_independents} / ${reporting__cumulative_arr_data_set.lagged_arr_sum_1_2_independents_non_partner} end
+    label: Quarterly Churn Rate 1-2 Independents Non-Partner
+
+  quarterly_churn_rate_3_49_commercial_non_partner:
+    sql: |-
+      case when COALESCE (${reporting__cumulative_arr_data_set.lagged_arr_sum_3_49_commercial_non_partner},0)  = 0
+        then null else  ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_3_49_commercial} / ${reporting__cumulative_arr_data_set.lagged_arr_sum_3_49_commercial_non_partner} end
+    label: Quarterly Churn Rate 3-49 Commercial Non-Partner
+
+  quarterly_churn_rate_50__mid_market_non_partner:
+    sql: case when COALESCE
+      (${reporting__cumulative_arr_data_set.lagged_arr_sum_50__mid_market_non_partner},0)   =0
+      then null else
+      ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_50_mid_market}
+      /
+      ${reporting__cumulative_arr_data_set.lagged_arr_sum_50__mid_market_non_partner}
+      end
+    label: Quarterly Churn Rate 50+ Mid Market Non-Partner
+
+  quarterly_customer_lifetime_1_2_independents_non_partner:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.quarterly_churn_rate_1_2_independents_non_partner}
+      = 0 THEN 0 ELSE -1 /
+      ${reporting__cumulative_arr_data_set.quarterly_churn_rate_1_2_independents_non_partner}
+      END
+    label: Quarterly Customer Lifetime 1-2 Independents Non-Partner
+
+  quarterly_customer_lifetime_3_49_commercial_non_partner:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.quarterly_churn_rate_3_49_commercial_non_partner}
+      = 0 THEN 0 ELSE -1 /
+      ${reporting__cumulative_arr_data_set.quarterly_churn_rate_3_49_commercial_non_partner}
+      END
+    label: Quarterly Customer Lifetime 3-49 Commercial Non-Partner
+
+  quarterly_customer_lifetime_50__mid_market_non_partner:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.quarterly_churn_rate_50__mid_market_non_partner}
+      = 0 THEN 0 ELSE -1 /
+      ${reporting__cumulative_arr_data_set.quarterly_churn_rate_50__mid_market_non_partner}
+      END
+    label: Quarterly Customer Lifetime 50+ Mid Market Non-Partner
+
+  quarterly_customer_lifetime_partner:
+    sql: CASE WHEN
+      ${reporting__cumulative_arr_data_set.quarterly_churn_rate_partner} = 0
+      THEN 0 ELSE -1 /
+      ${reporting__cumulative_arr_data_set.quarterly_churn_rate_partner} END
+    label: Quarterly Customer Lifetime Partner
+
+  ltv_1_2_independents_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_1_2_independents_non_partner_margin_adjusted}
+      *
+      ${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_1_2_independents_non_partner}
+    label: LTV 1-2 Independents Non-Partner
+
+  ltv_3_49_commercial_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_3_49_commercial_non_partner_margin_adjusted}
+      *
+      ${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_3_49_commercial_non_partner}
+    label: LTV 3-49 Commercial Non-Partner
+
+  ltv_50__mid_market_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_50__mid_market_non_partner_margin_adjusted}
+      *
+      ${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_50__mid_market_non_partner}
+    label: LTV 50+ Mid Market Non-Partner
+
+  ltv_partner:
+    sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_partner_margin_adjusted}
+      *
+      ${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_partner}
+    label: LTV Partner
+
+  quarterly_customer_ltv_1_2_independents_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_1_2_independents_non_partner}
+      *
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_1_2_independents_non_partner_margin_adjusted}
+    label: Quarterly Customer LTV 1-2 Independents Non-Partner
+
+  quarterly_customer_ltv_3_49_commercial_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_3_49_commercial_non_partner}
+      *
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_3_49_commercial_non_partner_margin_adjusted}
+    label: Quarterly Customer LTV 3-49 Commercial Non-Partner
+
+  quarterly_customer_ltv_50__mid_market_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_50__mid_market_non_partner}
+      *
+      ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_50__mid_market_non_partner}
+    label: Quarterly Customer LTV 50+ Mid Market Non-Partner
+
+  quarterly_customer_ltv_partner:
+    sql: ${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_partner} *
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_partner_margin_adjusted}
+    label: Quarterly Customer LTV Partner
+
+  quarterly_ltv_cac_1_2_independents_non_partner:
+    sql: (${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_1_2_independents_non_partner}
+      *
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_1_2_independents_non_partner_margin_adjusted})
+      /
+      ${reporting__cumulative_arr_data_set.partner_cac_1_2_independents_non_partner_corrected}
+    label: Quarterly LTV:CAC 1-2 Independents Non-Partner
+
+  quarterly_ltv_cac_3_49_commercial_non_partner:
+    sql: (${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_3_49_commercial_non_partner}
+      *
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_3_49_commercial_non_partner_margin_adjusted})
+      /
+      ${reporting__cumulative_arr_data_set.partner_cac_3_49_commercial_non_partner_corrected}
+    label: Quarterly LTV:CAC 3-49 Commercial Non-Partner
+
+  quarterly_ltv_cac_50__mid_market_non_partner:
+    sql: (${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_50__mid_market_non_partner}
+      *
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_50__mid_market_non_partner_margin_adjusted})
+      /
+      ${reporting__cumulative_arr_data_set.partner_cac_50__mid_market_non_partner_corrected}
+    label: Quarterly LTV:CAC 50+ Mid Market Non-Partner
+
+  quarterly_ltv_cac_partner:
+    sql: (${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_partner}
+      *
+      ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_partner_margin_adjusted})
+      / ${reporting__cumulative_arr_data_set.partner_cac_partner_corrected}
+    label: Quarterly LTV:CAC Partner
+
+  rolling_3_month_account_churn_1_2_independents:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount}
+    label: Rolling 3 Month Account Churn 1-2 Independents
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 1-2 Independents
+
+  rolling_3_month_account_churn_3_49_commercial:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount}
+    label: Rolling 3 Month Account Churn 3-49 Commercial
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 3-49 Commercial
+
+  rolling_3_month_account_churn_50_mid_market:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount}
+    label: Rolling 3 Month Account Churn 50+ Mid Market
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 50+ Mid Market
+
+  rolling_3_month_account_churn_partner:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount}
+    label: Rolling 3 Month Account Churn Partner
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: partner
+
+  rolling_3_month_account_churn_amount_sum:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount}
+    format: USDCURRENCY_2
+    aggregate_type: sum
+
+  quarterly_customer_ltv:
+    sql: ${reporting__cumulative_arr_data_set.quarterly_customer_lifetime} *
+      ${reporting__cumulative_arr_data_set.avg_new_mrr_margin_adjusted}
+    label: Quarterly Customer LTV
+
+  rolling_3_month_account_churn_sum_1_2_independents_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount}
+    format: USDCURRENCY_2
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 1-2 Independents
+
+  rolling_3_month_account_churn_sum_3_49_commercial_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount}
+    format: USDCURRENCY_2
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 3-49 Commercial
+
+  rolling_3_month_account_churn_sum_50__mid_market_non_partner:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount}
+    format: USDCURRENCY_2
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: 50+ Mid Market
+
+  rolling_3_month_account_churn_sum_partner:
+    sql: ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount}
+    format: USDCURRENCY_2
+    aggregate_type: sum
+    filters:
+      business_segments_independent_commercial_mid_market_copy:
+        is: partner
+
+  quarterly_ltv_cac:
+    sql: ${reporting__cumulative_arr_data_set.quarterly_customer_ltv}/${reporting__cumulative_arr_data_set.cac}
+    label: Quarterly LTV:CAC

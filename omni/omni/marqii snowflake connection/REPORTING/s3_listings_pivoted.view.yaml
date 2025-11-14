@@ -1,0 +1,59 @@
+# Reference this view as reporting__s3_listings_pivoted
+schema: REPORTING
+table_name: S3_LISTINGS_PIVOTED
+
+dimensions:
+  listings_storeid:
+    sql: '"LISTINGS_STOREID"'
+
+  _apple_enabled_:
+    sql: "\"'Apple_enabled'\""
+    hidden: true
+
+  _bing_enabled_:
+    sql: "\"'Bing_enabled'\""
+    hidden: true
+
+  _doordash_enabled_:
+    sql: "\"'Doordash_enabled'\""
+    hidden: true
+
+  _ezcater_enabled_:
+    sql: "\"'EzCater_enabled'\""
+    hidden: true
+
+  _facebook_enabled_:
+    sql: "\"'Facebook_enabled'\""
+    hidden: true
+
+  _google_enabled_:
+    sql: "\"'Google_enabled'\""
+    hidden: true
+
+  _grubhub_enabled_:
+    sql: "\"'Grubhub_enabled'\""
+    hidden: true
+
+  _marqii_enabled_:
+    sql: "\"'Marqii_enabled'\""
+    hidden: true
+
+  _opentable_enabled_:
+    sql: "\"'OpenTable_enabled'\""
+    hidden: true
+
+  _ubereats_enabled_:
+    sql: "\"'UberEats_enabled'\""
+    hidden: true
+
+  _yelp_enabled_:
+    sql: "\"'Yelp_enabled'\""
+    hidden: true
+
+  _yext_enabled_:
+    sql: "\"'Yext_enabled'\""
+    hidden: true
+
+measures:
+  count:
+    aggregate_type: count

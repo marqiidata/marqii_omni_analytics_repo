@@ -1,0 +1,21 @@
+# Reference this view as reporting__platform_account
+schema: REPORTING
+table_name: PLATFORM_ACCOUNT
+
+dimensions:
+  heap_account_id:
+    sql: '"HEAP_ACCOUNT_ID"'
+    format: ID
+
+  heap_account_name:
+    sql: '"HEAP_ACCOUNT_NAME"'
+
+  heap_account_create_date:
+    sql: '"HEAP_ACCOUNT_CREATE_DATE"'
+
+  heap_account_created_by:
+    sql: '"HEAP_ACCOUNT_CREATED_BY"'
+
+measures:
+  count:
+    aggregate_type: count

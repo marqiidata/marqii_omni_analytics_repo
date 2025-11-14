@@ -1,0 +1,105 @@
+# Reference this view as reporting__sf_reporting_account
+schema: REPORTING
+table_name: SF_REPORTING_ACCOUNT
+
+dimensions:
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  account_current_package:
+    sql: '"ACCOUNT_CURRENT_PACKAGE"'
+
+  churn_date:
+    sql: '"CHURN_DATE"'
+
+  churn_year:
+    sql: '"CHURN_YEAR"'
+
+  churn_month:
+    sql: '"CHURN_MONTH"'
+
+  quarter_date_churndate:
+    sql: '"QUARTER_DATE_CHURNDATE"'
+
+  month_date_churndate:
+    sql: '"MONTH_DATE_CHURNDATE"'
+
+  quarter_text_churndate:
+    sql: '"QUARTER_TEXT_CHURNDATE"'
+
+  churn_quarter_year:
+    sql: '"CHURN_QUARTER_YEAR"'
+
+  account_vertical__c:
+    sql: '"ACCOUNT_VERTICAL__C"'
+
+  account_owner_id:
+    sql: '"ACCOUNT_OWNER_ID"'
+    format: ID
+
+  marqii_account_id:
+    sql: '"MARQII_ACCOUNT_ID"'
+    format: ID
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  account_status:
+    sql: '"ACCOUNT_STATUS"'
+
+  parent_account_status:
+    sql: '"PARENT_ACCOUNT_STATUS"'
+
+  account_url:
+    sql: '"ACCOUNT_URL"'
+
+  churn_reason:
+    sql: '"CHURN_REASON"'
+
+  churn_category:
+    sql: '"CHURN_CATEGORY"'
+
+  num_account_locations:
+    sql: '"NUM_ACCOUNT_LOCATIONS"'
+
+  net_num_account_locations:
+    sql: '"NET_NUM_ACCOUNT_LOCATIONS"'
+
+  billing_terms:
+    sql: '"BILLING_TERMS"'
+
+  account_record_type:
+    sql: '"ACCOUNT_RECORD_TYPE"'
+
+  account_onboarding_stage:
+    sql: '"ACCOUNT_ONBOARDING_STAGE"'
+
+  dashboard_link__c:
+    sql: '"DASHBOARD_LINK__C"'
+
+  sp_link__c:
+    sql: '"SP_LINK__C"'
+
+  gmb_link__c:
+    sql: '"GMB_LINK__C"'
+
+  subscription_end_date:
+    sql: '"SUBSCRIPTION_END_DATE"'
+
+  master_stripe_id:
+    sql: '"MASTER_STRIPE_ID"'
+    format: ID
+
+  subscription_start_date:
+    sql: '"SUBSCRIPTION_START_DATE"'
+
+  subscription_start_month:
+    sql: '"SUBSCRIPTION_START_MONTH"'
+
+  subscription_end_month:
+    sql: '"SUBSCRIPTION_END_MONTH"'
+
+measures:
+  count:
+    aggregate_type: count

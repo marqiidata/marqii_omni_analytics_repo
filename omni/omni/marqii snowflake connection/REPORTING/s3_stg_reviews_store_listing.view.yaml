@@ -1,0 +1,31 @@
+# Reference this view as reporting__s3_stg_reviews_store_listing
+schema: REPORTING
+table_name: S3_STG_REVIEWS_STORE_LISTING
+
+dimensions:
+  listings_store_id:
+    sql: '"LISTINGS_STORE_ID"'
+    format: ID
+
+  listings_id:
+    sql: '"LISTINGS_ID"'
+    format: ID
+
+  listings_provider:
+    sql: '"LISTINGS_PROVIDER"'
+
+  listings_reviewsenabled:
+    sql: '"LISTINGS_REVIEWSENABLED"'
+
+  listings_deleted:
+    sql: '"LISTINGS_DELETED"'
+
+  listings_enabled:
+    sql: '"LISTINGS_ENABLED"'
+
+  s3_listings_extracted_at:
+    sql: '"S3_LISTINGS_EXTRACTED_AT"'
+
+measures:
+  count:
+    aggregate_type: count

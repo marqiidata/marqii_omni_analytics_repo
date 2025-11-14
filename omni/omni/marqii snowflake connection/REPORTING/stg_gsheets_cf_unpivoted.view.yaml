@@ -1,0 +1,34 @@
+# Reference this view as reporting__stg_gsheets_cf_unpivoted
+schema: REPORTING
+table_name: STG_GSHEETS_CF_UNPIVOTED
+
+dimensions:
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+  line_item_cat:
+    sql: '"LINE_ITEM_CAT"'
+
+  _row:
+    sql: '"_ROW"'
+    hidden: true
+
+  major_category:
+    sql: '"MAJOR_CATEGORY"'
+
+  value:
+    sql: '"VALUE"'
+
+  months:
+    sql: '"MONTHS"'
+
+  eom_date:
+    sql: '"EOM_DATE"'
+
+  first_of_month:
+    sql: '"FIRST_OF_MONTH"'
+
+measures:
+  count:
+    aggregate_type: count

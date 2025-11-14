@@ -1,0 +1,56 @@
+# Reference this view as reporting__st_salesforce_task
+schema: REPORTING
+table_name: ST_SALESFORCE_TASK
+
+dimensions:
+  activity_id:
+    sql: '"ACTIVITY_ID"'
+    format: ID
+
+  activity_status:
+    sql: '"ACTIVITY_STATUS"'
+
+  activity_create_date:
+    sql: '"ACTIVITY_CREATE_DATE"'
+
+  activity_owner_id:
+    sql: '"ACTIVITY_OWNER_ID"'
+    format: ID
+
+  type:
+    sql: '"TYPE"'
+
+  tasksubtype:
+    sql: '"TASKSUBTYPE"'
+
+  what_id:
+    sql: '"WHAT_ID"'
+    format: ID
+
+  activity_date:
+    sql: '"ACTIVITY_DATE"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  opportunity_id:
+    sql: '"OPPORTUNITY_ID"'
+    format: ID
+
+  event_end_date:
+    sql: '"EVENT_END_DATE"'
+
+  event_start_date:
+    sql: '"EVENT_START_DATE"'
+
+  createdbyid:
+    sql: '"CREATEDBYID"'
+
+  task_who_id:
+    sql: '"TASK_WHO_ID"'
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

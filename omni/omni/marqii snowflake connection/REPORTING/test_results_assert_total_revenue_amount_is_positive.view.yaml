@@ -1,0 +1,21 @@
+# Reference this view as reporting__test_results_assert_total_revenue_amount_is_positive
+schema: REPORTING
+table_name: TEST_RESULTS_ASSERT_TOTAL_REVENUE_AMOUNT_IS_POSITIVE
+
+dimensions:
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  amount:
+    sql: '"AMOUNT"'
+
+  gross_arr:
+    sql: '"GROSS_ARR"'
+
+measures:
+  count:
+    aggregate_type: count

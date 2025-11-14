@@ -1,0 +1,73 @@
+# Reference this view as reporting__qb_reporting_expense_detail
+schema: REPORTING
+table_name: QB_REPORTING_EXPENSE_DETAIL
+
+dimensions:
+  marqii_fiscal_quarter_year:
+    sql: '"MARQII_FISCAL_QUARTER_YEAR"'
+
+  marqii_fiscal_year:
+    sql: '"MARQII_FISCAL_YEAR"'
+
+  rev_reporting_date:
+    sql: '"REV_REPORTING_DATE"'
+
+  month_date_rev_reporting:
+    sql: '"MONTH_DATE_REV_REPORTING"'
+
+  opportunity_rev_category:
+    sql: '"OPPORTUNITY_REV_CATEGORY"'
+
+  opportunity_id:
+    sql: '"OPPORTUNITY_ID"'
+    format: ID
+
+  opportunity_name:
+    sql: '"OPPORTUNITY_NAME"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  amount:
+    sql: '"AMOUNT"'
+
+  account_status:
+    sql: '"ACCOUNT_STATUS"'
+
+  gross_arr:
+    sql: '"GROSS_ARR"'
+
+  airbyte_latest_sync:
+    sql: '"AIRBYTE_LATEST_SYNC"'
+
+  num_account_locations:
+    sql: '"NUM_ACCOUNT_LOCATIONS"'
+
+  source_name:
+    sql: '"SOURCE_NAME"'
+
+  reporting_line:
+    sql: '"REPORTING_LINE"'
+
+  fully_qualified_name:
+    sql: '"FULLY_QUALIFIED_NAME"'
+
+  acquisition_cost_lines:
+    sql: '"ACQUISITION_COST_LINES"'
+
+  acquisition_cost:
+    sql: '"ACQUISITION_COST"'
+
+  salary_department:
+    sql: '"SALARY_DEPARTMENT"'
+
+  description:
+    sql: '"DESCRIPTION"'
+
+measures:
+  count:
+    aggregate_type: count

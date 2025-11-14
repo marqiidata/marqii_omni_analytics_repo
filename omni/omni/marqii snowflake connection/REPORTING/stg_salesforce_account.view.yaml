@@ -1,0 +1,868 @@
+# Reference this view as reporting__stg_salesforce_account
+schema: REPORTING
+table_name: STG_SALESFORCE_ACCOUNT
+
+dimensions:
+  _airbyte_raw_id:
+    sql: '"_AIRBYTE_RAW_ID"'
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    sql: '"_AIRBYTE_EXTRACTED_AT"'
+    hidden: true
+
+  _airbyte_meta:
+    sql: '"_AIRBYTE_META"'
+    hidden: true
+
+  _airbyte_generation_id:
+    sql: '"_AIRBYTE_GENERATION_ID"'
+    format: ID
+    hidden: true
+
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  name:
+    sql: '"NAME"'
+
+  type:
+    sql: '"TYPE"'
+
+  am__c:
+    sql: '"AM__C"'
+
+  phone:
+    sql: '"PHONE"'
+
+  jigsaw:
+    sql: '"JIGSAW"'
+
+  mrr__c:
+    sql: '"MRR__C"'
+
+  pos__c:
+    sql: '"POS__C"'
+
+  ownerid:
+    sql: '"OWNERID"'
+
+  sicdesc:
+    sql: '"SICDESC"'
+
+  tier__c:
+    sql: '"TIER__C"'
+
+  website:
+    sql: '"WEBSITE"'
+
+  industry:
+    sql: '"INDUSTRY"'
+
+  notes__c:
+    sql: '"NOTES__C"'
+
+  parentid:
+    sql: '"PARENTID"'
+
+  phase__c:
+    sql: '"PHASE__C"'
+
+  photourl:
+    sql: '"PHOTOURL"'
+
+  pilot__c:
+    sql: '"PILOT__C"'
+
+  domain__c:
+    sql: '"DOMAIN__C"'
+
+  isdeleted:
+    sql: '"ISDELETED"'
+
+  metrics__c:
+    sql: '"METRICS__C"'
+
+  net_arr__c:
+    sql: '"NET_ARR__C"'
+
+  net_mrr__c:
+    sql: '"NET_MRR__C"'
+
+  package__c:
+    sql: '"PACKAGE__C"'
+
+  phone_2__c:
+    sql: '"PHONE_2__C"'
+
+  revenue__c:
+    sql: '"REVENUE__C"'
+
+  sp_link__c:
+    sql: '"SP_LINK__C"'
+
+  billingcity:
+    sql: '"BILLINGCITY"'
+
+  createdbyid:
+    sql: '"CREATEDBYID"'
+
+  createddate:
+    sql: '"CREATEDDATE"'
+
+  description:
+    sql: '"DESCRIPTION"'
+
+  gmb_link__c:
+    sql: '"GMB_LINK__C"'
+
+  next_qbr__c:
+    sql: '"NEXT_QBR__C"'
+
+  referral__c:
+    sql: '"REFERRAL__C"'
+
+  renewals__c:
+    sql: '"RENEWALS__C"'
+
+  timezone__c:
+    sql: '"TIMEZONE__C"'
+
+  billingstate:
+    sql: '"BILLINGSTATE"'
+
+  expansion__c:
+    sql: '"EXPANSION__C"'
+
+  org_email__c:
+    sql: '"ORG_EMAIL__C"'
+
+  org_phone__c:
+    sql: '"ORG_PHONE__C"'
+
+  pos_other__c:
+    sql: '"POS_OTHER__C"'
+
+  recordtypeid:
+    sql: '"RECORDTYPEID"'
+
+  shippingcity:
+    sql: '"SHIPPINGCITY"'
+
+  toast_url__c:
+    sql: '"TOAST_URL__C"'
+
+  locations__c:
+    sql: '"LOCATIONS__C"'
+
+  accountsource:
+    sql: '"ACCOUNTSOURCE"'
+
+  billingstreet:
+    sql: '"BILLINGSTREET"'
+
+  churn_date__c:
+    sql: '"CHURN_DATE__C"'
+
+  competitor__c:
+    sql: '"COMPETITOR__C"'
+
+  lead_score__c:
+    sql: '"LEAD_SCORE__C"'
+
+  pos_status__c:
+    sql: '"POS_STATUS__C"'
+
+  scan_owner__c:
+    sql: '"SCAN_OWNER__C"'
+
+  shippingstate:
+    sql: '"SHIPPINGSTATE"'
+
+  stripe_url__c:
+    sql: '"STRIPE_URL__C"'
+
+  warmlylink__c:
+    sql: '"WARMLYLINK__C"'
+
+  billingaddress:
+    sql: '"BILLINGADDRESS"'
+
+  billingcountry:
+    sql: '"BILLINGCOUNTRY"'
+
+  campaign_id__c:
+    sql: '"CAMPAIGN_ID__C"'
+
+  lastvieweddate:
+    sql: '"LASTVIEWEDDATE"'
+
+  lost_reason__c:
+    sql: '"LOST_REASON__C"'
+
+  mm_priority__c:
+    sql: '"MM_PRIORITY__C"'
+
+  masterrecordid:
+    sql: '"MASTERRECORDID"'
+
+  menu_widget__c:
+    sql: '"MENU_WIDGET__C"'
+
+  shippingstreet:
+    sql: '"SHIPPINGSTREET"'
+
+  support_rep__c:
+    sql: '"SUPPORT_REP__C"'
+
+  systemmodstamp:
+    sql: '"SYSTEMMODSTAMP"'
+
+  billinglatitude:
+    sql: '"BILLINGLATITUDE"'
+
+  churn_reason__c:
+    sql: '"CHURN_REASON__C"'
+
+  closed_deals__c:
+    sql: '"CLOSED_DEALS__C"'
+
+  extra_emails__c:
+    sql: '"EXTRA_EMAILS__C"'
+
+  growth_trend__c:
+    sql: '"GROWTH_TREND__C"'
+
+  jigsawcompanyid:
+    sql: '"JIGSAWCOMPANYID"'
+
+  last_hubspot__c:
+    sql: '"LAST_HUBSPOT__C"'
+
+  mixmax_opens__c:
+    sql: '"MIXMAX_OPENS__C"'
+
+  mobile_phone__c:
+    sql: '"MOBILE_PHONE__C"'
+
+  pipedrive_id__c:
+    sql: '"PIPEDRIVE_ID__C"'
+
+  recycle_date__c:
+    sql: '"RECYCLE_DATE__C"'
+
+  sp_parent_id__c:
+    sql: '"SP_PARENT_ID__C"'
+
+  scan_results__c:
+    sql: '"SCAN_RESULTS__C"'
+
+  shippingaddress:
+    sql: '"SHIPPINGADDRESS"'
+
+  shippingcountry:
+    sql: '"SHIPPINGCOUNTRY"'
+
+  upsell_oppty__c:
+    sql: '"UPSELL_OPPTY__C"'
+
+  billinglongitude:
+    sql: '"BILLINGLONGITUDE"'
+
+  billingstatecode:
+    sql: '"BILLINGSTATECODE"'
+
+  billing_terms__c:
+    sql: '"BILLING_TERMS__C"'
+
+  churn_counter__c:
+    sql: '"CHURN_COUNTER__C"'
+
+  email_opt_out__c:
+    sql: '"EMAIL_OPT_OUT__C"'
+
+  in_toast_list__c:
+    sql: '"IN_TOAST_LIST__C"'
+
+  ispriorityrecord:
+    sql: '"ISPRIORITYRECORD"'
+
+  lastactivitydate:
+    sql: '"LASTACTIVITYDATE"'
+
+  lastmodifiedbyid:
+    sql: '"LASTMODIFIEDBYID"'
+
+  lastmodifieddate:
+    sql: '"LASTMODIFIEDDATE"'
+
+  latest_cl_opp__c:
+    sql: '"LATEST_CL_OPP__C"'
+
+  net_locations__c:
+    sql: '"NET_LOCATIONS__C"'
+
+  planhat_phase__c:
+    sql: '"PLANHAT_PHASE__C"'
+
+  shippinglatitude:
+    sql: '"SHIPPINGLATITUDE"'
+
+  yelp_menu_url__c:
+    sql: '"YELP_MENU_URL__C"'
+
+  warmlycreated__c:
+    sql: '"WARMLYCREATED__C"'
+
+  warmlytouched__c:
+    sql: '"WARMLYTOUCHED__C"'
+
+  billingpostalcode:
+    sql: '"BILLINGPOSTALCODE"'
+
+  churn_category__c:
+    sql: '"CHURN_CATEGORY__C"'
+
+  dashboard_link__c:
+    sql: '"DASHBOARD_LINK__C"'
+
+  date_onboarded__c:
+    sql: '"DATE_ONBOARDED__C"'
+
+  demo_requested__c:
+    sql: '"DEMO_REQUESTED__C"'
+
+  downgraded_mrr__c:
+    sql: '"DOWNGRADED_MRR__C"'
+
+  numberofemployees:
+    sql: '"NUMBEROFEMPLOYEES"'
+
+  other_menu_url__c:
+    sql: '"OTHER_MENU_URL__C"'
+
+  owner_slack_id__c:
+    sql: '"OWNER_SLACK_ID__C"'
+
+  partner_stages__c:
+    sql: '"PARTNER_STAGES__C"'
+
+  post_sale_team__c:
+    sql: '"POST_SALE_TEAM__C"'
+
+  re_engage_date__c:
+    sql: '"RE_ENGAGE_DATE__C"'
+
+  recycle_reason__c:
+    sql: '"RECYCLE_REASON__C"'
+
+  sp_list_number__c:
+    sql: '"SP_LIST_NUMBER__C"'
+
+  sequence_score__c:
+    sql: '"SEQUENCE_SCORE__C"'
+
+  shippinglongitude:
+    sql: '"SHIPPINGLONGITUDE"'
+
+  shippingstatecode:
+    sql: '"SHIPPINGSTATECODE"'
+
+  account_status__c:
+    sql: '"ACCOUNT_STATUS__C"'
+
+  annualtomonthly__c:
+    sql: '"ANNUALTOMONTHLY__C"'
+
+  billingcountrycode:
+    sql: '"BILLINGCOUNTRYCODE"'
+
+  corporate_phone__c:
+    sql: '"CORPORATE_PHONE__C"'
+
+  current_package__c:
+    sql: '"CURRENT_PACKAGE__C"'
+
+  feature_request__c:
+    sql: '"FEATURE_REQUEST__C"'
+
+  google_menu_url__c:
+    sql: '"GOOGLE_MENU_URL__C"'
+
+  lastreferenceddate:
+    sql: '"LASTREFERENCEDDATE"'
+
+  location_bucket__c:
+    sql: '"LOCATION_BUCKET__C"'
+
+  oppty_locations__c:
+    sql: '"OPPTY_LOCATIONS__C"'
+
+  owner_role_name__c:
+    sql: '"OWNER_ROLE_NAME__C"'
+
+  pos_integration__c:
+    sql: '"POS_INTEGRATION__C"'
+
+  partner_account__c:
+    sql: '"PARTNER_ACCOUNT__C"'
+
+  scan_owner_text__c:
+    sql: '"SCAN_OWNER_TEXT__C"'
+
+  send_to_planhat__c:
+    sql: '"SEND_TO_PLANHAT__C"'
+
+  shippingpostalcode:
+    sql: '"SHIPPINGPOSTALCODE"'
+
+  account_owner_id__c:
+    sql: '"ACCOUNT_OWNER_ID__C"'
+
+  account_vertical__c:
+    sql: '"ACCOUNT_VERTICAL__C"'
+
+  competitor_notes__c:
+    sql: '"COMPETITOR_NOTES__C"'
+
+  days_as_a_client__c:
+    sql: '"DAYS_AS_A_CLIENT__C"'
+
+  extra_phone_data__c:
+    sql: '"EXTRA_PHONE_DATA__C"'
+
+  last_pageview_at__c:
+    sql: '"LAST_PAGEVIEW_AT__C"'
+
+  latest_web_visit__c:
+    sql: '"LATEST_WEB_VISIT__C"'
+
+  manual_invoicing__c:
+    sql: '"MANUAL_INVOICING__C"'
+
+  onboarding_notes__c:
+    sql: '"ONBOARDING_NOTES__C"'
+
+  onboarding_stage__c:
+    sql: '"ONBOARDING_STAGE__C"'
+
+  shippingcountrycode:
+    sql: '"SHIPPINGCOUNTRYCODE"'
+
+  timezone_formula__c:
+    sql: '"TIMEZONE_FORMULA__C"'
+
+  webinar_attended__c:
+    sql: '"WEBINAR_ATTENDED__C"'
+
+  x18_character_id__c:
+    sql: '"X18_CHARACTER_ID__C"'
+
+  of_opportunities__c:
+    sql: '"OF_OPPORTUNITIES__C"'
+
+  warmlylastseenat__c:
+    sql: '"WARMLYLASTSEENAT__C"'
+
+  warmlyutmmediums__c:
+    sql: '"WARMLYUTMMEDIUMS__C"'
+
+  warmlyutmsources__c:
+    sql: '"WARMLYUTMSOURCES__C"'
+
+  dashboard_version__c:
+    sql: '"DASHBOARD_VERSION__C"'
+
+  domain_by_website__c:
+    sql: '"DOMAIN_BY_WEBSITE__C"'
+
+  facebook_menu_url__c:
+    sql: '"FACEBOOK_MENU_URL__C"'
+
+  has_powerlistings__c:
+    sql: '"HAS_POWERLISTINGS__C"'
+
+  integration_stage__c:
+    sql: '"INTEGRATION_STAGE__C"'
+
+  marqii_account_id__c:
+    sql: '"MARQII_ACCOUNT_ID__C"'
+
+  re_activation_mrr__c:
+    sql: '"RE_ACTIVATION_MRR__C"'
+
+  sp_location_count__c:
+    sql: '"SP_LOCATION_COUNT__C"'
+
+  warmlyutmcontents__c:
+    sql: '"WARMLYUTMCONTENTS__C"'
+
+  account_owner_name__c:
+    sql: '"ACCOUNT_OWNER_NAME__C"'
+
+  closed_lost_opptys__c:
+    sql: '"CLOSED_LOST_OPPTYS__C"'
+
+  last_activity_date__c:
+    sql: '"LAST_ACTIVITY_DATE__C"'
+
+  last_outreach_date__c:
+    sql: '"LAST_OUTREACH_DATE__C"'
+
+  months_as_a_client__c:
+    sql: '"MONTHS_AS_A_CLIENT__C"'
+
+  next_activity_date__c:
+    sql: '"NEXT_ACTIVITY_DATE__C"'
+
+  re_activation_date__c:
+    sql: '"RE_ACTIVATION_DATE__C"'
+
+  record_owner_email__c:
+    sql: '"RECORD_OWNER_EMAIL__C"'
+
+  remove_from_mixmax__c:
+    sql: '"REMOVE_FROM_MIXMAX__C"'
+
+  send_renewal_email__c:
+    sql: '"SEND_RENEWAL_EMAIL__C"'
+
+  starting_locations__c:
+    sql: '"STARTING_LOCATIONS__C"'
+
+  stripe_customer_id__c:
+    sql: '"STRIPE_CUSTOMER_ID__C"'
+
+  webinar_registered__c:
+    sql: '"WEBINAR_REGISTERED__C"'
+
+  warmlypagesvisited__c:
+    sql: '"WARMLYPAGESVISITED__C"'
+
+  warmlyutmcampaigns__c:
+    sql: '"WARMLYUTMCAMPAIGNS__C"'
+
+  warmlyvisitorcount__c:
+    sql: '"WARMLYVISITORCOUNT__C"'
+
+  billinggeocodeaccuracy:
+    sql: '"BILLINGGEOCODEACCURACY"'
+
+  clicked_mixmax_link__c:
+    sql: '"CLICKED_MIXMAX_LINK__C"'
+
+  hubspot_total_opens__c:
+    sql: '"HUBSPOT_TOTAL_OPENS__C"'
+
+  latests_mixmax_date__c:
+    sql: '"LATESTS_MIXMAX_DATE__C"'
+
+  latests_mixmax_time__c:
+    sql: '"LATESTS_MIXMAX_TIME__C"'
+
+  send_check_in_email__c:
+    sql: '"SEND_CHECK_IN_EMAIL__C"'
+
+  warmlytotalsessions__c:
+    sql: '"WARMLYTOTALSESSIONS__C"'
+
+  warmlyutmmediumsold__c:
+    sql: '"WARMLYUTMMEDIUMSOLD__C"'
+
+  warmlyutmsourcesold__c:
+    sql: '"WARMLYUTMSOURCESOLD__C"'
+
+  downgraded_locations__c:
+    sql: '"DOWNGRADED_LOCATIONS__C"'
+
+  latests_date_of_scan__c:
+    sql: '"LATESTS_DATE_OF_SCAN__C"'
+
+  marqii_feature_menus__c:
+    sql: '"MARQII_FEATURE_MENUS__C"'
+
+  planhat_health_score__c:
+    sql: '"PLANHAT_HEALTH_SCORE__C"'
+
+  ropackage__known_for__c:
+    sql: '"ROPACKAGE__KNOWN_FOR__C"'
+
+  shippinggeocodeaccuracy:
+    sql: '"SHIPPINGGEOCODEACCURACY"'
+
+  trade_shows_attendee__c:
+    sql: '"TRADE_SHOWS_ATTENDEE__C"'
+
+  warmlyutmcontentsold__c:
+    sql: '"WARMLYUTMCONTENTSOLD__C"'
+
+  daily_page_view_total__c:
+    sql: '"DAILY_PAGE_VIEW_TOTAL__C"'
+
+  last_webinar_attended__c:
+    sql: '"LAST_WEBINAR_ATTENDED__C"'
+
+  latest_ticket_content__c:
+    sql: '"LATEST_TICKET_CONTENT__C"'
+
+  old_lead_source_pizza__c:
+    sql: '"OLD_LEAD_SOURCE_PIZZA__C"'
+
+  parent_account_status__c:
+    sql: '"PARENT_ACCOUNT_STATUS__C"'
+
+  ran_scan_through_link__c:
+    sql: '"RAN_SCAN_THROUGH_LINK__C"'
+
+  subscription_end_date__c:
+    sql: '"SUBSCRIPTION_END_DATE__C"'
+
+  upsell_representative__c:
+    sql: '"UPSELL_REPRESENTATIVE__C"'
+
+  warmlylastpagesviewed__c:
+    sql: '"WARMLYLASTPAGESVIEWED__C"'
+
+  warmlymatchedsegments__c:
+    sql: '"WARMLYMATCHEDSEGMENTS__C"'
+
+  warmlypagesvisitedold__c:
+    sql: '"WARMLYPAGESVISITEDOLD__C"'
+
+  warmlytotalactivetime__c:
+    sql: '"WARMLYTOTALACTIVETIME__C"'
+
+  warmlyutmcampaignsold__c:
+    sql: '"WARMLYUTMCAMPAIGNSOLD__C"'
+
+  current_location_count__c:
+    sql: '"CURRENT_LOCATION_COUNT__C"'
+
+  marqii_feature_reviews__c:
+    sql: '"MARQII_FEATURE_REVIEWS__C"'
+
+  parent_account_ownerid__c:
+    sql: '"PARENT_ACCOUNT_OWNERID__C"'
+
+  ropackage__roalphaname__c:
+    sql: '"ROPACKAGE__ROALPHANAME__C"'
+
+  trade_shows_badge_scan__c:
+    sql: '"TRADE_SHOWS_BADGE_SCAN__C"'
+
+  weekly_page_view_total__c:
+    sql: '"WEEKLY_PAGE_VIEW_TOTAL__C"'
+
+  warmlytotalpagesviewed__c:
+    sql: '"WARMLYTOTALPAGESVIEWED__C"'
+
+  assigned_from_old_owner__c:
+    sql: '"ASSIGNED_FROM_OLD_OWNER__C"'
+
+  clicked_fix_my_listings__c:
+    sql: '"CLICKED_FIX_MY_LISTINGS__C"'
+
+  date_of_last_trade_show__c:
+    sql: '"DATE_OF_LAST_TRADE_SHOW__C"'
+
+  last_hubspot_email_name__c:
+    sql: '"LAST_HUBSPOT_EMAIL_NAME__C"'
+
+  latest_scratchpad_notes__c:
+    sql: '"LATEST_SCRATCHPAD_NOTES__C"'
+
+  lead_score_to_calculate__c:
+    sql: '"LEAD_SCORE_TO_CALCULATE__C"'
+
+  marqii_feature_listings__c:
+    sql: '"MARQII_FEATURE_LISTINGS__C"'
+
+  monthly_page_view_total__c:
+    sql: '"MONTHLY_PAGE_VIEW_TOTAL__C"'
+
+  ropackage__service_type__c:
+    sql: '"ROPACKAGE__SERVICE_TYPE__C"'
+
+  renewal_email_sent_date__c:
+    sql: '"RENEWAL_EMAIL_SENT_DATE__C"'
+
+  subsc_end_date_minus_90__c:
+    sql: '"SUBSC_END_DATE_MINUS_90__C"'
+
+  subscription_start_date__c:
+    sql: '"SUBSCRIPTION_START_DATE__C"'
+
+  worked_by_partner_until__c:
+    sql: '"WORKED_BY_PARTNER_UNTIL__C"'
+
+  check_in_email_sent_date__c:
+    sql: '"CHECK_IN_EMAIL_SENT_DATE__C"'
+
+  churn_counter_percentage__c:
+    sql: '"CHURN_COUNTER_PERCENTAGE__C"'
+
+  last_trade_show_attended__c:
+    sql: '"LAST_TRADE_SHOW_ATTENDED__C"'
+
+  latests_mixmax_date_time__c:
+    sql: '"LATESTS_MIXMAX_DATE_TIME__C"'
+
+  potential_location_count__c:
+    sql: '"POTENTIAL_LOCATION_COUNT__C"'
+
+  account_owner_change_date__c:
+    sql: '"ACCOUNT_OWNER_CHANGE_DATE__C"'
+
+  churn_context_for_billing__c:
+    sql: '"CHURN_CONTEXT_FOR_BILLING__C"'
+
+  last_closed_lost_opp_date__c:
+    sql: '"LAST_CLOSED_LOST_OPP_DATE__C"'
+
+  migrated_to_new_dashboard__c:
+    sql: '"MIGRATED_TO_NEW_DASHBOARD__C"'
+
+  ropackage__reconnlogindex__c:
+    sql: '"ROPACKAGE__RECONNLOGINDEX__C"'
+
+  week_over_week_engagement__c:
+    sql: '"WEEK_OVER_WEEK_ENGAGEMENT__C"'
+
+  warmlymatchedsegmentslist__c:
+    sql: '"WARMLYMATCHEDSEGMENTSLIST__C"'
+
+  latest_snail_mail_campaign__c:
+    sql: '"LATEST_SNAIL_MAIL_CAMPAIGN__C"'
+
+  latest_solvedclosed_ticket__c:
+    sql: '"LATEST_SOLVEDCLOSED_TICKET__C"'
+
+  latest_trade_show_attended__c:
+    sql: '"LATEST_TRADE_SHOW_ATTENDED__C"'
+
+  ropackage__rocleaneddomain__c:
+    sql: '"ROPACKAGE__ROCLEANEDDOMAIN__C"'
+
+  ropackage__acctupdateindex__c:
+    sql: '"ROPACKAGE__ACCTUPDATEINDEX__C"'
+
+  renewal_date_minus_30_days__c:
+    sql: '"RENEWAL_DATE_MINUS_30_DAYS__C"'
+
+  scratchpad_marketing_notes__c:
+    sql: '"SCRATCHPAD_MARKETING_NOTES__C"'
+
+  sequence_score_explanation__c:
+    sql: '"SEQUENCE_SCORE_EXPLANATION__C"'
+
+  who_ticket_was_assigned_to__c:
+    sql: '"WHO_TICKET_WAS_ASSIGNED_TO__C"'
+
+  account_name_without_parent__c:
+    sql: '"ACCOUNT_NAME_WITHOUT_PARENT__C"'
+
+  webinar_requested_more_info__c:
+    sql: '"WEBINAR_REQUESTED_MORE_INFO__C"'
+
+  last_hubspot_email_open_date__c:
+    sql: '"LAST_HUBSPOT_EMAIL_OPEN_DATE__C"'
+
+  latest_open_opportunity_date__c:
+    sql: '"LATEST_OPEN_OPPORTUNITY_DATE__C"'
+
+  opportunities_location_count__c:
+    sql: '"OPPORTUNITIES_LOCATION_COUNT__C"'
+
+  warmlymatchedsegmentslistold__c:
+    sql: '"WARMLYMATCHEDSEGMENTSLISTOLD__C"'
+
+  competitor_agreement_end_date__c:
+    sql: '"COMPETITOR_AGREEMENT_END_DATE__C"'
+
+  earliest_closed_won_deal_date__c:
+    sql: '"EARLIEST_CLOSED_WON_DEAL_DATE__C"'
+
+  first_hubspot_email_open_date__c:
+    sql: '"FIRST_HUBSPOT_EMAIL_OPEN_DATE__C"'
+
+  first_hubspot_email_send_date__c:
+    sql: '"FIRST_HUBSPOT_EMAIL_SEND_DATE__C"'
+
+  last_hubspot_email_click_date__c:
+    sql: '"LAST_HUBSPOT_EMAIL_CLICK_DATE__C"'
+
+  last_hubspot_email_reply_date__c:
+    sql: '"LAST_HUBSPOT_EMAIL_REPLY_DATE__C"'
+
+  lead_source_category_accounts__c:
+    sql: '"LEAD_SOURCE_CATEGORY_ACCOUNTS__C"'
+
+  services_removed_in_dashboard__c:
+    sql: '"SERVICES_REMOVED_IN_DASHBOARD__C"'
+
+  emaildomain__is_parent_account__c:
+    sql: '"EMAILDOMAIN__IS_PARENT_ACCOUNT__C"'
+
+  first_hubspot_email_click_date__c:
+    sql: '"FIRST_HUBSPOT_EMAIL_CLICK_DATE__C"'
+
+  first_hubspot_email_reply_date__c:
+    sql: '"FIRST_HUBSPOT_EMAIL_REPLY_DATE__C"'
+
+  marqii_feature_managed_reviews__c:
+    sql: '"MARQII_FEATURE_MANAGED_REVIEWS__C"'
+
+  sync_from_hubspot_from_contact__c:
+    sql: '"SYNC_FROM_HUBSPOT_FROM_CONTACT__C"'
+
+  latest_solvedclosed_ticket_date__c:
+    sql: '"LATEST_SOLVEDCLOSED_TICKET_DATE__C"'
+
+  location_range_trade_show_leads__c:
+    sql: '"LOCATION_RANGE_TRADE_SHOW_LEADS__C"'
+
+  unique_marketing_emails_clicked__c:
+    sql: '"UNIQUE_MARKETING_EMAILS_CLICKED__C"'
+
+  unique_marketing_emails_replied__c:
+    sql: '"UNIQUE_MARKETING_EMAILS_REPLIED__C"'
+
+  completed_tasks_of_current_owner__c:
+    sql: '"COMPLETED_TASKS_OF_CURRENT_OWNER__C"'
+
+  marqii_feature_suggested_reviews__c:
+    sql: '"MARQII_FEATURE_SUGGESTED_REVIEWS__C"'
+
+  emaildomain__company_email_domain__c:
+    sql: '"EMAILDOMAIN__COMPANY_EMAIL_DOMAIN__C"'
+
+  unique_marketing_emails_delivered__c:
+    sql: '"UNIQUE_MARKETING_EMAILS_DELIVERED__C"'
+
+  ropackage__total_locations_overall__c:
+    sql: '"ROPACKAGE__TOTAL_LOCATIONS_OVERALL__C"'
+
+  ropackage__createdbyrestaurantology__c:
+    sql: '"ROPACKAGE__CREATEDBYRESTAURANTOLOGY__C"'
+
+  unique_marketing_email_campaigns_open__c:
+    sql: '"UNIQUE_MARKETING_EMAIL_CAMPAIGNS_OPEN__C"'
+
+  ropackage__restaurantology_internal_id__c:
+    sql: '"ROPACKAGE__RESTAURANTOLOGY_INTERNAL_ID__C"'
+
+  ropackage__latest_restaurantology_tech_data__c:
+    sql: '"ROPACKAGE__LATEST_RESTAURANTOLOGY_TECH_DATA__C"'
+
+  ropackage__parent_restaurantology_internal_id__c:
+    sql: '"ROPACKAGE__PARENT_RESTAURANTOLOGY_INTERNAL_ID__C"'
+
+  account_record_type:
+    sql: '"ACCOUNT_RECORD_TYPE"'
+
+measures:
+  count:
+    aggregate_type: count

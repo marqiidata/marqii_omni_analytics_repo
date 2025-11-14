@@ -1,0 +1,25 @@
+# Reference this view as reporting__ps_accountrel
+schema: REPORTING
+table_name: PS_ACCOUNTREL
+
+dimensions:
+  stripeid:
+    sql: '"STRIPEID"'
+
+  ps_account_id:
+    sql: '"PS_ACCOUNT_ID"'
+    format: ID
+
+  salesforceid:
+    sql: '"SALESFORCEID"'
+
+  _airbyte_extracted_at:
+    sql: '"_AIRBYTE_EXTRACTED_AT"'
+    hidden: true
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,38 @@
+# Reference this view as reporting__stg_merchantstate_s3
+schema: REPORTING
+table_name: STG_MERCHANTSTATE_S3
+
+dimensions:
+  ms_id:
+    sql: '"MS_ID"'
+    format: ID
+
+  ms_merchantstatus:
+    sql: '"MS_MERCHANTSTATUS"'
+
+  ms_updatedat:
+    sql: '"MS_UPDATEDAT"'
+
+  ms_state:
+    sql: '"MS_STATE"'
+
+  ms_createdat:
+    sql: '"MS_CREATEDAT"'
+
+  ms_airbyte_raw_id:
+    sql: '"MS_AIRBYTE_RAW_ID"'
+    format: ID
+
+  ms_airbyte_extracted_at:
+    sql: '"MS_AIRBYTE_EXTRACTED_AT"'
+
+  ms_storelistingid:
+    sql: '"MS_STORELISTINGID"'
+
+  ms_airbyte_generation_id:
+    sql: '"MS_AIRBYTE_GENERATION_ID"'
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

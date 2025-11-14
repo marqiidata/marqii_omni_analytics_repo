@@ -1,0 +1,49 @@
+# Reference this view as reporting__s3_stg_review_reply
+schema: REPORTING
+table_name: S3_STG_REVIEW_REPLY
+
+dimensions:
+  review_reply_id:
+    sql: '"REVIEW_REPLY_ID"'
+    format: ID
+
+  review_id:
+    sql: '"REVIEW_ID"'
+    format: ID
+
+  review_reply_text:
+    sql: '"REVIEW_REPLY_TEXT"'
+
+  review_reply_type:
+    sql: '"REVIEW_REPLY_TYPE"'
+
+  review_reply_created_by:
+    sql: '"REVIEW_REPLY_CREATED_BY"'
+
+  review_reply_airbyte_extracted_at:
+    sql: '"REVIEW_REPLY_AIRBYTE_EXTRACTED_AT"'
+
+  review_reply_deleted_by:
+    sql: '"REVIEW_REPLY_DELETED_BY"'
+
+  review_reply_submitted_at:
+    sql: '"REVIEW_REPLY_SUBMITTED_AT"'
+
+  review_reply_detected_delete_at:
+    sql: '"REVIEW_REPLY_DETECTED_DELETE_AT"'
+
+  review_reply_deleted:
+    sql: '"REVIEW_REPLY_DELETED"'
+
+  review_reply_source:
+    sql: '"REVIEW_REPLY_SOURCE"'
+
+  review_replier_name:
+    sql: '"REVIEW_REPLIER_NAME"'
+
+  review_reply_moderation_status:
+    sql: '"REVIEW_REPLY_MODERATION_STATUS"'
+
+measures:
+  count:
+    aggregate_type: count

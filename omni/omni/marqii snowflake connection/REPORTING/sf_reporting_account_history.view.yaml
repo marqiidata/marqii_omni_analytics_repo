@@ -1,0 +1,69 @@
+# Reference this view as reporting__sf_reporting_account_history
+schema: REPORTING
+table_name: SF_REPORTING_ACCOUNT_HISTORY
+
+dimensions:
+  data_as_of: {}
+
+  latest_change:
+    sql: '"LATEST_CHANGE"'
+
+  last_change_date:
+    sql: '"LAST_CHANGE_DATE"'
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  account_status:
+    sql: '"ACCOUNT_STATUS"'
+
+  account_test:
+    sql: '"ACCOUNT_TEST"'
+
+  account_test_old:
+    sql: '"ACCOUNT_TEST_OLD"'
+
+  account_history_id:
+    sql: '"ACCOUNT_HISTORY_ID"'
+    format: ID
+
+  account_history_field:
+    sql: '"ACCOUNT_HISTORY_FIELD"'
+
+  account_history_datatype:
+    sql: '"ACCOUNT_HISTORY_DATATYPE"'
+
+  account_history_newvalue:
+    sql: '"ACCOUNT_HISTORY_NEWVALUE"'
+
+  account_history_oldvalue:
+    sql: '"ACCOUNT_HISTORY_OLDVALUE"'
+
+  account_history_accountid:
+    sql: '"ACCOUNT_HISTORY_ACCOUNTID"'
+
+  account_history_isdeleted:
+    sql: '"ACCOUNT_HISTORY_ISDELETED"'
+
+  account_history_createddate:
+    sql: '"ACCOUNT_HISTORY_CREATEDDATE"'
+
+  account_history_createdbyid:
+    sql: '"ACCOUNT_HISTORY_CREATEDBYID"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  churn_date:
+    sql: '"CHURN_DATE"'
+
+  net_arr:
+    sql: '"NET_ARR"'
+
+  churn_arr:
+    sql: '"CHURN_ARR"'
+
+measures:
+  count:
+    aggregate_type: count

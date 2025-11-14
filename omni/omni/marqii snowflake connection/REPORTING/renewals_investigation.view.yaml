@@ -1,0 +1,156 @@
+# Reference this view as reporting__renewals_investigation
+schema: REPORTING
+table_name: RENEWALS_INVESTIGATION
+
+dimensions:
+  marqii_fiscal_quarter_date:
+    sql: '"MARQII_FISCAL_QUARTER_DATE"'
+
+  opportunity_name:
+    sql: '"OPPORTUNITY_NAME"'
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  closedate:
+    sql: '"CLOSEDATE"'
+
+  marqii_fiscal_year:
+    sql: '"MARQII_FISCAL_YEAR"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  account_status:
+    sql: '"ACCOUNT_STATUS"'
+
+  opportunity_id:
+    sql: '"OPPORTUNITY_ID"'
+    format: ID
+
+  opportunity_rev_category:
+    sql: '"OPPORTUNITY_REV_CATEGORY"'
+
+  account_owner_team:
+    sql: '"ACCOUNT_OWNER_TEAM"'
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+
+  reactivation_date:
+    sql: '"REACTIVATION_DATE"'
+
+  renewal_start_date:
+    sql: '"RENEWAL_START_DATE"'
+
+  renewal_end_date:
+    sql: '"RENEWAL_END_DATE"'
+
+  renewal_number:
+    sql: '"RENEWAL_NUMBER"'
+
+  contract_term_length:
+    sql: '"CONTRACT_TERM_LENGTH"'
+
+  churn_date:
+    sql: '"CHURN_DATE"'
+
+  renewal_end_year:
+    sql: '"RENEWAL_END_YEAR"'
+
+  renewal_marqii_fiscal_year:
+    sql: '"RENEWAL_MARQII_FISCAL_YEAR"'
+
+  marqii_fiscal_renewal_end_quarter_date:
+    sql: '"MARQII_FISCAL_RENEWAL_END_QUARTER_DATE"'
+
+  churn_year:
+    sql: '"CHURN_YEAR"'
+
+  churn_marqii_fiscal_year:
+    sql: '"CHURN_MARQII_FISCAL_YEAR"'
+
+  marqii_fiscal_churn_quarter_date:
+    sql: '"MARQII_FISCAL_CHURN_QUARTER_DATE"'
+
+  churn_test:
+    sql: '"CHURN_TEST"'
+
+  first_close_date:
+    sql: '"FIRST_CLOSE_DATE"'
+
+  first_won_test:
+    sql: '"FIRST_WON_TEST"'
+
+  net_arr:
+    sql: '"NET_ARR"'
+
+  gross_arr:
+    sql: '"GROSS_ARR"'
+
+  renewal_quarter_text_formatted:
+    sql: ${reporting__renewals_investigation.renewal_end_date[fiscal_quarter]}::STRING
+    label: "Renewal Quarter: Text Formatted"
+
+measures:
+  count:
+    aggregate_type: count
+
+  omni__accounts:
+    sql: Count (DISTINCT ${reporting__renewals_investigation.account_id})
+    label: "# Accounts"
+
+  omni__accounts_churn:
+    sql: COUNT(DISTINCT CASE WHEN
+      ${reporting__renewals_investigation.account_status} = 'Churn' THEN
+      ${reporting__renewals_investigation.account_id} ELSE NULL END)
+    label: "# Accounts Churn"
+
+  omni__accounts_client:
+    sql: COUNT(DISTINCT CASE WHEN
+      ${reporting__renewals_investigation.account_status} = 'Client' THEN
+      ${reporting__renewals_investigation.account_id} ELSE NULL END)
+    label: "# Accounts Client"
+
+  calculation:
+    sql: CASE WHEN
+      COALESCE(${reporting__renewals_investigation.omni__accounts_churn}, 0) +
+      COALESCE(${reporting__renewals_investigation.omni__accounts_client}, 0) =
+      0 THEN NULL ELSE
+      COALESCE(${reporting__renewals_investigation.omni__accounts_churn}, 0) /
+      (COALESCE(${reporting__renewals_investigation.omni__accounts_churn}, 0) +
+      COALESCE(${reporting__renewals_investigation.omni__accounts_client}, 0))
+      END
+    label: Churn %
+    group_label: Renewal Rate
+    format: PERCENT_1
+    drill_fields:
+      [
+        reporting__renewals_investigation.account_name,
+        reporting__renewals_investigation.account_status,
+        "reporting__renewals_investigation.churn_date[date]",
+        "reporting__renewals_investigation.first_close_date[date]",
+        reporting__renewals_investigation.account_owner_name
+      ]
+
+  calculation_copy:
+    sql: CASE WHEN
+      COALESCE(${reporting__renewals_investigation.omni__accounts_churn}, 0) +
+      COALESCE(${reporting__renewals_investigation.omni__accounts_client}, 0) =
+      0 THEN NULL ELSE
+      ${reporting__renewals_investigation.omni__accounts_client} /
+      (COALESCE(${reporting__renewals_investigation.omni__accounts_churn}, 0) +
+      COALESCE(${reporting__renewals_investigation.omni__accounts_client}, 0))
+      END
+    label: Renewal %
+    group_label: Renewal Rate
+    format: PERCENT_1
+    drill_fields:
+      [
+        reporting__renewals_investigation.account_name,
+        reporting__renewals_investigation.account_status,
+        "reporting__renewals_investigation.churn_date[date]",
+        "reporting__renewals_investigation.first_close_date[date]",
+        reporting__renewals_investigation.account_owner_name
+      ]

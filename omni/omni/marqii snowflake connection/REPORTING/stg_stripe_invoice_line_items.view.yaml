@@ -1,0 +1,116 @@
+# Reference this view as reporting__stg_stripe_invoice_line_items
+schema: REPORTING
+table_name: STG_STRIPE_INVOICE_LINE_ITEMS
+
+dimensions:
+  _airbyte_raw_id:
+    sql: '"_AIRBYTE_RAW_ID"'
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    sql: '"_AIRBYTE_EXTRACTED_AT"'
+    hidden: true
+
+  _airbyte_meta:
+    sql: '"_AIRBYTE_META"'
+    hidden: true
+
+  _airbyte_generation_id:
+    sql: '"_AIRBYTE_GENERATION_ID"'
+    format: ID
+    hidden: true
+
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  type:
+    sql: '"TYPE"'
+
+  price:
+    sql: '"PRICE"'
+
+  amount:
+    sql: '"AMOUNT"'
+
+  object:
+    sql: '"OBJECT"'
+
+  period:
+    sql: '"PERIOD"'
+
+  invoice:
+    sql: '"INVOICE"'
+
+  margins:
+    sql: '"MARGINS"'
+
+  currency:
+    sql: '"CURRENCY"'
+
+  livemode:
+    sql: '"LIVEMODE"'
+
+  metadata:
+    sql: '"METADATA"'
+
+  quantity:
+    sql: '"QUANTITY"'
+
+  discounts:
+    sql: '"DISCOUNTS"'
+
+  proration:
+    sql: '"PRORATION"'
+
+  tax_rates:
+    sql: '"TAX_RATES"'
+
+  invoice_id:
+    sql: '"INVOICE_ID"'
+    format: ID
+
+  description:
+    sql: '"DESCRIPTION"'
+
+  tax_amounts:
+    sql: '"TAX_AMOUNTS"'
+
+  discountable:
+    sql: '"DISCOUNTABLE"'
+
+  invoice_item:
+    sql: '"INVOICE_ITEM"'
+
+  subscription:
+    sql: '"SUBSCRIPTION"'
+
+  invoice_created:
+    sql: '"INVOICE_CREATED"'
+
+  invoice_updated:
+    sql: '"INVOICE_UPDATED"'
+
+  discount_amounts:
+    sql: '"DISCOUNT_AMOUNTS"'
+
+  proration_details:
+    sql: '"PRORATION_DETAILS"'
+
+  subscription_item:
+    sql: '"SUBSCRIPTION_ITEM"'
+
+  amount_excluding_tax:
+    sql: '"AMOUNT_EXCLUDING_TAX"'
+
+  unit_amount_excluding_tax:
+    sql: '"UNIT_AMOUNT_EXCLUDING_TAX"'
+
+  plan:
+    sql: '"PLAN"'
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,44 @@
+# Reference this view as reporting__stg_stripe_upcoming_invoices
+schema: REPORTING
+table_name: STG_STRIPE_UPCOMING_INVOICES
+
+dimensions:
+  subscription_id:
+    sql: '"SUBSCRIPTION_ID"'
+    format: ID
+
+  upcoming_invoice_id:
+    sql: '"UPCOMING_INVOICE_ID"'
+    format: ID
+
+  upcoming_invoice_amount_due:
+    sql: '"UPCOMING_INVOICE_AMOUNT_DUE"'
+
+  upcoming_invoice_amount_paid:
+    sql: '"UPCOMING_INVOICE_AMOUNT_PAID"'
+
+  upcoming_invoice_amount_remaining:
+    sql: '"UPCOMING_INVOICE_AMOUNT_REMAINING"'
+
+  upcoming_invoice_billing_reason:
+    sql: '"UPCOMING_INVOICE_BILLING_REASON"'
+
+  upcoming_invoice_period_start:
+    sql: '"UPCOMING_INVOICE_PERIOD_START"'
+
+  upcoming_invoice_period_end:
+    sql: '"UPCOMING_INVOICE_PERIOD_END"'
+
+  upcoming_invoice_subtotal:
+    sql: '"UPCOMING_INVOICE_SUBTOTAL"'
+
+  upcoming_invoice_total:
+    sql: '"UPCOMING_INVOICE_TOTAL"'
+
+  customer_id:
+    sql: '"CUSTOMER_ID"'
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

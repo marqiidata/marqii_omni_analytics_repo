@@ -1,0 +1,61 @@
+# Reference this view as reporting__sf_reporting_events
+schema: REPORTING
+table_name: SF_REPORTING_EVENTS
+
+dimensions:
+  activity_id:
+    sql: '"ACTIVITY_ID"'
+    format: ID
+
+  activity_status:
+    sql: '"ACTIVITY_STATUS"'
+
+  activity_create_date:
+    sql: '"ACTIVITY_CREATE_DATE"'
+
+  activity_owner_id:
+    sql: '"ACTIVITY_OWNER_ID"'
+    format: ID
+
+  type:
+    sql: '"TYPE"'
+
+  tasksubtype:
+    sql: '"TASKSUBTYPE"'
+
+  what_id:
+    sql: '"WHAT_ID"'
+    format: ID
+
+  activity_date:
+    sql: '"ACTIVITY_DATE"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  opportunity_id:
+    sql: '"OPPORTUNITY_ID"'
+    format: ID
+
+  event_end_date:
+    sql: '"EVENT_END_DATE"'
+
+  event_start_date:
+    sql: '"EVENT_START_DATE"'
+
+  createdbyid:
+    sql: '"CREATEDBYID"'
+
+  amount:
+    sql: '"AMOUNT"'
+
+  stagename:
+    sql: '"STAGENAME"'
+
+  closedate:
+    sql: '"CLOSEDATE"'
+
+measures:
+  count:
+    aggregate_type: count

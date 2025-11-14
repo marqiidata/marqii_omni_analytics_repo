@@ -1,0 +1,181 @@
+# Reference this view as reporting__stg_stripe_subscriptions
+schema: REPORTING
+table_name: STG_STRIPE_SUBSCRIPTIONS
+
+dimensions:
+  _airbyte_raw_id:
+    sql: '"_AIRBYTE_RAW_ID"'
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    sql: '"_AIRBYTE_EXTRACTED_AT"'
+    hidden: true
+
+  _airbyte_meta:
+    sql: '"_AIRBYTE_META"'
+    hidden: true
+
+  _airbyte_generation_id:
+    sql: '"_AIRBYTE_GENERATION_ID"'
+    format: ID
+    hidden: true
+
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  plan:
+    sql: '"PLAN"'
+
+  items:
+    sql: '"ITEMS"'
+
+  object:
+    sql: '"OBJECT"'
+
+  status:
+    sql: '"STATUS"'
+
+  billing:
+    sql: '"BILLING"'
+
+  created:
+    sql: '"CREATED"'
+
+  updated:
+    sql: '"UPDATED"'
+
+  currency:
+    sql: '"CURRENCY"'
+
+  customer:
+    sql: '"CUSTOMER"'
+
+  discount:
+    sql: '"DISCOUNT"'
+
+  ended_at:
+    sql: '"ENDED_AT"'
+
+  livemode:
+    sql: '"LIVEMODE"'
+
+  metadata:
+    sql: '"METADATA"'
+
+  quantity:
+    sql: '"QUANTITY"'
+
+  schedule:
+    sql: '"SCHEDULE"'
+
+  cancel_at:
+    sql: '"CANCEL_AT"'
+
+  trial_end:
+    sql: '"TRIAL_END"'
+
+  is_deleted:
+    sql: '"IS_DELETED"'
+
+  start_date:
+    sql: '"START_DATE"'
+
+  test_clock:
+    sql: '"TEST_CLOCK"'
+
+  application:
+    sql: '"APPLICATION"'
+
+  canceled_at:
+    sql: '"CANCELED_AT"'
+
+  description:
+    sql: '"DESCRIPTION"'
+
+  tax_percent:
+    sql: '"TAX_PERCENT"'
+
+  trial_start:
+    sql: '"TRIAL_START"'
+
+  on_behalf_of:
+    sql: '"ON_BEHALF_OF"'
+
+  automatic_tax:
+    sql: '"AUTOMATIC_TAX"'
+
+  transfer_data:
+    sql: '"TRANSFER_DATA"'
+
+  days_until_due:
+    sql: '"DAYS_UNTIL_DUE"'
+
+  default_source:
+    sql: '"DEFAULT_SOURCE"'
+
+  latest_invoice:
+    sql: '"LATEST_INVOICE"'
+
+  pending_update:
+    sql: '"PENDING_UPDATE"'
+
+  trial_settings:
+    sql: '"TRIAL_SETTINGS"'
+
+  invoice_settings:
+    sql: '"INVOICE_SETTINGS"'
+
+  pause_collection:
+    sql: '"PAUSE_COLLECTION"'
+
+  payment_settings:
+    sql: '"PAYMENT_SETTINGS"'
+
+  collection_method:
+    sql: '"COLLECTION_METHOD"'
+
+  default_tax_rates:
+    sql: '"DEFAULT_TAX_RATES"'
+
+  billing_thresholds:
+    sql: '"BILLING_THRESHOLDS"'
+
+  current_period_end:
+    sql: '"CURRENT_PERIOD_END"'
+
+  billing_cycle_anchor:
+    sql: '"BILLING_CYCLE_ANCHOR"'
+
+  cancel_at_period_end:
+    sql: '"CANCEL_AT_PERIOD_END"'
+
+  cancellation_details:
+    sql: '"CANCELLATION_DETAILS"'
+
+  current_period_start:
+    sql: '"CURRENT_PERIOD_START"'
+
+  pending_setup_intent:
+    sql: '"PENDING_SETUP_INTENT"'
+
+  default_payment_method:
+    sql: '"DEFAULT_PAYMENT_METHOD"'
+
+  application_fee_percent:
+    sql: '"APPLICATION_FEE_PERCENT"'
+
+  billing_cycle_anchor_config:
+    sql: '"BILLING_CYCLE_ANCHOR_CONFIG"'
+
+  pending_invoice_item_interval:
+    sql: '"PENDING_INVOICE_ITEM_INTERVAL"'
+
+  next_pending_invoice_item_invoice:
+    sql: '"NEXT_PENDING_INVOICE_ITEM_INVOICE"'
+
+measures:
+  count:
+    aggregate_type: count

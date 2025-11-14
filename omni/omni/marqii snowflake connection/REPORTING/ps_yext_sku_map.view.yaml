@@ -1,0 +1,18 @@
+# Reference this view as reporting__ps_yext_sku_map
+schema: REPORTING
+table_name: PS_YEXT_SKU_MAP
+
+dimensions:
+  sku: {}
+
+  id:
+    format: ID
+    primary_key: true
+
+  package_id:
+    sql: '"packageId"'
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

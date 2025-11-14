@@ -1,0 +1,189 @@
+# Reference this view as reporting_planhat_export__planhat_store_reporting
+schema: REPORTING_PLANHAT_EXPORT
+table_name: PLANHAT_STORE_REPORTING
+
+dimensions:
+  airbyte_sync_ps_store:
+    sql: '"AIRBYTE_SYNC_PS_STORE"'
+
+  ps_store_country:
+    sql: '"PS_STORE_COUNTRY"'
+
+  ps_store_zip:
+    sql: '"PS_STORE_ZIP"'
+
+  ps_store_state:
+    sql: '"PS_STORE_STATE"'
+
+  ps_store_store_address:
+    sql: '"PS_STORE_STORE_ADDRESS"'
+
+  ps_store_city:
+    sql: '"PS_STORE_CITY"'
+
+  ps_store_address_detail:
+    sql: '"PS_STORE_ADDRESS_DETAIL"'
+
+  ps_store_id:
+    sql: '"PS_STORE_ID"'
+    format: ID
+    links:
+      - url: https://bo.marqii.com/accounts/${reporting_planhat_export__planhat_store_reporting.ps_account_id}/stores/${reporting_planhat_export__planhat_store_reporting.ps_store_id}
+        label: BO Store URL
+
+  ps_account_id:
+    sql: '"PS_ACCOUNT_ID"'
+    format: ID
+    links:
+      - url: https://bo.marqii.com/accounts/${reporting_planhat_export__planhat_store_reporting.ps_account_id}
+        label: BO Account URL
+
+  ps_store_name:
+    sql: '"PS_STORE_NAME"'
+
+  _apple_:
+    sql: "\"'Apple'\""
+
+  _bing_:
+    sql: "\"'Bing'\""
+
+  _doordash_:
+    sql: "\"'Doordash'\""
+
+  _ezcater_:
+    sql: "\"'EzCater'\""
+
+  _facebook_:
+    sql: "\"'Facebook'\""
+
+  _google_:
+    sql: "\"'Google'\""
+
+  _grubhub_:
+    sql: "\"'Grubhub'\""
+
+  _marqii_:
+    sql: "\"'Marqii'\""
+
+  _opentable_:
+    sql: "\"'OpenTable'\""
+
+  _ubereats_:
+    sql: "\"'UberEats'\""
+
+  _yelp_:
+    sql: "\"'Yelp'\""
+
+  _yext_:
+    sql: "\"'Yext'\""
+
+  airbyte_sync_ps:
+    sql: '"AIRBYTE_SYNC_PS"'
+
+  ps_account_name:
+    sql: '"PS_ACCOUNT_NAME"'
+    links:
+      - url: https://bo.marqii.com/accounts/${reporting_planhat_export__planhat_store_reporting.ps_account_id}
+        label: BO Account URL
+
+  ps_account_deleted:
+    sql: '"PS_ACCOUNT_DELETED"'
+
+  ps_account_create_date:
+    sql: '"PS_ACCOUNT_CREATE_DATE"'
+
+  account_features_menus_enabled:
+    sql: '"ACCOUNT_FEATURES_MENUS_ENABLED"'
+
+  account_features_reviewmonitoring_enabled:
+    sql: '"ACCOUNT_FEATURES_REVIEWMONITORING_ENABLED"'
+
+  account_features_listings_enabled:
+    sql: '"ACCOUNT_FEATURES_LISTINGS_ENABLED"'
+
+  account_features_suggested_review_response_enabled:
+    sql: '"ACCOUNT_FEATURES_SUGGESTED_REVIEW_RESPONSE_ENABLED"'
+
+  account_features_managed_reviews_enabled:
+    sql: '"ACCOUNT_FEATURES_MANAGED_REVIEWS_ENABLED"'
+
+  account_features_social_management_enabled:
+    sql: '"ACCOUNT_FEATURES_SOCIAL_MANAGEMENT_ENABLED"'
+
+  salesforceid:
+    sql: '"SALESFORCEID"'
+
+  stripeid:
+    sql: '"STRIPEID"'
+
+  account_current_package:
+    sql: '"ACCOUNT_CURRENT_PACKAGE"'
+
+  salesforce_account_name:
+    sql: '"SALESFORCE_ACCOUNT_NAME"'
+
+  salesforce_account_status:
+    sql: '"SALESFORCE_ACCOUNT_STATUS"'
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+
+  account_owner_team:
+    sql: '"ACCOUNT_OWNER_TEAM"'
+
+  master_stripe_id:
+    sql: '"MASTER_STRIPE_ID"'
+    format: ID
+
+  data_last_refreshed:
+    sql: '"DATA_LAST_REFRESHED"'
+
+  google_yn:
+    sql: COALESCE(${reporting_planhat_export__planhat_store_reporting._google_},
+      'N')
+    label: Google?
+
+  apple_yn:
+    sql: COALESCE(${reporting_planhat_export__planhat_store_reporting._apple_}, 'N')
+    label: Apple?
+
+  bing_yn:
+    sql: COALESCE(${reporting_planhat_export__planhat_store_reporting._bing_}, 'N')
+    label: Bing?
+
+  doordash_yn:
+    sql: COALESCE(${reporting_planhat_export__planhat_store_reporting._doordash_},
+      'N')
+    label: Doordash?
+
+  ezcater_yn:
+    sql: COALESCE(${reporting_planhat_export__planhat_store_reporting._ezcater_},
+      'N')
+    label: Ezcater?
+
+  facebook_yn:
+    sql: COALESCE(${reporting_planhat_export__planhat_store_reporting._facebook_},
+      'N')
+    label: Facebook?
+
+  opentable_yn:
+    sql: COALESCE(${reporting_planhat_export__planhat_store_reporting._opentable_},
+      'N')
+    label: Opentable?
+
+  ubereats_yn:
+    sql: COALESCE(${reporting_planhat_export__planhat_store_reporting._ubereats_},
+      'N')
+    label: Ubereats?
+
+  yelp_yn:
+    sql: COALESCE(${reporting_planhat_export__planhat_store_reporting._yelp_}, 'N')
+    label: Yelp?
+
+  yext_yn:
+    sql: COALESCE(${reporting_planhat_export__planhat_store_reporting._yext_}, 'N')
+    label: Yext?
+
+measures:
+  count:
+    aggregate_type: count

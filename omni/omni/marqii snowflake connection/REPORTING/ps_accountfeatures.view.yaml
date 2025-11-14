@@ -1,0 +1,22 @@
+# Reference this view as reporting__ps_accountfeatures
+schema: REPORTING
+table_name: PS_ACCOUNTFEATURES
+
+dimensions:
+  ps_account_id:
+    sql: '"PS_ACCOUNT_ID"'
+    format: ID
+
+  feature_id:
+    sql: '"FEATURE_ID"'
+    format: ID
+
+  feature_name:
+    sql: '"FEATURE_NAME"'
+
+  is_feature_removed_from_account:
+    sql: '"IS_FEATURE_REMOVED_FROM_ACCOUNT"'
+
+measures:
+  count:
+    aggregate_type: count

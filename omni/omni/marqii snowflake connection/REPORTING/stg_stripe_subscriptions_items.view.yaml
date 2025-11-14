@@ -1,0 +1,26 @@
+# Reference this view as reporting__stg_stripe_subscriptions_items
+schema: REPORTING
+table_name: STG_STRIPE_SUBSCRIPTIONS_ITEMS
+
+dimensions:
+  stripe_subscription_item_id:
+    sql: '"STRIPE_SUBSCRIPTION_ITEM_ID"'
+    format: ID
+
+  stripe_subscription_item_plan:
+    sql: '"STRIPE_SUBSCRIPTION_ITEM_PLAN"'
+
+  stripe_sku_id:
+    sql: '"STRIPE_SKU_ID"'
+    format: ID
+
+  stripe_subscription_id:
+    sql: '"STRIPE_SUBSCRIPTION_ID"'
+    format: ID
+
+  subscription_item_quantity:
+    sql: '"SUBSCRIPTION_ITEM_QUANTITY"'
+
+measures:
+  count:
+    aggregate_type: count

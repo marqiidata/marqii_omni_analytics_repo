@@ -1,0 +1,29 @@
+# Reference this view as reporting__stg_gsheets_pnl_unpivot
+schema: REPORTING
+table_name: STG_GSHEETS_PNL_UNPIVOT
+
+dimensions:
+  pnl_sync:
+    sql: '"PNL_SYNC"'
+
+  key_rows:
+    sql: '"KEY_ROWS"'
+
+  wrangle_time:
+    sql: '"WRANGLE_TIME"'
+
+  p_lv_2_wrangler_completed_at_07_13_2025_16_30:
+    sql: '"P_LV_2_WRANGLER_COMPLETED_AT_07_13_2025_16_30"'
+
+  account:
+    sql: '"ACCOUNT"'
+
+  field_name:
+    sql: '"FIELD_NAME"'
+
+  value:
+    sql: '"VALUE"'
+
+measures:
+  count:
+    aggregate_type: count

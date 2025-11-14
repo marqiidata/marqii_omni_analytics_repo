@@ -1,0 +1,607 @@
+# Reference this view as reporting__stg_salesforce_user
+schema: REPORTING
+table_name: STG_SALESFORCE_USER
+
+dimensions:
+  _airbyte_raw_id:
+    sql: '"_AIRBYTE_RAW_ID"'
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    sql: '"_AIRBYTE_EXTRACTED_AT"'
+    hidden: true
+
+  _airbyte_meta:
+    sql: '"_AIRBYTE_META"'
+    hidden: true
+
+  _airbyte_generation_id:
+    sql: '"_AIRBYTE_GENERATION_ID"'
+    format: ID
+    hidden: true
+
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  fax:
+    sql: '"FAX"'
+
+  city:
+    sql: '"CITY"'
+
+  name:
+    sql: '"NAME"'
+
+  alias:
+    sql: '"ALIAS"'
+
+  email:
+    sql: '"EMAIL"'
+
+  phone:
+    sql: '"PHONE"'
+
+  state:
+    sql: '"STATE"'
+
+  title:
+    sql: '"TITLE"'
+
+  endday:
+    sql: '"ENDDAY"'
+
+  street:
+    sql: '"STREET"'
+
+  suffix:
+    sql: '"SUFFIX"'
+
+  aboutme:
+    sql: '"ABOUTME"'
+
+  address:
+    sql: '"ADDRESS"'
+
+  country:
+    sql: '"COUNTRY"'
+
+  team__c:
+    sql: '"TEAM__C"'
+
+  division:
+    sql: '"DIVISION"'
+
+  isactive:
+    sql: '"ISACTIVE"'
+
+  lastname:
+    sql: '"LASTNAME"'
+
+  latitude:
+    sql: '"LATITUDE"'
+
+  startday:
+    sql: '"STARTDAY"'
+
+  usertype:
+    sql: '"USERTYPE"'
+
+  username:
+    sql: '"USERNAME"'
+
+  accountid:
+    sql: '"ACCOUNTID"'
+
+  badgetext:
+    sql: '"BADGETEXT"'
+
+  contactid:
+    sql: '"CONTACTID"'
+
+  extension:
+    sql: '"EXTENSION"'
+
+  firstname:
+    sql: '"FIRSTNAME"'
+
+  longitude:
+    sql: '"LONGITUDE"'
+
+  managerid:
+    sql: '"MANAGERID"'
+
+  profileid:
+    sql: '"PROFILEID"'
+
+  signature:
+    sql: '"SIGNATURE"'
+
+  statecode:
+    sql: '"STATECODE"'
+
+  department:
+    sql: '"DEPARTMENT"'
+
+  middlename:
+    sql: '"MIDDLENAME"'
+
+  postalcode:
+    sql: '"POSTALCODE"'
+
+  sendername:
+    sql: '"SENDERNAME"'
+
+  userroleid:
+    sql: '"USERROLEID"'
+
+  companyname:
+    sql: '"COMPANYNAME"'
+
+  countrycode:
+    sql: '"COUNTRYCODE"'
+
+  createdbyid:
+    sql: '"CREATEDBYID"'
+
+  createddate:
+    sql: '"CREATEDDATE"'
+
+  mobilephone:
+    sql: '"MOBILEPHONE"'
+
+  senderemail:
+    sql: '"SENDEREMAIL"'
+
+  slack_id__c:
+    sql: '"SLACK_ID__C"'
+
+  callcenterid:
+    sql: '"CALLCENTERID"'
+
+  fullphotourl:
+    sql: '"FULLPHOTOURL"'
+
+  localesidkey:
+    sql: '"LOCALESIDKEY"'
+
+  lastlogindate:
+    sql: '"LASTLOGINDATE"'
+
+  smallphotourl:
+    sql: '"SMALLPHOTOURL"'
+
+  bannerphotourl:
+    sql: '"BANNERPHOTOURL"'
+
+  employeenumber:
+    sql: '"EMPLOYEENUMBER"'
+
+  lastvieweddate:
+    sql: '"LASTVIEWEDDATE"'
+
+  mediumphotourl:
+    sql: '"MEDIUMPHOTOURL"'
+
+  systemmodstamp:
+    sql: '"SYSTEMMODSTAMP"'
+
+  timezonesidkey:
+    sql: '"TIMEZONESIDKEY"'
+
+  digestfrequency:
+    sql: '"DIGESTFREQUENCY"'
+
+  forecastenabled:
+    sql: '"FORECASTENABLED"'
+
+  geocodeaccuracy:
+    sql: '"GEOCODEACCURACY"'
+
+  stayintouchnote:
+    sql: '"STAYINTOUCHNOTE"'
+
+  emailencodingkey:
+    sql: '"EMAILENCODINGKEY"'
+
+  lastmodifiedbyid:
+    sql: '"LASTMODIFIEDBYID"'
+
+  lastmodifieddate:
+    sql: '"LASTMODIFIEDDATE"'
+
+  dfsle__status__c:
+    sql: '"DFSLE__STATUS__C"'
+
+  communitynickname:
+    sql: '"COMMUNITYNICKNAME"'
+
+  languagelocalekey:
+    sql: '"LANGUAGELOCALEKEY"'
+
+  lastreferenceddate:
+    sql: '"LASTREFERENCEDDATE"'
+
+  outofofficemessage:
+    sql: '"OUTOFOFFICEMESSAGE"'
+
+  receivesinfoemails:
+    sql: '"RECEIVESINFOEMAILS"'
+
+  stayintouchsubject:
+    sql: '"STAYINTOUCHSUBJECT"'
+
+  dfsle__username__c:
+    sql: '"DFSLE__USERNAME__C"'
+
+  delegatedapproverid:
+    sql: '"DELEGATEDAPPROVERID"'
+
+  smallbannerphotourl:
+    sql: '"SMALLBANNERPHOTOURL"'
+
+  federationidentifier:
+    sql: '"FEDERATIONIDENTIFIER"'
+
+  isprofilephotoactive:
+    sql: '"ISPROFILEPHOTOACTIVE"'
+
+  mediumbannerphotourl:
+    sql: '"MEDIUMBANNERPHOTOURL"'
+
+  numberoffailedlogins:
+    sql: '"NUMBEROFFAILEDLOGINS"'
+
+  stayintouchsignature:
+    sql: '"STAYINTOUCHSIGNATURE"'
+
+  isextindicatorvisible:
+    sql: '"ISEXTINDICATORVISIBLE"'
+
+  dfsle__provisioned__c:
+    sql: '"DFSLE__PROVISIONED__C"'
+
+  high_priority_leads__c:
+    sql: '"HIGH_PRIORITY_LEADS__C"'
+
+  lastpasswordchangedate:
+    sql: '"LASTPASSWORDCHANGEDATE"'
+
+  passwordexpirationdate:
+    sql: '"PASSWORDEXPIRATIONDATE"'
+
+  suaccessexpirationdate:
+    sql: '"SUACCESSEXPIRATIONDATE"'
+
+  emailpreferencesautobcc:
+    sql: '"EMAILPREFERENCESAUTOBCC"'
+
+  receivesadmininfoemails:
+    sql: '"RECEIVESADMININFOEMAILS"'
+
+  employment_start_date__c:
+    sql: '"EMPLOYMENT_START_DATE__C"'
+
+  calendly__calendlylink__c:
+    sql: '"CALENDLY__CALENDLYLINK__C"'
+
+  mixmax_lead_round_robin__c:
+    sql: '"MIXMAX_LEAD_ROUND_ROBIN__C"'
+
+  offlinetrialexpirationdate:
+    sql: '"OFFLINETRIALEXPIRATIONDATE"'
+
+  userpermissionsavantgouser:
+    sql: '"USERPERMISSIONSAVANTGOUSER"'
+
+  userpermissionsofflineuser:
+    sql: '"USERPERMISSIONSOFFLINEUSER"'
+
+  userpermissionssupportuser:
+    sql: '"USERPERMISSIONSSUPPORTUSER"'
+
+  dfsle__canmanageaccount__c:
+    sql: '"DFSLE__CANMANAGEACCOUNT__C"'
+
+  userpermissionsmarketinguser:
+    sql: '"USERPERMISSIONSMARKETINGUSER"'
+
+  userpermissionssfcontentuser:
+    sql: '"USERPERMISSIONSSFCONTENTUSER"'
+
+  offlinepdatrialexpirationdate:
+    sql: '"OFFLINEPDATRIALEXPIRATIONDATE"'
+
+  userpermissionsinteractionuser:
+    sql: '"USERPERMISSIONSINTERACTIONUSER"'
+
+  userpreferenceshides1browserui:
+    sql: '"USERPREFERENCESHIDES1BROWSERUI"'
+
+  userpreferencescachediagnostics:
+    sql: '"USERPREFERENCESCACHEDIAGNOSTICS"'
+
+  userpreferencesdisablelikeemail:
+    sql: '"USERPREFERENCESDISABLELIKEEMAIL"'
+
+  userpreferencesfavoriteswtshown:
+    sql: '"USERPREFERENCESFAVORITESWTSHOWN"'
+
+  userpreferencespreviewlightning:
+    sql: '"USERPREFERENCESPREVIEWLIGHTNING"'
+
+  userpreferencesremindersoundoff:
+    sql: '"USERPREFERENCESREMINDERSOUNDOFF"'
+
+  userpreferenceshidesfxwelcomemat:
+    sql: '"USERPREFERENCESHIDESFXWELCOMEMAT"'
+
+  userpreferencesnativeemailclient:
+    sql: '"USERPREFERENCESNATIVEEMAILCLIENT"'
+
+  userpreferencessortfeedbycomment:
+    sql: '"USERPREFERENCESSORTFEEDBYCOMMENT"'
+
+  userpreferencesuserdebugmodepref:
+    sql: '"USERPREFERENCESUSERDEBUGMODEPREF"'
+
+  defaultgroupnotificationfrequency:
+    sql: '"DEFAULTGROUPNOTIFICATIONFREQUENCY"'
+
+  userpreferenceshidecsndesktoptask:
+    sql: '"USERPREFERENCESHIDECSNDESKTOPTASK"'
+
+  userpreferencespreviewcustomtheme:
+    sql: '"USERPREFERENCESPREVIEWCUSTOMTHEME"'
+
+  emailpreferencesautobccstayintouch:
+    sql: '"EMAILPREFERENCESAUTOBCCSTAYINTOUCH"'
+
+  userpermissionscallcenterautologin:
+    sql: '"USERPERMISSIONSCALLCENTERAUTOLOGIN"'
+
+  userpreferencesdisablemessageemail:
+    sql: '"USERPREFERENCESDISABLEMESSAGEEMAIL"'
+
+  userpreferencesglobalnavbarwtshown:
+    sql: '"USERPREFERENCESGLOBALNAVBARWTSHOWN"'
+
+  userpreferenceshascelebrationbadge:
+    sql: '"USERPREFERENCESHASCELEBRATIONBADGE"'
+
+  userpreferenceshassentwarningemail:
+    sql: '"USERPREFERENCESHASSENTWARNINGEMAIL"'
+
+  userpreferencesshowfaxtoguestusers:
+    sql: '"USERPREFERENCESSHOWFAXTOGUESTUSERS"'
+
+  emailpreferencesstayintouchreminder:
+    sql: '"EMAILPREFERENCESSTAYINTOUCHREMINDER"'
+
+  userpreferencescreatelexappswtshown:
+    sql: '"USERPREFERENCESCREATELEXAPPSWTSHOWN"'
+
+  userpreferencesdisableallfeedsemail:
+    sql: '"USERPREFERENCESDISABLEALLFEEDSEMAIL"'
+
+  userpreferencesdisablebookmarkemail:
+    sql: '"USERPREFERENCESDISABLEBOOKMARKEMAIL"'
+
+  userpreferencesshowcitytoguestusers:
+    sql: '"USERPREFERENCESSHOWCITYTOGUESTUSERS"'
+
+  userpreferencesdisablefollowersemail:
+    sql: '"USERPREFERENCESDISABLEFOLLOWERSEMAIL"'
+
+  userpreferencesdisablesharepostemail:
+    sql: '"USERPREFERENCESDISABLESHAREPOSTEMAIL"'
+
+  userpreferencesenableautosubforfeeds:
+    sql: '"USERPREFERENCESENABLEAUTOSUBFORFEEDS"'
+
+  userpreferencessrhoverrideactivities:
+    sql: '"USERPREFERENCESSRHOVERRIDEACTIVITIES"'
+
+  userpreferencesshowemailtoguestusers:
+    sql: '"USERPREFERENCESSHOWEMAILTOGUESTUSERS"'
+
+  userpreferencesshowstatetoguestusers:
+    sql: '"USERPREFERENCESSHOWSTATETOGUESTUSERS"'
+
+  userpreferencesshowtitletoguestusers:
+    sql: '"USERPREFERENCESSHOWTITLETOGUESTUSERS"'
+
+  userpreferencesactivityreminderspopup:
+    sql: '"USERPREFERENCESACTIVITYREMINDERSPOPUP"'
+
+  userpreferencesapexpagesdevelopermode:
+    sql: '"USERPREFERENCESAPEXPAGESDEVELOPERMODE"'
+
+  userpreferenceshassentwarningemail238:
+    sql: '"USERPREFERENCESHASSENTWARNINGEMAIL238"'
+
+  userpreferenceshassentwarningemail240:
+    sql: '"USERPREFERENCESHASSENTWARNINGEMAIL240"'
+
+  userpreferenceshidebiggerphotocallout:
+    sql: '"USERPREFERENCESHIDEBIGGERPHOTOCALLOUT"'
+
+  userpreferencespathassistantcollapsed:
+    sql: '"USERPREFERENCESPATHASSISTANTCOLLAPSED"'
+
+  userpreferencesshowfaxtoexternalusers:
+    sql: '"USERPREFERENCESSHOWFAXTOEXTERNALUSERS"'
+
+  userpreferencesdismentionscommentemail:
+    sql: '"USERPREFERENCESDISMENTIONSCOMMENTEMAIL"'
+
+  userpreferencesdisprofpostcommentemail:
+    sql: '"USERPREFERENCESDISPROFPOSTCOMMENTEMAIL"'
+
+  userpreferencesdisableendorsementemail:
+    sql: '"USERPREFERENCESDISABLEENDORSEMENTEMAIL"'
+
+  userpreferencesdisableprofilepostemail:
+    sql: '"USERPREFERENCESDISABLEPROFILEPOSTEMAIL"'
+
+  userpreferencesshowcitytoexternalusers:
+    sql: '"USERPREFERENCESSHOWCITYTOEXTERNALUSERS"'
+
+  userpreferencesshowcountrytoguestusers:
+    sql: '"USERPREFERENCESSHOWCOUNTRYTOGUESTUSERS"'
+
+  userpreferencesshowmanagertoguestusers:
+    sql: '"USERPREFERENCESSHOWMANAGERTOGUESTUSERS"'
+
+  userpreferencesdiscommentafterlikeemail:
+    sql: '"USERPREFERENCESDISCOMMENTAFTERLIKEEMAIL"'
+
+  userpreferencesdisablelatercommentemail:
+    sql: '"USERPREFERENCESDISABLELATERCOMMENTEMAIL"'
+
+  userpreferencesdisablementionspostemail:
+    sql: '"USERPREFERENCESDISABLEMENTIONSPOSTEMAIL"'
+
+  userpreferencesglobalnavgridmenuwtshown:
+    sql: '"USERPREFERENCESGLOBALNAVGRIDMENUWTSHOWN"'
+
+  userpreferencesshowemailtoexternalusers:
+    sql: '"USERPREFERENCESSHOWEMAILTOEXTERNALUSERS"'
+
+  userpreferencesshowstatetoexternalusers:
+    sql: '"USERPREFERENCESSHOWSTATETOEXTERNALUSERS"'
+
+  userpreferencesshowtitletoexternalusers:
+    sql: '"USERPREFERENCESSHOWTITLETOEXTERNALUSERS"'
+
+  userpreferencessuppresstasksfxreminders:
+    sql: '"USERPREFERENCESSUPPRESSTASKSFXREMINDERS"'
+
+  userpreferencesdisablechangecommentemail:
+    sql: '"USERPREFERENCESDISABLECHANGECOMMENTEMAIL"'
+
+  userpreferencesexcludemailappattachments:
+    sql: '"USERPREFERENCESEXCLUDEMAILAPPATTACHMENTS"'
+
+  userpreferencesfavoritesshowtopfavorites:
+    sql: '"USERPREFERENCESFAVORITESSHOWTOPFAVORITES"'
+
+  userpreferencesrecordhomereservedwtshown:
+    sql: '"USERPREFERENCESRECORDHOMERESERVEDWTSHOWN"'
+
+  userpreferencesreverseopenactivitiesview:
+    sql: '"USERPREFERENCESREVERSEOPENACTIVITIESVIEW"'
+
+  userpreferencesshowworkphonetoguestusers:
+    sql: '"USERPREFERENCESSHOWWORKPHONETOGUESTUSERS"'
+
+  userpreferencessuppresseventsfxreminders:
+    sql: '"USERPREFERENCESSUPPRESSEVENTSFXREMINDERS"'
+
+  userpreferencesallowconversationreminders:
+    sql: '"USERPREFERENCESALLOWCONVERSATIONREMINDERS"'
+
+  userpreferencesshowcountrytoexternalusers:
+    sql: '"USERPREFERENCESSHOWCOUNTRYTOEXTERNALUSERS"'
+
+  userpreferencesshowmanagertoexternalusers:
+    sql: '"USERPREFERENCESSHOWMANAGERTOEXTERNALUSERS"'
+
+  userpreferencesshowpostalcodetoguestusers:
+    sql: '"USERPREFERENCESSHOWPOSTALCODETOGUESTUSERS"'
+
+  userpreferencesshowprofilepictoguestusers:
+    sql: '"USERPREFERENCESSHOWPROFILEPICTOGUESTUSERS"'
+
+  userpreferenceshidecsngetchattermobiletask:
+    sql: '"USERPREFERENCESHIDECSNGETCHATTERMOBILETASK"'
+
+  userpreferenceshidechatteronboardingsplash:
+    sql: '"USERPREFERENCESHIDECHATTERONBOARDINGSPLASH"'
+
+  userpreferenceshidelightningmigrationmodal:
+    sql: '"USERPREFERENCESHIDELIGHTNINGMIGRATIONMODAL"'
+
+  userpreferencesshowmobilephonetoguestusers:
+    sql: '"USERPREFERENCESSHOWMOBILEPHONETOGUESTUSERS"'
+
+  userpreferenceshideonlinesalesappwelcomemat:
+    sql: '"USERPREFERENCESHIDEONLINESALESAPPWELCOMEMAT"'
+
+  userpreferenceslightningexperiencepreferred:
+    sql: '"USERPREFERENCESLIGHTNINGEXPERIENCEPREFERRED"'
+
+  userpreferencesliveagentmiawsetupdeflection:
+    sql: '"USERPREFERENCESLIVEAGENTMIAWSETUPDEFLECTION"'
+
+  userpreferencesshowforecastingchangesignals:
+    sql: '"USERPREFERENCESSHOWFORECASTINGCHANGESIGNALS"'
+
+  userpreferencesshowworkphonetoexternalusers:
+    sql: '"USERPREFERENCESSHOWWORKPHONETOEXTERNALUSERS"'
+
+  userpreferencestaskreminderscheckboxdefault:
+    sql: '"USERPREFERENCESTASKREMINDERSCHECKBOXDEFAULT"'
+
+  userpreferenceseventreminderscheckboxdefault:
+    sql: '"USERPREFERENCESEVENTREMINDERSCHECKBOXDEFAULT"'
+
+  userpreferencesshowforecastingroundedamounts:
+    sql: '"USERPREFERENCESSHOWFORECASTINGROUNDEDAMOUNTS"'
+
+  userpreferencesshowpostalcodetoexternalusers:
+    sql: '"USERPREFERENCESSHOWPOSTALCODETOEXTERNALUSERS"'
+
+  userpreferencesshowstreetaddresstoguestusers:
+    sql: '"USERPREFERENCESSHOWSTREETADDRESSTOGUESTUSERS"'
+
+  userpreferencesshowmobilephonetoexternalusers:
+    sql: '"USERPREFERENCESSHOWMOBILEPHONETOEXTERNALUSERS"'
+
+  userpreferencesusesalesforcemailerforlexemail:
+    sql: '"USERPREFERENCESUSESALESFORCEMAILERFORLEXEMAIL"'
+
+  userpreferencesactionlaunchereinsteingptconsent:
+    sql: '"USERPREFERENCESACTIONLAUNCHEREINSTEINGPTCONSENT"'
+
+  userpreferencesnewlightningreportrunpageenabled:
+    sql: '"USERPREFERENCESNEWLIGHTNINGREPORTRUNPAGEENABLED"'
+
+  userpreferencesreceivenonotificationsasapprover:
+    sql: '"USERPREFERENCESRECEIVENONOTIFICATIONSASAPPROVER"'
+
+  userpreferencesrecordhomesectioncollapsewtshown:
+    sql: '"USERPREFERENCESRECORDHOMESECTIONCOLLAPSEWTSHOWN"'
+
+  userpreferencesshowstreetaddresstoexternalusers:
+    sql: '"USERPREFERENCESSHOWSTREETADDRESSTOEXTERNALUSERS"'
+
+  userpreferenceshidesecondchatteronboardingsplash:
+    sql: '"USERPREFERENCESHIDESECONDCHATTERONBOARDINGSPLASH"'
+
+  userpreferencesdisablefilesharenotificationsforapi:
+    sql: '"USERPREFERENCESDISABLEFILESHARENOTIFICATIONSFORAPI"'
+
+  userpreferenceshideenduseronboardingassistantmodal:
+    sql: '"USERPREFERENCESHIDEENDUSERONBOARDINGASSISTANTMODAL"'
+
+  userpreferencessendlistemailthroughexternalservice:
+    sql: '"USERPREFERENCESSENDLISTEMAILTHROUGHEXTERNALSERVICE"'
+
+  userpreferenceshidebrowseproductredirectconfirmation:
+    sql: '"USERPREFERENCESHIDEBROWSEPRODUCTREDIRECTCONFIRMATION"'
+
+  userpreferencesassistiveactionsenabledinactionlauncher:
+    sql: '"USERPREFERENCESASSISTIVEACTIONSENABLEDINACTIONLAUNCHER"'
+
+  userpreferencesreceivenotificationsasdelegatedapprover:
+    sql: '"USERPREFERENCESRECEIVENOTIFICATIONSASDELEGATEDAPPROVER"'
+
+  userpreferenceshideonlinesalesapptabvisibilityrequirementsmodal:
+    sql: '"USERPREFERENCESHIDEONLINESALESAPPTABVISIBILITYREQUIREMENTSMODAL"'
+
+measures:
+  count:
+    aggregate_type: count

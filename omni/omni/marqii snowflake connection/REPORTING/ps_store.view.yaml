@@ -1,0 +1,41 @@
+# Reference this view as reporting__ps_store
+schema: REPORTING
+table_name: PS_STORE
+
+dimensions:
+  airbyte_sync_ps_store:
+    sql: '"AIRBYTE_SYNC_PS_STORE"'
+
+  ps_store_country:
+    sql: '"PS_STORE_COUNTRY"'
+
+  ps_store_zip:
+    sql: '"PS_STORE_ZIP"'
+
+  ps_store_state:
+    sql: '"PS_STORE_STATE"'
+
+  ps_store_store_address:
+    sql: '"PS_STORE_STORE_ADDRESS"'
+
+  ps_store_city:
+    sql: '"PS_STORE_CITY"'
+
+  ps_store_address_detail:
+    sql: '"PS_STORE_ADDRESS_DETAIL"'
+
+  ps_store_id:
+    sql: '"PS_STORE_ID"'
+    format: ID
+    primary_key: true
+
+  ps_account_id:
+    sql: '"PS_ACCOUNT_ID"'
+    format: ID
+
+  ps_store_name:
+    sql: '"PS_STORE_NAME"'
+
+measures:
+  count:
+    aggregate_type: count

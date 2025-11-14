@@ -1,0 +1,36 @@
+# Reference this view as reporting__stg_salesforce_account_history
+schema: REPORTING
+table_name: STG_SALESFORCE_ACCOUNT_HISTORY
+
+dimensions:
+  account_history_id:
+    sql: '"ACCOUNT_HISTORY_ID"'
+    format: ID
+
+  account_history_field:
+    sql: '"ACCOUNT_HISTORY_FIELD"'
+
+  account_history_datatype:
+    sql: '"ACCOUNT_HISTORY_DATATYPE"'
+
+  account_history_newvalue:
+    sql: '"ACCOUNT_HISTORY_NEWVALUE"'
+
+  account_history_oldvalue:
+    sql: '"ACCOUNT_HISTORY_OLDVALUE"'
+
+  account_history_accountid:
+    sql: '"ACCOUNT_HISTORY_ACCOUNTID"'
+
+  account_history_isdeleted:
+    sql: '"ACCOUNT_HISTORY_ISDELETED"'
+
+  account_history_createddate:
+    sql: '"ACCOUNT_HISTORY_CREATEDDATE"'
+
+  account_history_createdbyid:
+    sql: '"ACCOUNT_HISTORY_CREATEDBYID"'
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,53 @@
+# Reference this view as reporting__premium_services_accounts_reporting
+schema: REPORTING
+table_name: PREMIUM_SERVICES_ACCOUNTS_REPORTING
+
+dimensions:
+  apple_test:
+    sql: '"APPLE_TEST"'
+
+  account_current_package:
+    sql: '"ACCOUNT_CURRENT_PACKAGE"'
+
+  ps_account_id:
+    sql: '"PS_ACCOUNT_ID"'
+    format: ID
+
+  ps_account_name:
+    sql: '"PS_ACCOUNT_NAME"'
+
+  account_status__c:
+    sql: '"ACCOUNT_STATUS__C"'
+
+  package__c:
+    sql: '"PACKAGE__C"'
+
+  salesforceid:
+    sql: '"SALESFORCEID"'
+
+  stripeid:
+    sql: '"STRIPEID"'
+
+  ps_store_name:
+    sql: '"PS_STORE_NAME"'
+
+  ps_store_id:
+    sql: '"PS_STORE_ID"'
+    format: ID
+
+  ps_store_listing_id:
+    sql: '"PS_STORE_LISTING_ID"'
+    format: ID
+
+  store_listing_created:
+    sql: '"STORE_LISTING_CREATED"'
+
+  ps_store_listing_listings_enabled:
+    sql: '"PS_STORE_LISTING_LISTINGS_ENABLED"'
+
+  ps_store_listing_provider:
+    sql: '"PS_STORE_LISTING_PROVIDER"'
+
+measures:
+  count:
+    aggregate_type: count

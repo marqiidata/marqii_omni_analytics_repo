@@ -1,0 +1,181 @@
+# Reference this view as reporting__stg_stripe_charges
+schema: REPORTING
+table_name: STG_STRIPE_CHARGES
+
+dimensions:
+  _airbyte_raw_id:
+    sql: '"_AIRBYTE_RAW_ID"'
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    sql: '"_AIRBYTE_EXTRACTED_AT"'
+    hidden: true
+
+  _airbyte_meta:
+    sql: '"_AIRBYTE_META"'
+    hidden: true
+
+  _airbyte_generation_id:
+    sql: '"_AIRBYTE_GENERATION_ID"'
+    format: ID
+    hidden: true
+
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  card:
+    sql: '"CARD"'
+
+  paid:
+    sql: '"PAID"'
+
+  order:
+    sql: '"ORDER"'
+
+  amount:
+    sql: '"AMOUNT"'
+
+  object:
+    sql: '"OBJECT"'
+
+  review:
+    sql: '"REVIEW"'
+
+  source:
+    sql: '"SOURCE"'
+
+  status:
+    sql: '"STATUS"'
+
+  created:
+    sql: '"CREATED"'
+
+  dispute:
+    sql: '"DISPUTE"'
+
+  invoice:
+    sql: '"INVOICE"'
+
+  outcome:
+    sql: '"OUTCOME"'
+
+  refunds:
+    sql: '"REFUNDS"'
+
+  updated:
+    sql: '"UPDATED"'
+
+  captured:
+    sql: '"CAPTURED"'
+
+  currency:
+    sql: '"CURRENCY"'
+
+  customer:
+    sql: '"CUSTOMER"'
+
+  disputed:
+    sql: '"DISPUTED"'
+
+  livemode:
+    sql: '"LIVEMODE"'
+
+  metadata:
+    sql: '"METADATA"'
+
+  refunded:
+    sql: '"REFUNDED"'
+
+  shipping:
+    sql: '"SHIPPING"'
+
+  application:
+    sql: '"APPLICATION"'
+
+  description:
+    sql: '"DESCRIPTION"'
+
+  destination:
+    sql: '"DESTINATION"'
+
+  receipt_url:
+    sql: '"RECEIPT_URL"'
+
+  failure_code:
+    sql: '"FAILURE_CODE"'
+
+  on_behalf_of:
+    sql: '"ON_BEHALF_OF"'
+
+  fraud_details:
+    sql: '"FRAUD_DETAILS"'
+
+  receipt_email:
+    sql: '"RECEIPT_EMAIL"'
+
+  transfer_data:
+    sql: '"TRANSFER_DATA"'
+
+  amount_updates:
+    sql: '"AMOUNT_UPDATES"'
+
+  payment_intent:
+    sql: '"PAYMENT_INTENT"'
+
+  payment_method:
+    sql: '"PAYMENT_METHOD"'
+
+  receipt_number:
+    sql: '"RECEIPT_NUMBER"'
+
+  transfer_group:
+    sql: '"TRANSFER_GROUP"'
+
+  amount_captured:
+    sql: '"AMOUNT_CAPTURED"'
+
+  amount_refunded:
+    sql: '"AMOUNT_REFUNDED"'
+
+  application_fee:
+    sql: '"APPLICATION_FEE"'
+
+  billing_details:
+    sql: '"BILLING_DETAILS"'
+
+  failure_message:
+    sql: '"FAILURE_MESSAGE"'
+
+  source_transfer:
+    sql: '"SOURCE_TRANSFER"'
+
+  balance_transaction:
+    sql: '"BALANCE_TRANSACTION"'
+
+  statement_descriptor:
+    sql: '"STATEMENT_DESCRIPTOR"'
+
+  statement_description:
+    sql: '"STATEMENT_DESCRIPTION"'
+
+  application_fee_amount:
+    sql: '"APPLICATION_FEE_AMOUNT"'
+
+  payment_method_details:
+    sql: '"PAYMENT_METHOD_DETAILS"'
+
+  failure_balance_transaction:
+    sql: '"FAILURE_BALANCE_TRANSACTION"'
+
+  statement_descriptor_suffix:
+    sql: '"STATEMENT_DESCRIPTOR_SUFFIX"'
+
+  calculated_statement_descriptor:
+    sql: '"CALCULATED_STATEMENT_DESCRIPTOR"'
+
+measures:
+  count:
+    aggregate_type: count

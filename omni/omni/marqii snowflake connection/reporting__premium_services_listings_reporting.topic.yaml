@@ -1,0 +1,7 @@
+base_view: reporting__premium_services_listings_reporting
+label: Listings Topic
+
+joins:
+  reporting__ps_store_listing: {}
+  reporting__ps_account: {}
+  reporting__ps_store: {}

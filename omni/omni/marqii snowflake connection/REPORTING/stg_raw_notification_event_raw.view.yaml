@@ -1,0 +1,32 @@
+# Reference this view as reporting__stg_raw_notification_event_raw
+schema: REPORTING
+table_name: STG_RAW_NOTIFICATION_EVENT_RAW
+
+dimensions:
+  data: {}
+  rn: {}
+
+  id:
+    format: ID
+    primary_key: true
+
+  created_at:
+    sql: '"createdAt"'
+
+  _airbyte_raw_id:
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    hidden: true
+
+  _airbyte_meta:
+    hidden: true
+
+  _airbyte_generation_id:
+    format: ID
+    hidden: true
+
+measures:
+  count:
+    aggregate_type: count

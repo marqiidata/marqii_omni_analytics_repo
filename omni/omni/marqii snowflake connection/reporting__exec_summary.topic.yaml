@@ -1,0 +1,9 @@
+base_view: reporting__exec_summary
+label: Core Financial Metrics
+description: Contains salesforce recurring renuve, quickbooks key financial
+  metrics, and our forecasts and plan
+
+joins: {}
+
+ai_context: "From this report: CAC, ACquisition COst, NRR, GRR, Net Revenue
+  Retention, Gross Revenue Rention, Forecast revenue, Plan revneue, Actuals"

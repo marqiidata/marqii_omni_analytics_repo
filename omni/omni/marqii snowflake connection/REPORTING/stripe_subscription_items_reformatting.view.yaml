@@ -1,0 +1,64 @@
+# Reference this view as reporting__stripe_subscription_items_reformatting
+schema: REPORTING
+table_name: STRIPE_SUBSCRIPTION_ITEMS_REFORMATTING
+
+dimensions:
+  value:
+    sql: '"VALUE"'
+
+  subscription_id:
+    sql: '"SUBSCRIPTION_ID"'
+    format: ID
+
+  price_id:
+    sql: '"PRICE_ID"'
+    format: ID
+
+  unit_amount:
+    sql: '"UNIT_AMOUNT"'
+
+  quantity:
+    sql: '"QUANTITY"'
+
+  stripe_subscription_item_id:
+    sql: '"STRIPE_SUBSCRIPTION_ITEM_ID"'
+    format: ID
+
+  stripe_subscription_item_discount_id:
+    sql: '"STRIPE_SUBSCRIPTION_ITEM_DISCOUNT_ID"'
+    format: ID
+
+  fivetran_discount_id:
+    sql: '"FIVETRAN_DISCOUNT_ID"'
+    format: ID
+
+  fivetran_discount_start:
+    sql: '"FIVETRAN_DISCOUNT_START"'
+
+  fivetran_discount_end:
+    sql: '"FIVETRAN_DISCOUNT_END"'
+
+  fivetran_coupon_id:
+    sql: '"FIVETRAN_COUPON_ID"'
+    format: ID
+
+  fivetran_customer_id:
+    sql: '"FIVETRAN_CUSTOMER_ID"'
+    format: ID
+
+  fivetran_subscription_id:
+    sql: '"FIVETRAN_SUBSCRIPTION_ID"'
+    format: ID
+
+  fivetran_discount_duration:
+    sql: '"FIVETRAN_DISCOUNT_DURATION"'
+
+  fivetran_coupon_name:
+    sql: '"FIVETRAN_COUPON_NAME"'
+
+  fivetran_coupon_percent_off:
+    sql: '"FIVETRAN_COUPON_PERCENT_OFF"'
+
+measures:
+  count:
+    aggregate_type: count

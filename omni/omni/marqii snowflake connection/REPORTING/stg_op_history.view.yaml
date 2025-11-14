@@ -1,0 +1,55 @@
+# Reference this view as reporting__stg_op_history
+schema: REPORTING
+table_name: STG_OP_HISTORY
+
+dimensions:
+  _airbyte_raw_id:
+    sql: '"_AIRBYTE_RAW_ID"'
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    sql: '"_AIRBYTE_EXTRACTED_AT"'
+    hidden: true
+
+  _airbyte_meta:
+    sql: '"_AIRBYTE_META"'
+    hidden: true
+
+  _airbyte_generation_id:
+    sql: '"_AIRBYTE_GENERATION_ID"'
+    format: ID
+    hidden: true
+
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  field:
+    sql: '"FIELD"'
+
+  datatype:
+    sql: '"DATATYPE"'
+
+  newvalue:
+    sql: '"NEWVALUE"'
+
+  oldvalue:
+    sql: '"OLDVALUE"'
+
+  isdeleted:
+    sql: '"ISDELETED"'
+
+  createdbyid:
+    sql: '"CREATEDBYID"'
+
+  createddate:
+    sql: '"CREATEDDATE"'
+
+  opportunityid:
+    sql: '"OPPORTUNITYID"'
+
+measures:
+  count:
+    aggregate_type: count

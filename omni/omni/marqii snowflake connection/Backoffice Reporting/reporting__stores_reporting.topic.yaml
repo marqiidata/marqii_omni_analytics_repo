@@ -1,0 +1,9 @@
+base_view: reporting__stores_reporting
+label: Location Update Reporting
+group_label: Backoffice Reporting
+description: this data source has whether or not the most recent tasks have
+  succeeded or failed in updating listings for each store.
+
+joins: {}
+
+ai_context: "Use this data source for where listings failed. "

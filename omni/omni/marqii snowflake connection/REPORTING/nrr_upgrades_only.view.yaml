@@ -1,0 +1,90 @@
+# Reference this view as reporting__nrr_upgrades_only
+schema: REPORTING
+table_name: NRR_UPGRADES_ONLY
+
+dimensions:
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  num_account_locations:
+    sql: '"NUM_ACCOUNT_LOCATIONS"'
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+
+  month_date_rev_reporting:
+    sql: '"MONTH_DATE_REV_REPORTING"'
+
+  arr:
+    sql: '"ARR"'
+
+  mrr:
+    sql: '"MRR"'
+
+  gross_arr:
+    sql: '"GROSS_ARR"'
+
+  cumulative_mrr_sum:
+    sql: '"CUMULATIVE_MRR_SUM"'
+
+  filled_cumulative_mrr:
+    sql: '"FILLED_CUMULATIVE_MRR"'
+
+  formatted_filled_cumulative_mrr:
+    sql: '"FORMATTED_FILLED_CUMULATIVE_MRR"'
+
+  nrr_date:
+    sql: '"NRR_DATE"'
+
+  py_nrr_date:
+    sql: '"PY_NRR_DATE"'
+
+  py_cum_mrr:
+    sql: '"PY_CUM_MRR"'
+
+  formatted_py_cum_mrr:
+    sql: '"FORMATTED_PY_CUM_MRR"'
+
+  churrned_amount:
+    sql: '"CHURRNED_AMOUNT"'
+
+  downsell_amount:
+    sql: '"DOWNSELL_AMOUNT"'
+
+  upsell_amount:
+    sql: '"UPSELL_AMOUNT"'
+
+  new_amount:
+    sql: '"NEW_AMOUNT"'
+
+  gross_nrr:
+    sql: '"GROSS_NRR"'
+
+  net_nrr:
+    sql: '"NET_NRR"'
+
+  2___locs:
+    sql: '"2 + Locs"'
+
+  3___locs:
+    sql: '"3 + Locs"'
+
+  marqii_fiscal_year:
+    sql: '"MARQII_FISCAL_YEAR"'
+
+  marqii_fiscal_quarter_date:
+    sql: '"MARQII_FISCAL_QUARTER_DATE"'
+
+  airbyte_latest_sync:
+    sql: '"AIRBYTE_LATEST_SYNC"'
+
+  nrr_last_execute:
+    sql: '"NRR_LAST_EXECUTE"'
+
+measures:
+  count:
+    aggregate_type: count

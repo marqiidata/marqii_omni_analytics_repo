@@ -1,0 +1,111 @@
+# Reference this view as reporting__s3_stores
+schema: REPORTING
+table_name: S3_STORES
+
+dimensions:
+  s3_listings_extracted_at:
+    sql: '"S3_LISTINGS_EXTRACTED_AT"'
+
+  listings_provider:
+    sql: '"LISTINGS_PROVIDER"'
+
+  listings_created:
+    sql: '"LISTINGS_CREATED"'
+
+  listings_id:
+    sql: '"LISTINGS_ID"'
+    format: ID
+
+  listings_reviewsenabled:
+    sql: '"LISTINGS_REVIEWSENABLED"'
+
+  listings_listingsenabled:
+    sql: '"LISTINGS_LISTINGSENABLED"'
+
+  listings_managedbymarqii:
+    sql: '"LISTINGS_MANAGEDBYMARQII"'
+
+  listings_analyticsenabled:
+    sql: '"LISTINGS_ANALYTICSENABLED"'
+
+  listings_hourswidgetenabled:
+    sql: '"LISTINGS_HOURSWIDGETENABLED"'
+
+  listings_deleted:
+    sql: '"LISTINGS_DELETED"'
+
+  listings_enabled:
+    sql: '"LISTINGS_ENABLED"'
+
+  listings_menusenabled:
+    sql: '"LISTINGS_MENUSENABLED"'
+
+  listings_oauthvaultid:
+    sql: '"LISTINGS_OAUTHVAULTID"'
+
+  listings_updatedat:
+    sql: '"LISTINGS_UPDATEDAT"'
+
+  store_id:
+    sql: '"STORE_ID"'
+    format: ID
+
+  store_importdata:
+    sql: '"STORE_IMPORTDATA"'
+
+  store_postalcode:
+    sql: '"STORE_POSTALCODE"'
+
+  store_addressregion:
+    sql: '"STORE_ADDRESSREGION"'
+
+  store_streetaddress:
+    sql: '"STORE_STREETADDRESS"'
+
+  store_deleted:
+    sql: '"STORE_DELETED"'
+
+  store_isomnilocation:
+    sql: '"STORE_ISOMNILOCATION"'
+
+  store_addresslocality:
+    sql: '"STORE_ADDRESSLOCALITY"'
+
+  store_streetaddressdetail:
+    sql: '"STORE_STREETADDRESSDETAIL"'
+
+  store_displayaddress:
+    sql: '"STORE_DISPLAYADDRESS"'
+
+  store_title:
+    sql: '"STORE_TITLE"'
+
+  store_country:
+    sql: '"STORE_COUNTRY"'
+
+  account_deleted:
+    sql: '"ACCOUNT_DELETED"'
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  account_extracted_at:
+    sql: '"ACCOUNT_EXTRACTED_AT"'
+
+  account_airbyte_generation_id:
+    sql: '"ACCOUNT_AIRBYTE_GENERATION_ID"'
+    format: ID
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+
+  account_owner_team:
+    sql: '"ACCOUNT_OWNER_TEAM"'
+
+measures:
+  count:
+    aggregate_type: count

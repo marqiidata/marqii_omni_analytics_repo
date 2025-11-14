@@ -1,0 +1,241 @@
+# Reference this view as reporting__reviews_reporting
+schema: REPORTING
+table_name: REVIEWS_REPORTING
+
+dimensions:
+  review_id:
+    sql: '"REVIEW_ID"'
+    format: ID
+
+  review_airbyte_extract:
+    sql: '"REVIEW_AIRBYTE_EXTRACT"'
+
+  review_created_at:
+    sql: '"REVIEW_CREATED_AT"'
+
+  review_submitted_at:
+    sql: '"REVIEW_SUBMITTED_AT"'
+
+  review_updated_at:
+    sql: '"REVIEW_UPDATED_AT"'
+
+  review_external_id:
+    sql: '"REVIEW_EXTERNAL_ID"'
+    format: ID
+
+  reviewer_name:
+    sql: '"REVIEWER_NAME"'
+
+  review_store_listing_id:
+    sql: '"REVIEW_STORE_LISTING_ID"'
+    format: ID
+
+  review_reply_id:
+    sql: '"REVIEW_REPLY_ID"'
+    format: ID
+
+  review_reply_text:
+    sql: '"REVIEW_REPLY_TEXT"'
+
+  review_reply_type:
+    sql: '"REVIEW_REPLY_TYPE"'
+
+  review_reply_created_by:
+    sql: '"REVIEW_REPLY_CREATED_BY"'
+
+  review_reply_airbyte_extracted_at:
+    sql: '"REVIEW_REPLY_AIRBYTE_EXTRACTED_AT"'
+
+  review_reply_deleted_by:
+    sql: '"REVIEW_REPLY_DELETED_BY"'
+
+  review_reply_submitted_at:
+    sql: '"REVIEW_REPLY_SUBMITTED_AT"'
+
+  review_reply_detected_delete_at:
+    sql: '"REVIEW_REPLY_DETECTED_DELETE_AT"'
+
+  review_reply_deleted:
+    sql: '"REVIEW_REPLY_DELETED"'
+
+  review_reply_source:
+    sql: '"REVIEW_REPLY_SOURCE"'
+
+  review_replier_name:
+    sql: '"REVIEW_REPLIER_NAME"'
+
+  review_reply_moderation_status:
+    sql: '"REVIEW_REPLY_MODERATION_STATUS"'
+
+  first_reply_date:
+    sql: '"FIRST_REPLY_DATE"'
+
+  is_first_reply:
+    sql: '"IS_FIRST_REPLY"'
+    all_values: [ No Reply, Y, N ]
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  airbyte_sync_date:
+    sql: '"AIRBYTE_SYNC_DATE"'
+
+  account_deleted:
+    sql: '"ACCOUNT_DELETED"'
+
+  account_airbyte_gen_id:
+    sql: '"ACCOUNT_AIRBYTE_GEN_ID"'
+    format: ID
+
+  store_id:
+    sql: '"STORE_ID"'
+    format: ID
+
+  store_code:
+    sql: '"STORE_CODE"'
+
+  store_postalcode:
+    sql: '"STORE_POSTALCODE"'
+
+  store_addressregion:
+    sql: '"STORE_ADDRESSREGION"'
+
+  store_streetaddress:
+    sql: '"STORE_STREETADDRESS"'
+
+  store_deleted:
+    sql: '"STORE_DELETED"'
+
+  store_accountid:
+    sql: '"STORE_ACCOUNTID"'
+
+  store_addresslocality:
+    sql: '"STORE_ADDRESSLOCALITY"'
+
+  store_streetaddressdetail:
+    sql: '"STORE_STREETADDRESSDETAIL"'
+
+  store_displayaddress:
+    sql: '"STORE_DISPLAYADDRESS"'
+
+  store_title:
+    sql: '"STORE_TITLE"'
+
+  store_country:
+    sql: '"STORE_COUNTRY"'
+
+  store_account_id:
+    sql: '"STORE_ACCOUNT_ID"'
+    format: ID
+
+  store_airbyte_extracted_at:
+    sql: '"STORE_AIRBYTE_EXTRACTED_AT"'
+
+  listings_store_id:
+    sql: '"LISTINGS_STORE_ID"'
+    format: ID
+
+  listings_id:
+    sql: '"LISTINGS_ID"'
+    format: ID
+
+  listings_provider:
+    sql: '"LISTINGS_PROVIDER"'
+
+  listings_reviewsenabled:
+    sql: '"LISTINGS_REVIEWSENABLED"'
+
+  listings_deleted:
+    sql: '"LISTINGS_DELETED"'
+
+  listings_enabled:
+    sql: '"LISTINGS_ENABLED"'
+
+  s3_listings_extracted_at:
+    sql: '"S3_LISTINGS_EXTRACTED_AT"'
+
+  ps_account_id:
+    sql: '"PS_ACCOUNT_ID"'
+    format: ID
+
+  ps_account_name:
+    sql: '"PS_ACCOUNT_NAME"'
+
+  account_features_menus_enabled:
+    sql: '"ACCOUNT_FEATURES_MENUS_ENABLED"'
+
+  account_features_reviewmonitoring_enabled:
+    sql: '"ACCOUNT_FEATURES_REVIEWMONITORING_ENABLED"'
+
+  account_features_listings_enabled:
+    sql: '"ACCOUNT_FEATURES_LISTINGS_ENABLED"'
+
+  account_features_suggested_review_response_enabled:
+    sql: '"ACCOUNT_FEATURES_SUGGESTED_REVIEW_RESPONSE_ENABLED"'
+    description: field indicates if suggested review response is enabled
+    group_label: feature enabled fields
+    synonyms: [ SRR ]
+    ai_context: field indicates if suggested review response is enabled
+
+  account_features_managed_reviews_enabled:
+    sql: '"ACCOUNT_FEATURES_MANAGED_REVIEWS_ENABLED"'
+    description: Product managed reviews enabled?
+    group_label: feature enabled fields
+    all_values: [ N, Y, undefined ]
+    ai_context: this field shows whether the managed reviewed response feature is enabled
+
+  account_features_social_management_enabled:
+    sql: '"ACCOUNT_FEATURES_SOCIAL_MANAGEMENT_ENABLED"'
+
+  salesforceid:
+    sql: '"SALESFORCEID"'
+
+  stripeid:
+    sql: '"STRIPEID"'
+
+  salesforce_account_name:
+    sql: '"SALESFORCE_ACCOUNT_NAME"'
+
+  salesforce_account_status:
+    sql: '"SALESFORCE_ACCOUNT_STATUS"'
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+
+  account_owner_team:
+    sql: '"ACCOUNT_OWNER_TEAM"'
+
+  organization_email:
+    sql: '"ORGANIZATION_EMAIL"'
+
+measures:
+  count:
+    aggregate_type: count
+
+  omni__of_reviews:
+    sql: count(distinct review_id)
+    label: "# of Reviews"
+    group_label: Measures
+    description: count of reviews
+
+  omni__of_replies:
+    sql: count( distinct review_reply_id)
+    label: "# of Replies"
+    group_label: Measures
+    description: Count of Replies
+
+  calculation:
+    sql: CASE WHEN ${reporting__reviews_reporting.omni__of_reviews} = 0 THEN NULL
+      ELSE COALESCE(${reporting__reviews_reporting.omni__of_replies}, 0) /
+      ${reporting__reviews_reporting.omni__of_reviews} END
+    label: Response Rate
+
+  omni_response_rate:
+    sql: CASE WHEN ${reporting__reviews_reporting.omni__of_reviews} = 0 THEN NULL
+      ELSE COALESCE(${reporting__reviews_reporting.omni__of_replies}, 0) /
+      ${reporting__reviews_reporting.omni__of_reviews} END
+    label: Omni Response Rate

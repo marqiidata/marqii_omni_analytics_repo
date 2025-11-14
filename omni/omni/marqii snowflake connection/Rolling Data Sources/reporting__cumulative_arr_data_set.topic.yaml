@@ -1,0 +1,20 @@
+base_view: reporting__cumulative_arr_data_set
+label: Segmented Metrics Datasource
+group_label: Rolling Data Sources
+description: |-
+  Database should be used for things like GRR, NRR, AM, CAC, LTV,  for business segments/units
+
+  Every account appears across ever month in our database. Each month reflects the cumulative revenue per account for that month.
+
+joins: {}
+
+ai_context: |
+  Do not use this database for revenue, sales, ARR reporting.
+
+  Database does not contain daily data only month date rev reporting. You can use the month, quarters and years as a filter here.
+
+  When asked for business segments - ask if the user wants to split out partner or just use the simple locations metrics.
+
+  Use this database for retention metrics and AM compensation, cac, ltv, payback. Use this data source for business units/segments/location group financial kpis numbers.
+
+  For NRR and Grr, always use the filter for last month of quarter. 

@@ -1,0 +1,381 @@
+# Reference this view as reporting__email_events
+schema: REPORTING
+table_name: EMAIL_EVENTS
+
+dimensions:
+  message_id:
+    sql: '"MESSAGE_ID"'
+    format: ID
+
+  event_id:
+    sql: '"EVENT_ID"'
+    format: ID
+
+  ses_operation:
+    sql: '"SES_OPERATION"'
+
+  ses_source_ip:
+    sql: '"SES_SOURCE_IP"'
+
+  ses_from_domain:
+    sql: '"SES_FROM_DOMAIN"'
+
+  ses_caller_identity:
+    sql: '"SES_CALLER_IDENTITY"'
+
+  ses_configuration_set:
+    sql: '"SES_CONFIGURATION_SET"'
+
+  ses_source_tls_version:
+    sql: '"SES_SOURCE_TLS_VERSION"'
+
+  event_type:
+    sql: '"EVENT_TYPE"'
+
+  sender_source:
+    sql: '"SENDER_SOURCE"'
+
+  email_subject:
+    sql: '"EMAIL_SUBJECT"'
+
+  created_at:
+    sql: '"CREATED_AT"'
+    label: Event Created At
+    group_label: Created At
+
+  notification_type:
+    sql: '"NOTIFICATION_TYPE"'
+
+  trigger_event_message_id:
+    sql: '"TRIGGER_EVENT_MESSAGE_ID"'
+    format: ID
+
+  trigger_message_created_at:
+    sql: '"TRIGGER_MESSAGE_CREATED_AT"'
+
+  trigger_destination:
+    sql: '"TRIGGER_DESTINATION"'
+
+  notification_trigger_event_id:
+    sql: '"NOTIFICATION_TRIGGER_EVENT_ID"'
+    format: ID
+
+  notification_trigger_created_at:
+    sql: '"NOTIFICATION_TRIGGER_CREATED_AT"'
+
+  notification_trigger_matched_at:
+    sql: '"NOTIFICATION_TRIGGER_MATCHED_AT"'
+
+  notification_trigger_finished_at:
+    sql: '"NOTIFICATION_TRIGGER_FINISHED_AT"'
+
+  notification_trigger_should_run_next_at:
+    sql: '"NOTIFICATION_TRIGGER_SHOULD_RUN_NEXT_AT"'
+
+  notification_id:
+    sql: '"NOTIFICATION_ID"'
+    format: ID
+
+  notification_name:
+    sql: '"NOTIFICATION_NAME"'
+
+  notification_enabled:
+    sql: '"NOTIFICATION_ENABLED"'
+
+  notification_interval:
+    sql: '"NOTIFICATION_INTERVAL"'
+
+  notification_account_id:
+    sql: '"NOTIFICATION_ACCOUNT_ID"'
+    format: ID
+
+  notification_created_at:
+    sql: '"NOTIFICATION_CREATED_AT"'
+
+  notification_created_by:
+    sql: '"NOTIFICATION_CREATED_BY"'
+
+  notification_deleted_at:
+    sql: '"NOTIFICATION_DELETED_AT"'
+
+  notification_deleted_by:
+    sql: '"NOTIFICATION_DELETED_BY"'
+
+  notification_updated_at:
+    sql: '"NOTIFICATION_UPDATED_AT"'
+
+  notification_updated_by:
+    sql: '"NOTIFICATION_UPDATED_BY"'
+
+  notification_delivery_day:
+    sql: '"NOTIFICATION_DELIVERY_DAY"'
+
+  notification_description:
+    sql: '"NOTIFICATION_DESCRIPTION"'
+
+  notification_delivery_time:
+    sql: '"NOTIFICATION_DELIVERY_TIME"'
+
+  notification_delivery_time_zone:
+    sql: '"NOTIFICATION_DELIVERY_TIME_ZONE"'
+
+  notification_receipient_id:
+    sql: '"NOTIFICATION_RECEIPIENT_ID"'
+    format: ID
+
+  _airbyte_extracted_at:
+    hidden: true
+
+  user_receipient_id:
+    sql: '"USER_RECEIPIENT_ID"'
+    format: ID
+
+  receipient_user_id:
+    sql: '"RECEIPIENT_USER_ID"'
+    format: ID
+
+  receipient_user_status:
+    sql: '"RECEIPIENT_USER_STATUS"'
+
+  receipient_user_email_verfied:
+    sql: '"RECEIPIENT_USER_EMAIL_VERFIED"'
+
+  receipient_user_enabled:
+    sql: '"RECEIPIENT_USER_ENABLED"'
+
+  receipient_account_id:
+    sql: '"RECEIPIENT_ACCOUNT_ID"'
+    format: ID
+
+  receipient_account_name:
+    sql: '"RECEIPIENT_ACCOUNT_NAME"'
+
+  open_dates:
+    sql: case when lower (${reporting__email_events.event_type})  = 'open'  then
+      ${reporting__email_events.created_at} end
+    label: Open Dates
+    group_label: Open Dates
+
+  open_dates_level_of_detail:
+    sql: ${reporting__email_events.open_dates}
+    label: First Open Date
+    group_label: Open Dates Level of Detail
+    group_by:
+      aggregate_type: min
+      fixed: [ reporting__email_events.notification_id, reporting__email_events.message_id ]
+
+  first_open_notification_id:
+    sql: |-
+      case when ${reporting__email_events.open_dates_level_of_detail} = ${reporting__email_events.created_at}
+        and ${reporting__email_events.open_dates} is not null then 1
+        end
+    label: First Open Notification ID
+
+  first_open_notification_id_copy:
+    sql: |-
+      case when ${reporting__email_events.open_dates_level_of_detail} = ${reporting__email_events.created_at}
+        and ${reporting__email_events.open_dates} is not null then ${reporting__email_events.event_id}
+        end
+    label: First Open Event IDs
+
+measures:
+  count:
+    aggregate_type: count
+
+  event_id_count_distinct:
+    sql: ${reporting__email_events.event_id}
+    label: "# Events"
+    format: ID
+    description: Unique count of every single event for each message
+    aggregate_type: count_distinct
+
+  event_id_count_distinct_other_values:
+    sql: ${reporting__email_events.event_id}
+    label: "# Events (Other)"
+    group_label: Event Types
+    format: ID
+    description: Unique count of every single event for each message
+    drill_fields: []
+    aggregate_type: count_distinct
+    filters:
+      event_type:
+        and:
+          - not: Bounce
+          - not: Click
+          - not: Delivery
+          - not: DeliveryDelay
+          - not: Open
+          - not: Send
+          - not: Subscription
+
+  event_id_count_distinct_bounce:
+    sql: ${reporting__email_events.event_id}
+    label: "# Events Bounce"
+    group_label: Event Types
+    format: ID
+    description: Unique count of every single event for each message
+    drill_fields: []
+    aggregate_type: count_distinct
+    filters:
+      event_type:
+        is: Bounce
+    ai_context: Distinct email events where the email "bounces" or has an invalid
+      recipient email
+
+  event_id_count_distinct_delivery:
+    sql: ${reporting__email_events.event_id}
+    label: "# Events Delivery"
+    group_label: Event Types
+    format: ID
+    description: Unique count of every single event for each message
+    aggregate_type: count_distinct
+    filters:
+      event_type:
+        is: Delivery
+
+  event_id_count_distinct_delivery_delay:
+    sql: ${reporting__email_events.event_id}
+    label: "# Events DeliveryDelay"
+    group_label: Event Types
+    format: ID
+    description: Unique count of every single event for each message
+    drill_fields: []
+    aggregate_type: count_distinct
+    filters:
+      event_type:
+        is: DeliveryDelay
+
+  event_id_count_distinct_subscription:
+    sql: ${reporting__email_events.event_id}
+    label: "# Events Subscription"
+    group_label: Event Types
+    format: ID
+    description: Unique count of every single event for each message
+    drill_fields:
+      [
+        reporting__email_events.event_type,
+        reporting__email_events.message_id,
+        reporting__email_events.notification_account_id,
+        reporting__email_events.notification_created_at,
+        reporting__email_events.notification_created_by,
+        reporting__email_events.notification_deleted_at,
+        reporting__email_events.notification_deleted_by
+      ]
+    aggregate_type: count_distinct
+    filters:
+      event_type:
+        is: Subscription
+
+  calculation:
+    sql: CASE WHEN ${reporting__email_events.event_id_count_distinct_send} = 0 THEN
+      NULL ELSE
+      COALESCE(${reporting__email_events.event_id_count_distinct_open}, 0) /
+      ${reporting__email_events.event_id_count_distinct_send} END
+    label: Open Rate %
+    group_label: Event Type Metrics
+    format: PERCENT_0
+    description: "Email open rate: calculated by dividing the number of open events
+      by the send events."
+    drill_fields: []
+    ai_context: Open Rate %/ email rate open %
+
+  event_id_count_distinct_send:
+    sql: ${reporting__email_events.event_id}
+    label: "# Events Send"
+    group_label: Event Types
+    format: NUMBER
+    description: Unique count of every single event for each message
+    drill_fields: []
+    aggregate_type: count_distinct
+    filters:
+      event_type:
+        is: Send
+
+  event_id_count_distinct_open:
+    sql: ${reporting__email_events.event_id}
+    label: "# Events Open"
+    group_label: Event Types
+    format: NUMBER
+    description: Unique count of every single event for each message
+    aggregate_type: count_distinct
+    filters:
+      event_type:
+        is: Open
+
+  click_through_:
+    sql: CASE WHEN ${reporting__email_events.event_id_count_distinct_send} = 0 THEN
+      NULL ELSE
+      COALESCE(${reporting__email_events.event_id_count_distinct_open}, 0) /
+      ${reporting__email_events.event_id_count_distinct_send} END
+    label: Click %
+    group_label: Event Type Metrics
+    format: PERCENT_0
+    description: "Email open rate: calculated by dividing the number of click events
+      by the open events."
+    drill_fields: []
+
+  event_id_count_distinct_click:
+    sql: ${reporting__email_events.event_id}
+    label: "# Events Click"
+    group_label: Event Types
+    format: NUMBER
+    description: Unique count of every single event for each message
+    drill_fields: []
+    aggregate_type: count_distinct
+    filters:
+      event_type:
+        is: Click
+
+  calculation_1:
+    sql: "  CASE WHEN ${reporting__email_events.event_id_count_distinct_open} = 0
+      THEN NULL ELSE
+      COALESCE(${reporting__email_events.event_id_count_distinct_click}, 0) /
+      ${reporting__email_events.event_id_count_distinct_open} END"
+    label: Click %
+    group_label: Event Type Metrics
+    format: PERCENT
+    description: calculated by diving the number of clicks by the number of opens
+    drill_fields: []
+
+  first_open_notification_id_count_distinct:
+    sql: ${reporting__email_events.first_open_notification_id}
+    label: "# First Opens"
+    format: NUMBER_0
+    aggregate_type: count_distinct
+
+  omni__events_delivery:
+    sql: ${reporting__email_events.event_id}
+    label: "# Events Delivery"
+    group_label: Event Types
+    format: NUMBER
+    description: Unique count of every single event for each message - delivery
+    drill_fields: []
+    aggregate_type: count_distinct
+    filters:
+      event_type:
+        is: Delivery
+
+  message_id_count_distinct:
+    sql: ${reporting__email_events.message_id}
+    label: "# of Messages"
+    format: NUMBER_0
+    aggregate_type: count_distinct
+
+  first_open_notification_id_copy_count_distinct:
+    sql: ${reporting__email_events.first_open_notification_id_copy}
+    label: "# Of First Open Events"
+    format: NUMBER_0
+    aggregate_type: count_distinct
+
+  open_rate_first_only_:
+    sql: |-
+      CASE WHEN ${reporting__email_events.event_id_count_distinct_send} = 0 THEN NULL ELSE
+        
+       ${reporting__email_events.first_open_notification_id_copy_count_distinct}
+        /${reporting__email_events.event_id_count_distinct_send} END
+    label: Open Rate (First Only)%
+    group_label: Event Type Metrics
+    format: PERCENT_0
+    description: "Email open rate: calculated by dividing the number of first open
+      events by the send events."
+    drill_fields: []

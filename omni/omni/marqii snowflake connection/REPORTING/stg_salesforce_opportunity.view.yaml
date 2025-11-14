@@ -1,0 +1,604 @@
+# Reference this view as reporting__stg_salesforce_opportunity
+schema: REPORTING
+table_name: STG_SALESFORCE_OPPORTUNITY
+
+dimensions:
+  _airbyte_raw_id:
+    sql: '"_AIRBYTE_RAW_ID"'
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    sql: '"_AIRBYTE_EXTRACTED_AT"'
+    hidden: true
+
+  _airbyte_meta:
+    sql: '"_AIRBYTE_META"'
+    hidden: true
+
+  _airbyte_generation_id:
+    sql: '"_AIRBYTE_GENERATION_ID"'
+    format: ID
+    hidden: true
+
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  name:
+    sql: '"NAME"'
+
+  type:
+    sql: '"TYPE"'
+
+  iswon:
+    sql: '"ISWON"'
+
+  amount:
+    sql: '"AMOUNT"'
+
+  fiscal:
+    sql: '"FISCAL"'
+
+  mrr__c:
+    sql: '"MRR__C"'
+
+  pos__c:
+    sql: '"POS__C"'
+
+  ownerid:
+    sql: '"OWNERID"'
+
+  type__c:
+    sql: '"TYPE__C"'
+
+  isclosed:
+    sql: '"ISCLOSED"'
+
+  nextstep:
+    sql: '"NEXTSTEP"'
+
+  pilot__c:
+    sql: '"PILOT__C"'
+
+  accountid:
+    sql: '"ACCOUNTID"'
+
+  closedate:
+    sql: '"CLOSEDATE"'
+
+  contactid:
+    sql: '"CONTACTID"'
+
+  isdeleted:
+    sql: '"ISDELETED"'
+
+  pushcount:
+    sql: '"PUSHCOUNT"'
+
+  stagename:
+    sql: '"STAGENAME"'
+
+  upsell__c:
+    sql: '"UPSELL__C"'
+
+  add_ons__c:
+    sql: '"ADD_ONS__C"'
+
+  campaignid:
+    sql: '"CAMPAIGNID"'
+
+  contractid:
+    sql: '"CONTRACTID"'
+
+  fiscalyear:
+    sql: '"FISCALYEAR"'
+
+  leadsource:
+    sql: '"LEADSOURCE"'
+
+  no_show__c:
+    sql: '"NO_SHOW__C"'
+
+  package__c:
+    sql: '"PACKAGE__C"'
+
+  pitched__c:
+    sql: '"PITCHED__C"'
+
+  sp_link__c:
+    sql: '"SP_LINK__C"'
+
+  createdbyid:
+    sql: '"CREATEDBYID"'
+
+  createddate:
+    sql: '"CREATEDDATE"'
+
+  description:
+    sql: '"DESCRIPTION"'
+
+  gmb_link__c:
+    sql: '"GMB_LINK__C"'
+
+  main_poc__c:
+    sql: '"MAIN_POC__C"'
+
+  pipeline__c:
+    sql: '"PIPELINE__C"'
+
+  probability:
+    sql: '"PROBABILITY"'
+
+  sku_unit__c:
+    sql: '"SKU_UNIT__C"'
+
+  expansion__c:
+    sql: '"EXPANSION__C"'
+
+  locations__c:
+    sql: '"LOCATIONS__C"'
+
+  pricebook2id:
+    sql: '"PRICEBOOK2ID"'
+
+  role_name__c:
+    sql: '"ROLE_NAME__C"'
+
+  time_zone__c:
+    sql: '"TIME_ZONE__C"'
+
+  toast_url__c:
+    sql: '"TOAST_URL__C"'
+
+  competitor__c:
+    sql: '"COMPETITOR__C"'
+
+  fiscalquarter:
+    sql: '"FISCALQUARTER"'
+
+  owner_team__c:
+    sql: '"OWNER_TEAM__C"'
+
+  pitch_type__c:
+    sql: '"PITCH_TYPE__C"'
+
+  start_date__c:
+    sql: '"START_DATE__C"'
+
+  syncedquoteid:
+    sql: '"SYNCEDQUOTEID"'
+
+  campaign_id__c:
+    sql: '"CAMPAIGN_ID__C"'
+
+  deal_source__c:
+    sql: '"DEAL_SOURCE__C"'
+
+  hasoverduetask:
+    sql: '"HASOVERDUETASK"'
+
+  lastvieweddate:
+    sql: '"LASTVIEWEDDATE"'
+
+  loss_reason__c:
+    sql: '"LOSS_REASON__C"'
+
+  pitched_yes__c:
+    sql: '"PITCHED_YES__C"'
+
+  systemmodstamp:
+    sql: '"SYSTEMMODSTAMP"'
+
+  won_date_pd__c:
+    sql: '"WON_DATE_PD__C"'
+
+  friday_hours__c:
+    sql: '"FRIDAY_HOURS__C"'
+
+  hasopenactivity:
+    sql: '"HASOPENACTIVITY"'
+
+  mr_call_held__c:
+    sql: '"MR_CALL_HELD__C"'
+
+  mr_form_sent__c:
+    sql: '"MR_FORM_SENT__C"'
+
+  meeting_held__c:
+    sql: '"MEETING_HELD__C"'
+
+  monday_hours__c:
+    sql: '"MONDAY_HOURS__C"'
+
+  no_show_date__c:
+    sql: '"NO_SHOW_DATE__C"'
+
+  pipedrive_id__c:
+    sql: '"PIPEDRIVE_ID__C"'
+
+  renewal_date__c:
+    sql: '"RENEWAL_DATE__C"'
+
+  sp_parent_id__c:
+    sql: '"SP_PARENT_ID__C"'
+
+  scan_results__c:
+    sql: '"SCAN_RESULTS__C"'
+
+  sunday_hours__c:
+    sql: '"SUNDAY_HOURS__C"'
+
+  term_changes__c:
+    sql: '"TERM_CHANGES__C"'
+
+  wants_widget__c:
+    sql: '"WANTS_WIDGET__C"'
+
+  billing_terms__c:
+    sql: '"BILLING_TERMS__C"'
+
+  forecastcategory:
+    sql: '"FORECASTCATEGORY"'
+
+  lastactivitydate:
+    sql: '"LASTACTIVITYDATE"'
+
+  lastmodifiedbyid:
+    sql: '"LASTMODIFIEDBYID"'
+
+  lastmodifieddate:
+    sql: '"LASTMODIFIEDDATE"'
+
+  payment_notes__c:
+    sql: '"PAYMENT_NOTES__C"'
+
+  tuesday_hours__c:
+    sql: '"TUESDAY_HOURS__C"'
+
+  account_source__c:
+    sql: '"ACCOUNT_SOURCE__C"'
+
+  billing_clause__c:
+    sql: '"BILLING_CLAUSE__C"'
+
+  owner_slack_id__c:
+    sql: '"OWNER_SLACK_ID__C"'
+
+  payment_method__c:
+    sql: '"PAYMENT_METHOD__C"'
+
+  post_sale_team__c:
+    sql: '"POST_SALE_TEAM__C"'
+
+  price_per_unit__c:
+    sql: '"PRICE_PER_UNIT__C"'
+
+  prior_utilized__c:
+    sql: '"PRIOR_UTILIZED__C"'
+
+  pull_menu_from__c:
+    sql: '"PULL_MENU_FROM__C"'
+
+  re_engage_date__c:
+    sql: '"RE_ENGAGE_DATE__C"'
+
+  sp_list_number__c:
+    sql: '"SP_LIST_NUMBER__C"'
+
+  saturday_hours__c:
+    sql: '"SATURDAY_HOURS__C"'
+
+  thursday_hours__c:
+    sql: '"THURSDAY_HOURS__C"'
+
+  am_request_form__c:
+    sql: '"AM_REQUEST_FORM__C"'
+
+  account_website__c:
+    sql: '"ACCOUNT_WEBSITE__C"'
+
+  contract_status__c:
+    sql: '"CONTRACT_STATUS__C"'
+
+  create_contract__c:
+    sql: '"CREATE_CONTRACT__C"'
+
+  lastreferenceddate:
+    sql: '"LASTREFERENCEDDATE"'
+
+  length_of_pilot__c:
+    sql: '"LENGTH_OF_PILOT__C"'
+
+  location_bucket__c:
+    sql: '"LOCATION_BUCKET__C"'
+
+  web_integration__c:
+    sql: '"WEB_INTEGRATION__C"'
+
+  wednesday_hours__c:
+    sql: '"WEDNESDAY_HOURS__C"'
+
+  budget_confirmed__c:
+    sql: '"BUDGET_CONFIRMED__C"'
+
+  days_in_pipeline__c:
+    sql: '"DAYS_IN_PIPELINE__C"'
+
+  days_to_close_pd__c:
+    sql: '"DAYS_TO_CLOSE_PD__C"'
+
+  days_to_close_sf__c:
+    sql: '"DAYS_TO_CLOSE_SF__C"'
+
+  helen_am_request__c:
+    sql: '"HELEN_AM_REQUEST__C"'
+
+  laststagechangedate:
+    sql: '"LASTSTAGECHANGEDATE"'
+
+  latest_web_visit__c:
+    sql: '"LATEST_WEB_VISIT__C"'
+
+  onboarding_email__c:
+    sql: '"ONBOARDING_EMAIL__C"'
+
+  onboarding_notes__c:
+    sql: '"ONBOARDING_NOTES__C"'
+
+  opportunity_type__c:
+    sql: '"OPPORTUNITY_TYPE__C"'
+
+  x0_days_to_close__c:
+    sql: '"X0_DAYS_TO_CLOSE__C"'
+
+  x18_character_id__c:
+    sql: '"X18_CHARACTER_ID__C"'
+
+  agreement_updates__c:
+    sql: '"AGREEMENT_UPDATES__C"'
+
+  amount_calculator__c:
+    sql: '"AMOUNT_CALCULATOR__C"'
+
+  forecastcategoryname:
+    sql: '"FORECASTCATEGORYNAME"'
+
+  has_powerlistings__c:
+    sql: '"HAS_POWERLISTINGS__C"'
+
+  lost_date_from_pd__c:
+    sql: '"LOST_DATE_FROM_PD__C"'
+
+  ob_scheduled_time__c:
+    sql: '"OB_SCHEDULED_TIME__C"'
+
+  old_owner_from_pd__c:
+    sql: '"OLD_OWNER_FROM_PD__C"'
+
+  payment_collected__c:
+    sql: '"PAYMENT_COLLECTED__C"'
+
+  sp_location_count__c:
+    sql: '"SP_LOCATION_COUNT__C"'
+
+  weighted_forecast__c:
+    sql: '"WEIGHTED_FORECAST__C"'
+
+  audited_by_rev_ops__c:
+    sql: '"AUDITED_BY_REV_OPS__C"'
+
+  client_signer_name__c:
+    sql: '"CLIENT_SIGNER_NAME__C"'
+
+  first_meeting_date__c:
+    sql: '"FIRST_MEETING_DATE__C"'
+
+  next_activity_date__c:
+    sql: '"NEXT_ACTIVITY_DATE__C"'
+
+  term_length_months__c:
+    sql: '"TERM_LENGTH_MONTHS__C"'
+
+  business_legal_name__c:
+    sql: '"BUSINESS_LEGAL_NAME__C"'
+
+  client_signer_email__c:
+    sql: '"CLIENT_SIGNER_EMAIL__C"'
+
+  client_signer_title__c:
+    sql: '"CLIENT_SIGNER_TITLE__C"'
+
+  create_payment_link__c:
+    sql: '"CREATE_PAYMENT_LINK__C"'
+
+  current_pain_points__c:
+    sql: '"CURRENT_PAIN_POINTS__C"'
+
+  date_closed_from_pd__c:
+    sql: '"DATE_CLOSED_FROM_PD__C"'
+
+  discount_percentage__c:
+    sql: '"DISCOUNT_PERCENTAGE__C"'
+
+  discovery_completed__c:
+    sql: '"DISCOVERY_COMPLETED__C"'
+
+  expected_close_date__c:
+    sql: '"EXPECTED_CLOSE_DATE__C"'
+
+  hasopportunitylineitem:
+    sql: '"HASOPPORTUNITYLINEITEM"'
+
+  metrics_for_success__c:
+    sql: '"METRICS_FOR_SUCCESS__C"'
+
+  renewal_term_length__c:
+    sql: '"RENEWAL_TERM_LENGTH__C"'
+
+  split_payment_links__c:
+    sql: '"SPLIT_PAYMENT_LINKS__C"'
+
+  billing_contact_name__c:
+    sql: '"BILLING_CONTACT_NAME__C"'
+
+  contract_term_length__c:
+    sql: '"CONTRACT_TERM_LENGTH__C"'
+
+  deal_source_category__c:
+    sql: '"DEAL_SOURCE_CATEGORY__C"'
+
+  number_of_demos_held__c:
+    sql: '"NUMBER_OF_DEMOS_HELD__C"'
+
+  onboarding_scheduled__c:
+    sql: '"ONBOARDING_SCHEDULED__C"'
+
+  posintegrationwanted__c:
+    sql: '"POSINTEGRATIONWANTED__C"'
+
+  warmlycreatedaccount__c:
+    sql: '"WARMLYCREATEDACCOUNT__C"'
+
+  additional_categories__c:
+    sql: '"ADDITIONAL_CATEGORIES__C"'
+
+  amount_copy_for_slack__c:
+    sql: '"AMOUNT_COPY_FOR_SLACK__C"'
+
+  billing_contact_email__c:
+    sql: '"BILLING_CONTACT_EMAIL__C"'
+
+  next_outreach_date_ai__c:
+    sql: '"NEXT_OUTREACH_DATE_AI__C"'
+
+  signer_contact_record__c:
+    sql: '"SIGNER_CONTACT_RECORD__C"'
+
+  special_billing_notes__c:
+    sql: '"SPECIAL_BILLING_NOTES__C"'
+
+  wants_pos_integration__c:
+    sql: '"WANTS_POS_INTEGRATION__C"'
+
+  account_name_no_parent__c:
+    sql: '"ACCOUNT_NAME_NO_PARENT__C"'
+
+  current_location_count__c:
+    sql: '"CURRENT_LOCATION_COUNT__C"'
+
+  has_onboarding_contact__c:
+    sql: '"HAS_ONBOARDING_CONTACT__C"'
+
+  number_of_demos_missed__c:
+    sql: '"NUMBER_OF_DEMOS_MISSED__C"'
+
+  ob_scheduled_date_time__c:
+    sql: '"OB_SCHEDULED_DATE_TIME__C"'
+
+  other_onboarding_notes__c:
+    sql: '"OTHER_ONBOARDING_NOTES__C"'
+
+  past_experiencesissues__c:
+    sql: '"PAST_EXPERIENCESISSUES__C"'
+
+  roi_analysis_completed__c:
+    sql: '"ROI_ANALYSIS_COMPLETED__C"'
+
+  reactivated_churn_date__c:
+    sql: '"REACTIVATED_CHURN_DATE__C"'
+
+  structure_of_locations__c:
+    sql: '"STRUCTURE_OF_LOCATIONS__C"'
+
+  was_host_product_added__c:
+    sql: '"WAS_HOST_PRODUCT_ADDED__C"'
+
+  web_integration_wanted__c:
+    sql: '"WEB_INTEGRATION_WANTED__C"'
+
+  account_category_source__c:
+    sql: '"ACCOUNT_CATEGORY_SOURCE__C"'
+
+  billing_contact_address__c:
+    sql: '"BILLING_CONTACT_ADDRESS__C"'
+
+  campaign_id_for_fromula__c:
+    sql: '"CAMPAIGN_ID_FOR_FROMULA__C"'
+
+  lastamountchangedhistoryid:
+    sql: '"LASTAMOUNTCHANGEDHISTORYID"'
+
+  location_bucket_account__c:
+    sql: '"LOCATION_BUCKET_ACCOUNT__C"'
+
+  mr_follow_up_email_sent__c:
+    sql: '"MR_FOLLOW_UP_EMAIL_SENT__C"'
+
+  opportunity_owner_field__c:
+    sql: '"OPPORTUNITY_OWNER_FIELD__C"'
+
+  stripe_url_from_account__c:
+    sql: '"STRIPE_URL_FROM_ACCOUNT__C"'
+
+  billing_name_phone_email__c:
+    sql: '"BILLING_NAME_PHONE_EMAIL__C"'
+
+  potential_location_count__c:
+    sql: '"POTENTIAL_LOCATION_COUNT__C"'
+
+  additional_categories_old__c:
+    sql: '"ADDITIONAL_CATEGORIES_OLD__C"'
+
+  business_category_formula__c:
+    sql: '"BUSINESS_CATEGORY_FORMULA__C"'
+
+  deal_created_date_from_pd__c:
+    sql: '"DEAL_CREATED_DATE_FROM_PD__C"'
+
+  uses_third_party_delivery__c:
+    sql: '"USES_THIRD_PARTY_DELIVERY__C"'
+
+  lastclosedatechangedhistoryid:
+    sql: '"LASTCLOSEDATECHANGEDHISTORYID"'
+
+  last_activity_date_account__c:
+    sql: '"LAST_ACTIVITY_DATE_ACCOUNT__C"'
+
+  latest_snail_mail_campaign__c:
+    sql: '"LATEST_SNAIL_MAIL_CAMPAIGN__C"'
+
+  lead_source_category_oppty__c:
+    sql: '"LEAD_SOURCE_CATEGORY_OPPTY__C"'
+
+  am_onboarding_location_form__c:
+    sql: '"AM_ONBOARDING_LOCATION_FORM__C"'
+
+  future_case_study_candidate__c:
+    sql: '"FUTURE_CASE_STUDY_CANDIDATE__C"'
+
+  managed_review_response_sold__c:
+    sql: '"MANAGED_REVIEW_RESPONSE_SOLD__C"'
+
+  structure_of_locations_notes__c:
+    sql: '"STRUCTURE_OF_LOCATIONS_NOTES__C"'
+
+  timezone_formula_from_account__c:
+    sql: '"TIMEZONE_FORMULA_FROM_ACCOUNT__C"'
+
+  next_steps_context_for_billing__c:
+    sql: '"NEXT_STEPS_CONTEXT_FOR_BILLING__C"'
+
+  exclude_from_gross_arr_due_to_react__c:
+    sql: '"EXCLUDE_FROM_GROSS_ARR_DUE_TO_REACT__C"'
+
+  opportunity_business_classification__c:
+    sql: '"OPPORTUNITY_BUSINESS_CLASSIFICATION__C"'
+
+  meeting_booked_contact__c:
+    sql: '"MEETING_BOOKED_CONTACT__C"'
+
+measures:
+  count:
+    aggregate_type: count

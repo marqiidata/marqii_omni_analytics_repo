@@ -1,0 +1,15 @@
+# Reference this view as reporting__stg_s3_notifications_account
+schema: REPORTING
+table_name: STG_S3_NOTIFICATIONS_ACCOUNT
+
+dimensions:
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,273 @@
+# Reference this view as reporting__marketing_monthly_data
+schema: REPORTING
+table_name: MARKETING_MONTHLY_DATA
+
+dimensions:
+  create_month:
+    sql: '"CREATE_MONTH"'
+    label: Created
+    group_label: Create Month
+
+  deal_source_category__c:
+    sql: '"DEAL_SOURCE_CATEGORY__C"'
+
+  opportunity_leadsource_category:
+    sql: '"OPPORTUNITY_LEADSOURCE_CATEGORY"'
+
+  is_lead_source_marketing:
+    sql: '"IS_LEAD_SOURCE_MARKETING"'
+
+  is_deal_source_marketing:
+    sql: '"IS_DEAL_SOURCE_MARKETING"'
+
+  is_marketing_influenced:
+    sql: '"IS_MARKETING_INFLUENCED"'
+
+  month_closed_won_grr:
+    sql: '"MONTH_CLOSED_WON_GRR"'
+
+  month_closed_lost_grr:
+    sql: '"MONTH_CLOSED_LOST_GRR"'
+
+  month_closed_grr:
+    sql: '"MONTH_CLOSED_GRR"'
+
+  month_gross_arr:
+    sql: '"MONTH_GROSS_ARR"'
+
+  month_closed_won_opportunities:
+    sql: '"MONTH_CLOSED_WON_OPPORTUNITIES"'
+
+  month_closed_lost_opportunities:
+    sql: '"MONTH_CLOSED_LOST_OPPORTUNITIES"'
+
+  rolling_12m_closed_won_grr:
+    sql: '"ROLLING_12M_CLOSED_WON_GRR"'
+
+  rolling_12m_closed_lost_grr:
+    sql: '"ROLLING_12M_CLOSED_LOST_GRR"'
+
+  rolling_12m_closed_grr:
+    sql: '"ROLLING_12M_CLOSED_GRR"'
+
+  rolling_12m_gross_arr:
+    sql: '"ROLLING_12M_GROSS_ARR"'
+
+  rolling_12m_closed_won_opportunities:
+    sql: '"ROLLING_12M_CLOSED_WON_OPPORTUNITIES"'
+
+  rolling_12m_closed_lost_opportunities:
+    sql: '"ROLLING_12M_CLOSED_LOST_OPPORTUNITIES"'
+
+  text_formatted_date:
+    sql: ${reporting__marketing_monthly_data.create_month[month]}::DATE::STRING
+    label: Text Formatted Date
+
+measures:
+  count:
+    aggregate_type: count
+
+  month_closed_lost_grr_sum:
+    sql: ${reporting__marketing_monthly_data.month_closed_lost_grr}
+    aggregate_type: sum
+
+  month_closed_won_grr_sum:
+    sql: ${reporting__marketing_monthly_data.month_closed_won_grr}
+    aggregate_type: sum
+
+  month_gross_arr_sum:
+    sql: ${reporting__marketing_monthly_data.month_gross_arr}
+    aggregate_type: sum
+
+  rolling_12m_gross_arr_sum:
+    sql: ${reporting__marketing_monthly_data.rolling_12m_gross_arr}
+    group_label: 12M Calcs
+    format: BIGUSDCURRENCY_2
+    aggregate_type: sum
+
+  rolling_12m_closed_won_grr_sum:
+    sql: ${reporting__marketing_monthly_data.rolling_12m_closed_won_grr}
+    group_label: 12M Calcs
+    format: BIGUSDCURRENCY_2
+    aggregate_type: sum
+
+  rolling_12m_closed_lost_grr_sum:
+    sql: ${reporting__marketing_monthly_data.rolling_12m_closed_lost_grr}
+    group_label: 12M Calcs
+    format: USDCURRENCY_2
+    aggregate_type: sum
+
+  rolling_12m_rolling_win_rate:
+    sql: CASE WHEN ${reporting__marketing_monthly_data.omni_12_month_closed_arr} = 0
+      THEN NULL ELSE
+      COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_won_grr_sum},
+      0) / ${reporting__marketing_monthly_data.omni_12_month_closed_arr} END
+    label: Rolling 12M Rolling Win Rate
+    group_label: Win Rate
+    format: PERCENT_2
+    description: Percentage of closed deals won over the trailing 12 months,
+      calculated as closed won ARR divided by total closed ARR
+    drill_fields:
+      [
+        "reporting__marketing_monthly_data.create_month[month]",
+        reporting__marketing_monthly_data.deal_source_category__c,
+        reporting__marketing_monthly_data.rolling_12m_closed_won_grr_sum,
+        reporting__marketing_monthly_data.omni_12_month_closed_arr
+      ]
+
+  omni_12_month_closed_arr:
+    sql: COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_won_grr_sum},
+      0) +
+      COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_lost_grr_sum},
+      0)
+    label: 12 Month Closed ARR
+    group_label: 12M Calcs
+    format: USDCURRENCY_2
+
+  rolling_12m_closed_won_grr_sum_n:
+    sql: ${reporting__marketing_monthly_data.rolling_12m_closed_won_grr}
+    label: Rolling 12m Closed Won Grr - Non Marketing
+    group_label: 12M Calcs
+    format: USDCURRENCY_2
+    aggregate_type: sum
+    filters:
+      is_marketing_influenced:
+        is: N
+
+  rolling_12m_closed_lost_grr_sum_n:
+    sql: ${reporting__marketing_monthly_data.rolling_12m_closed_lost_grr}
+    label: Rolling 12m Closed Lost Grr Sum - Non Marketing
+    group_label: 12M Calcs
+    format: BIGUSDCURRENCY_2
+    aggregate_type: sum
+    filters:
+      is_marketing_influenced:
+        is: N
+
+  month_closed_won_grr_sum_n:
+    sql: ${reporting__marketing_monthly_data.month_closed_won_grr}
+    label: Month Closed Won Grr Sum N
+    aggregate_type: sum
+    filters:
+      is_marketing_influenced:
+        is: N
+
+  rolling_12m_rolling_win_rate_n:
+    sql: CASE WHEN
+      COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_won_grr_sum_n},
+      0) +
+      COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_lost_grr_sum_n},
+      0) = 0 THEN NULL ELSE
+      COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_won_grr_sum_n},
+      0) /
+      (COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_won_grr_sum_n},
+      0) +
+      COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_lost_grr_sum_n},
+      0)) END
+    label: Rolling 12M Rolling Win Rate  - Non Marketing
+    group_label: Win Rate
+    format: PERCENT_2
+    description: Percentage of closed deals won over the trailing 12 months,
+      calculated as closed won ARR divided by total closed ARR
+    drill_fields:
+      [
+        "reporting__marketing_monthly_data.create_month[month]",
+        reporting__marketing_monthly_data.deal_source_category__c,
+        reporting__marketing_monthly_data.rolling_12m_closed_won_grr_sum,
+        reporting__marketing_monthly_data.omni_12_month_closed_arr
+      ]
+
+  omni_12_month_closed_arr_y:
+    sql: COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_won_grr_sum_y},
+      0) +
+      COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_lost_grr_sum_y},
+      0)
+    label: 12 Month Closed ARR - Marketing
+    group_label: 12M Calcs
+    format: BIGUSDCURRENCY_2
+    drill_fields: []
+
+  rolling_12m_closed_won_grr_sum_y:
+    sql: ${reporting__marketing_monthly_data.rolling_12m_closed_won_grr}
+    label: Rolling 12m Closed Won Grr - Marketing
+    group_label: 12M Calcs
+    format: BIGUSDCURRENCY_2
+    aggregate_type: sum
+    filters:
+      is_marketing_influenced:
+        is: Y
+
+  rolling_12m_closed_lost_grr_sum_y:
+    sql: ${reporting__marketing_monthly_data.rolling_12m_closed_lost_grr}
+    label: Rolling 12m Closed Lost Grr  - Marketing
+    group_label: 12M Calcs
+    format: BIGNUMBER_0
+    aggregate_type: sum
+    filters:
+      is_marketing_influenced:
+        is: Y
+
+  month_closed_won_grr_sum_y:
+    sql: ${reporting__marketing_monthly_data.month_closed_won_grr}
+    label: Month Closed Won Grr Sum Y
+    aggregate_type: sum
+    filters:
+      is_marketing_influenced:
+        is: Y
+
+  rolling_12m_rolling_win_rate_y:
+    sql: CASE WHEN
+      COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_won_grr_sum_y},
+      0) +
+      COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_lost_grr_sum_y},
+      0) = 0 THEN NULL ELSE
+      COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_won_grr_sum_y},
+      0) /
+      (COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_won_grr_sum_y},
+      0) +
+      COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_lost_grr_sum_y},
+      0)) END
+    label: Rolling 12M Rolling Win Rate  - Marketing
+    group_label: Win Rate
+    format: PERCENT_2
+    description: Percentage of closed deals won over the trailing 12 months,
+      calculated as closed won ARR divided by total closed ARR
+    drill_fields:
+      [
+        "reporting__marketing_monthly_data.create_month[month]",
+        reporting__marketing_monthly_data.deal_source_category__c,
+        reporting__marketing_monthly_data.rolling_12m_closed_won_grr_sum,
+        reporting__marketing_monthly_data.omni_12_month_closed_arr
+      ]
+
+  omni_12_month_closed_arr_n:
+    sql: COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_won_grr_sum_n},
+      0) +
+      COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_lost_grr_sum_n},
+      0)
+    label: 12 Month Closed ARR - Non Marketing
+    group_label: 12M Calcs
+    format: BIGUSDCURRENCY_2
+    drill_fields: []
+
+  test_copy:
+    sql: CASE WHEN
+      COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_won_grr_sum_y},
+      0) +
+      COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_lost_grr_sum_y},
+      0) = 0 THEN NULL ELSE
+      COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_won_grr_sum_y},
+      0) END
+    label: test Copy numerator
+
+  test:
+    sql: CASE WHEN
+      COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_won_grr_sum_y},
+      0) +
+      COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_lost_grr_sum_y},
+      0) = 0 THEN NULL ELSE
+      (COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_won_grr_sum_y},
+      0) +
+      COALESCE(${reporting__marketing_monthly_data.rolling_12m_closed_lost_grr_sum_y},
+      0)) END
+    label: test

@@ -1,0 +1,61 @@
+# Reference this view as reporting__license_cost_report
+schema: REPORTING
+table_name: LICENSE_COST_REPORT
+
+dimensions:
+  listing_provider:
+    sql: '"LISTING_PROVIDER"'
+
+  listing_counts:
+    sql: '"LISTING_COUNTS"'
+
+  dbt_scd_id:
+    sql: '"DBT_SCD_ID"'
+    format: ID
+
+  dbt_updated_at:
+    sql: '"DBT_UPDATED_AT"'
+
+  dbt_valid_from:
+    sql: '"DBT_VALID_FROM"'
+
+  dbt_valid_to:
+    sql: '"DBT_VALID_TO"'
+
+  last_updated_at:
+    sql: '"LAST_UPDATED_AT"'
+
+  cleaned_id:
+    sql: '"CLEANED_ID"'
+    format: ID
+
+  include_listings:
+    sql: '"includeListings"'
+
+  include_menus:
+    sql: '"includeMenus"'
+
+  include_reviews:
+    sql: '"includeReviews"'
+
+  include_hours_widget:
+    sql: '"includeHoursWidget"'
+
+  is_blaze_it_edition:
+    sql: '"isBlazeItEdition"'
+
+  yext_package_name:
+    sql: '"YEXT_PACKAGE_NAME"'
+
+  package_counted:
+    sql: '"PACKAGE_COUNTED"'
+
+  snapshot_date:
+    sql: '"SNAPSHOT_DATE"'
+
+  platform:
+    sql: '"PLATFORM"'
+
+measures:
+  count:
+    aggregate_type: count

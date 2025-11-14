@@ -1,0 +1,19 @@
+# Reference this view as reporting__stg_s3_notification_receipient
+schema: REPORTING
+table_name: STG_S3_NOTIFICATION_RECEIPIENT
+
+dimensions:
+  notification_receipient_id:
+    sql: '"NOTIFICATION_RECEIPIENT_ID"'
+    format: ID
+
+  notification_id:
+    sql: '"NOTIFICATION_ID"'
+    format: ID
+
+  _airbyte_extracted_at:
+    hidden: true
+
+measures:
+  count:
+    aggregate_type: count

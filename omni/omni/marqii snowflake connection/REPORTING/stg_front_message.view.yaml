@@ -1,0 +1,70 @@
+# Reference this view as reporting__stg_front_message
+schema: REPORTING
+table_name: STG_FRONT_MESSAGE
+
+dimensions:
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  conversation_id:
+    sql: '"CONVERSATION_ID"'
+    format: ID
+
+  author_id:
+    sql: '"AUTHOR_ID"'
+    format: ID
+
+  type:
+    sql: '"TYPE"'
+
+  is_inbound:
+    sql: '"IS_INBOUND"'
+
+  created_at:
+    sql: '"CREATED_AT"'
+
+  blurb:
+    sql: '"BLURB"'
+
+  body:
+    sql: '"BODY"'
+
+  text:
+    sql: '"TEXT"'
+
+  intercom_url:
+    sql: '"INTERCOM_URL"'
+
+  duration:
+    sql: '"DURATION"'
+
+  have_been_answered:
+    sql: '"HAVE_BEEN_ANSWERED"'
+
+  twitter_url:
+    sql: '"TWITTER_URL"'
+
+  is_retweet:
+    sql: '"IS_RETWEET"'
+
+  have_been_retweeted:
+    sql: '"HAVE_BEEN_RETWEETED"'
+
+  have_been_favorited:
+    sql: '"HAVE_BEEN_FAVORITED"'
+
+  thread_ref:
+    sql: '"THREAD_REF"'
+
+  headers:
+    sql: '"HEADERS"'
+
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+measures:
+  count:
+    aggregate_type: count

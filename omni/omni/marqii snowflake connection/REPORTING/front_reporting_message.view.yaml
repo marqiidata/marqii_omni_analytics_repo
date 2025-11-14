@@ -1,0 +1,77 @@
+# Reference this view as reporting__front_reporting_message
+schema: REPORTING
+table_name: FRONT_REPORTING_MESSAGE
+
+dimensions:
+  conversation_id:
+    sql: '"CONVERSATION_ID"'
+    format: ID
+
+  author_id:
+    sql: '"AUTHOR_ID"'
+    format: ID
+
+  type:
+    sql: '"TYPE"'
+
+  is_inbound:
+    sql: '"IS_INBOUND"'
+
+  created_at:
+    sql: '"CREATED_AT"'
+
+  blurb:
+    sql: '"BLURB"'
+
+  body:
+    sql: '"BODY"'
+
+  text:
+    sql: '"TEXT"'
+
+  duration:
+    sql: '"DURATION"'
+
+  have_been_answered:
+    sql: '"HAVE_BEEN_ANSWERED"'
+
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+  message_id:
+    sql: '"MESSAGE_ID"'
+    format: ID
+
+  index:
+    sql: '"INDEX"'
+
+  handle:
+    sql: '"HANDLE"'
+
+  role:
+    sql: '"ROLE"'
+
+  contact_id:
+    sql: '"CONTACT_ID"'
+    format: ID
+
+  description:
+    sql: '"DESCRIPTION"'
+
+  is_spammer:
+    sql: '"IS_SPAMMER"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  custom_location_cohort:
+    sql: '"CUSTOM_LOCATION_COHORT"'
+
+  contact_name:
+    sql: '"CONTACT_NAME"'
+
+measures:
+  count:
+    aggregate_type: count

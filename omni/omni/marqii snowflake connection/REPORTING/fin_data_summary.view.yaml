@@ -1,0 +1,26 @@
+# Reference this view as reporting__fin_data_summary
+schema: REPORTING
+table_name: FIN_DATA_SUMMARY
+
+dimensions:
+  month_date_rev_reporting:
+    sql: '"MONTH_DATE_REV_REPORTING"'
+
+  revenue_payroll_acquisition_cost:
+    sql: '"REVENUE_PAYROLL_ACQUISITION_COST"'
+
+  marketing_expenses_acquisition_cost:
+    sql: '"MARKETING_EXPENSES_ACQUISITION_COST"'
+
+  marketing_payroll_acquisition_cost:
+    sql: '"MARKETING_PAYROLL_ACQUISITION_COST"'
+
+  total_income:
+    sql: '"TOTAL_INCOME"'
+
+  prior_quarter_total_income:
+    sql: '"PRIOR_QUARTER_TOTAL_INCOME"'
+
+measures:
+  count:
+    aggregate_type: count

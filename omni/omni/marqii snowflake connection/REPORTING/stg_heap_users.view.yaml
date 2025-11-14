@@ -1,0 +1,31 @@
+# Reference this view as reporting__stg_heap_users
+schema: REPORTING
+table_name: STG_HEAP_USERS
+
+dimensions:
+  user_id:
+    sql: '"USER_ID"'
+    format: ID
+
+  heap_user_join_date:
+    sql: '"HEAP_USER_JOIN_DATE"'
+
+  heap_user_modified_date:
+    sql: '"HEAP_USER_MODIFIED_DATE"'
+
+  heap_user_identity:
+    sql: '"HEAP_USER_IDENTITY"'
+
+  heap_user_handle:
+    sql: '"HEAP_USER_HANDLE"'
+
+  heap_user_email:
+    sql: '"HEAP_USER_EMAIL"'
+
+  heap_user_account_id:
+    sql: '"HEAP_USER_ACCOUNT_ID"'
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

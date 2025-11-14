@@ -1,0 +1,91 @@
+# Reference this view as reporting__stg_quickbooks_expense_account
+schema: REPORTING
+table_name: STG_QUICKBOOKS_EXPENSE_ACCOUNT
+
+dimensions:
+  transaction_source:
+    sql: '"TRANSACTION_SOURCE"'
+
+  transaction_id:
+    sql: '"TRANSACTION_ID"'
+    format: ID
+
+  source_relation:
+    sql: '"SOURCE_RELATION"'
+
+  transaction_line_id:
+    sql: '"TRANSACTION_LINE_ID"'
+    format: ID
+
+  doc_number:
+    sql: '"DOC_NUMBER"'
+
+  transaction_type:
+    sql: '"TRANSACTION_TYPE"'
+
+  transaction_date:
+    sql: '"TRANSACTION_DATE"'
+
+  item_id:
+    sql: '"ITEM_ID"'
+    format: ID
+
+  item_quantity:
+    sql: '"ITEM_QUANTITY"'
+
+  item_unit_price:
+    sql: '"ITEM_UNIT_PRICE"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  account_sub_type:
+    sql: '"ACCOUNT_SUB_TYPE"'
+
+  class_id:
+    sql: '"CLASS_ID"'
+    format: ID
+
+  department_id:
+    sql: '"DEPARTMENT_ID"'
+    format: ID
+
+  department_name:
+    sql: '"DEPARTMENT_NAME"'
+
+  customer_id:
+    sql: '"CUSTOMER_ID"'
+    format: ID
+
+  customer_name:
+    sql: '"CUSTOMER_NAME"'
+
+  customer_website:
+    sql: '"CUSTOMER_WEBSITE"'
+
+  vendor_id:
+    sql: '"VENDOR_ID"'
+    format: ID
+
+  vendor_name:
+    sql: '"VENDOR_NAME"'
+
+  billable_status:
+    sql: '"BILLABLE_STATUS"'
+
+  description:
+    sql: '"DESCRIPTION"'
+
+  amount:
+    sql: '"AMOUNT"'
+
+  total_amount:
+    sql: '"TOTAL_AMOUNT"'
+
+measures:
+  count:
+    aggregate_type: count

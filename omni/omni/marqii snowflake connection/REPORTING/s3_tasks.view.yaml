@@ -1,0 +1,62 @@
+# Reference this view as reporting__s3_tasks
+schema: REPORTING
+table_name: S3_TASKS
+
+dimensions:
+  task_createdat:
+    sql: '"TASK_CREATEDAT"'
+
+  task_airbyte_meta:
+    sql: '"TASK_AIRBYTE_META"'
+
+  task_airbyte_generation_id:
+    sql: '"TASK_AIRBYTE_GENERATION_ID"'
+    format: ID
+
+  task_id:
+    sql: '"TASK_ID"'
+    format: ID
+
+  task_airbyte_raw_id:
+    sql: '"TASK_AIRBYTE_RAW_ID"'
+    format: ID
+
+  task_airbyte_extracted_at:
+    sql: '"TASK_AIRBYTE_EXTRACTED_AT"'
+
+  task_storelistingid:
+    sql: '"TASK_STORELISTINGID"'
+
+  task_updatedat:
+    sql: '"TASK_UPDATEDAT"'
+
+  task_jobid:
+    sql: '"TASK_JOBID"'
+
+  task_result:
+    sql: '"TASK_RESULT"'
+
+  is_most_recent_task:
+    sql: '"IS_MOST_RECENT_TASK"'
+
+  most_recent_task:
+    sql: '"MOST_RECENT_TASK"'
+
+  last_successful_task:
+    sql: '"LAST_SUCCESSFUL_TASK"'
+
+  successful_tasks:
+    sql: '"SUCCESSFUL_TASKS"'
+
+  failed_tasks:
+    sql: '"FAILED_TASKS"'
+
+  is_most_recent_task_success:
+    sql: '"IS_MOST_RECENT_TASK_SUCCESS"'
+
+  is_most_recent_task_fail:
+    sql: '"IS_MOST_RECENT_TASK_FAIL"'
+
+measures:
+  count:
+    aggregate_type: count

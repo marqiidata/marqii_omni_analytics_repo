@@ -1,0 +1,46 @@
+# Reference this view as reporting__stg_front_tag
+schema: REPORTING
+table_name: STG_FRONT_TAG
+
+dimensions:
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  name:
+    sql: '"NAME"'
+
+  highlight:
+    sql: '"HIGHLIGHT"'
+
+  description:
+    sql: '"DESCRIPTION"'
+
+  is_private:
+    sql: '"IS_PRIVATE"'
+
+  is_visible_in_conversation_lists:
+    sql: '"IS_VISIBLE_IN_CONVERSATION_LISTS"'
+
+  created_at:
+    sql: '"CREATED_AT"'
+
+  updated_at:
+    sql: '"UPDATED_AT"'
+
+  parent_tag_id:
+    sql: '"PARENT_TAG_ID"'
+    format: ID
+
+  _fivetran_deleted:
+    sql: '"_FIVETRAN_DELETED"'
+    hidden: true
+
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+measures:
+  count:
+    aggregate_type: count

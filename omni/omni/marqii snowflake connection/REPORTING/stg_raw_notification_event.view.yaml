@@ -1,0 +1,49 @@
+# Reference this view as reporting__stg_raw_notification_event
+schema: REPORTING
+table_name: STG_RAW_NOTIFICATION_EVENT
+
+dimensions:
+  message_id:
+    sql: '"MESSAGE_ID"'
+    format: ID
+
+  event_id:
+    sql: '"EVENT_ID"'
+    format: ID
+
+  ses_operation:
+    sql: '"SES_OPERATION"'
+
+  ses_source_ip:
+    sql: '"SES_SOURCE_IP"'
+
+  ses_from_domain:
+    sql: '"SES_FROM_DOMAIN"'
+
+  ses_caller_identity:
+    sql: '"SES_CALLER_IDENTITY"'
+
+  ses_configuration_set:
+    sql: '"SES_CONFIGURATION_SET"'
+
+  ses_source_tls_version:
+    sql: '"SES_SOURCE_TLS_VERSION"'
+
+  event_type:
+    sql: '"EVENT_TYPE"'
+
+  sender_source:
+    sql: '"SENDER_SOURCE"'
+
+  email_subject:
+    sql: '"EMAIL_SUBJECT"'
+
+  created_at:
+    sql: '"CREATED_AT"'
+
+  notification_type:
+    sql: '"NOTIFICATION_TYPE"'
+
+measures:
+  count:
+    aggregate_type: count

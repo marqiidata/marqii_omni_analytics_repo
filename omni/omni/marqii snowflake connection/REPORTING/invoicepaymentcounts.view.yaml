@@ -1,0 +1,14 @@
+# Reference this view as reporting__invoicepaymentcounts
+schema: REPORTING
+table_name: INVOICEPAYMENTCOUNTS
+
+dimensions:
+  invoice:
+    sql: '"INVOICE"'
+
+  num_payments_per_invoice:
+    sql: '"NUM_PAYMENTS_PER_INVOICE"'
+
+measures:
+  count:
+    aggregate_type: count

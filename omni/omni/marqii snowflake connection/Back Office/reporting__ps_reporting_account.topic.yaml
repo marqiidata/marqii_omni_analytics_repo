@@ -1,0 +1,32 @@
+base_view: reporting__ps_reporting_account
+label: Back Office Account Reporting
+group_label: Back Office
+description: This topic contains all accounts from the back office and which
+  features are enabled. Additionally - we bring in the salesforce current
+  account package fields. Note - new features might be missing from this report
+  and need to be added.
+
+fields: [ all_views.*, -reporting__ps_account.* ]
+always_where_filters:
+  reporting__ps_reporting_account.ps_account_name:
+    is: []
+  reporting__ps_reporting_account.account_current_package:
+    is: []
+  reporting__ps_reporting_account.account_features_menus_enabled:
+    is: []
+  reporting__ps_reporting_account.account_features_listings_enabled:
+    is: []
+  reporting__ps_reporting_account.account_features_managed_reviews_enabled:
+    is: []
+  reporting__ps_reporting_account.account_features_reviewmonitoring_enabled:
+    is: []
+  reporting__ps_reporting_account.account_features_social_management_enabled:
+    is: []
+  reporting__ps_reporting_account.account_features_suggested_review_response_enabled:
+    is: []
+
+joins:
+  reporting__ps_account: {}
+
+ai_context: Use this report for finding enabled features in our backoffice. Also
+  called premium services.

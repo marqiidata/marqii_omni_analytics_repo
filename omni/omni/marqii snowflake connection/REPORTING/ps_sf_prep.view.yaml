@@ -1,0 +1,51 @@
+# Reference this view as reporting__ps_sf_prep
+schema: REPORTING
+table_name: PS_SF_PREP
+
+dimensions:
+  sf_account_name:
+    sql: '"SF_ACCOUNT_NAME"'
+
+  product_combined:
+    sql: '"PRODUCT_COMBINED"'
+
+  net_num_account_locations:
+    sql: '"NET_NUM_ACCOUNT_LOCATIONS"'
+
+  opportunity_rev_category:
+    sql: '"OPPORTUNITY_REV_CATEGORY"'
+
+  sf_account_id:
+    sql: '"SF_ACCOUNT_ID"'
+    format: ID
+
+  sf_account_status:
+    sql: '"SF_ACCOUNT_STATUS"'
+
+  account_has_mrr:
+    sql: '"ACCOUNT_HAS_MRR"'
+
+  account_has_srr:
+    sql: '"ACCOUNT_HAS_SRR"'
+
+  account_current_package:
+    sql: '"ACCOUNT_CURRENT_PACKAGE"'
+
+  account_status:
+    sql: '"ACCOUNT_STATUS"'
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+
+  stagename:
+    sql: '"STAGENAME"'
+
+  net_arr:
+    sql: '"NET_ARR"'
+
+  gross_arr:
+    sql: '"GROSS_ARR"'
+
+measures:
+  count:
+    aggregate_type: count

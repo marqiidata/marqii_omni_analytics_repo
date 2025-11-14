@@ -1,0 +1,101 @@
+# Reference this view as reporting__stg_gsheets_cashflow
+schema: REPORTING
+table_name: STG_GSHEETS_CASHFLOW
+
+dimensions:
+  _row:
+    sql: '"_ROW"'
+    hidden: true
+
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+  jun_2024:
+    sql: '"JUN_2024"'
+
+  feb_2024:
+    sql: '"FEB_2024"'
+
+  feb_2025:
+    sql: '"FEB_2025"'
+
+  jan_2024:
+    sql: '"JAN_2024"'
+
+  nov_2024:
+    sql: '"NOV_2024"'
+
+  jan_2025:
+    sql: '"JAN_2025"'
+
+  nov_2023:
+    sql: '"NOV_2023"'
+
+  aug_2024:
+    sql: '"AUG_2024"'
+
+  sep_2024:
+    sql: '"SEP_2024"'
+
+  major_category:
+    sql: '"MAJOR_CATEGORY"'
+
+  jul_2024:
+    sql: '"JUL_2024"'
+
+  line_item_cat:
+    sql: '"LINE_ITEM_CAT"'
+
+  oct_2024:
+    sql: '"OCT_2024"'
+
+  dec_2023:
+    sql: '"DEC_2023"'
+
+  oct_2023:
+    sql: '"OCT_2023"'
+
+  dec_2024:
+    sql: '"DEC_2024"'
+
+  may_2024:
+    sql: '"MAY_2024"'
+
+  mar_2025:
+    sql: '"MAR_2025"'
+
+  mar_2024:
+    sql: '"MAR_2024"'
+
+  apr_2024:
+    sql: '"APR_2024"'
+
+  row_id:
+    sql: '"ROW_ID"'
+    format: ID
+
+  apr_2025:
+    sql: '"APR_2025"'
+
+  may_2025:
+    sql: '"MAY_2025"'
+
+  jun_2025:
+    sql: '"JUN_2025"'
+
+  jul_2025:
+    sql: '"JUL_2025"'
+
+  aug_2025:
+    sql: '"AUG_2025"'
+
+  sep_2025:
+    sql: '"SEP_2025"'
+
+  oct_2025:
+    sql: '"OCT_2025"'
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,70 @@
+# Reference this view as reporting_planhat_export__planhat_crm
+schema: REPORTING_PLANHAT_EXPORT
+table_name: PLANHAT_CRM
+
+dimensions:
+  airbyte_sync_ps:
+    sql: '"AIRBYTE_SYNC_PS"'
+
+  ps_account_id:
+    sql: '"PS_ACCOUNT_ID"'
+    format: ID
+
+  ps_account_name:
+    sql: '"PS_ACCOUNT_NAME"'
+
+  ps_account_deleted:
+    sql: '"PS_ACCOUNT_DELETED"'
+
+  ps_account_create_date:
+    sql: '"PS_ACCOUNT_CREATE_DATE"'
+
+  account_features_menus_enabled:
+    sql: '"ACCOUNT_FEATURES_MENUS_ENABLED"'
+
+  account_features_reviewmonitoring_enabled:
+    sql: '"ACCOUNT_FEATURES_REVIEWMONITORING_ENABLED"'
+
+  account_features_listings_enabled:
+    sql: '"ACCOUNT_FEATURES_LISTINGS_ENABLED"'
+
+  account_features_suggested_review_response_enabled:
+    sql: '"ACCOUNT_FEATURES_SUGGESTED_REVIEW_RESPONSE_ENABLED"'
+
+  account_features_managed_reviews_enabled:
+    sql: '"ACCOUNT_FEATURES_MANAGED_REVIEWS_ENABLED"'
+
+  account_features_social_management_enabled:
+    sql: '"ACCOUNT_FEATURES_SOCIAL_MANAGEMENT_ENABLED"'
+
+  salesforceid:
+    sql: '"SALESFORCEID"'
+
+  stripeid:
+    sql: '"STRIPEID"'
+
+  account_current_package:
+    sql: '"ACCOUNT_CURRENT_PACKAGE"'
+
+  salesforce_account_name:
+    sql: '"SALESFORCE_ACCOUNT_NAME"'
+
+  salesforce_account_status:
+    sql: '"SALESFORCE_ACCOUNT_STATUS"'
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+
+  account_owner_team:
+    sql: '"ACCOUNT_OWNER_TEAM"'
+
+  master_stripe_id:
+    sql: '"MASTER_STRIPE_ID"'
+    format: ID
+
+  data_last_refreshed:
+    sql: '"DATA_LAST_REFRESHED"'
+
+measures:
+  count:
+    aggregate_type: count

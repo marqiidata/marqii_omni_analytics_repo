@@ -1,0 +1,4 @@
+base_view: reporting__marketing_monthly_data
+label: Marketing Rolling Created ARR
+
+joins: {}

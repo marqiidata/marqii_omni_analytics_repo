@@ -1,0 +1,33 @@
+# Reference this view as reporting__cohort_analysis_data_fill
+schema: REPORTING
+table_name: COHORT_ANALYSIS_DATA_FILL
+
+dimensions:
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  month_date_rev_reporting:
+    sql: '"MONTH_DATE_REV_REPORTING"'
+
+  formatted_filled_cumulative_mrr:
+    sql: '"FORMATTED_FILLED_CUMULATIVE_MRR"'
+
+  month_of_initial_close:
+    sql: '"MONTH_OF_INITIAL_CLOSE"'
+
+  adjusted_value:
+    sql: '"ADJUSTED_VALUE"'
+
+  cohort_month:
+    sql: '"COHORT_MONTH"'
+
+  adjusted_cohort_month:
+    sql: '"ADJUSTED_COHORT_MONTH"'
+
+measures:
+  count:
+    aggregate_type: count

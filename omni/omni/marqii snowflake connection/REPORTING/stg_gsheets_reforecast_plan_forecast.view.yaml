@@ -1,0 +1,39 @@
+# Reference this view as reporting__stg_gsheets_reforecast_plan_forecast
+schema: REPORTING
+table_name: STG_GSHEETS_REFORECAST_PLAN_FORECAST
+
+dimensions:
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+  fiscal_year:
+    sql: '"FISCAL_YEAR"'
+
+  metric_formatted:
+    sql: '"METRIC_FORMATTED"'
+
+  month:
+    sql: '"MONTH"'
+
+  metric:
+    sql: '"METRIC"'
+
+  plan_or_forecast:
+    sql: '"PLAN_OR_FORECAST"'
+
+  team:
+    sql: '"TEAM"'
+
+  fiscal_quarter:
+    sql: '"FISCAL_QUARTER"'
+
+  metric_value:
+    sql: '"METRIC_VALUE"'
+
+  team_detail:
+    sql: '"TEAM_DETAIL"'
+
+measures:
+  count:
+    aggregate_type: count

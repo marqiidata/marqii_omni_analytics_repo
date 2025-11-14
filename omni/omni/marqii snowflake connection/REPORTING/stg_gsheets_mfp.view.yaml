@@ -1,0 +1,91 @@
+# Reference this view as reporting__stg_gsheets_mfp
+schema: REPORTING
+table_name: STG_GSHEETS_MFP
+
+dimensions:
+  _row:
+    sql: '"_ROW"'
+    hidden: true
+
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+  month:
+    sql: '"MONTH"'
+
+  fiscal_year:
+    sql: '"FISCAL_YEAR"'
+
+  forecast_plan:
+    sql: '"FORECAST_PLAN"'
+
+  actuals_plan:
+    sql: '"ACTUALS_PLAN"'
+
+  fcast_total_expenses:
+    sql: '"FCAST_TOTAL_EXPENSES"'
+
+  fcast_total_revenue:
+    sql: '"FCAST_TOTAL_REVENUE"'
+
+  fcast_total_marketing_expense:
+    sql: '"FCAST_TOTAL_MARKETING_EXPENSE"'
+
+  fcast_arr_from_commercial_team:
+    sql: '"FCAST_ARR_FROM_COMMERCIAL_TEAM"'
+
+  fcast_misc_expenses:
+    sql: '"FCAST_MISC_EXPENSES"'
+
+  fcast_upgrades:
+    sql: '"FCAST_UPGRADES"'
+
+  fcast_total_general_administrative:
+    sql: '"FCAST_TOTAL_GENERAL_ADMINISTRATIVE"'
+
+  fcast_admin_ops_expenses:
+    sql: '"FCAST_ADMIN_OPS_EXPENSES"'
+
+  fcast_beginning_revenue:
+    sql: '"FCAST_BEGINNING_REVENUE"'
+
+  fcast_adjustment_for_board_deck:
+    sql: '"FCAST_ADJUSTMENT_FOR_BOARD_DECK"'
+
+  fcast_noteable_miscellaneous_expenses:
+    sql: '"FCAST_NOTEABLE_MISCELLANEOUS_EXPENSES"'
+
+  fcast_churn:
+    sql: '"FCAST_CHURN"'
+
+  fcast_total_revenue_expense:
+    sql: '"FCAST_TOTAL_REVENUE_EXPENSE"'
+
+  fcast_engineering_expenses:
+    sql: '"FCAST_ENGINEERING_EXPENSES"'
+
+  fcast_downgrades:
+    sql: '"FCAST_DOWNGRADES"'
+
+  fcast_total_customer_experience_expense:
+    sql: '"FCAST_TOTAL_CUSTOMER_EXPERIENCE_EXPENSE"'
+
+  fcast_net_burn:
+    sql: '"FCAST_NET_BURN"'
+
+  fcast_mid_market_enterprise_marketing_budget:
+    sql: '"FCAST_MID_MARKET_ENTERPRISE_MARKETING_BUDGET"'
+
+  fcast_arr_from_mid_market:
+    sql: '"FCAST_ARR_FROM_MID_MARKET"'
+
+  fcast_board_intro:
+    sql: '"FCAST_BOARD_INTRO"'
+
+  first_of_month:
+    sql: '"FIRST_OF_MONTH"'
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,302 @@
+# Reference this view as reporting__sf_reporting_account_opportunity_combined
+schema: REPORTING
+table_name: SF_REPORTING_ACCOUNT_OPPORTUNITY_COMBINED
+
+dimensions:
+  opportunity_id:
+    sql: '"OPPORTUNITY_ID"'
+    format: ID
+
+  opportunity_name:
+    sql: '"OPPORTUNITY_NAME"'
+
+  accountid:
+    sql: '"ACCOUNTID"'
+
+  owner_team:
+    sql: '"OWNER_TEAM"'
+
+  opportunity_package:
+    sql: '"OPPORTUNITY_PACKAGE"'
+
+  num_opportunity_locations:
+    sql: '"NUM_OPPORTUNITY_LOCATIONS"'
+
+  owner_id:
+    sql: '"OWNER_ID"'
+    format: ID
+
+  opportunity_owner_field__c:
+    sql: '"OPPORTUNITY_OWNER_FIELD__C"'
+
+  createdbyid:
+    sql: '"CREATEDBYID"'
+
+  amount:
+    sql: '"AMOUNT"'
+
+  reactivation_churn_date:
+    sql: '"REACTIVATION_CHURN_DATE"'
+
+  mrr:
+    sql: '"MRR"'
+
+  opportunity_type:
+    sql: '"OPPORTUNITY_TYPE"'
+
+  stagename:
+    sql: '"STAGENAME"'
+
+  deal_source__c:
+    sql: '"DEAL_SOURCE__C"'
+
+  deal_source_category__c:
+    sql: '"DEAL_SOURCE_CATEGORY__C"'
+
+  pitched__c:
+    sql: '"PITCHED__C"'
+
+  opp_billing_clause:
+    sql: '"OPP_BILLING_CLAUSE"'
+
+  pitched_yes__c:
+    sql: '"PITCHED_YES__C"'
+
+  pitch_type__c:
+    sql: '"PITCH_TYPE__C"'
+
+  laststagechangedate:
+    sql: '"LASTSTAGECHANGEDATE"'
+
+  special_billing_notes:
+    sql: '"SPECIAL_BILLING_NOTES"'
+
+  opportunity_leadsource_category:
+    sql: '"OPPORTUNITY_LEADSOURCE_CATEGORY"'
+
+  opportunity_leadsource:
+    sql: '"OPPORTUNITY_LEADSOURCE"'
+
+  previous_service:
+    sql: '"PREVIOUS_SERVICE"'
+
+  opportunity_deal_source:
+    sql: '"OPPORTUNITY_DEAL_SOURCE"'
+
+  opportunity_deal_source_category:
+    sql: '"OPPORTUNITY_DEAL_SOURCE_CATEGORY"'
+
+  opportunity_url:
+    sql: '"OPPORTUNITY_URL"'
+
+  fiscalquarter:
+    sql: '"FISCALQUARTER"'
+
+  fiscal:
+    sql: '"FISCAL"'
+
+  fiscalyear:
+    sql: '"FISCALYEAR"'
+
+  opportunity_create_date:
+    sql: '"OPPORTUNITY_CREATE_DATE"'
+
+  opportunity_create_year:
+    sql: '"OPPORTUNITY_CREATE_YEAR"'
+
+  marqii_fiscal_quarter_opportunity_create:
+    sql: '"MARQII_FISCAL_QUARTER_OPPORTUNITY_CREATE"'
+
+  opportunity_create_year_fiscal:
+    sql: '"OPPORTUNITY_CREATE_YEAR_FISCAL"'
+
+  marqii_fiscal_quarter_opportunity_create_date:
+    sql: '"MARQII_FISCAL_QUARTER_OPPORTUNITY_CREATE_DATE"'
+
+  closedate:
+    sql: '"CLOSEDATE"'
+
+  current_pain_points:
+    sql: '"CURRENT_PAIN_POINTS"'
+
+  past_issues:
+    sql: '"PAST_ISSUES"'
+
+  metrics_for_success:
+    sql: '"METRICS_FOR_SUCCESS"'
+
+  location_notes_structre:
+    sql: '"LOCATION_NOTES_STRUCTRE"'
+
+  structure_of_locations:
+    sql: '"STRUCTURE_OF_LOCATIONS"'
+
+  custom_term_lengths:
+    sql: '"CUSTOM_TERM_LENGTHS"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  account_current_package:
+    sql: '"ACCOUNT_CURRENT_PACKAGE"'
+
+  churn_date:
+    sql: '"CHURN_DATE"'
+
+  churn_year:
+    sql: '"CHURN_YEAR"'
+
+  churn_month:
+    sql: '"CHURN_MONTH"'
+
+  quarter_date_churndate:
+    sql: '"QUARTER_DATE_CHURNDATE"'
+
+  month_date_churndate:
+    sql: '"MONTH_DATE_CHURNDATE"'
+
+  quarter_text_churndate:
+    sql: '"QUARTER_TEXT_CHURNDATE"'
+
+  churn_quarter_year:
+    sql: '"CHURN_QUARTER_YEAR"'
+
+  account_vertical__c:
+    sql: '"ACCOUNT_VERTICAL__C"'
+
+  account_owner_id:
+    sql: '"ACCOUNT_OWNER_ID"'
+    format: ID
+
+  marqii_account_id:
+    sql: '"MARQII_ACCOUNT_ID"'
+    format: ID
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  account_status:
+    sql: '"ACCOUNT_STATUS"'
+
+  parent_account_status:
+    sql: '"PARENT_ACCOUNT_STATUS"'
+
+  account_url:
+    sql: '"ACCOUNT_URL"'
+
+  churn_reason:
+    sql: '"CHURN_REASON"'
+
+  churn_category:
+    sql: '"CHURN_CATEGORY"'
+
+  num_account_locations:
+    sql: '"NUM_ACCOUNT_LOCATIONS"'
+
+  net_num_account_locations:
+    sql: '"NET_NUM_ACCOUNT_LOCATIONS"'
+
+  billing_terms:
+    sql: '"BILLING_TERMS"'
+
+  account_record_type:
+    sql: '"ACCOUNT_RECORD_TYPE"'
+
+  account_onboarding_stage:
+    sql: '"ACCOUNT_ONBOARDING_STAGE"'
+
+  dashboard_link__c:
+    sql: '"DASHBOARD_LINK__C"'
+
+  sp_link__c:
+    sql: '"SP_LINK__C"'
+
+  gmb_link__c:
+    sql: '"GMB_LINK__C"'
+
+  subscription_end_date:
+    sql: '"SUBSCRIPTION_END_DATE"'
+
+  master_stripe_id:
+    sql: '"MASTER_STRIPE_ID"'
+    format: ID
+
+  subscription_start_date:
+    sql: '"SUBSCRIPTION_START_DATE"'
+
+  subscription_start_month:
+    sql: '"SUBSCRIPTION_START_MONTH"'
+
+  subscription_end_month:
+    sql: '"SUBSCRIPTION_END_MONTH"'
+
+  opportunity_ownerid:
+    sql: '"OPPORTUNITY_OWNERID"'
+
+  opportunity_owner_first:
+    sql: '"OPPORTUNITY_OWNER_FIRST"'
+
+  opportunity_owner_last:
+    sql: '"OPPORTUNITY_OWNER_LAST"'
+
+  opportunity_owner_name:
+    sql: '"OPPORTUNITY_OWNER_NAME"'
+
+  is_active_owner:
+    sql: '"IS_ACTIVE_OWNER"'
+
+  opportunity_owner_create_date:
+    sql: '"OPPORTUNITY_OWNER_CREATE_DATE"'
+
+  opportunity_owner_last_login_date:
+    sql: '"OPPORTUNITY_OWNER_LAST_LOGIN_DATE"'
+
+  employment_length_days:
+    sql: '"EMPLOYMENT_LENGTH_DAYS"'
+
+  opportunity_owner_team:
+    sql: '"OPPORTUNITY_OWNER_TEAM"'
+
+  opportunity_employee_start_date:
+    sql: '"OPPORTUNITY_EMPLOYEE_START_DATE"'
+
+  account_ownerid:
+    sql: '"ACCOUNT_OWNERID"'
+
+  account_owner_first:
+    sql: '"ACCOUNT_OWNER_FIRST"'
+
+  account_owner_last:
+    sql: '"ACCOUNT_OWNER_LAST"'
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+
+  is_active_account_owner:
+    sql: '"IS_ACTIVE_ACCOUNT_OWNER"'
+
+  account_owner_create_date:
+    sql: '"ACCOUNT_OWNER_CREATE_DATE"'
+
+  account_owner_last_login_date:
+    sql: '"ACCOUNT_OWNER_LAST_LOGIN_DATE"'
+
+  account_owner_employment_length_days:
+    sql: '"ACCOUNT_OWNER_EMPLOYMENT_LENGTH_DAYS"'
+
+  account_owner_team:
+    sql: '"ACCOUNT_OWNER_TEAM"'
+
+  created_by_user_name:
+    sql: '"CREATED_BY_USER_NAME"'
+
+  created_by_user_team:
+    sql: '"CREATED_BY_USER_TEAM"'
+
+  creator_start_date:
+    sql: '"CREATOR_START_DATE"'
+
+measures:
+  count:
+    aggregate_type: count

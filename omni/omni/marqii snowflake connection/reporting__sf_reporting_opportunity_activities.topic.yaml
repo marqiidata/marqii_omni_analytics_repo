@@ -1,0 +1,8 @@
+base_view: reporting__sf_reporting_opportunity_activities
+label: Sales Efficiency Database
+description: This topic contains calls and opportunities by account executive.
+
+joins: {}
+
+ai_context: If someone is looking for sales efficiency, win rates, call
+  efficiency, refer to this data source.

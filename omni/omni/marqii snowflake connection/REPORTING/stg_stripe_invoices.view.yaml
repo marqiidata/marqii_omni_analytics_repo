@@ -1,0 +1,298 @@
+# Reference this view as reporting__stg_stripe_invoices
+schema: REPORTING
+table_name: STG_STRIPE_INVOICES
+
+dimensions:
+  _airbyte_raw_id:
+    sql: '"_AIRBYTE_RAW_ID"'
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    sql: '"_AIRBYTE_EXTRACTED_AT"'
+    hidden: true
+
+  _airbyte_meta:
+    sql: '"_AIRBYTE_META"'
+    hidden: true
+
+  _airbyte_generation_id:
+    sql: '"_AIRBYTE_GENERATION_ID"'
+    format: ID
+    hidden: true
+
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  tax:
+    sql: '"TAX"'
+
+  paid:
+    sql: '"PAID"'
+
+  lines:
+    sql: '"LINES"'
+
+  quote:
+    sql: '"QUOTE"'
+
+  total:
+    sql: '"TOTAL"'
+
+  charge:
+    sql: '"CHARGE"'
+
+  closed:
+    sql: '"CLOSED"'
+
+  footer:
+    sql: '"FOOTER"'
+
+  issuer:
+    sql: '"ISSUER"'
+
+  number:
+    sql: '"NUMBER"'
+
+  object:
+    sql: '"OBJECT"'
+
+  status:
+    sql: '"STATUS"'
+
+  billing:
+    sql: '"BILLING"'
+
+  created:
+    sql: '"CREATED"'
+
+  payment:
+    sql: '"PAYMENT"'
+
+  updated:
+    sql: '"UPDATED"'
+
+  currency:
+    sql: '"CURRENCY"'
+
+  customer:
+    sql: '"CUSTOMER"'
+
+  discount:
+    sql: '"DISCOUNT"'
+
+  due_date:
+    sql: '"DUE_DATE"'
+
+  forgiven:
+    sql: '"FORGIVEN"'
+
+  livemode:
+    sql: '"LIVEMODE"'
+
+  metadata:
+    sql: '"METADATA"'
+
+  subtotal:
+    sql: '"SUBTOTAL"'
+
+  attempted:
+    sql: '"ATTEMPTED"'
+
+  discounts:
+    sql: '"DISCOUNTS"'
+
+  rendering:
+    sql: '"RENDERING"'
+
+  amount_due:
+    sql: '"AMOUNT_DUE"'
+
+  is_deleted:
+    sql: '"IS_DELETED"'
+
+  period_end:
+    sql: '"PERIOD_END"'
+
+  test_clock:
+    sql: '"TEST_CLOCK"'
+
+  amount_paid:
+    sql: '"AMOUNT_PAID"'
+
+  application:
+    sql: '"APPLICATION"'
+
+  description:
+    sql: '"DESCRIPTION"'
+
+  invoice_pdf:
+    sql: '"INVOICE_PDF"'
+
+  tax_percent:
+    sql: '"TAX_PERCENT"'
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  auto_advance:
+    sql: '"AUTO_ADVANCE"'
+
+  effective_at:
+    sql: '"EFFECTIVE_AT"'
+
+  from_invoice:
+    sql: '"FROM_INVOICE"'
+
+  on_behalf_of:
+    sql: '"ON_BEHALF_OF"'
+
+  period_start:
+    sql: '"PERIOD_START"'
+
+  subscription:
+    sql: '"SUBSCRIPTION"'
+
+  attempt_count:
+    sql: '"ATTEMPT_COUNT"'
+
+  automatic_tax:
+    sql: '"AUTOMATIC_TAX"'
+
+  custom_fields:
+    sql: '"CUSTOM_FIELDS"'
+
+  customer_name:
+    sql: '"CUSTOMER_NAME"'
+
+  shipping_cost:
+    sql: '"SHIPPING_COST"'
+
+  transfer_data:
+    sql: '"TRANSFER_DATA"'
+
+  billing_reason:
+    sql: '"BILLING_REASON"'
+
+  customer_email:
+    sql: '"CUSTOMER_EMAIL"'
+
+  customer_phone:
+    sql: '"CUSTOMER_PHONE"'
+
+  default_source:
+    sql: '"DEFAULT_SOURCE"'
+
+  ending_balance:
+    sql: '"ENDING_BALANCE"'
+
+  payment_intent:
+    sql: '"PAYMENT_INTENT"'
+
+  receipt_number:
+    sql: '"RECEIPT_NUMBER"'
+
+  account_country:
+    sql: '"ACCOUNT_COUNTRY"'
+
+  account_tax_ids:
+    sql: '"ACCOUNT_TAX_IDS"'
+
+  amount_shipping:
+    sql: '"AMOUNT_SHIPPING"'
+
+  application_fee:
+    sql: '"APPLICATION_FEE"'
+
+  latest_revision:
+    sql: '"LATEST_REVISION"'
+
+  amount_remaining:
+    sql: '"AMOUNT_REMAINING"'
+
+  customer_address:
+    sql: '"CUSTOMER_ADDRESS"'
+
+  customer_tax_ids:
+    sql: '"CUSTOMER_TAX_IDS"'
+
+  paid_out_of_band:
+    sql: '"PAID_OUT_OF_BAND"'
+
+  payment_settings:
+    sql: '"PAYMENT_SETTINGS"'
+
+  shipping_details:
+    sql: '"SHIPPING_DETAILS"'
+
+  starting_balance:
+    sql: '"STARTING_BALANCE"'
+
+  collection_method:
+    sql: '"COLLECTION_METHOD"'
+
+  customer_shipping:
+    sql: '"CUSTOMER_SHIPPING"'
+
+  default_tax_rates:
+    sql: '"DEFAULT_TAX_RATES"'
+
+  rendering_options:
+    sql: '"RENDERING_OPTIONS"'
+
+  total_tax_amounts:
+    sql: '"TOTAL_TAX_AMOUNTS"'
+
+  hosted_invoice_url:
+    sql: '"HOSTED_INVOICE_URL"'
+
+  status_transitions:
+    sql: '"STATUS_TRANSITIONS"'
+
+  customer_tax_exempt:
+    sql: '"CUSTOMER_TAX_EXEMPT"'
+
+  total_excluding_tax:
+    sql: '"TOTAL_EXCLUDING_TAX"'
+
+  next_payment_attempt:
+    sql: '"NEXT_PAYMENT_ATTEMPT"'
+
+  statement_descriptor:
+    sql: '"STATEMENT_DESCRIPTOR"'
+
+  subscription_details:
+    sql: '"SUBSCRIPTION_DETAILS"'
+
+  statement_description:
+    sql: '"STATEMENT_DESCRIPTION"'
+
+  webhooks_delivered_at:
+    sql: '"WEBHOOKS_DELIVERED_AT"'
+
+  application_fee_amount:
+    sql: '"APPLICATION_FEE_AMOUNT"'
+
+  default_payment_method:
+    sql: '"DEFAULT_PAYMENT_METHOD"'
+
+  subtotal_excluding_tax:
+    sql: '"SUBTOTAL_EXCLUDING_TAX"'
+
+  total_discount_amounts:
+    sql: '"TOTAL_DISCOUNT_AMOUNTS"'
+
+  last_finalization_error:
+    sql: '"LAST_FINALIZATION_ERROR"'
+
+  pre_payment_credit_notes_amount:
+    sql: '"PRE_PAYMENT_CREDIT_NOTES_AMOUNT"'
+
+  post_payment_credit_notes_amount:
+    sql: '"POST_PAYMENT_CREDIT_NOTES_AMOUNT"'
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,58 @@
+# Reference this view as reporting__stg_platform_users
+schema: REPORTING
+table_name: STG_PLATFORM_USERS
+
+dimensions:
+  _airbyte_raw_id:
+    sql: '"_AIRBYTE_RAW_ID"'
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    sql: '"_AIRBYTE_EXTRACTED_AT"'
+    hidden: true
+
+  _airbyte_meta:
+    sql: '"_AIRBYTE_META"'
+    hidden: true
+
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  email:
+    sql: '"EMAIL"'
+
+  enabled:
+    sql: '"ENABLED"'
+
+  accountid:
+    sql: '"ACCOUNTID"'
+
+  createdat:
+    sql: '"CREATEDAT"'
+
+  givenname:
+    sql: '"GIVENNAME"'
+
+  updatedat:
+    sql: '"UPDATEDAT"'
+
+  familyname:
+    sql: '"FAMILYNAME"'
+
+  userstatus:
+    sql: '"USERSTATUS"'
+
+  emailverified:
+    sql: '"EMAILVERIFIED"'
+
+  _airbyte_generation_id:
+    sql: '"_AIRBYTE_GENERATION_ID"'
+    format: ID
+    hidden: true
+
+measures:
+  count:
+    aggregate_type: count

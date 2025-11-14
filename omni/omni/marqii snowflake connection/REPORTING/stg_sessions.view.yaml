@@ -1,0 +1,62 @@
+# Reference this view as reporting__stg_sessions
+schema: REPORTING
+table_name: STG_SESSIONS
+
+dimensions:
+  user_id:
+    sql: '"USER_ID"'
+    format: ID
+
+  social_posting_pages_count:
+    sql: '"SOCIAL_POSTING_PAGES_COUNT"'
+
+  event_id:
+    sql: '"EVENT_ID"'
+    format: ID
+
+  session_id:
+    sql: '"SESSION_ID"'
+    format: ID
+
+  time:
+    sql: '"TIME"'
+
+  accountid:
+    sql: '"ACCOUNTID"'
+
+  platform:
+    sql: '"PLATFORM"'
+
+  country:
+    sql: '"COUNTRY"'
+
+  region:
+    sql: '"REGION"'
+
+  city:
+    sql: '"CITY"'
+
+  referrer:
+    sql: '"REFERRER"'
+
+  landing_page:
+    sql: '"LANDING_PAGE"'
+
+  title:
+    sql: '"TITLE"'
+
+  loggedin:
+    sql: '"LOGGEDIN"'
+
+  marketing_channel:
+    sql: '"MARKETING_CHANNEL"'
+
+  activity_type:
+    sql: '"ACTIVITY_TYPE"'
+
+  activity_description:
+    sql: '"ACTIVITY_DESCRIPTION"'
+
+measures:
+  count:
+    aggregate_type: count

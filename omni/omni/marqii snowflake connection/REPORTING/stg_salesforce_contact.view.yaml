@@ -1,0 +1,46 @@
+# Reference this view as reporting__stg_salesforce_contact
+schema: REPORTING
+table_name: STG_SALESFORCE_CONTACT
+
+dimensions:
+  contact_id:
+    sql: '"CONTACT_ID"'
+    format: ID
+
+  account_id_salesforce:
+    sql: '"ACCOUNT_ID_SALESFORCE"'
+
+  sf_email_contact:
+    sql: '"SF_EMAIL_CONTACT"'
+
+  sf_phone_contact:
+    sql: '"SF_PHONE_CONTACT"'
+
+  sf_contact_tile:
+    sql: '"SF_CONTACT_TILE"'
+
+  contact_owner_id:
+    sql: '"CONTACT_OWNER_ID"'
+    format: ID
+
+  contact_last_activity_date:
+    sql: '"CONTACT_LAST_ACTIVITY_DATE"'
+
+  domain_pulled:
+    sql: '"DOMAIN_PULLED"'
+
+  sf_contact_name:
+    sql: '"SF_CONTACT_NAME"'
+
+  sf_contact_linkedin:
+    sql: '"SF_CONTACT_LINKEDIN"'
+
+  sf_contact_leadsource:
+    sql: '"SF_CONTACT_LEADSOURCE"'
+
+  sf_contact_department:
+    sql: '"SF_CONTACT_DEPARTMENT"'
+
+measures:
+  count:
+    aggregate_type: count

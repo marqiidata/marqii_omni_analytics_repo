@@ -1,0 +1,41 @@
+# Reference this view as reporting__ps_licenses
+schema: REPORTING
+table_name: PS_LICENSES
+
+dimensions:
+  license_id:
+    sql: '"LICENSE_ID"'
+    format: ID
+
+  license_status:
+    sql: '"LICENSE_STATUS"'
+
+  license_end_date:
+    sql: '"LICENSE_END_DATE"'
+
+  license_quantity:
+    sql: '"LICENSE_QUANTITY"'
+
+  license_start_date:
+    sql: '"LICENSE_START_DATE"'
+
+  license_product_names:
+    sql: '"LICENSE_PRODUCT_NAMES"'
+
+  license_stripe_created_at:
+    sql: '"LICENSE_STRIPE_CREATED_AT"'
+
+  license_stripe_updateed_at:
+    sql: '"LICENSE_STRIPE_UPDATEED_AT"'
+
+  license_stripe_customer_id:
+    sql: '"LICENSE_STRIPE_CUSTOMER_ID"'
+    format: ID
+
+  license_stripe_subscription_id:
+    sql: '"LICENSE_STRIPE_SUBSCRIPTION_ID"'
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

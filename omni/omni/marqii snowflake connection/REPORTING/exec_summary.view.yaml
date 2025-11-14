@@ -1,0 +1,892 @@
+# Reference this view as reporting__exec_summary
+schema: REPORTING
+table_name: EXEC_SUMMARY
+
+dimensions:
+  model_run_time_est:
+    sql: '"MODEL_RUN_TIME_EST"'
+
+  month_date_rev_reporting:
+    sql: '"MONTH_DATE_REV_REPORTING"'
+
+  marqii_fiscal_year:
+    sql: '"MARQII_FISCAL_YEAR"'
+
+  marqii_fiscal_quarter_year:
+    sql: '"MARQII_FISCAL_QUARTER_YEAR"'
+
+  total_churned_revenue:
+    sql: '"TOTAL_CHURNED_REVENUE"'
+
+  gross_revenue:
+    sql: '"GROSS_REVENUE"'
+
+  net_revenue:
+    sql: '"NET_REVENUE"'
+
+  account_churn_amount:
+    sql: '"ACCOUNT_CHURN_AMOUNT"'
+
+  upgrade_amount:
+    sql: '"UPGRADE_AMOUNT"'
+    group_label: "Actuals: Revenue Metrics and Fields"
+
+  reactivation_amount:
+    sql: '"REACTIVATION_AMOUNT"'
+    group_label: "Actuals: Revenue Metrics and Fields"
+
+  new_revenue_amount:
+    sql: '"NEW_REVENUE_AMOUNT"'
+    description: "New ARR or revenue "
+    group_label: "Actuals: Revenue Metrics and Fields"
+    synonyms: [ New ARR, " New Revenue" ]
+    ai_context: "New ARR or revenue "
+
+  downgrade_amount:
+    sql: '"DOWNGRADE_AMOUNT"'
+    group_label: "Actuals: Revenue Metrics and Fields"
+
+  number_of_reactivation_accounts:
+    sql: '"NUMBER_OF_REACTIVATION_ACCOUNTS"'
+
+  number_of_new_accounts:
+    sql: '"NUMBER_OF_NEW_ACCOUNTS"'
+
+  number_of_churn_accounts:
+    sql: '"NUMBER_OF_CHURN_ACCOUNTS"'
+
+  opportunity_locs:
+    sql: '"OPPORTUNITY_LOCS"'
+
+  commercial_team_3_to_49_locs_new:
+    sql: '"COMMERCIAL_TEAM_3_TO_49_LOCS_NEW"'
+
+  mid_market_greater_than_50_new:
+    sql: '"MID_MARKET_GREATER_THAN_50_NEW"'
+
+  independents_new:
+    sql: '"INDEPENDENTS_NEW"'
+
+  churn_locs:
+    sql: '"CHURN_LOCS"'
+
+  upgrading_locs:
+    sql: '"UPGRADING_LOCS"'
+
+  reactivation_locs:
+    sql: '"REACTIVATION_LOCS"'
+
+  new_locs:
+    sql: '"NEW_LOCS"'
+
+  downgrade_locs:
+    sql: '"DOWNGRADE_LOCS"'
+
+  nrr_starting_mrr:
+    sql: '"NRR_STARTING_MRR"'
+
+  upsell_mrr:
+    sql: '"UPSELL_MRR"'
+
+  churn_mrr:
+    sql: '"CHURN_MRR"'
+
+  downsell_mrr:
+    sql: '"DOWNSELL_MRR"'
+
+  loss_mrr:
+    sql: '"LOSS_MRR"'
+
+  net_nrr_mrr:
+    sql: '"NET_NRR_MRR"'
+
+  gross_nrr:
+    sql: '"GROSS_NRR"'
+
+  marketing_payroll_acquisition_cost:
+    sql: '"MARKETING_PAYROLL_ACQUISITION_COST"'
+
+  revenue_payroll_acquisition_cost:
+    sql: '"REVENUE_PAYROLL_ACQUISITION_COST"'
+
+  marketing_expenses_acquisition_cost:
+    sql: '"MARKETING_EXPENSES_ACQUISITION_COST"'
+
+  rolling_12_month_churn:
+    sql: '"ROLLING_12_MONTH_CHURN"'
+
+  rolling_12_quarterly_churn:
+    sql: '"ROLLING_12_QUARTERLY_CHURN"'
+
+  _row:
+    sql: '"_ROW"'
+    hidden: true
+
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+  month:
+    sql: '"MONTH"'
+
+  forecast_plan:
+    sql: '"FORECAST_PLAN"'
+
+  actuals_plan:
+    sql: '"ACTUALS_PLAN"'
+
+  fcast_total_expenses:
+    sql: '"FCAST_TOTAL_EXPENSES"'
+
+  fcast_total_revenue:
+    sql: '"FCAST_TOTAL_REVENUE"'
+
+  fcast_total_marketing_expense:
+    sql: '"FCAST_TOTAL_MARKETING_EXPENSE"'
+
+  fcast_arr_from_commercial_team:
+    sql: '"FCAST_ARR_FROM_COMMERCIAL_TEAM"'
+
+  fcast_misc_expenses:
+    sql: '"FCAST_MISC_EXPENSES"'
+
+  fcast_upgrades:
+    sql: '"FCAST_UPGRADES"'
+
+  fcast_total_general_administrative:
+    sql: '"FCAST_TOTAL_GENERAL_ADMINISTRATIVE"'
+
+  fcast_admin_ops_expenses:
+    sql: '"FCAST_ADMIN_OPS_EXPENSES"'
+
+  fcast_beginning_revenue:
+    sql: '"FCAST_BEGINNING_REVENUE"'
+
+  fcast_adjustment_for_board_deck:
+    sql: '"FCAST_ADJUSTMENT_FOR_BOARD_DECK"'
+
+  fcast_noteable_miscellaneous_expenses:
+    sql: '"FCAST_NOTEABLE_MISCELLANEOUS_EXPENSES"'
+
+  fcast_churn:
+    sql: '"FCAST_CHURN"'
+
+  fcast_total_revenue_expense:
+    sql: '"FCAST_TOTAL_REVENUE_EXPENSE"'
+
+  fcast_engineering_expenses:
+    sql: '"FCAST_ENGINEERING_EXPENSES"'
+
+  fcast_downgrades:
+    sql: '"FCAST_DOWNGRADES"'
+
+  fcast_total_customer_experience_expense:
+    sql: '"FCAST_TOTAL_CUSTOMER_EXPERIENCE_EXPENSE"'
+
+  fcast_net_burn:
+    sql: '"FCAST_NET_BURN"'
+
+  fcast_mid_market_enterprise_marketing_budget:
+    sql: '"FCAST_MID_MARKET_ENTERPRISE_MARKETING_BUDGET"'
+
+  fcast_arr_from_mid_market:
+    sql: '"FCAST_ARR_FROM_MID_MARKET"'
+
+  fcast_board_intro:
+    sql: '"FCAST_BOARD_INTRO"'
+
+  adjustments_to_convert_the_net_accrual_income_to_net_cash_income:
+    sql: '"Adjustments to Convert the Net Accrual Income to Net Cash Income"'
+
+  beginning_cash_balance:
+    sql: '"Beginning Cash Balance"'
+
+  gross_sales:
+    sql: '"Gross Sales"'
+
+  net_operating_cash_flow:
+    sql: '"Net Operating Cash Flow"'
+
+  net_financing_activity_cashflow:
+    sql: '"Net Financing Activity Cashflow"'
+
+  cost_of_goods_sold:
+    sql: '"Cost of Goods Sold"'
+
+  net_income:
+    sql: '"Net Income"'
+
+  gross_profit:
+    sql: '"Gross Profit"'
+
+  operating_expenditures:
+    sql: '"Operating Expenditures"'
+
+  net_operating_profit:
+    sql: '"Net Operating Profit"'
+
+  other_income:
+    sql: '"Other Income"'
+
+  net_increase__decrease__in_cash:
+    sql: '"Net Increase/(Decrease) in Cash"'
+
+  ending_cash_balance:
+    sql: '"Ending Cash Balance"'
+
+  ____ending_cash_balance_includes_bank_accounts_and_undeposited_funds_:
+    sql: '"** (Ending Cash Balance includes Bank Accounts and Undeposited Funds)"'
+    hidden: true
+
+  trailing_3m_runway:
+    sql: '"Trailing 3M Runway"'
+
+  net_operating_income:
+    sql: '"NET_OPERATING_INCOME"'
+
+  pnl_sync:
+    sql: '"PNL_SYNC"'
+
+  total_acquisition_cost:
+    sql: '"TOTAL_ACQUISITION_COST"'
+
+  cum_net_revenue_quarterly:
+    sql: '"CUM_NET_REVENUE_QUARTERLY"'
+
+  acquisition_cost_quarterly:
+    sql: '"ACQUISITION_COST_QUARTERLY"'
+
+  cum_net_revenue_quarter_prev:
+    sql: '"CUM_NET_REVENUE_QUARTER_PREV"'
+
+  cum_net_revenue_quarter_prior_year:
+    sql: '"CUM_NET_REVENUE_QUARTER_PRIOR_YEAR"'
+
+  prior_quarter_acquisition_cost:
+    sql: '"PRIOR_QUARTER_ACQUISITION_COST"'
+
+  cum_net_revenue_month:
+    sql: '"CUM_NET_REVENUE_MONTH"'
+
+  cum_net_revenue_month_prev:
+    sql: '"CUM_NET_REVENUE_MONTH_PREV"'
+
+  calculation:
+    sql: COALESCE(COALESCE(${reporting__exec_summary.marketing_expenses_acquisition_cost},
+      0) +
+      COALESCE(${reporting__exec_summary.marketing_payroll_acquisition_cost},
+      0), 0) +
+      COALESCE(${reporting__exec_summary.revenue_payroll_acquisition_cost}, 0)
+    label: Total Acquisition Cost
+    description: Sums our revenue and marketing related costs to determine our
+      acquisition cost. Needs to be further divded by number of acquired
+      customers to determine cac
+    group_label: CAC fields
+    synonyms: [ Acquisition Cost, " Total Cost" ]
+    ai_context: CAC or acquisition cost numerator. sourced from quickbooks
+
+  calculation_2:
+    sql: COALESCE(COALESCE(${reporting__exec_summary.upgrade_amount}, 0) +
+      COALESCE(${reporting__exec_summary.reactivation_amount}, 0), 0) +
+      COALESCE(${reporting__exec_summary.new_revenue_amount}, 0)
+    label: Net Added Revenue
+    format: USDACCOUNTING_0
+    description: Total revenue from new, upgraded, and reactivated accounts
+    ai_context: Total revenue from new, upgraded, and reactivated accounts
+
+  calculation_3:
+    sql: CASE WHEN 12 = 0 THEN NULL ELSE
+      COALESCE(${reporting__exec_summary.calculation_2}, 0) / 12 END
+    label: New and Upgrade MRR
+    description: MRR or monthly recurring revenue for total added revenue
+    group_label: "Actuals: Revenue Metrics and Fields"
+    ai_context: MRR or monthly recurring revenue for total added revenue
+
+  calculation_4:
+    sql: CASE WHEN 12 = 0 THEN NULL ELSE
+      COALESCE(${reporting__exec_summary.new_revenue_amount}, 0) / 12 END
+    label: New MRR
+    description: Only new revenue mrr - does not include upgrades or reactivations
+    group_label: "Actuals: Revenue Metrics and Fields"
+    ai_context: Only new revenue mrr - does not include upgrades or reactivations
+
+  calculation_1:
+    sql: CASE WHEN ${reporting__exec_summary.number_of_new_accounts} = 0 THEN NULL
+      ELSE COALESCE(${reporting__exec_summary.revenue_payroll_acquisition_cost},
+      0) / ${reporting__exec_summary.number_of_new_accounts} END
+    label: CAC
+    description: Cost of Customer Acquisition. This field takes the total
+      acquisition cost and divdes it by the number of new accounts acquired
+    group_label: CAC fields
+    synonyms: [ CAC, " Cost of Customer Acquisitoin" ]
+    ai_context: Cost of Customer Acquisition. This field takes the total acquisition
+      cost and divdes it by the number of new accounts acquired
+
+  gross_margin_adjusted_mrr:
+    sql: |
+      (${reporting__exec_summary.calculation_4} 
+
+        / ${reporting__exec_summary.number_of_new_accounts})
+    label: AVG MRR
+    description: "Using the Actual Gross Margin, "
+
+  avg_mrr_new_and_upgrade_:
+    sql: |-
+      case when ${reporting__exec_summary.number_of_new_accounts} is null or ${reporting__exec_summary.number_of_new_accounts} = 0 then 0 else 
+        
+        ${reporting__exec_summary.calculation_3}
+
+        / ${reporting__exec_summary.number_of_new_accounts}
+      end
+    label: Avg MRR (New and Upgrade)
+    description: AVG MRR including upgraded arr divided by the number of accounts
+    group_label: CAC fields
+
+  margin_adjusted_new_mrr:
+    sql: |-
+      ${reporting__exec_summary.gross_margin_adjusted_mrr} 
+      *${reporting__exec_summary.calculation_5}
+    label: Margin Adjusted New MRR
+    description: "Using the Actual Gross Margin, "
+    group_label: CAC fields
+
+  calculation_5:
+    sql: |-
+      COALESCE (${reporting__exec_summary.actual_gross_margin_copy}  , 
+        
+        .63)
+    label: Gross Margin (Actuals or Assumption)
+    description: Calculate the gross margin if the actuals are there, else take the
+      .63 assumption to fill in historicals.
+    group_label: PnL Metrics
+    ai_context: Gross Margin from quickbooks for actuals
+
+  actual_gross_margin_copy:
+    sql: CASE WHEN ${reporting__exec_summary.gross_sales} = 0 or
+      ${reporting__exec_summary.gross_sales} is null THEN NULL ELSE
+      COALESCE(${reporting__exec_summary.gross_profit}, 0) /
+      ${reporting__exec_summary.gross_sales} END
+    label: Actual Gross Margin
+    description: Gross Margin from quickbooks for actuals
+    group_label: PnL Metrics
+
+  new_and_upgrade_mrr_margin_adjusted_:
+    sql: ${reporting__exec_summary.avg_mrr_new_and_upgrade_} *
+      ${reporting__exec_summary.calculation_5}
+    label: Margin Adjusted MRR ( New and Upgrade)
+    description: AVG MRR including upgraded arr divided by the number of accounts
+    group_label: CAC fields
+
+  calculation_6:
+    sql: CASE WHEN ${reporting__exec_summary.avg_mrr_new_and_upgrade_} = 0 THEN NULL
+      ELSE COALESCE(${reporting__exec_summary.calculation_1}, 0) /
+      ${reporting__exec_summary.avg_mrr_new_and_upgrade_} END
+    label: Payback Period (Months)
+    description: Payback period using  upgrades and new arr while adjusting gross margin
+    group_label: CAC fields
+
+  fiscal_year_string:
+    sql: |-
+      case when month(${reporting__exec_summary.month_date_rev_reporting}) = 1 
+        then    (EXTRACT(YEAR FROM ${reporting__exec_summary.month_date_rev_reporting})-1)::STRING
+      else (EXTRACT(YEAR FROM ${reporting__exec_summary.month_date_rev_reporting}))::STRING end
+    label: Fiscal Year String
+
+  year_date_format:
+    sql: ${reporting__exec_summary.month_date_rev_reporting[fiscal_year]}
+    label: Year Date Format
+
+measures:
+  net_revenue_sum:
+    sql: ${reporting__exec_summary.net_revenue}
+    group_label: "Actuals: Revenue Metrics and Fields"
+    format: BIGUSDCURRENCY_2
+    aggregate_type: sum
+
+  filtered_net_revenue_current_and_past:
+    sql: ${reporting__exec_summary.net_revenue}
+    label: Revenue Through Today
+    group_label: "Actuals: Revenue Metrics and Fields"
+    format: BIGUSDCURRENCY_2
+    drill_fields:
+      [
+        "reporting__exec_summary.month_date_rev_reporting[fiscal_quarter]",
+        reporting__exec_summary.downgrade_amount,
+        reporting__exec_summary.new_revenue_amount,
+        reporting__exec_summary.reactivation_amount,
+        reporting__exec_summary.upgrade_amount,
+        reporting__exec_summary.account_churn_amount
+      ]
+    aggregate_type: sum
+    filters:
+      month_date_rev_reporting:
+        before: tomorrow
+
+  filtered_net_revenue_current_and_past_copy:
+    sql: ${reporting__exec_summary.net_revenue}
+    label: Future Net Revenue Moves
+    format: BIGUSDCURRENCY_2
+    drill_fields:
+      [
+        "reporting__exec_summary.month_date_rev_reporting[fiscal_quarter]",
+        reporting__exec_summary.downgrade_amount_sum,
+        reporting__exec_summary.account_churn_amount_sum,
+        reporting__exec_summary.new_revenue_amount_sum,
+        reporting__exec_summary.upgrade_amount_sum,
+        reporting__exec_summary.reactivation_amount_sum
+      ]
+    aggregate_type: sum
+    filters:
+      month_date_rev_reporting:
+        on_or_after: tomorrow
+
+  nrr_:
+    sql: ${reporting__exec_summary.nrr_amount} /
+      ${reporting__exec_summary.cum_net_revenue_quarter_prev_average}
+    label: NRR %
+    group_label: Retention Metrics
+    description: NRR %
+
+  nrr_amount:
+    sql: ${reporting__exec_summary.downgrade_amount_sum} +
+      ${reporting__exec_summary.account_churn_amount_sum} +
+      +${reporting__exec_summary.upgrade_amount_sum} +
+      ${reporting__exec_summary.reactivation_amount_sum}+
+      ${reporting__exec_summary.cum_net_revenue_quarter_prev_average}
+    label: NRR Amount
+    group_label: Retention Metrics
+    format: USDCURRENCY_0
+
+  downgrade_amount_sum:
+    sql: ${reporting__exec_summary.downgrade_amount}
+    label: Downgrade ARR
+    group_label: "Actuals: Revenue Metrics and Fields"
+    format: BIGUSDCURRENCY_2
+    aggregate_type: sum
+
+  account_churn_amount_sum:
+    sql: ${reporting__exec_summary.account_churn_amount}
+    label: Account Churn ARR
+    group_label: "Actuals: Revenue Metrics and Fields"
+    format: BIGUSDCURRENCY_0
+    aggregate_type: sum
+
+  upgrade_amount_sum:
+    sql: ${reporting__exec_summary.upgrade_amount}
+    label: Upgrade ARR
+    group_label: "Actuals: Revenue Metrics and Fields"
+    format: BIGNUMBER
+    aggregate_type: sum
+
+  reactivation_amount_sum:
+    sql: ${reporting__exec_summary.reactivation_amount}
+    label: Reactivation ARR
+    group_label: "Actuals: Revenue Metrics and Fields"
+    format: BIGNUMBER
+    aggregate_type: sum
+
+  cum_net_revenue_quarter_prev_average:
+    sql: ${reporting__exec_summary.cum_net_revenue_quarter_prev}
+    label: Starting Revenue
+    group_label: "Actuals: Revenue Metrics and Fields"
+    format: BIGUSDCURRENCY_2
+    aggregate_type: average
+
+  gross_:
+    sql: |-
+      ${reporting__exec_summary.grr_amount}
+        /
+        ${reporting__exec_summary.cum_net_revenue_quarter_prev_average} 
+    label: Gross %
+
+  grr_amount:
+    sql: ${reporting__exec_summary.downgrade_amount_sum} +
+      ${reporting__exec_summary.account_churn_amount_sum} +
+      ${reporting__exec_summary.cum_net_revenue_quarter_prev_average}
+    label: GRR Amount
+    group_label: Retention Metrics
+    format: USDCURRENCY_0
+
+  calculation_sum:
+    sql: ${reporting__exec_summary.calculation}
+    label: Total Acquisition Cost Sum
+    group_label: CAC fields
+    aggregate_type: sum
+
+  new_mrr_sum:
+    sql: "${reporting__exec_summary.new_revenue_amount_sum} / 12 "
+    label: New MRR Sum
+    group_label: CAC fields
+
+  new_revenue_amount_sum:
+    sql: ${reporting__exec_summary.new_revenue_amount}
+    label: New ARR
+    group_label: "Actuals: Revenue Metrics and Fields"
+    format: BIGUSDCURRENCY_2
+    aggregate_type: sum
+
+  gross_sales_sum:
+    sql: ${reporting__exec_summary.gross_sales}
+    group_label: Gross Margin Fields
+    aggregate_type: sum
+
+  gross_margin_actuals_if_available:
+    sql: COALESCE(${reporting__exec_summary.gross_margin_actuals_sum},.65)
+    label: Gross Margin - Actuals If Available
+    group_label: Gross Margin Fields
+
+  gross_margin_actuals_sum:
+    sql: case when ${reporting__exec_summary.gross_sales_sum} is null or
+      ${reporting__exec_summary.gross_sales_sum} =0 then null else
+      ${reporting__exec_summary.gross_profit_sum}/${reporting__exec_summary.gross_sales_sum}
+      end
+    label: Gross Margin Actuals Sum
+
+  gross_profit_sum:
+    sql: ${reporting__exec_summary.gross_profit}
+    group_label: Gross Margin Fields
+    aggregate_type: sum
+
+  calculation_2_sum:
+    sql: ${reporting__exec_summary.calculation_2}
+    label: Net Added Revenue Sum
+    format: USDACCOUNTING_0
+    aggregate_type: sum
+
+  added_arr_:
+    sql: ${reporting__exec_summary.new_revenue_amount_sum} +
+      ${reporting__exec_summary.reactivation_amount_sum} +
+      ${reporting__exec_summary.upgrade_amount_sum}
+    label: Total Added Amount (ARR)
+    group_label: "Actuals: Revenue Metrics and Fields"
+    description: Includes new deals, upgrades, and reactivation arr
+    drill_fields: []
+
+  total_added_mrr:
+    sql: |-
+      case when 
+      ${reporting__exec_summary.number_of_new_accounts_sum} = 0 or ${reporting__exec_summary.number_of_new_accounts_sum} is null then null else 
+      ${reporting__exec_summary.added_arr_} / 12 /${reporting__exec_summary.number_of_new_accounts_sum}end
+    label: Total Average MRR
+    group_label: "Actuals: Revenue Metrics and Fields"
+    description: Divides added total arr or revenue or amount by the number of new
+      customers and months to get average added revenue
+
+  number_of_new_accounts_sum:
+    sql: ${reporting__exec_summary.number_of_new_accounts}
+    label: "# of New Accounts"
+    group_label: CAC fields
+    drill_fields: []
+    aggregate_type: sum
+
+  payback_months_new_revenue_only_:
+    sql: case when ${reporting__exec_summary.avg_new_mrr_margin_adjusted} is null or
+      ${reporting__exec_summary.avg_new_mrr_margin_adjusted} = 0 then null else
+      ${reporting__exec_summary.cac_calulated}/${reporting__exec_summary.avg_new_mrr_margin_adjusted}
+      end
+    label: Payback Months (New Revenue Only)
+
+  avg_new_mrr_margin_adjusted:
+    sql: |-
+      case when ${reporting__exec_summary.number_of_new_accounts_sum} is null or ${reporting__exec_summary.number_of_new_accounts_sum} = 0 
+
+        then null
+
+      else 
+
+
+      ((${reporting__exec_summary.new_revenue_amount_sum}/12)*${reporting__exec_summary.gross_margin_actuals_if_available})
+        /${reporting__exec_summary.number_of_new_accounts_sum} end
+    label: Avg New MRR Margin Adjusted
+    format: USDCURRENCY_2
+    description: This MRR is adjusted based on gross margin and only includes new deals.
+
+  cac_calulated:
+    sql: |-
+      case when ${reporting__exec_summary.number_of_new_accounts_sum} =0 or ${reporting__exec_summary.number_of_new_accounts_sum} is null then null else 
+
+
+      ${reporting__exec_summary.calculation_sum} / ${reporting__exec_summary.number_of_new_accounts_sum} end
+    label: CAC
+    group_label: CAC fields
+    format: BIGUSDCURRENCY_0
+    description: Uses new accounts (opportunity rev category = new) and the
+      available acquisition cost data to determine how much it costs to acquire
+      customers in a given time period.
+
+  churn_rate_denominator:
+    sql: ${reporting__exec_summary.rolling_12_quarterly_churn_sum} * -1 +
+      ${reporting__exec_summary.cum_net_revenue_quarterly_average}
+    label: Churn Rate Denominator
+    group_label: Churn Metrics
+    format: BIGUSDCURRENCY_0
+    description: used for our rolling churn calculation
+
+  rolling_12_quarterly_churn_sum:
+    sql: ${reporting__exec_summary.rolling_12_quarterly_churn}
+    group_label: Churn Metrics
+    format: BIGUSDCURRENCY_2
+    aggregate_type: sum
+
+  cum_net_revenue_quarterly_average:
+    sql: ${reporting__exec_summary.cum_net_revenue_quarterly}
+    label: Ending Revenue
+    group_label: "Actuals: Revenue Metrics and Fields"
+    format: BIGUSDCURRENCY_2
+    description: "This is the total cumulative net revenue at the end of a quarter. "
+    drill_fields: []
+    aggregate_type: average
+    ai_context: This field can be call ending revenue, cumulative net revenue,
+      cumulative revenue. Should only be averaged as this is for the quarter
+
+  monthly_churb_rate:
+    sql: ${reporting__exec_summary.quarterly_churn_rate}/12
+    label: Monthly Churn Rate
+    group_label: Churn Metrics
+    format: PERCENT_0
+    description: Taking the annualized churn rate and reducing it by 12 to get the
+      monthly level
+
+  quarterly_churn_rate:
+    sql: |-
+      case when   ${reporting__exec_summary.churn_rate_denominator}  is null or   ${reporting__exec_summary.churn_rate_denominator}  = 0 then null else ${reporting__exec_summary.rolling_12_quarterly_churn_sum}
+        /
+        ${reporting__exec_summary.churn_rate_denominator} end
+    label: Churn Rate
+    group_label: Churn Metrics
+    format: PERCENT_0
+    description: "This annualized churn rate uses a rolling 12 months churn
+      calculation. This should be treating our business harsher "
+
+  rolling_12_quarterly_churn_average:
+    sql: ${reporting__exec_summary.rolling_12_quarterly_churn}
+    group_label: Churn Metrics
+    format: BIGUSDCURRENCY_2
+    aggregate_type: average
+
+  customer_lifetime:
+    sql: |-
+      case when 
+        ${reporting__exec_summary.monthly_churb_rate} is null or ${reporting__exec_summary.monthly_churb_rate} =0
+
+        then 0
+
+        else
+        
+        1/${reporting__exec_summary.monthly_churb_rate} * - 1  end
+    label: Customer Lifetime (Months)
+    group_label: Churn Metrics
+    format: NUMBER_1
+
+  ltv_cac:
+    sql: ${reporting__exec_summary.life_time_value_ltv_}/${reporting__exec_summary.cac_calulated}
+    label: LTV:CAC
+    description: Use lifetime value (new revenue only * rolling churn determined
+      customer lifetime in months)
+
+  life_time_value_ltv_:
+    sql: ${reporting__exec_summary.avg_new_mrr_margin_adjusted} *
+      ${reporting__exec_summary.customer_lifetime}
+    label: Life Time Value (LTV)
+    group_label: LTV Calcs
+    format: BIGUSDCURRENCY_0
+    description: Life Time Value assume only new revenue. Takes our actual gross
+      margin or the assumption of 65%.
+    drill_fields: []
+
+  quarterly_lifetime_:
+    sql: 1 / ${reporting__exec_summary.quarterly_churn_rate_1}
+    label: "Quarterly Lifetime "
+    group_label: Churn Metrics
+    description: Churn rate that only considers account churn within the quarter.
+
+  quarterly_churn_rate_1:
+    sql: |-
+      case when ${reporting__exec_summary.cum_net_revenue_quarter_prev_average} is null or ${reporting__exec_summary.cum_net_revenue_quarter_prev_average}  = 0 then null else
+
+
+      ${reporting__exec_summary.account_churn_amount_sum} / ${reporting__exec_summary.cum_net_revenue_quarter_prev_average}/3*-1 end
+    label: Quarterly Churn Rate
+    format: PERCENT_0
+    description: "Churn rate based on the beginning revenue and the churn that
+      occurs within the quarter (not cumulative). Does not include downgrades. "
+
+  quarterly_lifetime_value:
+    sql: ${reporting__exec_summary.avg_new_mrr_margin_adjusted}*${reporting__exec_summary.quarterly_lifetime_}
+    label: Quarterly Lifetime Value
+    group_label: LTV Calcs
+    description: Quarterly based life time value
+
+  quarterly_ltv_cac:
+    sql: |-
+      case when ${reporting__exec_summary.cac_calulated} is null or ${reporting__exec_summary.cac_calulated} = 0 then null else
+
+             ${reporting__exec_summary.quarterly_lifetime_value}
+        /
+        ${reporting__exec_summary.cac_calulated} end
+    label: Quarterly LTV:CAC
+
+  marketing_expenses_acquisition_cost_sum:
+    sql: ${reporting__exec_summary.marketing_expenses_acquisition_cost}
+    label: Marketing Expenses (Ex Payroll)
+    group_label: CAC fields
+    format: BIGUSDCURRENCY_0
+    drill_fields: []
+    aggregate_type: sum
+
+  marketing_payroll_acquisition_cost_sum:
+    sql: ${reporting__exec_summary.marketing_payroll_acquisition_cost}
+    label: Marketing Payroll
+    group_label: CAC fields
+    format: BIGUSDCURRENCY_0
+    aggregate_type: sum
+
+  revenue_payroll_acquisition_cost_sum:
+    sql: ${reporting__exec_summary.revenue_payroll_acquisition_cost}
+    label: Revenue Payroll
+    group_label: CAC fields
+    format: BIGUSDCURRENCY_0
+    drill_fields: []
+    aggregate_type: sum
+
+  total_mrr_margin_adjusted:
+    sql: ${reporting__exec_summary.total_added_mrr} *
+      ${reporting__exec_summary.gross_margin_actuals_if_available}
+    label: Total Added MRR Margin Adjusted
+    group_label: CAC fields
+    format: USDCURRENCY_0
+    description: Including new deals, upgrades, and reactivations. Multiply the MRR
+      by our gross margin actuals or our assumed gross margin rate.
+    drill_fields: []
+
+  payback_period_months_:
+    sql: |-
+      case when ${reporting__exec_summary.total_mrr_margin_adjusted} is null or ${reporting__exec_summary.total_mrr_margin_adjusted} = 0 then null else 
+
+      ${reporting__exec_summary.cac_calulated} / ${reporting__exec_summary.total_mrr_margin_adjusted} end
+    label: Payback Period (Months)
+    group_label: CAC fields
+    format: NUMBER_1
+    description: Payback period including upgrades and new deals
+    drill_fields: []
+
+  qoq_revenue_growth_rate_:
+    sql: case when   ${reporting__exec_summary.cum_net_revenue_quarter_prev_average}
+      is null or ${reporting__exec_summary.cum_net_revenue_quarter_prev_average}
+      = 0 then  null else
+      (${reporting__exec_summary.cum_net_revenue_quarterly_average} -
+      ${reporting__exec_summary.cum_net_revenue_quarter_prev_average})/${reporting__exec_summary.cum_net_revenue_quarter_prev_average}
+      end
+    label: "QoQ Revenue Growth Rate "
+    group_label: "Actuals: Revenue Metrics and Fields"
+    description: Field compares current quarter vs prior quarter exit revenue. This
+      is the cumulative revenue number.
+
+  net_operating_income_sum:
+    sql: ${reporting__exec_summary.net_operating_income}
+    aggregate_type: sum
+
+  gross_profit_:
+    sql: case when ${reporting__exec_summary.net_operating_income_sum} is null or
+      ${reporting__exec_summary.net_operating_income_sum} = 0 then null else
+      ${reporting__exec_summary.net_operating_income_sum} /
+      ${reporting__exec_summary.gross_sales_sum} end
+    label: Net Operating Income %
+    group_label: Rule of 40
+    format: PERCENT_1
+    description: Take the Net Operating Income over our gross sales from quickbooks.
+      Used in rule of 40 calculation
+    drill_fields: []
+
+  yoy_revenue_growth:
+    sql: |-
+      case when ${reporting__exec_summary.cum_net_revenue_quarter_prior_year_average} is null or ${reporting__exec_summary.cum_net_revenue_quarter_prior_year_average} =0 
+        then 
+         null else
+
+      (${reporting__exec_summary.cum_net_revenue_quarterly_average} - ${reporting__exec_summary.cum_net_revenue_quarter_prior_year_average})/${reporting__exec_summary.cum_net_revenue_quarter_prior_year_average} end
+    label: YoY Revenue Growth
+    group_label: Rule of 40
+    format: PERCENT_1
+    description: takes the cumulative revenue growth rate versus prior year
+    drill_fields: []
+
+  cum_net_revenue_quarter_prior_year_average:
+    sql: ${reporting__exec_summary.cum_net_revenue_quarter_prior_year}
+    label: Prior Year Revenue
+    group_label: Rule of 40
+    aggregate_type: average
+
+  qoq_growth:
+    sql: |-
+      
+
+      case when ${reporting__exec_summary.cum_net_revenue_quarter_prev_average} = 0 or ${reporting__exec_summary.cum_net_revenue_quarter_prev_average} is NULL
+
+        then NULL
+        else
+
+
+
+
+
+
+
+
+
+
+      (${reporting__exec_summary.cum_net_revenue_quarterly_average} - ${reporting__exec_summary.cum_net_revenue_quarter_prev_average}) / ${reporting__exec_summary.cum_net_revenue_quarter_prev_average} end
+    label: QoQ Growth
+    format: PERCENT_1
+    drill_fields: []
+
+  acquisition_cost_quarterly_average:
+    sql: ${reporting__exec_summary.acquisition_cost_quarterly}
+    label: Total Acquisition Cost (Quarter)
+    group_label: CAC fields
+    format: BIGUSDCURRENCY_0
+    description: Acquisition cost for the quarter. Sum of marketing, revenue
+      payroll, and marketing  expenses
+    drill_fields: []
+    aggregate_type: average
+
+  magic_number_numerator:
+    sql: (${reporting__exec_summary.cum_net_revenue_quarterly_average}-${reporting__exec_summary.cum_net_revenue_quarter_prev_average})
+    label: Magic Number Numerator
+    group_label: Magic Number
+    format: BIGUSDCURRENCY_2
+    description: Get the difference in Prior Quarter revenue and the current quarter x 4
+    drill_fields: []
+
+  magic_number:
+    sql: |-
+      case when ${reporting__exec_summary.prior_quarter_acquisition_cost_average} is null or 
+        ${reporting__exec_summary.prior_quarter_acquisition_cost_average} = 0 then null else 
+
+
+      ${reporting__exec_summary.magic_number_numerator}/${reporting__exec_summary.prior_quarter_acquisition_cost_average}end
+    label: Magic Number
+    group_label: Magic Number
+    description: "Magic Number Calculation: Change in Revenue x 4 over prior
+      quarter's acquisition cost."
+
+  prior_quarter_acquisition_cost_average:
+    sql: ${reporting__exec_summary.prior_quarter_acquisition_cost}
+    label: Prior Quarter Acquisition Costs
+    group_label: Magic Number
+    format: BIGUSDCURRENCY_2
+    drill_fields: []
+    aggregate_type: average
+
+  rule_of_40:
+    sql: ${reporting__exec_summary.gross_profit_} +
+      ${reporting__exec_summary.yoy_revenue_growth}
+    label: Rule of 40
+    group_label: Rule of 40
+    format: PERCENT_2
+    description: adds gross profit % and YoY Revenue Growth
+    drill_fields: []
+
+  net_income_sum:
+    sql: ${reporting__exec_summary.net_income}
+    aggregate_type: sum

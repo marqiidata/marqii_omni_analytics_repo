@@ -1,0 +1,195 @@
+# Reference this view as reporting__reporting_heap_activities
+schema: REPORTING
+table_name: REPORTING_HEAP_ACTIVITIES
+
+dimensions:
+  user_id:
+    sql: '"USER_ID"'
+    format: ID
+
+  social_posting_pages_count:
+    sql: '"SOCIAL_POSTING_PAGES_COUNT"'
+
+  event_id:
+    sql: '"EVENT_ID"'
+    format: ID
+
+  session_id:
+    sql: '"SESSION_ID"'
+    format: ID
+
+  time:
+    sql: '"TIME"'
+
+  platform:
+    sql: '"PLATFORM"'
+
+  country:
+    sql: '"COUNTRY"'
+
+  region:
+    sql: '"REGION"'
+
+  city:
+    sql: '"CITY"'
+
+  referrer:
+    sql: '"REFERRER"'
+
+  landing_page:
+    sql: '"LANDING_PAGE"'
+
+  title:
+    sql: '"TITLE"'
+
+  loggedin:
+    sql: '"LOGGEDIN"'
+
+  marketing_channel:
+    sql: '"MARKETING_CHANNEL"'
+
+  activity_type:
+    sql: '"ACTIVITY_TYPE"'
+
+  activity_description:
+    sql: '"ACTIVITY_DESCRIPTION"'
+
+  joindate:
+    sql: '"JOINDATE"'
+
+  last_modified:
+    sql: '"LAST_MODIFIED"'
+
+  identity:
+    sql: '"IDENTITY"'
+
+  handle:
+    sql: '"HANDLE"'
+
+  contact_current_package__c:
+    sql: '"CONTACT_CURRENT_PACKAGE__C"'
+
+  contact_account_name_text__c:
+    sql: '"CONTACT_ACCOUNT_NAME_TEXT__C"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  contact_id:
+    sql: '"CONTACT_ID"'
+    format: ID
+
+  contact_marqii_account_id__c:
+    sql: '"CONTACT_MARQII_ACCOUNT_ID__C"'
+
+  user_first_name:
+    sql: '"USER_FIRST_NAME"'
+
+  user_last_name:
+    sql: '"USER_LAST_NAME"'
+
+  user_email:
+    sql: '"USER_EMAIL"'
+
+  user_status:
+    sql: '"USER_STATUS"'
+
+  heap_user_account_id:
+    sql: '"HEAP_USER_ACCOUNT_ID"'
+    format: ID
+
+  heap_user_email_verified:
+    sql: '"HEAP_USER_EMAIL_VERIFIED"'
+
+  user_group:
+    sql: '"USER_GROUP"'
+
+  is_internal_user:
+    sql: '"IS_INTERNAL_USER"'
+
+  event_date:
+    sql: '"EVENT_DATE"'
+
+  event_year:
+    sql: '"EVENT_YEAR"'
+
+  event_month:
+    sql: '"EVENT_MONTH"'
+
+  quarter_date_eventdate:
+    sql: '"QUARTER_DATE_EVENTDATE"'
+
+  month_date_eventdate:
+    sql: '"MONTH_DATE_EVENTDATE"'
+
+  quarter_text_eventdate:
+    sql: '"QUARTER_TEXT_EVENTDATE"'
+
+  event_quarter_year:
+    sql: '"EVENT_QUARTER_YEAR"'
+
+  heap_activity_owner_id:
+    sql: '"HEAP_ACTIVITY_OWNER_ID"'
+    format: ID
+
+  trailing_30_day_users:
+    sql: '"TRAILING_30_DAY_USERS"'
+
+  trailing_30_day_accounts:
+    sql: '"TRAILING_30_DAY_ACCOUNTS"'
+
+  heap_activity_account_name:
+    sql: '"HEAP_ACTIVITY_ACCOUNT_NAME"'
+
+  account_activity_owner_stripeid:
+    sql: '"ACCOUNT_ACTIVITY_OWNER_STRIPEID"'
+
+  account_activity_owner_psaccountid:
+    sql: '"ACCOUNT_ACTIVITY_OWNER_PSACCOUNTID"'
+
+  account_activity_owner_salesforceid:
+    sql: '"ACCOUNT_ACTIVITY_OWNER_SALESFORCEID"'
+
+  account_activity_owner_salesforce_account_name:
+    sql: '"ACCOUNT_ACTIVITY_OWNER_SALESFORCE_ACCOUNT_NAME"'
+
+  account_activity_salesforce_account_status:
+    sql: '"ACCOUNT_ACTIVITY_SALESFORCE_ACCOUNT_STATUS"'
+
+  account_activity_salesforce_stagename:
+    sql: '"ACCOUNT_ACTIVITY_SALESFORCE_STAGENAME"'
+
+  account_activity_salesforce_account_owner:
+    sql: '"ACCOUNT_ACTIVITY_SALESFORCE_ACCOUNT_OWNER"'
+
+  account_activity_salesforce_current_package:
+    sql: '"ACCOUNT_ACTIVITY_SALESFORCE_CURRENT_PACKAGE"'
+
+  account_activity_salesforce_account_has_srr:
+    sql: '"ACCOUNT_ACTIVITY_SALESFORCE_ACCOUNT_HAS_SRR"'
+
+  account_activity_salesforce_account_has_mrr:
+    sql: '"ACCOUNT_ACTIVITY_SALESFORCE_ACCOUNT_HAS_MRR"'
+
+  account_features_menus_enabled:
+    sql: '"ACCOUNT_FEATURES_MENUS_ENABLED"'
+
+  account_features_reviewmonitoring_enabled:
+    sql: '"ACCOUNT_FEATURES_REVIEWMONITORING_ENABLED"'
+
+  account_features_listings_enabled:
+    sql: '"ACCOUNT_FEATURES_LISTINGS_ENABLED"'
+
+  account_features_suggested_review_response_enabled:
+    sql: '"ACCOUNT_FEATURES_SUGGESTED_REVIEW_RESPONSE_ENABLED"'
+
+  account_features_managed_reviews_enabled:
+    sql: '"ACCOUNT_FEATURES_MANAGED_REVIEWS_ENABLED"'
+
+  account_features_social_management_enabled:
+    sql: '"ACCOUNT_FEATURES_SOCIAL_MANAGEMENT_ENABLED"'
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,5 @@
+base_view: reporting__ps_reporting_account_licenses
+label: License Products
+
+joins:
+  reporting__ps_account: {}

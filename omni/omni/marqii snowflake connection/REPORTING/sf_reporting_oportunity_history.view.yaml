@@ -1,0 +1,49 @@
+# Reference this view as reporting__sf_reporting_oportunity_history
+schema: REPORTING
+table_name: SF_REPORTING_OPORTUNITY_HISTORY
+
+dimensions:
+  field_modified:
+    sql: '"FIELD_MODIFIED"'
+
+  change_id:
+    sql: '"CHANGE_ID"'
+    format: ID
+
+  newvalue:
+    sql: '"NEWVALUE"'
+
+  oldvalue:
+    sql: '"OLDVALUE"'
+
+  isdeleted:
+    sql: '"ISDELETED"'
+
+  createdbyid:
+    sql: '"CREATEDBYID"'
+
+  createddate:
+    sql: '"CREATEDDATE"'
+
+  opportunityid:
+    sql: '"OPPORTUNITYID"'
+
+  opportunity_creator_id:
+    sql: '"OPPORTUNITY_CREATOR_ID"'
+    format: ID
+
+  opportunity_creator_name:
+    sql: '"OPPORTUNITY_CREATOR_NAME"'
+
+  opportunity_creator_team:
+    sql: '"OPPORTUNITY_CREATOR_TEAM"'
+
+  opportunity_creator_title:
+    sql: '"OPPORTUNITY_CREATOR_TITLE"'
+
+  opportunity_creator_is_active:
+    sql: '"OPPORTUNITY_CREATOR_IS_ACTIVE"'
+
+measures:
+  count:
+    aggregate_type: count

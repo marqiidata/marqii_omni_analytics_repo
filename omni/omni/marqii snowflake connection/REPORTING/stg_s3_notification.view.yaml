@@ -1,0 +1,55 @@
+# Reference this view as reporting__stg_s3_notification
+schema: REPORTING
+table_name: STG_S3_NOTIFICATION
+
+dimensions:
+  notification_id:
+    sql: '"NOTIFICATION_ID"'
+    format: ID
+
+  notification_name:
+    sql: '"NOTIFICATION_NAME"'
+
+  notification_enabled:
+    sql: '"NOTIFICATION_ENABLED"'
+
+  notification_interval:
+    sql: '"NOTIFICATION_INTERVAL"'
+
+  notification_account_id:
+    sql: '"NOTIFICATION_ACCOUNT_ID"'
+    format: ID
+
+  notification_created_at:
+    sql: '"NOTIFICATION_CREATED_AT"'
+
+  notification_created_by:
+    sql: '"NOTIFICATION_CREATED_BY"'
+
+  notification_deleted_at:
+    sql: '"NOTIFICATION_DELETED_AT"'
+
+  notification_deleted_by:
+    sql: '"NOTIFICATION_DELETED_BY"'
+
+  notification_updated_at:
+    sql: '"NOTIFICATION_UPDATED_AT"'
+
+  notification_updated_by:
+    sql: '"NOTIFICATION_UPDATED_BY"'
+
+  notification_delivery_day:
+    sql: '"NOTIFICATION_DELIVERY_DAY"'
+
+  notification_description:
+    sql: '"NOTIFICATION_DESCRIPTION"'
+
+  notification_delivery_time:
+    sql: '"NOTIFICATION_DELIVERY_TIME"'
+
+  notification_delivery_time_zone:
+    sql: '"NOTIFICATION_DELIVERY_TIME_ZONE"'
+
+measures:
+  count:
+    aggregate_type: count

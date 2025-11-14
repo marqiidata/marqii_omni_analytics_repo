@@ -1,0 +1,30 @@
+# Reference this view as reporting__stg_gsheets_stripe_sku_enablement_map
+schema: REPORTING
+table_name: STG_GSHEETS_STRIPE_SKU_ENABLEMENT_MAP
+
+dimensions:
+  stripe_sku_id:
+    sql: '"STRIPE_SKU_ID"'
+    format: ID
+
+  stripe_sku_name:
+    sql: '"STRIPE_SKU_NAME"'
+
+  confirmed_reviews_monitoring_enabled:
+    sql: '"CONFIRMED_REVIEWS_MONITORING_ENABLED"'
+
+  confirmed_suggested_reviews_monitoring_enabled:
+    sql: '"CONFIRMED_SUGGESTED_REVIEWS_MONITORING_ENABLED"'
+
+  confirmed_managed_reviews_monitoring_enabled:
+    sql: '"CONFIRMED_MANAGED_REVIEWS_MONITORING_ENABLED"'
+
+  confirmed_listings_enabled:
+    sql: '"CONFIRMED_LISTINGS_ENABLED"'
+
+  confirmed_menus_enabled:
+    sql: '"CONFIRMED_MENUS_ENABLED"'
+
+measures:
+  count:
+    aggregate_type: count

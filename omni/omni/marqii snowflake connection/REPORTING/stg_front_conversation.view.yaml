@@ -1,0 +1,47 @@
+# Reference this view as reporting__stg_front_conversation
+schema: REPORTING
+table_name: STG_FRONT_CONVERSATION
+
+dimensions:
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  teammate_id:
+    sql: '"TEAMMATE_ID"'
+    format: ID
+
+  last_message_id:
+    sql: '"LAST_MESSAGE_ID"'
+    format: ID
+
+  subject:
+    sql: '"SUBJECT"'
+
+  status:
+    sql: '"STATUS"'
+
+  created_at:
+    sql: '"CREATED_AT"'
+
+  recipient_handle:
+    sql: '"RECIPIENT_HANDLE"'
+
+  recipient_role:
+    sql: '"RECIPIENT_ROLE"'
+
+  _fivetran_deleted:
+    sql: '"_FIVETRAN_DELETED"'
+    hidden: true
+
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+  status_category:
+    sql: '"STATUS_CATEGORY"'
+
+measures:
+  count:
+    aggregate_type: count

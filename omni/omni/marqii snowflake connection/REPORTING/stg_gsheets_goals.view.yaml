@@ -1,0 +1,71 @@
+# Reference this view as reporting__stg_gsheets_goals
+schema: REPORTING
+table_name: STG_GSHEETS_GOALS
+
+dimensions:
+  _row:
+    sql: '"_ROW"'
+    hidden: true
+
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+  task:
+    sql: '"TASK"'
+
+  responsible:
+    sql: '"RESPONSIBLE"'
+
+  _of_progress:
+    sql: '"_OF_PROGRESS"'
+    hidden: true
+
+  informed:
+    sql: '"INFORMED"'
+
+  due_date:
+    sql: '"DUE_DATE"'
+
+  notes:
+    sql: '"NOTES"'
+
+  goal:
+    sql: '"GOAL"'
+
+  status:
+    sql: '"STATUS"'
+
+  consulted:
+    sql: '"CONSULTED"'
+
+  description:
+    sql: '"DESCRIPTION"'
+
+  current_value:
+    sql: '"CURRENT_VALUE"'
+
+  ready_to_start_:
+    sql: '"READY_TO_START_"'
+
+  accountable:
+    sql: '"ACCOUNTABLE"'
+
+  valid_to:
+    sql: '"VALID_TO"'
+
+  valid_from:
+    sql: '"VALID_FROM"'
+
+  goal_duration:
+    sql: '"GOAL_DURATION"'
+
+  team:
+    sql: '"TEAM"'
+
+  short_desc:
+    sql: '"SHORT_DESC"'
+
+measures:
+  count:
+    aggregate_type: count

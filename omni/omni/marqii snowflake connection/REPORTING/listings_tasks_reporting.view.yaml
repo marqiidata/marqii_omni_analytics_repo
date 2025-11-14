@@ -1,0 +1,186 @@
+# Reference this view as reporting__listings_tasks_reporting
+schema: REPORTING
+table_name: LISTINGS_TASKS_REPORTING
+
+dimensions:
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  store_id:
+    sql: '"STORE_ID"'
+    format: ID
+
+  listings_id:
+    sql: '"LISTINGS_ID"'
+    format: ID
+
+  listings_created:
+    sql: '"LISTINGS_CREATED"'
+
+  s3_listings_extracted_at:
+    sql: '"S3_LISTINGS_EXTRACTED_AT"'
+
+  listings_provider:
+    sql: '"LISTINGS_PROVIDER"'
+    description: The online platform or service where a business listing appears
+      (e.g., Google, Yelp, Bing)
+    sample_values:
+      [
+        Google,
+        Yext,
+        Bing,
+        Apple,
+        Yelp,
+        Facebook,
+        Grubhub,
+        UberEats,
+        Doordash,
+        OpenTable
+      ]
+    ai_context: each listing id is unique to a provider. these provires are where
+      the listing appears.
+
+  listings_reviewsenabled:
+    sql: '"LISTINGS_REVIEWSENABLED"'
+
+  listings_listingsenabled:
+    sql: '"LISTINGS_LISTINGSENABLED"'
+
+  listings_managedbymarqii:
+    sql: '"LISTINGS_MANAGEDBYMARQII"'
+
+  listings_analyticsenabled:
+    sql: '"LISTINGS_ANALYTICSENABLED"'
+
+  listings_hourswidgetenabled:
+    sql: '"LISTINGS_HOURSWIDGETENABLED"'
+
+  listings_deleted:
+    sql: '"LISTINGS_DELETED"'
+
+  listings_enabled:
+    sql: '"LISTINGS_ENABLED"'
+
+  listings_menusenabled:
+    sql: '"LISTINGS_MENUSENABLED"'
+
+  listings_oauthvaultid:
+    sql: '"LISTINGS_OAUTHVAULTID"'
+
+  listings_updatedat:
+    sql: '"LISTINGS_UPDATEDAT"'
+
+  store_importdata:
+    sql: '"STORE_IMPORTDATA"'
+
+  store_postalcode:
+    sql: '"STORE_POSTALCODE"'
+
+  store_addressregion:
+    sql: '"STORE_ADDRESSREGION"'
+
+  store_streetaddress:
+    sql: '"STORE_STREETADDRESS"'
+
+  store_deleted:
+    sql: '"STORE_DELETED"'
+
+  store_isomnilocation:
+    sql: '"STORE_ISOMNILOCATION"'
+
+  store_addresslocality:
+    sql: '"STORE_ADDRESSLOCALITY"'
+
+  store_streetaddressdetail:
+    sql: '"STORE_STREETADDRESSDETAIL"'
+
+  store_displayaddress:
+    sql: '"STORE_DISPLAYADDRESS"'
+
+  store_title:
+    sql: '"STORE_TITLE"'
+
+  store_country:
+    sql: '"STORE_COUNTRY"'
+
+  account_deleted:
+    sql: '"ACCOUNT_DELETED"'
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  account_extracted_at:
+    sql: '"ACCOUNT_EXTRACTED_AT"'
+
+  account_airbyte_generation_id:
+    sql: '"ACCOUNT_AIRBYTE_GENERATION_ID"'
+    format: ID
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+    description: The name of the person or team responsible for managing the account
+    sample_values:
+      [
+        Sarah McGrath,
+        Caragan Phillips,
+        Support Team,
+        Kelly Taylor,
+        Helen Ralowicz-Chapman,
+        undefined,
+        Evan Perlmutter,
+        Craig Wacks,
+        Jonathan Pack,
+        Reese Grossman
+      ]
+
+  account_owner_team:
+    sql: '"ACCOUNT_OWNER_TEAM"'
+    description: The team assigned to manage and oversee the account
+    all_values: [ Support, Mid Market, undefined, Admin, Commercial ]
+
+  last_successful_task:
+    sql: '"LAST_SUCCESSFUL_TASK"'
+
+  last_task_date:
+    sql: '"LAST_TASK_DATE"'
+
+  is_most_recent_task:
+    sql: '"IS_MOST_RECENT_TASK"'
+
+  days_since_last_update:
+    sql: '"DAYS_SINCE_LAST_UPDATE"'
+
+  staleness_category:
+    sql: '"STALENESS_CATEGORY"'
+    description: Categorizes listings based on how recently they were last updated,
+      ranging from recent to over 180 days old
+    all_values: [ 180+ days, 90+ days, 30+ days, Recent ]
+    ai_context: use to determine when listings wer last updated
+
+measures:
+  count:
+    aggregate_type: count
+
+  store_id_count_distinct:
+    sql: ${reporting__listings_tasks_reporting.store_id}
+    label: "# Stores"
+    format: NUMBER_0
+    drill_fields:
+      [
+        reporting__listings_tasks_reporting.account_owner_team,
+        reporting__listings_tasks_reporting.account_owner_name,
+        reporting__listings_tasks_reporting.account_name,
+        reporting__listings_tasks_reporting.days_since_last_update,
+        reporting__listings_tasks_reporting.is_most_recent_task,
+        reporting__listings_tasks_reporting.last_successful_task,
+        reporting__listings_tasks_reporting.store_id,
+        reporting__listings_tasks_reporting.store_title
+      ]
+    aggregate_type: count_distinct
+
+  listings_id_count_distinct:
+    sql: ${reporting__listings_tasks_reporting.listings_id}
+    label: "# listings"
+    format: NUMBER_0
+    aggregate_type: count_distinct

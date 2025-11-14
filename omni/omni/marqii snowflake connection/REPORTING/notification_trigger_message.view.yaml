@@ -1,0 +1,100 @@
+# Reference this view as reporting__notification_trigger_message
+schema: REPORTING
+table_name: NOTIFICATION_TRIGGER_MESSAGE
+
+dimensions:
+  trigger_event_message_id:
+    sql: '"TRIGGER_EVENT_MESSAGE_ID"'
+    format: ID
+
+  trigger_message_created_at:
+    sql: '"TRIGGER_MESSAGE_CREATED_AT"'
+
+  trigger_message_id:
+    sql: '"TRIGGER_MESSAGE_ID"'
+    format: ID
+
+  trigger_destination:
+    sql: '"TRIGGER_DESTINATION"'
+
+  notification_trigger_event_id:
+    sql: '"NOTIFICATION_TRIGGER_EVENT_ID"'
+    format: ID
+
+  notification_trigger_created_at:
+    sql: '"NOTIFICATION_TRIGGER_CREATED_AT"'
+
+  notification_trigger_matched_at:
+    sql: '"NOTIFICATION_TRIGGER_MATCHED_AT"'
+
+  notification_trigger_finished_at:
+    sql: '"NOTIFICATION_TRIGGER_FINISHED_AT"'
+
+  notification_trigger_should_run_next_at:
+    sql: '"NOTIFICATION_TRIGGER_SHOULD_RUN_NEXT_AT"'
+
+  notification_id:
+    sql: '"NOTIFICATION_ID"'
+    format: ID
+
+  notification_name:
+    sql: '"NOTIFICATION_NAME"'
+
+  notification_enabled:
+    sql: '"NOTIFICATION_ENABLED"'
+
+  notification_interval:
+    sql: '"NOTIFICATION_INTERVAL"'
+
+  notification_account_id:
+    sql: '"NOTIFICATION_ACCOUNT_ID"'
+    format: ID
+
+  notification_created_at:
+    sql: '"NOTIFICATION_CREATED_AT"'
+
+  notification_created_by:
+    sql: '"NOTIFICATION_CREATED_BY"'
+
+  notification_deleted_at:
+    sql: '"NOTIFICATION_DELETED_AT"'
+
+  notification_deleted_by:
+    sql: '"NOTIFICATION_DELETED_BY"'
+
+  notification_updated_at:
+    sql: '"NOTIFICATION_UPDATED_AT"'
+
+  notification_updated_by:
+    sql: '"NOTIFICATION_UPDATED_BY"'
+
+  notification_delivery_day:
+    sql: '"NOTIFICATION_DELIVERY_DAY"'
+
+  notification_description:
+    sql: '"NOTIFICATION_DESCRIPTION"'
+
+  notification_delivery_time:
+    sql: '"NOTIFICATION_DELIVERY_TIME"'
+
+  notification_delivery_time_zone:
+    sql: '"NOTIFICATION_DELIVERY_TIME_ZONE"'
+
+  notification_receipient_id:
+    sql: '"NOTIFICATION_RECEIPIENT_ID"'
+    format: ID
+
+  _airbyte_extracted_at:
+    hidden: true
+
+  user_receipient_id:
+    sql: '"USER_RECEIPIENT_ID"'
+    format: ID
+
+  user_id:
+    sql: '"USER_ID"'
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,26 @@
+# Reference this view as reporting__stg_s3_notification_trigger_message
+schema: REPORTING
+table_name: STG_S3_NOTIFICATION_TRIGGER_MESSAGE
+
+dimensions:
+  trigger_event_message_id:
+    sql: '"TRIGGER_EVENT_MESSAGE_ID"'
+    format: ID
+
+  trigger_message_created_at:
+    sql: '"TRIGGER_MESSAGE_CREATED_AT"'
+
+  trigger_message_id:
+    sql: '"TRIGGER_MESSAGE_ID"'
+    format: ID
+
+  trigger_destination:
+    sql: '"TRIGGER_DESTINATION"'
+
+  trigger_event_id:
+    sql: '"TRIGGER_EVENT_ID"'
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

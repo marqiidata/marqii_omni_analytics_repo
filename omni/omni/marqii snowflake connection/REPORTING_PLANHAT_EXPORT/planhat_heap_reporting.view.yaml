@@ -1,0 +1,77 @@
+# Reference this view as reporting_planhat_export__planhat_heap_reporting
+schema: REPORTING_PLANHAT_EXPORT
+table_name: PLANHAT_HEAP_REPORTING
+
+dimensions:
+  data_as_of: {}
+
+  heap_activity_account_name:
+    sql: '"HEAP_ACTIVITY_ACCOUNT_NAME"'
+
+  heap_activity_owner_id:
+    sql: '"HEAP_ACTIVITY_OWNER_ID"'
+    format: ID
+
+  salesforceid:
+    sql: '"SALESFORCEID"'
+
+  salesforce_account_name:
+    sql: '"SALESFORCE_ACCOUNT_NAME"'
+
+  salesforce_account_status:
+    sql: '"SALESFORCE_ACCOUNT_STATUS"'
+
+  account_current_package:
+    sql: '"ACCOUNT_CURRENT_PACKAGE"'
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+
+  stripeid:
+    sql: '"STRIPEID"'
+
+  sf_account_url:
+    sql: '"SF_ACCOUNT_URL"'
+
+  stripe_account_url:
+    sql: '"STRIPE_ACCOUNT_URL"'
+
+  number_of_location_details_updates:
+    sql: '"NUMBER_OF_LOCATION_DETAILS_UPDATES"'
+
+  first_location_update:
+    sql: '"FIRST_LOCATION_UPDATE"'
+
+  last_location_update:
+    sql: '"LAST_LOCATION_UPDATE"'
+
+  number_of_logins:
+    sql: '"NUMBER_OF_LOGINS"'
+
+  first_login:
+    sql: '"FIRST_LOGIN"'
+
+  last_login:
+    sql: '"LAST_LOGIN"'
+
+  number_of_responses:
+    sql: '"NUMBER_OF_RESPONSES"'
+
+  first_review_response:
+    sql: '"FIRST_REVIEW_RESPONSE"'
+
+  latest_review_response:
+    sql: '"LATEST_REVIEW_RESPONSE"'
+
+  number_of_business_hours_updates:
+    sql: '"NUMBER_OF_BUSINESS_HOURS_UPDATES"'
+
+  first_business_hours_update:
+    sql: '"FIRST_BUSINESS_HOURS_UPDATE"'
+
+  last_business_hours_update:
+    sql: '"LAST_BUSINESS_HOURS_UPDATE"'
+
+measures:
+  count:
+    aggregate_type: count

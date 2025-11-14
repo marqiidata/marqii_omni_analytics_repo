@@ -1,0 +1,45 @@
+# Reference this view as reporting__plan_reforecast_actuals
+schema: REPORTING
+table_name: PLAN_REFORECAST_ACTUALS
+
+dimensions:
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+  fiscal_year:
+    sql: '"FISCAL_YEAR"::STRING'
+
+  metric_formatted:
+    sql: '"METRIC_FORMATTED"'
+
+  month:
+    sql: '"MONTH"'
+
+  metric:
+    sql: '"METRIC"'
+
+  plan_or_forecast:
+    sql: '"PLAN_OR_FORECAST"'
+
+  team:
+    sql: '"TEAM"'
+
+  fiscal_quarter:
+    sql: '"FISCAL_QUARTER"'
+
+  metric_value:
+    sql: '"METRIC_VALUE"'
+
+  team_detail:
+    sql: '"TEAM_DETAIL"'
+
+measures:
+  count:
+    aggregate_type: count
+
+  metric_value_sum:
+    sql: ${reporting__plan_reforecast_actuals.metric_value}
+    format: BIGUSDCURRENCY_0
+    drill_fields: []
+    aggregate_type: sum

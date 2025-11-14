@@ -1,0 +1,15 @@
+# Reference this view as reporting__recordtype
+schema: REPORTING
+table_name: RECORDTYPE
+
+dimensions:
+  record_type_id:
+    sql: '"RECORD_TYPE_ID"'
+    format: ID
+
+  record_type_name:
+    sql: '"RECORD_TYPE_NAME"'
+
+measures:
+  count:
+    aggregate_type: count

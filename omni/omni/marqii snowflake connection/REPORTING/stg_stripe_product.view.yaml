@@ -1,0 +1,30 @@
+# Reference this view as reporting__stg_stripe_product
+schema: REPORTING
+table_name: STG_STRIPE_PRODUCT
+
+dimensions:
+  stripe_sku_id:
+    sql: '"STRIPE_SKU_ID"'
+    format: ID
+
+  stripe_sku_name:
+    sql: '"STRIPE_SKU_NAME"'
+
+  stripe_sku_type:
+    sql: '"STRIPE_SKU_TYPE"'
+
+  stripe_sku_is_active:
+    sql: '"STRIPE_SKU_IS_ACTIVE"'
+
+  stripe_sku_created_at:
+    sql: '"STRIPE_SKU_CREATED_AT"'
+
+  stripe_sku_updated_at:
+    sql: '"STRIPE_SKU_UPDATED_AT"'
+
+  stripe_sku_desc:
+    sql: '"STRIPE_SKU_DESC"'
+
+measures:
+  count:
+    aggregate_type: count

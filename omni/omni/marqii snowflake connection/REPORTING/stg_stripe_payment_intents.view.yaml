@@ -1,0 +1,157 @@
+# Reference this view as reporting__stg_stripe_payment_intents
+schema: REPORTING
+table_name: STG_STRIPE_PAYMENT_INTENTS
+
+dimensions:
+  _airbyte_raw_id:
+    sql: '"_AIRBYTE_RAW_ID"'
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    sql: '"_AIRBYTE_EXTRACTED_AT"'
+    hidden: true
+
+  _airbyte_meta:
+    sql: '"_AIRBYTE_META"'
+    hidden: true
+
+  _airbyte_generation_id:
+    sql: '"_AIRBYTE_GENERATION_ID"'
+    format: ID
+    hidden: true
+
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  amount:
+    sql: '"AMOUNT"'
+
+  object:
+    sql: '"OBJECT"'
+
+  review:
+    sql: '"REVIEW"'
+
+  source:
+    sql: '"SOURCE"'
+
+  status:
+    sql: '"STATUS"'
+
+  charges:
+    sql: '"CHARGES"'
+
+  created:
+    sql: '"CREATED"'
+
+  invoice:
+    sql: '"INVOICE"'
+
+  updated:
+    sql: '"UPDATED"'
+
+  currency:
+    sql: '"CURRENCY"'
+
+  customer:
+    sql: '"CUSTOMER"'
+
+  livemode:
+    sql: '"LIVEMODE"'
+
+  metadata:
+    sql: '"METADATA"'
+
+  shipping:
+    sql: '"SHIPPING"'
+
+  processing:
+    sql: '"PROCESSING"'
+
+  application:
+    sql: '"APPLICATION"'
+
+  canceled_at:
+    sql: '"CANCELED_AT"'
+
+  description:
+    sql: '"DESCRIPTION"'
+
+  next_action:
+    sql: '"NEXT_ACTION"'
+
+  on_behalf_of:
+    sql: '"ON_BEHALF_OF"'
+
+  client_secret:
+    sql: '"CLIENT_SECRET"'
+
+  latest_charge:
+    sql: '"LATEST_CHARGE"'
+
+  receipt_email:
+    sql: '"RECEIPT_EMAIL"'
+
+  transfer_data:
+    sql: '"TRANSFER_DATA"'
+
+  amount_details:
+    sql: '"AMOUNT_DETAILS"'
+
+  capture_method:
+    sql: '"CAPTURE_METHOD"'
+
+  payment_method:
+    sql: '"PAYMENT_METHOD"'
+
+  transfer_group:
+    sql: '"TRANSFER_GROUP"'
+
+  amount_received:
+    sql: '"AMOUNT_RECEIVED"'
+
+  amount_capturable:
+    sql: '"AMOUNT_CAPTURABLE"'
+
+  last_payment_error:
+    sql: '"LAST_PAYMENT_ERROR"'
+
+  setup_future_usage:
+    sql: '"SETUP_FUTURE_USAGE"'
+
+  cancellation_reason:
+    sql: '"CANCELLATION_REASON"'
+
+  confirmation_method:
+    sql: '"CONFIRMATION_METHOD"'
+
+  payment_method_types:
+    sql: '"PAYMENT_METHOD_TYPES"'
+
+  statement_descriptor:
+    sql: '"STATEMENT_DESCRIPTOR"'
+
+  statement_description:
+    sql: '"STATEMENT_DESCRIPTION"'
+
+  application_fee_amount:
+    sql: '"APPLICATION_FEE_AMOUNT"'
+
+  payment_method_options:
+    sql: '"PAYMENT_METHOD_OPTIONS"'
+
+  automatic_payment_methods:
+    sql: '"AUTOMATIC_PAYMENT_METHODS"'
+
+  statement_descriptor_suffix:
+    sql: '"STATEMENT_DESCRIPTOR_SUFFIX"'
+
+  payment_method_configuration_details:
+    sql: '"PAYMENT_METHOD_CONFIGURATION_DETAILS"'
+
+measures:
+  count:
+    aggregate_type: count

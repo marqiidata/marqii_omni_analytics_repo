@@ -1,0 +1,62 @@
+# Reference this view as reporting__reporting_marqii_goals
+schema: REPORTING
+table_name: REPORTING_MARQII_GOALS
+
+dimensions:
+  _new_business_margin_com_:
+    sql: "\"'new_business_margin_com'\""
+    hidden: true
+
+  _revenue_growth_:
+    sql: "\"'revenue_growth'\""
+    hidden: true
+
+  _multi_loc_arr_growth_:
+    sql: "\"'multi_loc_arr_growth'\""
+    hidden: true
+
+  _imarketing_influenced_arr_:
+    sql: "\"'imarketing_influenced_arr'\""
+    hidden: true
+
+  _imarketing_influenced_opportunties_:
+    sql: "\"'imarketing_influenced_opportunties'\""
+    hidden: true
+
+  _quarertly_churn_:
+    sql: "\"'quarertly_churn'\""
+    hidden: true
+
+  _reduce_mr_response_effort_:
+    sql: "\"'reduce_mr_response_effort'\""
+    hidden: true
+
+  _new_business_margin_mm_:
+    sql: "\"'new_business_margin_mm'\""
+    hidden: true
+
+  _failed_credit_card_charges_:
+    sql: "\"'failed_credit_card_charges'\""
+    hidden: true
+
+  _mr_product_growth_:
+    sql: "\"'mr_product_growth'\""
+    hidden: true
+
+  _add_logos_:
+    sql: "\"'add_logos'\""
+    hidden: true
+
+  _win_rate_:
+    sql: "\"'win_rate'\""
+    hidden: true
+
+  valid_to:
+    sql: '"VALID_TO"'
+
+  valid_from:
+    sql: '"VALID_FROM"'
+
+measures:
+  count:
+    aggregate_type: count

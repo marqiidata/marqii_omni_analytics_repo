@@ -1,0 +1,38 @@
+# Reference this view as reporting__nrr_summary
+schema: REPORTING
+table_name: NRR_SUMMARY
+
+dimensions:
+  marqii_fiscal_year:
+    sql: '"MARQII_FISCAL_YEAR"'
+
+  month_date_rev_reporting:
+    sql: '"MONTH_DATE_REV_REPORTING"'
+
+  marqii_fiscal_quarter:
+    sql: '"MARQII_FISCAL_QUARTER"'
+
+  nrr_starting_mrr:
+    sql: '"NRR_STARTING_MRR"'
+
+  upsell_mrr:
+    sql: '"UPSELL_MRR"'
+
+  churn_mrr:
+    sql: '"CHURN_MRR"'
+
+  downsell_mrr:
+    sql: '"DOWNSELL_MRR"'
+
+  loss_mrr:
+    sql: '"LOSS_MRR"'
+
+  net_nrr_mrr:
+    sql: '"NET_NRR_MRR"'
+
+  gross_nrr:
+    sql: '"GROSS_NRR"'
+
+measures:
+  count:
+    aggregate_type: count

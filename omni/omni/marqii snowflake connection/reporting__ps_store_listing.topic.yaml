@@ -1,0 +1,23 @@
+base_view: reporting__ps_store_listing
+label: Store Listing and License
+description: |
+  Analyze store listings alongside account licenses to identify access mismatches, verify license compliance, and optimize feature utilization across stores and accounts.
+
+joins:
+  reporting__ps_yext_package: {}
+  reporting__ps_reporting_combined:
+    reporting__ps_account:
+      reporting__ps_reporting_account_licenses: {}
+
+ai_context: Use this topic to analyze store listing configurations against
+  account licenses to identify mismatches, compliance issues, or optimization
+  opportunities. Compare active features on store listings with purchased
+  licenses to find stores with access enabled but no corresponding license, or
+  licensed features that aren't being utilized. Analyze license utilization
+  rates across accounts and stores. Use ps_store_listing as the primary view for
+  store-level analysis, ps_account for account-level grouping,
+  ps_reporting_account_licenses to check purchased licenses,
+  ps_reporting_combined for comprehensive cross-referencing, and ps_yext_package
+  to understand package-level entitlements. Filter by license status fields to
+  find active/inactive licenses, and join store listing access flags with
+  license tables to detect discrepancies.
