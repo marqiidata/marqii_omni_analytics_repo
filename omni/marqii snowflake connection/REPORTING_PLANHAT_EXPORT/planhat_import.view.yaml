@@ -1,0 +1,11 @@
+# Reference this view as reporting_planhat_export__planhat_import
+schema: REPORTING_PLANHAT_EXPORT
+table_name: PLANHAT_IMPORT
+
+dimensions:
+  placeholder_variant:
+    sql: '"PLACEHOLDER_VARIANT"'
+
+measures:
+  count:
+    aggregate_type: count

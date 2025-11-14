@@ -1,0 +1,4 @@
+base_view: reporting__renewals_investigation
+label: 🥸 Query
+
+joins: {}

@@ -1,0 +1,21 @@
+# Reference this view as reporting__stg_gsheets_payroll_pivoted
+schema: REPORTING
+table_name: STG_GSHEETS_PAYROLL_PIVOTED
+
+dimensions:
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+  department_line:
+    sql: '"DEPARTMENT_LINE"'
+
+  field_name:
+    sql: '"FIELD_NAME"'
+
+  value:
+    sql: '"VALUE"'
+
+measures:
+  count:
+    aggregate_type: count

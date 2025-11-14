@@ -1,0 +1,79 @@
+# Reference this view as reporting__stg_salesforce_quota
+schema: REPORTING
+table_name: STG_SALESFORCE_QUOTA
+
+dimensions:
+  _airbyte_raw_id:
+    sql: '"_AIRBYTE_RAW_ID"'
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    sql: '"_AIRBYTE_EXTRACTED_AT"'
+    hidden: true
+
+  _airbyte_meta:
+    sql: '"_AIRBYTE_META"'
+    hidden: true
+
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  name:
+    sql: '"NAME"'
+
+  goal__c:
+    sql: '"GOAL__C"'
+
+  ownerid:
+    sql: '"OWNERID"'
+
+  quota__c:
+    sql: '"QUOTA__C"'
+
+  isdeleted:
+    sql: '"ISDELETED"'
+
+  createdbyid:
+    sql: '"CREATEDBYID"'
+
+  createddate:
+    sql: '"CREATEDDATE"'
+
+  end_date__c:
+    sql: '"END_DATE__C"'
+
+  marqii_rep__c:
+    sql: '"MARQII_REP__C"'
+
+  start_date__c:
+    sql: '"START_DATE__C"'
+
+  lastvieweddate:
+    sql: '"LASTVIEWEDDATE"'
+
+  systemmodstamp:
+    sql: '"SYSTEMMODSTAMP"'
+
+  lastactivitydate:
+    sql: '"LASTACTIVITYDATE"'
+
+  lastmodifiedbyid:
+    sql: '"LASTMODIFIEDBYID"'
+
+  lastmodifieddate:
+    sql: '"LASTMODIFIEDDATE"'
+
+  lastreferenceddate:
+    sql: '"LASTREFERENCEDDATE"'
+
+  _airbyte_generation_id:
+    sql: '"_AIRBYTE_GENERATION_ID"'
+    format: ID
+    hidden: true
+
+measures:
+  count:
+    aggregate_type: count

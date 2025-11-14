@@ -1,0 +1,117 @@
+# Reference this view as reporting_planhat_export__planhat_heap_activity_nonagg
+schema: REPORTING_PLANHAT_EXPORT
+table_name: PLANHAT_HEAP_ACTIVITY_NONAGG
+
+dimensions:
+  data_as_of: {}
+
+  unique_numeric_key:
+    sql: '"UNIQUE_NUMERIC_KEY"'
+
+  user_id:
+    sql: '"USER_ID"'
+    format: ID
+
+  user_email:
+    sql: '"USER_EMAIL"'
+
+  user_enabled:
+    sql: '"USER_ENABLED"'
+
+  user_account_id:
+    sql: '"USER_ACCOUNT_ID"'
+    format: ID
+
+  userstatus:
+    sql: '"USERSTATUS"'
+
+  user_email_verified:
+    sql: '"USER_EMAIL_VERIFIED"'
+
+  user_first_name:
+    sql: '"USER_FIRST_NAME"'
+
+  user_last_name:
+    sql: '"USER_LAST_NAME"'
+
+  user_full_name:
+    sql: '"USER_FULL_NAME"'
+
+  user_salesforceid:
+    sql: '"USER_SALESFORCEID"'
+
+  heap_activity_account_name:
+    sql: '"HEAP_ACTIVITY_ACCOUNT_NAME"'
+
+  heap_activity_owner_id:
+    sql: '"HEAP_ACTIVITY_OWNER_ID"'
+    format: ID
+
+  event_id:
+    sql: '"EVENT_ID"'
+    format: ID
+
+  event_date:
+    sql: '"EVENT_DATE"'
+
+  salesforceid:
+    sql: '"SALESFORCEID"'
+
+  master_stripe_id:
+    sql: '"MASTER_STRIPE_ID"'
+    format: ID
+
+  salesforce_account_name:
+    sql: '"SALESFORCE_ACCOUNT_NAME"'
+
+  salesforce_account_status:
+    sql: '"SALESFORCE_ACCOUNT_STATUS"'
+
+  account_current_package:
+    sql: '"ACCOUNT_CURRENT_PACKAGE"'
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+
+  sf_stage:
+    sql: '"SF_STAGE"'
+
+  sf_account_url:
+    sql: '"SF_ACCOUNT_URL"'
+
+  stripe_account_url:
+    sql: '"STRIPE_ACCOUNT_URL"'
+
+  first_location_update:
+    sql: '"FIRST_LOCATION_UPDATE"'
+
+  last_location_update:
+    sql: '"LAST_LOCATION_UPDATE"'
+
+  first_login:
+    sql: '"FIRST_LOGIN"'
+
+  last_login:
+    sql: '"LAST_LOGIN"'
+
+  first_review_response:
+    sql: '"FIRST_REVIEW_RESPONSE"'
+
+  latest_review_response:
+    sql: '"LATEST_REVIEW_RESPONSE"'
+
+  first_business_hours_update:
+    sql: '"FIRST_BUSINESS_HOURS_UPDATE"'
+
+  last_business_hours_update:
+    sql: '"LAST_BUSINESS_HOURS_UPDATE"'
+
+  activity_description:
+    sql: '"ACTIVITY_DESCRIPTION"'
+
+  is_marqii_email:
+    sql: '"IS_MARQII_EMAIL"'
+
+measures:
+  count:
+    aggregate_type: count

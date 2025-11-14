@@ -1,0 +1,5 @@
+base_view: reporting__plan_reforecast_actuals
+label: Forecast Vs Actuals
+description: Compare revenue forecasts between plan, forecast, and actuals
+
+joins: {}

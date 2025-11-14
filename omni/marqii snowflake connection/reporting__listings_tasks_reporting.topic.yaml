@@ -1,0 +1,4 @@
+base_view: reporting__listings_tasks_reporting
+label: 🦄 Query
+
+joins: {}

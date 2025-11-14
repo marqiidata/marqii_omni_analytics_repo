@@ -1,0 +1,66 @@
+# Reference this view as reporting__platform_users
+schema: REPORTING
+table_name: PLATFORM_USERS
+
+dimensions:
+  user_id:
+    sql: '"USER_ID"'
+    format: ID
+
+  joindate:
+    sql: '"JOINDATE"'
+
+  last_modified:
+    sql: '"LAST_MODIFIED"'
+
+  identity:
+    sql: '"IDENTITY"'
+
+  handle:
+    sql: '"HANDLE"'
+
+  contact_current_package__c:
+    sql: '"CONTACT_CURRENT_PACKAGE__C"'
+
+  contact_account_name_text__c:
+    sql: '"CONTACT_ACCOUNT_NAME_TEXT__C"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  contact_id:
+    sql: '"CONTACT_ID"'
+    format: ID
+
+  contact_marqii_account_id__c:
+    sql: '"CONTACT_MARQII_ACCOUNT_ID__C"'
+
+  user_first_name:
+    sql: '"USER_FIRST_NAME"'
+
+  user_last_name:
+    sql: '"USER_LAST_NAME"'
+
+  user_email:
+    sql: '"USER_EMAIL"'
+
+  user_status:
+    sql: '"USER_STATUS"'
+
+  heap_user_account_id:
+    sql: '"HEAP_USER_ACCOUNT_ID"'
+    format: ID
+
+  heap_user_email_verified:
+    sql: '"HEAP_USER_EMAIL_VERIFIED"'
+
+  user_group:
+    sql: '"USER_GROUP"'
+
+  is_internal_user:
+    sql: '"IS_INTERNAL_USER"'
+
+measures:
+  count:
+    aggregate_type: count

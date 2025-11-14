@@ -1,0 +1,24 @@
+# Reference this view as reporting__stripe_invoice_line_discounts
+schema: REPORTING
+table_name: STRIPE_INVOICE_LINE_DISCOUNTS
+
+dimensions:
+  subscription_id:
+    sql: '"SUBSCRIPTION_ID"'
+    format: ID
+
+  latest_invoice:
+    sql: '"LATEST_INVOICE"'
+
+  latest_subscription_invoice_total:
+    sql: '"LATEST_SUBSCRIPTION_INVOICE_TOTAL"'
+
+  latest_subscription_invoice_subtotal:
+    sql: '"LATEST_SUBSCRIPTION_INVOICE_SUBTOTAL"'
+
+  latest_invoice_line_discounts:
+    sql: '"LATEST_INVOICE_LINE_DISCOUNTS"'
+
+measures:
+  count:
+    aggregate_type: count

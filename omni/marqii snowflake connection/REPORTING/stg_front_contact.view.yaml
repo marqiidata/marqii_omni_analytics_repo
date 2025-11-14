@@ -1,0 +1,40 @@
+# Reference this view as reporting__stg_front_contact
+schema: REPORTING
+table_name: STG_FRONT_CONTACT
+
+dimensions:
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  name:
+    sql: '"NAME"'
+
+  description:
+    sql: '"DESCRIPTION"'
+
+  avatar_url:
+    sql: '"AVATAR_URL"'
+
+  is_spammer:
+    sql: '"IS_SPAMMER"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  _fivetran_deleted:
+    sql: '"_FIVETRAN_DELETED"'
+    hidden: true
+
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+  custom_location_cohort:
+    sql: '"CUSTOM_LOCATION_COHORT"'
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,68 @@
+# Reference this view as reporting__sf_reporting_summary
+schema: REPORTING
+table_name: SF_REPORTING_SUMMARY
+
+dimensions:
+  month_date_rev_reporting:
+    sql: '"MONTH_DATE_REV_REPORTING"'
+
+  marqii_fiscal_quarter_year:
+    sql: '"MARQII_FISCAL_QUARTER_YEAR"'
+
+  marqii_fiscal_year:
+    sql: '"MARQII_FISCAL_YEAR"'
+
+  account_churn_amount:
+    sql: '"ACCOUNT_CHURN_AMOUNT"'
+
+  upgrade_amount:
+    sql: '"UPGRADE_AMOUNT"'
+
+  reactivation_amount:
+    sql: '"REACTIVATION_AMOUNT"'
+
+  new_revenue_amount:
+    sql: '"NEW_REVENUE_AMOUNT"'
+
+  downgrade_amount:
+    sql: '"DOWNGRADE_AMOUNT"'
+
+  number_of_reactivation_accounts:
+    sql: '"NUMBER_OF_REACTIVATION_ACCOUNTS"'
+
+  number_of_new_accounts:
+    sql: '"NUMBER_OF_NEW_ACCOUNTS"'
+
+  number_of_churn_accounts:
+    sql: '"NUMBER_OF_CHURN_ACCOUNTS"'
+
+  opportunity_locs:
+    sql: '"OPPORTUNITY_LOCS"'
+
+  commercial_team_3_to_49_locs_new:
+    sql: '"COMMERCIAL_TEAM_3_TO_49_LOCS_NEW"'
+
+  mid_market_greater_than_50_new:
+    sql: '"MID_MARKET_GREATER_THAN_50_NEW"'
+
+  independents_new:
+    sql: '"INDEPENDENTS_NEW"'
+
+  churn_locs:
+    sql: '"CHURN_LOCS"'
+
+  upgrading_locs:
+    sql: '"UPGRADING_LOCS"'
+
+  reactivation_locs:
+    sql: '"REACTIVATION_LOCS"'
+
+  new_locs:
+    sql: '"NEW_LOCS"'
+
+  downgrade_locs:
+    sql: '"DOWNGRADE_LOCS"'
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,45 @@
+# Reference this view as reporting__front_reporting_conversation
+schema: REPORTING
+table_name: FRONT_REPORTING_CONVERSATION
+
+dimensions:
+  teammate_id:
+    sql: '"TEAMMATE_ID"'
+    format: ID
+
+  last_message_id:
+    sql: '"LAST_MESSAGE_ID"'
+    format: ID
+
+  subject:
+    sql: '"SUBJECT"'
+
+  status:
+    sql: '"STATUS"'
+
+  created_at:
+    sql: '"CREATED_AT"'
+
+  recipient_handle:
+    sql: '"RECIPIENT_HANDLE"'
+
+  recipient_role:
+    sql: '"RECIPIENT_ROLE"'
+
+  _fivetran_deleted:
+    sql: '"_FIVETRAN_DELETED"'
+    hidden: true
+
+  conversation_id:
+    sql: '"CONVERSATION_ID"'
+    format: ID
+
+  concatenated_tags:
+    sql: '"CONCATENATED_TAGS"'
+
+  modified_tags:
+    sql: '"MODIFIED_TAGS"'
+
+measures:
+  count:
+    aggregate_type: count

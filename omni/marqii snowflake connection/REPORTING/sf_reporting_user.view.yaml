@@ -1,0 +1,38 @@
+# Reference this view as reporting__sf_reporting_user
+schema: REPORTING
+table_name: SF_REPORTING_USER
+
+dimensions:
+  ownerid:
+    sql: '"OWNERID"'
+
+  owner_first:
+    sql: '"OWNER_FIRST"'
+
+  owner_last:
+    sql: '"OWNER_LAST"'
+
+  owner_name:
+    sql: '"OWNER_NAME"'
+
+  is_active_owner:
+    sql: '"IS_ACTIVE_OWNER"'
+
+  owner_create_date:
+    sql: '"OWNER_CREATE_DATE"'
+
+  owner_last_login_date:
+    sql: '"OWNER_LAST_LOGIN_DATE"'
+
+  employment_length_days:
+    sql: '"EMPLOYMENT_LENGTH_DAYS"'
+
+  owner_team:
+    sql: '"OWNER_TEAM"'
+
+  employee_start_date:
+    sql: '"EMPLOYEE_START_DATE"'
+
+measures:
+  count:
+    aggregate_type: count

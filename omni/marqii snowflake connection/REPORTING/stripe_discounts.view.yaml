@@ -1,0 +1,26 @@
+# Reference this view as reporting__stripe_discounts
+schema: REPORTING
+table_name: STRIPE_DISCOUNTS
+
+dimensions:
+  subscription_id:
+    sql: '"SUBSCRIPTION_ID"'
+    format: ID
+
+  subscription_item_id:
+    sql: '"SUBSCRIPTION_ITEM_ID"'
+    format: ID
+
+  discount_amounts:
+    sql: '"DISCOUNT_AMOUNTS"'
+
+  discount_amount_line:
+    sql: '"DISCOUNT_AMOUNT_LINE"'
+
+  discount_id:
+    sql: '"DISCOUNT_ID"'
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

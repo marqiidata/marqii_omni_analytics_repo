@@ -1,0 +1,25 @@
+# Reference this view as reporting__stg_account_s3
+schema: REPORTING
+table_name: STG_ACCOUNT_S3
+
+dimensions:
+  account_deleted:
+    sql: '"ACCOUNT_DELETED"'
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  account_extracted_at:
+    sql: '"ACCOUNT_EXTRACTED_AT"'
+
+  account_airbyte_generation_id:
+    sql: '"ACCOUNT_AIRBYTE_GENERATION_ID"'
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,52 @@
+# Reference this view as reporting__s3_stg_reviews_store
+schema: REPORTING
+table_name: S3_STG_REVIEWS_STORE
+
+dimensions:
+  store_id:
+    sql: '"STORE_ID"'
+    format: ID
+
+  store_code:
+    sql: '"STORE_CODE"'
+
+  store_postalcode:
+    sql: '"STORE_POSTALCODE"'
+
+  store_addressregion:
+    sql: '"STORE_ADDRESSREGION"'
+
+  store_streetaddress:
+    sql: '"STORE_STREETADDRESS"'
+
+  store_deleted:
+    sql: '"STORE_DELETED"'
+
+  store_accountid:
+    sql: '"STORE_ACCOUNTID"'
+
+  store_addresslocality:
+    sql: '"STORE_ADDRESSLOCALITY"'
+
+  store_streetaddressdetail:
+    sql: '"STORE_STREETADDRESSDETAIL"'
+
+  store_displayaddress:
+    sql: '"STORE_DISPLAYADDRESS"'
+
+  store_title:
+    sql: '"STORE_TITLE"'
+
+  store_country:
+    sql: '"STORE_COUNTRY"'
+
+  store_account_id:
+    sql: '"STORE_ACCOUNT_ID"'
+    format: ID
+
+  store_airbyte_extracted_at:
+    sql: '"STORE_AIRBYTE_EXTRACTED_AT"'
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,231 @@
+# Reference this view as reporting__sf_reporting_opportunity_activities
+schema: REPORTING
+table_name: SF_REPORTING_OPPORTUNITY_ACTIVITIES
+
+dimensions:
+  source:
+    sql: '"SOURCE"'
+
+  combined_id:
+    sql: '"COMBINED_ID"'
+    format: ID
+
+  combined_date:
+    sql: '"COMBINED_DATE"'
+
+  creator_id:
+    sql: '"CREATOR_ID"'
+    format: ID
+    description: The Salesforce user ID of the person who created the record, either
+      an opportunity or activity.
+    ai_context: Indicates the Salesforce ID of the user who created the record.
+      Should be used to identify the user associated with the record, though the
+      user’s name should be preferred for clarity. This field follows Salesforce
+      ID syntax.
+
+  activity_type:
+    sql: '"ACTIVITY_TYPE"'
+    description: Indicates the kind of sales activity completed or created by the
+      sales team, such as a call, email, meeting, or other (e.g., LinkedIn
+      activity).
+    ai_context: Represents the specific category of sales activity recorded in
+      Salesforce. Should be used to assess or segment activity data by type when
+      analyzing outreach patterns, measuring engagement methods, or comparing
+      activity mixes across time periods or teams.
+
+  whoid:
+    sql: '"WHOID"'
+    description: The Salesforce object ID that links a task to a contact or lead.
+    ai_context: Indicates the contact or lead associated with a task. Should be used
+      to identify which contact or lead a task pertains to when analyzing
+      activity records or engagement history.
+
+  creator_name:
+    sql: '"CREATOR_NAME"'
+    description: The name of the user who created the record, either an opportunity
+      or activity in Salesforce.
+    ai_context: Indicates the actual name of the Salesforce user who created the
+      record. Should be used to identify the user associated with created
+      opportunities or activities, and preferred over Creator ID for readability
+      and analysis.
+
+  creater_team_name:
+    sql: '"CREATER_TEAM_NAME"'
+    description: The team of the user who created an opportunity or activity in
+      Salesforce. Possible values include (blank/null), Admin, Commercial,
+      Executive, Mid Market, and Support.
+    ai_context: Indicates the team responsible for creating an opportunity or
+      activity. Should be used to determine team-wide metrics, such as the
+      number of activities completed or opportunities created over a period of
+      time.
+
+  owner_or_contact_name:
+    sql: '"OWNER_OR_CONTACT_NAME"'
+
+  employee_start_date:
+    sql: '"EMPLOYEE_START_DATE"'
+    description: The date when a Salesforce user (employee) began working at the company.
+    ai_context: Indicates the start date of an employee in the system. Should be
+      used for benchmark analyses, such as evaluating performance or activities
+      during an employee’s first two months or other defined periods.
+
+  owner_or_contact_title:
+    sql: '"OWNER_OR_CONTACT_TITLE"'
+
+  creation_date:
+    sql: '"CREATION_DATE"'
+    description: The system-generated date when an activity or opportunity record
+      was created in Salesforce, regardless of its status.
+    ai_context: Indicates the exact creation date of a Salesforce activity or
+      opportunity record. Should be used to determine how many records, mainly
+      opportunities, were created over a given period of time.
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  opportunity_create_date:
+    sql: '"OPPORTUNITY_CREATE_DATE"'
+    description: The system-generated date when an opportunity record was created in
+      Salesforce.
+    ai_context: Indicates when an opportunity was first created. Should be used,
+      along with Opportunity Close Date, to calculate close rates and assess
+      opportunities created over a given time period. Unlike Close Date, which
+      reflects when an opportunity is finalized, Creation Date captures when the
+      opportunity enters the pipeline.
+
+  opportunity_close_date:
+    sql: '"OPPORTUNITY_CLOSE_DATE"'
+    description: The date when an opportunity is marked as closed in Salesforce,
+      either won or lost.
+    ai_context: |-
+      The date when an opportunity is marked as closed in Salesforce, either won or lost.
+      AI Context: Indicates the closure date of an opportunity. Should be used to assess the number of opportunities closed by reps over a given time period and to calculate close rates within that period. Unlike Creation Date, which records when an opportunity is first created, Close Date reflects when the opportunity reaches a final status (closed won or lost).
+
+  opportunity_stage_name:
+    sql: '"OPPORTUNITY_STAGE_NAME"'
+
+  task_id:
+    sql: '"TASK_ID"'
+    format: ID
+    description: The unique Salesforce identifier for a task record.
+    ai_context: Indicates the unique Salesforce ID of a task. Should be used to
+      identify the task and to retrieve all associated details or related
+      records linked to that specific task.
+
+  activity_completed_date:
+    sql: '"ACTIVITY_COMPLETED_DATE"::DATE'
+    description: The date when a sales activity—such as a call, email, or LinkedIn
+      touch—was marked as completed in Salesforce.
+    group_label: Activity Completed Date
+    ai_context: Indicates the exact completion date of a recorded sales activity in
+      Salesforce. Should be used to assess any questions or analyses regarding
+      calls, emails, or other activities over a period of time, or when
+      comparing activity volumes across different time periods.
+
+  task_created_date:
+    sql: '"TASK_CREATED_DATE"'
+    description: The system-generated date when a task record was created in Salesforce.
+    ai_context: Indicates the creation date of a task. Should be used to assess
+      tasks created over a period of time, track workload trends, or analyze
+      task activity relative to other events such as opportunities or completed
+      activities.
+
+  opportunity_owner_name:
+    sql: '"OPPORTUNITY_OWNER_NAME"'
+    description: The name of the Salesforce user who owns the opportunity.
+    ai_context: Indicates the Salesforce user responsible for the opportunity.
+      Should be used to assess questions related to opportunities created or
+      closed over a period of time by individuals, and to segment analyses by
+      individual owner.
+
+  opportunity_owner_team:
+    sql: '"OPPORTUNITY_OWNER_TEAM"'
+
+  contact_id:
+    sql: '"CONTACT_ID"'
+    format: ID
+    description: The Salesforce object ID that uniquely identifies a contact record.
+    ai_context: Indicates the unique Salesforce identifier for a contact. Should be
+      used to determine which contact record is associated with opportunities,
+      activities, or other related Salesforce objects.
+
+  opportunity_id:
+    sql: '"OPPORTUNITY_ID"'
+    format: ID
+    description: The unique Salesforce identifier for an opportunity record.
+    ai_context: Indicates the unique Salesforce ID of an opportunity. Should be used
+      to identify the opportunity and to retrieve all associated activity
+      records linked to that specific opportunity.
+
+  nth_opportunity_closed_won:
+    sql: '"NTH_OPPORTUNITY_CLOSED_WON"'
+
+  nth_opportunity_created:
+    sql: '"NTH_OPPORTUNITY_CREATED"'
+
+  is_business_day:
+    sql: CASE WHEN
+      DAYOFWEEK(${reporting__sf_reporting_opportunity_activities.activity_completed_date})
+      IN (2,3,4,5,6) THEN 'Y' ELSE 'N' END
+    description: Filters out saturday and sunday.
+    all_values: [ Y, N ]
+    ai_context: Filters out saturday and sunday.
+
+measures:
+  count:
+    aggregate_type: count
+
+  omni__of_distinct_days:
+    sql: count ( distinct
+      ${reporting__sf_reporting_opportunity_activities.activity_completed_date[date]})
+    label: "# of Distinct Days"
+
+  daily_activities_per_rep:
+    sql: SUM(COUNT(DISTINCT
+      ${reporting__sf_reporting_opportunity_activities.task_id}))
+    label: Daily Activities per Rep
+
+  days_meeting_goal:
+    sql: CASE WHEN COUNT(*) OVER (PARTITION BY
+      ${reporting__sf_reporting_opportunity_activities.creator_name},
+      ${reporting__sf_reporting_opportunity_activities.activity_completed_date[date]})
+      >= 120 THEN
+      ${reporting__sf_reporting_opportunity_activities.activity_completed_date[date]}
+      END
+    label: Days Meeting Goal (>=120)
+    aggregate_type: count_distinct
+
+  days_meeting_goal_102:
+    sql: CASE WHEN COUNT(*) OVER (PARTITION BY
+      ${reporting__sf_reporting_opportunity_activities.creator_name},
+      ${reporting__sf_reporting_opportunity_activities.activity_completed_date[date]})
+      >= 102 THEN
+      ${reporting__sf_reporting_opportunity_activities.activity_completed_date[date]}
+      END
+    label: Days Meeting Goal (>=102)
+    aggregate_type: count_distinct
+
+  days_meeting_goal_90:
+    sql: CASE WHEN COUNT(*) OVER (PARTITION BY
+      ${reporting__sf_reporting_opportunity_activities.creator_name},
+      ${reporting__sf_reporting_opportunity_activities.activity_completed_date[date]})
+      >= 90 THEN
+      ${reporting__sf_reporting_opportunity_activities.activity_completed_date[date]}
+      END
+    label: Days Meeting Goal (>=90)
+    aggregate_type: count_distinct
+
+  days_meeting_goal_60:
+    sql: CASE WHEN COUNT(*) OVER (PARTITION BY
+      ${reporting__sf_reporting_opportunity_activities.creator_name},
+      ${reporting__sf_reporting_opportunity_activities.activity_completed_date[date]})
+      >= 60 THEN
+      ${reporting__sf_reporting_opportunity_activities.activity_completed_date[date]}
+      END
+    label: Days Meeting Goal (>=60)
+    aggregate_type: count_distinct
+
+  task_id_count_distinct:
+    sql: ${reporting__sf_reporting_opportunity_activities.task_id}
+    format: ID
+    aggregate_type: count_distinct

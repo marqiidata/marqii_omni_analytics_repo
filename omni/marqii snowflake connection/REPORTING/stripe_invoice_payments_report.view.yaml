@@ -1,0 +1,189 @@
+# Reference this view as reporting__stripe_invoice_payments_report
+schema: REPORTING
+table_name: STRIPE_INVOICE_PAYMENTS_REPORT
+
+dimensions:
+  invoice_status:
+    sql: '"INVOICE_STATUS"'
+
+  invoice_due_date:
+    sql: '"INVOICE_DUE_DATE"'
+
+  invoice_number:
+    sql: '"INVOICE_NUMBER"'
+
+  invoice_id:
+    sql: '"INVOICE_ID"'
+    format: ID
+
+  airbyte_latest_sync:
+    sql: '"AIRBYTE_LATEST_SYNC"'
+
+  num_charges_per_invoice:
+    sql: '"NUM_CHARGES_PER_INVOICE"'
+
+  num_payments_per_invoice:
+    sql: '"NUM_PAYMENTS_PER_INVOICE"'
+
+  invoice_customer:
+    sql: '"INVOICE_CUSTOMER"'
+
+  invoice_customer_name:
+    sql: '"INVOICE_CUSTOMER_NAME"'
+
+  is_valid_invoice:
+    sql: '"IS_VALID_INVOICE"'
+
+  is_valid_invoice_reason:
+    sql: '"IS_VALID_INVOICE_REASON"'
+
+  invoice_created_date:
+    sql: '"INVOICE_CREATED_DATE"'
+
+  invoice_url:
+    sql: '"INVOICE_URL"'
+
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  payment_intent_id:
+    sql: '"PAYMENT_INTENT_ID"'
+    format: ID
+
+  payment_intent_method:
+    sql: '"PAYMENT_INTENT_METHOD"'
+
+  payment_created_date:
+    sql: '"PAYMENT_CREATED_DATE"'
+
+  charge_id:
+    sql: '"CHARGE_ID"'
+    format: ID
+
+  charge_status:
+    sql: '"CHARGE_STATUS"'
+
+  charge_created_date:
+    sql: '"CHARGE_CREATED_DATE"'
+
+  failure_message:
+    sql: '"FAILURE_MESSAGE"'
+
+  failure_code:
+    sql: '"FAILURE_CODE"'
+
+  failure_balance_transaction:
+    sql: '"FAILURE_BALANCE_TRANSACTION"'
+
+  payment_method:
+    sql: '"PAYMENT_METHOD"'
+
+  created:
+    sql: '"CREATED"'
+
+  amount_captured:
+    sql: '"AMOUNT_CAPTURED"'
+
+  disputed:
+    sql: '"DISPUTED"'
+
+  dispute:
+    sql: '"DISPUTE"'
+
+  billing_details:
+    sql: '"BILLING_DETAILS"'
+
+  customer_email:
+    sql: '"CUSTOMER_EMAIL"'
+
+  customer_phone:
+    sql: '"CUSTOMER_PHONE"'
+
+  pays_via_check:
+    sql: '"PAYS_VIA_CHECK"'
+
+  customertype:
+    sql: '"CUSTOMERTYPE"'
+
+  customer_sub_status:
+    sql: '"CUSTOMER_SUB_STATUS"'
+
+  stripe_subscription_id:
+    sql: '"STRIPE_SUBSCRIPTION_ID"'
+    format: ID
+
+  pause_collection:
+    sql: '"PAUSE_COLLECTION"'
+
+  is_subscription_paused:
+    sql: '"IS_SUBSCRIPTION_PAUSED"'
+
+  days_due_calc:
+    sql: '"DAYS_DUE_CALC"'
+
+  invoice_age:
+    sql: '"INVOICE_AGE"'
+
+  num_failed_charges_per_invoice:
+    sql: '"NUM_FAILED_CHARGES_PER_INVOICE"'
+
+  invoice_has_failed_charges:
+    sql: '"INVOICE_HAS_FAILED_CHARGES"'
+
+  recordtypeid:
+    sql: '"RECORDTYPEID"'
+
+  salesforce_account_name:
+    sql: '"SALESFORCE_ACCOUNT_NAME"'
+
+  account_status__c:
+    sql: '"ACCOUNT_STATUS__C"'
+
+  salesforce_account_id:
+    sql: '"SALESFORCE_ACCOUNT_ID"'
+    format: ID
+
+  stripe_customer_id__c:
+    sql: '"STRIPE_CUSTOMER_ID__C"'
+
+  invoice_customer_email:
+    sql: '"INVOICE_CUSTOMER_EMAIL"'
+
+  subscription_description:
+    sql: '"SUBSCRIPTION_DESCRIPTION"'
+
+  invoice_amount_remaining:
+    sql: '"INVOICE_AMOUNT_REMAINING"'
+
+  invoice_amount_due:
+    sql: '"INVOICE_AMOUNT_DUE"'
+
+  charge_amount:
+    sql: '"CHARGE_AMOUNT"'
+
+  payment_intent_amount:
+    sql: '"PAYMENT_INTENT_AMOUNT"'
+
+  invoice_amount_due_from_inv_table:
+    sql: '"INVOICE_AMOUNT_DUE_FROM_INV_TABLE"'
+
+  invoice_created_date_date:
+    sql: '"INVOICE_CREATED_DATE_DATE"'
+
+  invoice_created_date_year:
+    sql: '"INVOICE_CREATED_DATE_YEAR"'
+
+  marqii_fiscal_quarter_opportunity_create:
+    sql: '"MARQII_FISCAL_QUARTER_OPPORTUNITY_CREATE"'
+
+  invoice_created_date_year_fiscal:
+    sql: '"INVOICE_CREATED_DATE_YEAR_FISCAL"'
+
+  marqii_fiscal_quarter_invoice_created_date:
+    sql: '"MARQII_FISCAL_QUARTER_INVOICE_CREATED_DATE"'
+
+measures:
+  count:
+    aggregate_type: count

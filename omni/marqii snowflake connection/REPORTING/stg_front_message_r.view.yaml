@@ -1,0 +1,29 @@
+# Reference this view as reporting__stg_front_message_r
+schema: REPORTING
+table_name: STG_FRONT_MESSAGE_R
+
+dimensions:
+  message_id:
+    sql: '"MESSAGE_ID"'
+    format: ID
+
+  index:
+    sql: '"INDEX"'
+
+  handle:
+    sql: '"HANDLE"'
+
+  role:
+    sql: '"ROLE"'
+
+  contact_id:
+    sql: '"CONTACT_ID"'
+    format: ID
+
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+measures:
+  count:
+    aggregate_type: count

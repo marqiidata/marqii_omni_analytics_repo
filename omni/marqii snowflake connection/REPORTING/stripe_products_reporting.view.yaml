@@ -1,0 +1,66 @@
+# Reference this view as reporting__stripe_products_reporting
+schema: REPORTING
+table_name: STRIPE_PRODUCTS_REPORTING
+
+dimensions:
+  stripe_subscription_id:
+    sql: '"STRIPE_SUBSCRIPTION_ID"'
+    format: ID
+
+  stripe_subscription_item_id:
+    sql: '"STRIPE_SUBSCRIPTION_ITEM_ID"'
+    format: ID
+
+  st:
+    sql: '"ST"'
+
+  stripe_sku_id:
+    sql: '"STRIPE_SKU_ID"'
+    format: ID
+
+  stripe_sku_name:
+    sql: '"STRIPE_SKU_NAME"'
+
+  stripe_sku_type:
+    sql: '"STRIPE_SKU_TYPE"'
+
+  stripe_sku_is_active:
+    sql: '"STRIPE_SKU_IS_ACTIVE"'
+
+  stripe_sku_created_at:
+    sql: '"STRIPE_SKU_CREATED_AT"'
+
+  stripe_sku_updated_at:
+    sql: '"STRIPE_SKU_UPDATED_AT"'
+
+  stripe_sku_desc:
+    sql: '"STRIPE_SKU_DESC"'
+
+  stripe_customer_id:
+    sql: '"STRIPE_CUSTOMER_ID"'
+    format: ID
+
+  stripe_customer_name:
+    sql: '"STRIPE_CUSTOMER_NAME"'
+
+  subscription_status:
+    sql: '"SUBSCRIPTION_STATUS"'
+
+  confirmed_reviews_monitoring_enabled:
+    sql: '"CONFIRMED_REVIEWS_MONITORING_ENABLED"'
+
+  confirmed_suggested_reviews_monitoring_enabled:
+    sql: '"CONFIRMED_SUGGESTED_REVIEWS_MONITORING_ENABLED"'
+
+  confirmed_managed_reviews_monitoring_enabled:
+    sql: '"CONFIRMED_MANAGED_REVIEWS_MONITORING_ENABLED"'
+
+  confirmed_listings_enabled:
+    sql: '"CONFIRMED_LISTINGS_ENABLED"'
+
+  confirmed_menus_enabled:
+    sql: '"CONFIRMED_MENUS_ENABLED"'
+
+measures:
+  count:
+    aggregate_type: count

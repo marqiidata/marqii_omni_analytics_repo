@@ -1,0 +1,7 @@
+base_view: reporting_planhat_export__planhat_store_reporting
+label: Planhat Store Reporting
+group_label: Backoffice Reporting
+description: Topic contains store/location level data including location details
+  and what listings are enabled.
+
+joins: {}

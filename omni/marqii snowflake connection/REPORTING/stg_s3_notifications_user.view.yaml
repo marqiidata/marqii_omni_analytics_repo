@@ -1,0 +1,31 @@
+# Reference this view as reporting__stg_s3_notifications_user
+schema: REPORTING
+table_name: STG_S3_NOTIFICATIONS_USER
+
+dimensions:
+  user_id:
+    sql: '"USER_ID"'
+    format: ID
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  user_created_at:
+    sql: '"USER_CREATED_AT"'
+
+  user_updated_at:
+    sql: '"USER_UPDATED_AT"'
+
+  user_status:
+    sql: '"USER_STATUS"'
+
+  user_email_verified:
+    sql: '"USER_EMAIL_VERIFIED"'
+
+  user_enabled:
+    sql: '"USER_ENABLED"'
+
+measures:
+  count:
+    aggregate_type: count

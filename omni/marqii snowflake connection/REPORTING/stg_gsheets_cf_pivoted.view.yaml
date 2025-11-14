@@ -1,0 +1,63 @@
+# Reference this view as reporting__stg_gsheets_cf_pivoted
+schema: REPORTING
+table_name: STG_GSHEETS_CF_PIVOTED
+
+dimensions:
+  months:
+    sql: '"MONTHS"'
+
+  adjustments_to_convert_the_net_accrual_income_to_net_cash_income:
+    sql: '"Adjustments to Convert the Net Accrual Income to Net Cash Income"'
+
+  beginning_cash_balance:
+    sql: '"Beginning Cash Balance"'
+
+  gross_sales:
+    sql: '"Gross Sales"'
+
+  net_operating_cash_flow:
+    sql: '"Net Operating Cash Flow"'
+
+  net_financing_activity_cashflow:
+    sql: '"Net Financing Activity Cashflow"'
+
+  cost_of_goods_sold:
+    sql: '"Cost of Goods Sold"'
+
+  net_income:
+    sql: '"Net Income"'
+
+  gross_profit:
+    sql: '"Gross Profit"'
+
+  operating_expenditures:
+    sql: '"Operating Expenditures"'
+
+  net_operating_profit:
+    sql: '"Net Operating Profit"'
+
+  other_income:
+    sql: '"Other Income"'
+
+  net_increase__decrease__in_cash:
+    sql: '"Net Increase/(Decrease) in Cash"'
+
+  ending_cash_balance:
+    sql: '"Ending Cash Balance"'
+
+  ____ending_cash_balance_includes_bank_accounts_and_undeposited_funds_:
+    sql: '"** (Ending Cash Balance includes Bank Accounts and Undeposited Funds)"'
+    hidden: true
+
+  trailing_3m_runway:
+    sql: '"Trailing 3M Runway"'
+
+  parsed_date:
+    sql: '"PARSED_DATE"'
+
+  first_of_month:
+    sql: '"FIRST_OF_MONTH"'
+
+measures:
+  count:
+    aggregate_type: count

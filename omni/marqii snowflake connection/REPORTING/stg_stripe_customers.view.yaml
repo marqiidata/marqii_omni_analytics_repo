@@ -1,0 +1,127 @@
+# Reference this view as reporting__stg_stripe_customers
+schema: REPORTING
+table_name: STG_STRIPE_CUSTOMERS
+
+dimensions:
+  _airbyte_raw_id:
+    sql: '"_AIRBYTE_RAW_ID"'
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    sql: '"_AIRBYTE_EXTRACTED_AT"'
+    hidden: true
+
+  _airbyte_meta:
+    sql: '"_AIRBYTE_META"'
+    hidden: true
+
+  _airbyte_generation_id:
+    sql: '"_AIRBYTE_GENERATION_ID"'
+    format: ID
+    hidden: true
+
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  name:
+    sql: '"NAME"'
+
+  cards:
+    sql: '"CARDS"'
+
+  email:
+    sql: '"EMAIL"'
+
+  phone:
+    sql: '"PHONE"'
+
+  object:
+    sql: '"OBJECT"'
+
+  address:
+    sql: '"ADDRESS"'
+
+  balance:
+    sql: '"BALANCE"'
+
+  created:
+    sql: '"CREATED"'
+
+  sources:
+    sql: '"SOURCES"'
+
+  updated:
+    sql: '"UPDATED"'
+
+  currency:
+    sql: '"CURRENCY"'
+
+  discount:
+    sql: '"DISCOUNT"'
+
+  livemode:
+    sql: '"LIVEMODE"'
+
+  metadata:
+    sql: '"METADATA"'
+
+  shipping:
+    sql: '"SHIPPING"'
+
+  tax_info:
+    sql: '"TAX_INFO"'
+
+  delinquent:
+    sql: '"DELINQUENT"'
+
+  is_deleted:
+    sql: '"IS_DELETED"'
+
+  tax_exempt:
+    sql: '"TAX_EXEMPT"'
+
+  test_clock:
+    sql: '"TEST_CLOCK"'
+
+  description:
+    sql: '"DESCRIPTION"'
+
+  default_card:
+    sql: '"DEFAULT_CARD"'
+
+  subscriptions:
+    sql: '"SUBSCRIPTIONS"'
+
+  default_source:
+    sql: '"DEFAULT_SOURCE"'
+
+  invoice_prefix:
+    sql: '"INVOICE_PREFIX"'
+
+  account_balance:
+    sql: '"ACCOUNT_BALANCE"'
+
+  invoice_settings:
+    sql: '"INVOICE_SETTINGS"'
+
+  preferred_locales:
+    sql: '"PREFERRED_LOCALES"'
+
+  next_invoice_sequence:
+    sql: '"NEXT_INVOICE_SEQUENCE"'
+
+  tax_info_verification:
+    sql: '"TAX_INFO_VERIFICATION"'
+
+  customertype:
+    sql: '"CUSTOMERTYPE"'
+
+  pays_via_check:
+    sql: '"PAYS_VIA_CHECK"'
+
+measures:
+  count:
+    aggregate_type: count

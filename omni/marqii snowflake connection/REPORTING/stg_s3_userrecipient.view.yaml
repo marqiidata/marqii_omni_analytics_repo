@@ -1,0 +1,25 @@
+# Reference this view as reporting__stg_s3_userrecipient
+schema: REPORTING
+table_name: STG_S3_USERRECIPIENT
+
+dimensions:
+  removed: {}
+
+  user_receipient_id:
+    sql: '"USER_RECEIPIENT_ID"'
+    format: ID
+
+  user_id:
+    sql: '"USER_ID"'
+    format: ID
+
+  removed_reason:
+    sql: '"removedReason"'
+
+  notification_recipient_id:
+    sql: '"NOTIFICATION_RECIPIENT_ID"'
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

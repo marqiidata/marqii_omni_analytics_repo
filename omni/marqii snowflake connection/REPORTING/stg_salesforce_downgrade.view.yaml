@@ -1,0 +1,94 @@
+# Reference this view as reporting__stg_salesforce_downgrade
+schema: REPORTING
+table_name: STG_SALESFORCE_DOWNGRADE
+
+dimensions:
+  _airbyte_raw_id:
+    sql: '"_AIRBYTE_RAW_ID"'
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    sql: '"_AIRBYTE_EXTRACTED_AT"'
+    hidden: true
+
+  _airbyte_meta:
+    sql: '"_AIRBYTE_META"'
+    hidden: true
+
+  _airbyte_generation_id:
+    sql: '"_AIRBYTE_GENERATION_ID"'
+    format: ID
+    hidden: true
+
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  name:
+    sql: '"NAME"'
+
+  arr__c:
+    sql: '"ARR__C"'
+
+  mrr__c:
+    sql: '"MRR__C"'
+
+  isdeleted:
+    sql: '"ISDELETED"'
+
+  account__c:
+    sql: '"ACCOUNT__C"'
+
+  createdbyid:
+    sql: '"CREATEDBYID"'
+
+  createddate:
+    sql: '"CREATEDDATE"'
+
+  locations__c:
+    sql: '"LOCATIONS__C"'
+
+  owner_name__c:
+    sql: '"OWNER_NAME__C"'
+
+  new_package__c:
+    sql: '"NEW_PACKAGE__C"'
+
+  systemmodstamp:
+    sql: '"SYSTEMMODSTAMP"'
+
+  account_name__c:
+    sql: '"ACCOUNT_NAME__C"'
+
+  lastmodifiedbyid:
+    sql: '"LASTMODIFIEDBYID"'
+
+  lastmodifieddate:
+    sql: '"LASTMODIFIEDDATE"'
+
+  downgrade_cate__c:
+    sql: '"DOWNGRADE_CATE__C"'
+
+  downgrade_type__c:
+    sql: '"DOWNGRADE_TYPE__C"'
+
+  account_package__c:
+    sql: '"ACCOUNT_PACKAGE__C"'
+
+  current_package__c:
+    sql: '"CURRENT_PACKAGE__C"'
+
+  downgrade_reason__c:
+    sql: '"DOWNGRADE_REASON__C"'
+
+  downgrade_date_override__c:
+    sql: '"DOWNGRADE_DATE_OVERRIDE__C"'
+
+  next_steps_context_for_billing__c:
+    sql: '"NEXT_STEPS_CONTEXT_FOR_BILLING__C"'
+
+measures:
+  count:
+    aggregate_type: count

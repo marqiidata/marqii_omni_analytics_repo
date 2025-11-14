@@ -1,0 +1,37 @@
+# Reference this view as reporting__ps_account
+schema: REPORTING
+table_name: PS_ACCOUNT
+
+dimensions:
+  airbyte_sync_ps:
+    sql: '"AIRBYTE_SYNC_PS"'
+    description: When did airbyte last send the data over?
+
+  ps_account_id:
+    sql: '"PS_ACCOUNT_ID"'
+    format: ID
+    description: Backoffice account id, unique identifier
+    primary_key: true
+    synonyms: [ backoffice account id, unique identifier ]
+    ai_context: backoffice account id, unique identifier
+
+  ps_account_name:
+    sql: '"PS_ACCOUNT_NAME"'
+    description: Backoffice account name
+    synonyms: [ Backoffice account name ]
+    ai_context: Backoffice account name
+
+  ps_account_deleted:
+    sql: '"PS_ACCOUNT_DELETED"'
+    description: Has the account been deleted?
+    timeframe_metadata:
+      date:
+        description: Account deletion date
+
+  ps_account_create_date:
+    sql: '"PS_ACCOUNT_CREATE_DATE"'
+    description: When was the backoffice account created?
+
+measures:
+  count:
+    aggregate_type: count

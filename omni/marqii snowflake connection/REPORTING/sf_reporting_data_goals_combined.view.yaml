@@ -1,0 +1,459 @@
+# Reference this view as reporting__sf_reporting_data_goals_combined
+schema: REPORTING
+table_name: SF_REPORTING_DATA_GOALS_COMBINED
+
+dimensions:
+  account_has_mr_product:
+    sql: '"ACCOUNT_HAS_MR_PRODUCT"'
+
+  account_has_srr_product:
+    sql: '"ACCOUNT_HAS_SRR_PRODUCT"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  opportunity_id:
+    sql: '"OPPORTUNITY_ID"'
+    format: ID
+
+  closedate:
+    sql: '"CLOSEDATE"'
+
+  churn_reason:
+    sql: '"CHURN_REASON"'
+
+  churn_category:
+    sql: '"CHURN_CATEGORY"'
+
+  stagename:
+    sql: '"STAGENAME"'
+
+  num_account_locations:
+    sql: '"NUM_ACCOUNT_LOCATIONS"'
+
+  net_num_account_locations:
+    sql: '"NET_NUM_ACCOUNT_LOCATIONS"'
+
+  opportunity_type:
+    sql: '"OPPORTUNITY_TYPE"'
+
+  account_status:
+    sql: '"ACCOUNT_STATUS"'
+
+  account_owner_id:
+    sql: '"ACCOUNT_OWNER_ID"'
+    format: ID
+
+  account_record_type_name:
+    sql: '"ACCOUNT_RECORD_TYPE_NAME"'
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+
+  account_owner_team:
+    sql: '"ACCOUNT_OWNER_TEAM"'
+
+  accountid:
+    sql: '"ACCOUNTID"'
+
+  owner_team:
+    sql: '"OWNER_TEAM"'
+
+  opportunity_package:
+    sql: '"OPPORTUNITY_PACKAGE"'
+
+  owner_id:
+    sql: '"OWNER_ID"'
+    format: ID
+
+  opportunity_owner_field__c:
+    sql: '"OPPORTUNITY_OWNER_FIELD__C"'
+
+  createdbyid:
+    sql: '"CREATEDBYID"'
+
+  reactivation_churn_date:
+    sql: '"REACTIVATION_CHURN_DATE"'
+
+  deal_source__c:
+    sql: '"DEAL_SOURCE__C"'
+
+  deal_source_category__c:
+    sql: '"DEAL_SOURCE_CATEGORY__C"'
+
+  pitched__c:
+    sql: '"PITCHED__C"'
+
+  opp_billing_clause:
+    sql: '"OPP_BILLING_CLAUSE"'
+
+  pitched_yes__c:
+    sql: '"PITCHED_YES__C"'
+
+  pitch_type__c:
+    sql: '"PITCH_TYPE__C"'
+
+  laststagechangedate:
+    sql: '"LASTSTAGECHANGEDATE"'
+
+  special_billing_notes:
+    sql: '"SPECIAL_BILLING_NOTES"'
+
+  opportunity_leadsource_category:
+    sql: '"OPPORTUNITY_LEADSOURCE_CATEGORY"'
+
+  opportunity_leadsource:
+    sql: '"OPPORTUNITY_LEADSOURCE"'
+
+  previous_service:
+    sql: '"PREVIOUS_SERVICE"'
+
+  opportunity_deal_source:
+    sql: '"OPPORTUNITY_DEAL_SOURCE"'
+
+  opportunity_deal_source_category:
+    sql: '"OPPORTUNITY_DEAL_SOURCE_CATEGORY"'
+
+  opportunity_url:
+    sql: '"OPPORTUNITY_URL"'
+
+  fiscalquarter:
+    sql: '"FISCALQUARTER"'
+
+  fiscal:
+    sql: '"FISCAL"'
+
+  fiscalyear:
+    sql: '"FISCALYEAR"'
+
+  opportunity_create_date:
+    sql: '"OPPORTUNITY_CREATE_DATE"'
+
+  opportunity_create_year:
+    sql: '"OPPORTUNITY_CREATE_YEAR"'
+
+  marqii_fiscal_quarter_opportunity_create:
+    sql: '"MARQII_FISCAL_QUARTER_OPPORTUNITY_CREATE"'
+
+  opportunity_create_year_fiscal:
+    sql: '"OPPORTUNITY_CREATE_YEAR_FISCAL"'
+
+  marqii_fiscal_quarter_opportunity_create_date:
+    sql: '"MARQII_FISCAL_QUARTER_OPPORTUNITY_CREATE_DATE"'
+
+  current_pain_points:
+    sql: '"CURRENT_PAIN_POINTS"'
+
+  past_issues:
+    sql: '"PAST_ISSUES"'
+
+  metrics_for_success:
+    sql: '"METRICS_FOR_SUCCESS"'
+
+  location_notes_structre:
+    sql: '"LOCATION_NOTES_STRUCTRE"'
+
+  structure_of_locations:
+    sql: '"STRUCTURE_OF_LOCATIONS"'
+
+  custom_term_lengths:
+    sql: '"CUSTOM_TERM_LENGTHS"'
+
+  account_current_package:
+    sql: '"ACCOUNT_CURRENT_PACKAGE"'
+
+  churn_date:
+    sql: '"CHURN_DATE"'
+
+  churn_year:
+    sql: '"CHURN_YEAR"'
+
+  churn_month:
+    sql: '"CHURN_MONTH"'
+
+  quarter_date_churndate:
+    sql: '"QUARTER_DATE_CHURNDATE"'
+
+  month_date_churndate:
+    sql: '"MONTH_DATE_CHURNDATE"'
+
+  quarter_text_churndate:
+    sql: '"QUARTER_TEXT_CHURNDATE"'
+
+  churn_quarter_year:
+    sql: '"CHURN_QUARTER_YEAR"'
+
+  account_vertical__c:
+    sql: '"ACCOUNT_VERTICAL__C"'
+
+  parent_account_status:
+    sql: '"PARENT_ACCOUNT_STATUS"'
+
+  account_url:
+    sql: '"ACCOUNT_URL"'
+
+  billing_terms:
+    sql: '"BILLING_TERMS"'
+
+  account_onboarding_stage:
+    sql: '"ACCOUNT_ONBOARDING_STAGE"'
+
+  dashboard_link__c:
+    sql: '"DASHBOARD_LINK__C"'
+
+  sp_link__c:
+    sql: '"SP_LINK__C"'
+
+  gmb_link__c:
+    sql: '"GMB_LINK__C"'
+
+  subscription_end_date:
+    sql: '"SUBSCRIPTION_END_DATE"'
+
+  master_stripe_id:
+    sql: '"MASTER_STRIPE_ID"'
+    format: ID
+
+  subscription_start_date:
+    sql: '"SUBSCRIPTION_START_DATE"'
+
+  subscription_start_month:
+    sql: '"SUBSCRIPTION_START_MONTH"'
+
+  subscription_end_month:
+    sql: '"SUBSCRIPTION_END_MONTH"'
+
+  opportunity_ownerid:
+    sql: '"OPPORTUNITY_OWNERID"'
+
+  opportunity_owner_first:
+    sql: '"OPPORTUNITY_OWNER_FIRST"'
+
+  opportunity_owner_last:
+    sql: '"OPPORTUNITY_OWNER_LAST"'
+
+  opportunity_owner_name:
+    sql: '"OPPORTUNITY_OWNER_NAME"'
+
+  is_active_owner:
+    sql: '"IS_ACTIVE_OWNER"'
+
+  opportunity_owner_create_date:
+    sql: '"OPPORTUNITY_OWNER_CREATE_DATE"'
+
+  opportunity_owner_last_login_date:
+    sql: '"OPPORTUNITY_OWNER_LAST_LOGIN_DATE"'
+
+  employment_length_days:
+    sql: '"EMPLOYMENT_LENGTH_DAYS"'
+
+  opportunity_owner_team:
+    sql: '"OPPORTUNITY_OWNER_TEAM"'
+
+  opportunity_employee_start_date:
+    sql: '"OPPORTUNITY_EMPLOYEE_START_DATE"'
+
+  account_ownerid:
+    sql: '"ACCOUNT_OWNERID"'
+
+  account_owner_first:
+    sql: '"ACCOUNT_OWNER_FIRST"'
+
+  account_owner_last:
+    sql: '"ACCOUNT_OWNER_LAST"'
+
+  is_active_account_owner:
+    sql: '"IS_ACTIVE_ACCOUNT_OWNER"'
+
+  account_owner_create_date:
+    sql: '"ACCOUNT_OWNER_CREATE_DATE"'
+
+  account_owner_last_login_date:
+    sql: '"ACCOUNT_OWNER_LAST_LOGIN_DATE"'
+
+  account_owner_employment_length_days:
+    sql: '"ACCOUNT_OWNER_EMPLOYMENT_LENGTH_DAYS"'
+
+  created_by_user_name:
+    sql: '"CREATED_BY_USER_NAME"'
+
+  created_by_user_team:
+    sql: '"CREATED_BY_USER_TEAM"'
+
+  creator_start_date:
+    sql: '"CREATOR_START_DATE"'
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  opportunity_name:
+    sql: '"OPPORTUNITY_NAME"'
+
+  marqii_account_id:
+    sql: '"MARQII_ACCOUNT_ID"'
+    format: ID
+
+  opportunity_rev_category:
+    sql: '"OPPORTUNITY_REV_CATEGORY"'
+
+  rev_reporting_date:
+    sql: '"REV_REPORTING_DATE"'
+
+  rev_reporting_year:
+    sql: '"REV_REPORTING_YEAR"'
+
+  rev_reporting_month:
+    sql: '"REV_REPORTING_MONTH"'
+
+  quarter_date_rev_reporting:
+    sql: '"QUARTER_DATE_REV_REPORTING"'
+
+  month_date_rev_reporting:
+    sql: '"MONTH_DATE_REV_REPORTING"'
+
+  quarter_text_rev_reporting:
+    sql: '"QUARTER_TEXT_REV_REPORTING"'
+
+  rev_reporting_quarter_year:
+    sql: '"REV_REPORTING_QUARTER_YEAR"'
+
+  nrr_date:
+    sql: '"NRR_DATE"'
+
+  nrr_year:
+    sql: '"NRR_YEAR"'
+
+  nrr_month:
+    sql: '"NRR_MONTH"'
+
+  acv_eligible_opprtunity_id:
+    sql: '"ACV_ELIGIBLE_OPPRTUNITY_ID"'
+    format: ID
+
+  marqii_fiscal_quarter:
+    sql: '"MARQII_FISCAL_QUARTER"'
+
+  marqii_fiscal_year:
+    sql: '"MARQII_FISCAL_YEAR"'
+
+  marqii_fiscal_quarter_date:
+    sql: '"MARQII_FISCAL_QUARTER_DATE"'
+
+  marqii_fiscal_quarter_year:
+    sql: '"MARQII_FISCAL_QUARTER_YEAR"'
+
+  airbyte_latest_sync:
+    sql: '"AIRBYTE_LATEST_SYNC"'
+
+  package_category:
+    sql: '"PACKAGE_CATEGORY"'
+
+  original_amount:
+    sql: '"ORIGINAL_AMOUNT"'
+
+  adjustment_amount:
+    sql: '"ADJUSTMENT_AMOUNT"'
+
+  is_adjusted:
+    sql: '"IS_ADJUSTED"'
+
+  num_opportunity_locations:
+    sql: '"NUM_OPPORTUNITY_LOCATIONS"'
+
+  downgrade_amount:
+    sql: '"DOWNGRADE_AMOUNT"'
+
+  stage_probability:
+    sql: '"STAGE_PROBABILITY"'
+
+  quota_start_date:
+    sql: '"QUOTA_START_DATE"'
+
+  quota_end_date:
+    sql: '"QUOTA_END_DATE"'
+
+  goal:
+    sql: '"GOAL"'
+
+  quota:
+    sql: '"QUOTA"'
+
+  quota_name:
+    sql: '"QUOTA_NAME"'
+
+  amount:
+    sql: '"AMOUNT"'
+
+  gross_arr:
+    sql: '"GROSS_ARR"'
+
+  mrr:
+    sql: '"MRR"'
+
+  product_combined:
+    sql: '"PRODUCT_COMBINED"'
+
+  number_of_emails:
+    sql: '"NUMBER_OF_EMAILS"'
+
+  number_of_calls:
+    sql: '"NUMBER_OF_CALLS"'
+
+  _new_business_margin_com_:
+    sql: "\"'new_business_margin_com'\""
+    hidden: true
+
+  _revenue_growth_:
+    sql: "\"'revenue_growth'\""
+    hidden: true
+
+  _multi_loc_arr_growth_:
+    sql: "\"'multi_loc_arr_growth'\""
+    hidden: true
+
+  _imarketing_influenced_arr_:
+    sql: "\"'imarketing_influenced_arr'\""
+    hidden: true
+
+  _imarketing_influenced_opportunties_:
+    sql: "\"'imarketing_influenced_opportunties'\""
+    hidden: true
+
+  _quarertly_churn_:
+    sql: "\"'quarertly_churn'\""
+    hidden: true
+
+  _reduce_mr_response_effort_:
+    sql: "\"'reduce_mr_response_effort'\""
+    hidden: true
+
+  _new_business_margin_mm_:
+    sql: "\"'new_business_margin_mm'\""
+    hidden: true
+
+  _failed_credit_card_charges_:
+    sql: "\"'failed_credit_card_charges'\""
+    hidden: true
+
+  _mr_product_growth_:
+    sql: "\"'mr_product_growth'\""
+    hidden: true
+
+  _add_logos_:
+    sql: "\"'add_logos'\""
+    hidden: true
+
+  _win_rate_:
+    sql: "\"'win_rate'\""
+    hidden: true
+
+  valid_to:
+    sql: '"VALID_TO"'
+
+  valid_from:
+    sql: '"VALID_FROM"'
+
+measures:
+  count:
+    aggregate_type: count

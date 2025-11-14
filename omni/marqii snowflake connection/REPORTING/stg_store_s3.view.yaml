@@ -1,0 +1,48 @@
+# Reference this view as reporting__stg_store_s3
+schema: REPORTING
+table_name: STG_STORE_S3
+
+dimensions:
+  store_id:
+    sql: '"STORE_ID"'
+    format: ID
+
+  store_importdata:
+    sql: '"STORE_IMPORTDATA"'
+
+  store_postalcode:
+    sql: '"STORE_POSTALCODE"'
+
+  store_addressregion:
+    sql: '"STORE_ADDRESSREGION"'
+
+  store_streetaddress:
+    sql: '"STORE_STREETADDRESS"'
+
+  store_deleted:
+    sql: '"STORE_DELETED"'
+
+  store_accountid:
+    sql: '"STORE_ACCOUNTID"'
+
+  store_isomnilocation:
+    sql: '"STORE_ISOMNILOCATION"'
+
+  store_addresslocality:
+    sql: '"STORE_ADDRESSLOCALITY"'
+
+  store_streetaddressdetail:
+    sql: '"STORE_STREETADDRESSDETAIL"'
+
+  store_displayaddress:
+    sql: '"STORE_DISPLAYADDRESS"'
+
+  store_title:
+    sql: '"STORE_TITLE"'
+
+  store_country:
+    sql: '"STORE_COUNTRY"'
+
+measures:
+  count:
+    aggregate_type: count

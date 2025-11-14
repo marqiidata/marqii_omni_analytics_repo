@@ -1,0 +1,14 @@
+# Reference this view as reporting__invoice_counts
+schema: REPORTING
+table_name: INVOICE_COUNTS
+
+dimensions:
+  invoice:
+    sql: '"INVOICE"'
+
+  num_charges_per_invoice:
+    sql: '"NUM_CHARGES_PER_INVOICE"'
+
+measures:
+  count:
+    aggregate_type: count

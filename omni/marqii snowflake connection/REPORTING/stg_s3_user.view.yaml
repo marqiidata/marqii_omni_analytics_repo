@@ -1,0 +1,44 @@
+# Reference this view as reporting__stg_s3_user
+schema: REPORTING
+table_name: STG_S3_USER
+
+dimensions:
+  enabled: {}
+
+  user_id:
+    sql: '"USER_ID"'
+    format: ID
+
+  account_id:
+    sql: '"accountId"'
+    format: ID
+
+  user_created_at:
+    sql: '"USER_CREATED_AT"'
+
+  updated_at:
+    sql: '"updatedAt"'
+
+  user_status:
+    sql: '"userStatus"'
+
+  email_verified:
+    sql: '"emailVerified"'
+
+  _airbyte_raw_id:
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    hidden: true
+
+  _airbyte_meta:
+    hidden: true
+
+  _airbyte_generation_id:
+    format: ID
+    hidden: true
+
+measures:
+  count:
+    aggregate_type: count

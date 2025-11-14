@@ -1,0 +1,74 @@
+# Reference this view as reporting__stg_gsheets_pnl_raw
+schema: REPORTING
+table_name: STG_GSHEETS_PNL_RAW
+
+dimensions:
+  p_lv_2_wrangler_completed_at_07_13_2025_16_30:
+    sql: '"P_LV_2_WRANGLER_COMPLETED_AT_07_13_2025_16_30"'
+
+  jun_2025:
+    sql: '"JUN_2025"'
+
+  oct_2024:
+    sql: '"OCT_2024"'
+
+  dec_2024:
+    sql: '"DEC_2024"'
+
+  total:
+    sql: '"TOTAL"'
+
+  key_rows:
+    sql: '"KEY_ROWS"'
+
+  feb_2025:
+    sql: '"FEB_2025"'
+
+  jan_2025:
+    sql: '"JAN_2025"'
+
+  nov_2024:
+    sql: '"NOV_2024"'
+
+  sep_2024:
+    sql: '"SEP_2024"'
+
+  jul_2024:
+    sql: '"JUL_2024"'
+
+  may_2025:
+    sql: '"MAY_2025"'
+
+  mar_2025:
+    sql: '"MAR_2025"'
+
+  apr_2025:
+    sql: '"APR_2025"'
+
+  account:
+    sql: '"ACCOUNT"'
+
+  wrangle_time:
+    sql: '"WRANGLE_TIME"'
+
+  jul_2025:
+    sql: '"JUL_2025"'
+
+  aug_2025:
+    sql: '"AUG_2025"'
+
+  aug_2024:
+    sql: '"AUG_2024"'
+
+  sep_2025:
+    sql: '"SEP_2025"'
+
+  oct_2025:
+    sql: '"OCT_2025"'
+
+  pnl_sync:
+    sql: '"PNL_SYNC"'
+
+measures:
+  count:
+    aggregate_type: count

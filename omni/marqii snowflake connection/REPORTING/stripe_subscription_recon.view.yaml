@@ -1,0 +1,181 @@
+# Reference this view as reporting__stripe_subscription_recon
+schema: REPORTING
+table_name: STRIPE_SUBSCRIPTION_RECON
+
+dimensions:
+  latest_invoice:
+    sql: '"LATEST_INVOICE"'
+
+  latest_subscription_invoice_total:
+    sql: '"LATEST_SUBSCRIPTION_INVOICE_TOTAL"'
+
+  latest_subscription_invoice_subtotal:
+    sql: '"LATEST_SUBSCRIPTION_INVOICE_SUBTOTAL"'
+
+  latest_invoice_line_discounts:
+    sql: '"LATEST_INVOICE_LINE_DISCOUNTS"'
+
+  has_invoice_line_item_discounts:
+    sql: '"HAS_INVOICE_LINE_ITEM_DISCOUNTS"'
+
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  stripe_subscription_item_id:
+    sql: '"STRIPE_SUBSCRIPTION_ITEM_ID"'
+    format: ID
+
+  subscription_status:
+    sql: '"SUBSCRIPTION_STATUS"'
+
+  subscription_plan:
+    sql: '"SUBSCRIPTION_PLAN"'
+
+  stripe_subscription_id:
+    sql: '"STRIPE_SUBSCRIPTION_ID"'
+    format: ID
+
+  stripe_subscription_item_plan:
+    sql: '"STRIPE_SUBSCRIPTION_ITEM_PLAN"'
+
+  customer:
+    sql: '"CUSTOMER"'
+
+  subscription_discount:
+    sql: '"SUBSCRIPTION_DISCOUNT"'
+
+  product:
+    sql: '"PRODUCT"'
+
+  plan_active:
+    sql: '"PLAN_ACTIVE"'
+
+  plan_id:
+    sql: '"PLAN_ID"'
+    format: ID
+
+  plan_currency:
+    sql: '"PLAN_CURRENCY"'
+
+  plan_amount:
+    sql: '"PLAN_AMOUNT"'
+
+  plan_amount_decimal:
+    sql: '"PLAN_AMOUNT_DECIMAL"'
+
+  discount_percent_off:
+    sql: '"DISCOUNT_PERCENT_OFF"'
+
+  subscription_item_quantity:
+    sql: '"SUBSCRIPTION_ITEM_QUANTITY"'
+
+  subtotal:
+    sql: '"SUBTOTAL"'
+
+  discount_amount:
+    sql: '"DISCOUNT_AMOUNT"'
+
+  total:
+    sql: '"TOTAL"'
+
+  billing_interval:
+    sql: '"BILLING_INTERVAL"'
+
+  billing_interval_count:
+    sql: '"BILLING_INTERVAL_COUNT"'
+
+  stripe_monthly_charge:
+    sql: '"STRIPE_MONTHLY_CHARGE"'
+
+  stripe_arr:
+    sql: '"STRIPE_ARR"'
+
+  salesforceid:
+    sql: '"SALESFORCEID"'
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  account_status:
+    sql: '"ACCOUNT_STATUS"'
+
+  net_arr:
+    sql: '"NET_ARR"'
+
+  mrr:
+    sql: '"MRR"'
+
+  gross_arr:
+    sql: '"GROSS_ARR"'
+
+  sf_net_arr_adj:
+    sql: '"SF_NET_ARR_ADJ"'
+
+  sf_gross_arr_adj:
+    sql: '"SF_GROSS_ARR_ADJ"'
+
+  sf_mrr_adj:
+    sql: '"SF_MRR_ADJ"'
+
+  sf_row_adjustment:
+    sql: '"SF_ROW_ADJUSTMENT"'
+
+  stripe_customer_name:
+    sql: '"STRIPE_CUSTOMER_NAME"'
+
+  customertype:
+    sql: '"CUSTOMERTYPE"'
+
+  pays_via_check:
+    sql: '"PAYS_VIA_CHECK"'
+
+  upcoming_invoice_id:
+    sql: '"UPCOMING_INVOICE_ID"'
+    format: ID
+
+  upcoming_invoice_amount_due:
+    sql: '"UPCOMING_INVOICE_AMOUNT_DUE"'
+
+  upcoming_invoice_amount_paid:
+    sql: '"UPCOMING_INVOICE_AMOUNT_PAID"'
+
+  upcoming_invoice_amount_remaining:
+    sql: '"UPCOMING_INVOICE_AMOUNT_REMAINING"'
+
+  upcoming_invoice_billing_reason:
+    sql: '"UPCOMING_INVOICE_BILLING_REASON"'
+
+  upcoming_invoice_period_start:
+    sql: '"UPCOMING_INVOICE_PERIOD_START"'
+
+  upcoming_invoice_period_end:
+    sql: '"UPCOMING_INVOICE_PERIOD_END"'
+
+  upcoming_invoice_subtotal:
+    sql: '"UPCOMING_INVOICE_SUBTOTAL"'
+
+  upcoming_invoice_total:
+    sql: '"UPCOMING_INVOICE_TOTAL"'
+
+  customer_id:
+    sql: '"CUSTOMER_ID"'
+    format: ID
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+
+  partner_account_id:
+    sql: '"PARTNER_ACCOUNT_ID"'
+    format: ID
+
+  is_related_to_partner_account:
+    sql: '"IS_RELATED_TO_PARTNER_ACCOUNT"'
+
+  model_run_time_est:
+    sql: '"MODEL_RUN_TIME_EST"'
+
+measures:
+  count:
+    aggregate_type: count

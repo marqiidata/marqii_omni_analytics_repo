@@ -1,0 +1,31 @@
+# Reference this view as reporting__ps_yext_package
+schema: REPORTING
+table_name: PS_YEXT_PACKAGE
+
+dimensions:
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  name:
+    sql: '"NAME"'
+
+  include_listings:
+    sql: '"includeListings"'
+
+  include_menus:
+    sql: '"includeMenus"'
+
+  include_reviews:
+    sql: '"includeReviews"'
+
+  include_hours_widget:
+    sql: '"includeHoursWidget"'
+
+  is_blaze_it_edition:
+    sql: '"isBlazeItEdition"'
+
+measures:
+  count:
+    aggregate_type: count

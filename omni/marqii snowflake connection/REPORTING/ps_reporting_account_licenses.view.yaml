@@ -1,0 +1,84 @@
+# Reference this view as reporting__ps_reporting_account_licenses
+schema: REPORTING
+table_name: PS_REPORTING_ACCOUNT_LICENSES
+
+dimensions:
+  airbyte_sync_ps:
+    sql: '"AIRBYTE_SYNC_PS"'
+
+  ps_account_name:
+    sql: '"PS_ACCOUNT_NAME"'
+
+  ps_account_deleted:
+    sql: '"PS_ACCOUNT_DELETED"'
+
+  ps_account_create_date:
+    sql: '"PS_ACCOUNT_CREATE_DATE"'
+
+  account_features_menus_enabled:
+    sql: '"ACCOUNT_FEATURES_MENUS_ENABLED"'
+
+  account_features_reviewmonitoring_enabled:
+    sql: '"ACCOUNT_FEATURES_REVIEWMONITORING_ENABLED"'
+
+  account_features_listings_enabled:
+    sql: '"ACCOUNT_FEATURES_LISTINGS_ENABLED"'
+
+  account_features_suggested_review_response_enabled:
+    sql: '"ACCOUNT_FEATURES_SUGGESTED_REVIEW_RESPONSE_ENABLED"'
+
+  account_features_managed_reviews_enabled:
+    sql: '"ACCOUNT_FEATURES_MANAGED_REVIEWS_ENABLED"'
+
+  account_features_social_management_enabled:
+    sql: '"ACCOUNT_FEATURES_SOCIAL_MANAGEMENT_ENABLED"'
+
+  salesforceid:
+    sql: '"SALESFORCEID"'
+
+  salesforce_account_name:
+    sql: '"SALESFORCE_ACCOUNT_NAME"'
+
+  salesforce_account_status:
+    sql: '"SALESFORCE_ACCOUNT_STATUS"'
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+
+  account_owner_team:
+    sql: '"ACCOUNT_OWNER_TEAM"'
+
+  data_last_refreshed:
+    sql: '"DATA_LAST_REFRESHED"'
+
+  ps_account_id:
+    sql: '"PS_ACCOUNT_ID"'
+    format: ID
+
+  products_incomplete:
+    sql: '"PRODUCTS_INCOMPLETE"'
+
+  products_incomplete_expired:
+    sql: '"PRODUCTS_INCOMPLETE_EXPIRED"'
+
+  products_trialing:
+    sql: '"PRODUCTS_TRIALING"'
+
+  products_active:
+    sql: '"PRODUCTS_ACTIVE"'
+
+  products_past_due:
+    sql: '"PRODUCTS_PAST_DUE"'
+
+  products_canceled:
+    sql: '"PRODUCTS_CANCELED"'
+
+  products_unpaid:
+    sql: '"PRODUCTS_UNPAID"'
+
+  products_paused:
+    sql: '"PRODUCTS_PAUSED"'
+
+measures:
+  count:
+    aggregate_type: count

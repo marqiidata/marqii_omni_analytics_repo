@@ -1,0 +1,51 @@
+# Reference this view as reporting__stg_stripe_credits
+schema: REPORTING
+table_name: STG_STRIPE_CREDITS
+
+dimensions:
+  credit_id:
+    sql: '"CREDIT_ID"'
+    format: ID
+
+  credit_memo:
+    sql: '"CREDIT_MEMO"'
+
+  credit_type:
+    sql: '"CREDIT_TYPE"'
+
+  credit_total:
+    sql: '"CREDIT_TOTAL"'
+
+  credit_amount:
+    sql: '"CREDIT_AMOUNT"'
+
+  credit_number:
+    sql: '"CREDIT_NUMBER"'
+
+  credit_reason:
+    sql: '"CREDIT_REASON"'
+
+  credit_created:
+    sql: '"CREDIT_CREATED"'
+
+  credit_effective_at:
+    sql: '"CREDIT_EFFECTIVE_AT"'
+
+  credit_note_invoice:
+    sql: '"CREDIT_NOTE_INVOICE"'
+
+  credit_metadata:
+    sql: '"CREDIT_METADATA"'
+
+  credit_discount_amount:
+    sql: '"CREDIT_DISCOUNT_AMOUNT"'
+
+  credit_total_excluding_tax:
+    sql: '"CREDIT_TOTAL_EXCLUDING_TAX"'
+
+  credit_subtotal_excluding_tax:
+    sql: '"CREDIT_SUBTOTAL_EXCLUDING_TAX"'
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,26 @@
+ai_context: |
+  
+  Always return one measure/metric when I ask for one. Don't bring in additional fields.
+
+fiscal_month_offset: -1
+
+ignored_schemas:
+  [
+    AIRBYTE_SCHEMA,
+    FIVETRAN_METADATA,
+    FIVETRAN_MOUSE_DRILLING_STAGING,
+    FIVETRAN_REPAY_SPIRITUOUS_STAGING,
+    FIVETRAN_TRIMESTER_VERTEBRA_STAGING,
+    FIVETRAN_UNSHEATHE_PARALLELISM_STAGING,
+    MAILCHIMP,
+    MAILCHIMP_MAILCHIMP,
+    MAILCHIMP_STG_MAILCHIMP,
+    PUBLIC,
+    S3_BUCKETS,
+    STRIPE_STG_STRIPE,
+    STRIPE_STRIPE,
+    _AIRBYTE_AIRBYTE_SCHEMA,
+    _AIRBYTE_SALESFORCE,
+    _AIRBYTE_STRIPE,
+    airbyte_internal
+  ]

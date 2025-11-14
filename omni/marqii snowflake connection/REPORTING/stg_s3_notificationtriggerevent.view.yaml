@@ -1,0 +1,28 @@
+# Reference this view as reporting__stg_s3_notificationtriggerevent
+schema: REPORTING
+table_name: STG_S3_NOTIFICATIONTRIGGEREVENT
+
+dimensions:
+  notification_trigger_event_id:
+    sql: '"NOTIFICATION_TRIGGER_EVENT_ID"'
+    format: ID
+
+  notification_trigger_created_at:
+    sql: '"NOTIFICATION_TRIGGER_CREATED_AT"'
+
+  notification_trigger_matched_at:
+    sql: '"NOTIFICATION_TRIGGER_MATCHED_AT"'
+
+  notification_trigger_finished_at:
+    sql: '"NOTIFICATION_TRIGGER_FINISHED_AT"'
+
+  notification_id:
+    sql: '"NOTIFICATION_ID"'
+    format: ID
+
+  notification_trigger_should_run_next_at:
+    sql: '"NOTIFICATION_TRIGGER_SHOULD_RUN_NEXT_AT"'
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,11 @@
+base_view: reporting__reviews_reporting
+label: Reviews Reporting
+group_label: Product Reporting
+description: This data source/topic shows all reviews and what accounts they are
+  associated with. Useful for things like response rate.
+
+joins:
+  reporting__ps_account: {}
+
+ai_context: This data source/topic shows all reviews and what accounts they are
+  associated with. Useful for things like response rate.

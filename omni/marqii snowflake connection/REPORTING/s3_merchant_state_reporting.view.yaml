@@ -1,0 +1,11 @@
+# Reference this view as reporting__s3_merchant_state_reporting
+schema: REPORTING
+table_name: S3_MERCHANT_STATE_REPORTING
+
+dimensions:
+  listings_provider:
+    sql: '"LISTINGS_PROVIDER"'
+
+measures:
+  count:
+    aggregate_type: count

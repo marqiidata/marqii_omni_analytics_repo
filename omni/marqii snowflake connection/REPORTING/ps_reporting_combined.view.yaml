@@ -1,0 +1,128 @@
+# Reference this view as reporting__ps_reporting_combined
+schema: REPORTING
+table_name: PS_REPORTING_COMBINED
+
+dimensions:
+  airbyte_sync_ps_store_listing:
+    sql: '"AIRBYTE_SYNC_PS_STORE_LISTING"'
+
+  ps_store_listing_id:
+    sql: '"PS_STORE_LISTING_ID"'
+    format: ID
+
+  ps_store_listing_enabled:
+    sql: '"PS_STORE_LISTING_ENABLED"'
+
+  storeid:
+    sql: '"STOREID"'
+
+  ps_store_listing_provider:
+    sql: '"PS_STORE_LISTING_PROVIDER"'
+
+  store_listing_created:
+    sql: '"STORE_LISTING_CREATED"'
+
+  ps_store_listing_menus_enabled:
+    sql: '"PS_STORE_LISTING_MENUS_ENABLED"'
+
+  ps_store_listing_reviews_enabled:
+    sql: '"PS_STORE_LISTING_REVIEWS_ENABLED"'
+
+  ps_store_listing_listings_enabled:
+    sql: '"PS_STORE_LISTING_LISTINGS_ENABLED"'
+
+  ps_store_listing_managed_by_marqii:
+    sql: '"PS_STORE_LISTING_MANAGED_BY_MARQII"'
+
+  ps_store_listing_analytics_enabled:
+    sql: '"PS_STORE_LISTING_ANALYTICS_ENABLED"'
+
+  ps_store_listing_hours_widget_enabled:
+    sql: '"PS_STORE_LISTING_HOURS_WIDGET_ENABLED"'
+
+  ps_store_listing_connectiondata:
+    sql: '"PS_STORE_LISTING_CONNECTIONDATA"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  package_id:
+    sql: '"PACKAGE_ID"'
+    format: ID
+
+  location_id:
+    sql: '"LOCATION_ID"'
+    format: ID
+
+  ps_account_id:
+    sql: '"PS_ACCOUNT_ID"'
+    format: ID
+
+  ps_store_name:
+    sql: '"PS_STORE_NAME"'
+
+  ps_account_name:
+    sql: '"PS_ACCOUNT_NAME"'
+
+  ps_account_create_date:
+    sql: '"PS_ACCOUNT_CREATE_DATE"'
+
+  salesforceid:
+    sql: '"SALESFORCEID"'
+
+  stripeid:
+    sql: '"STRIPEID"'
+
+  sf_account_name:
+    sql: '"SF_ACCOUNT_NAME"'
+
+  product_combined:
+    sql: '"PRODUCT_COMBINED"'
+
+  net_num_account_locations:
+    sql: '"NET_NUM_ACCOUNT_LOCATIONS"'
+
+  opportunity_rev_category:
+    sql: '"OPPORTUNITY_REV_CATEGORY"'
+
+  sf_account_id:
+    sql: '"SF_ACCOUNT_ID"'
+    format: ID
+
+  sf_account_status:
+    sql: '"SF_ACCOUNT_STATUS"'
+
+  account_has_mrr:
+    sql: '"ACCOUNT_HAS_MRR"'
+
+  account_has_srr:
+    sql: '"ACCOUNT_HAS_SRR"'
+
+  account_current_package:
+    sql: '"ACCOUNT_CURRENT_PACKAGE"'
+
+  account_status:
+    sql: '"ACCOUNT_STATUS"'
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+
+  stagename:
+    sql: '"STAGENAME"'
+
+  net_arr:
+    sql: '"NET_ARR"'
+
+  gross_arr:
+    sql: '"GROSS_ARR"'
+
+  yelp_account_num_stores:
+    sql: '"YELP_ACCOUNT_NUM_STORES"'
+
+  yelp_product_ps:
+    sql: '"YELP_PRODUCT_PS"'
+
+measures:
+  count:
+    aggregate_type: count

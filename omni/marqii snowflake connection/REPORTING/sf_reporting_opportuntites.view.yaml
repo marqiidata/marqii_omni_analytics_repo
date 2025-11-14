@@ -1,0 +1,139 @@
+# Reference this view as reporting__sf_reporting_opportuntites
+schema: REPORTING
+table_name: SF_REPORTING_OPPORTUNTITES
+
+dimensions:
+  opportunity_id:
+    sql: '"OPPORTUNITY_ID"'
+    format: ID
+
+  opportunity_name:
+    sql: '"OPPORTUNITY_NAME"'
+
+  accountid:
+    sql: '"ACCOUNTID"'
+
+  owner_team:
+    sql: '"OWNER_TEAM"'
+
+  opportunity_package:
+    sql: '"OPPORTUNITY_PACKAGE"'
+
+  num_opportunity_locations:
+    sql: '"NUM_OPPORTUNITY_LOCATIONS"'
+
+  owner_id:
+    sql: '"OWNER_ID"'
+    format: ID
+
+  opportunity_owner_field__c:
+    sql: '"OPPORTUNITY_OWNER_FIELD__C"'
+
+  createdbyid:
+    sql: '"CREATEDBYID"'
+
+  amount:
+    sql: '"AMOUNT"'
+
+  reactivation_churn_date:
+    sql: '"REACTIVATION_CHURN_DATE"'
+
+  mrr:
+    sql: '"MRR"'
+
+  opportunity_type:
+    sql: '"OPPORTUNITY_TYPE"'
+
+  stagename:
+    sql: '"STAGENAME"'
+
+  deal_source__c:
+    sql: '"DEAL_SOURCE__C"'
+
+  deal_source_category__c:
+    sql: '"DEAL_SOURCE_CATEGORY__C"'
+
+  pitched__c:
+    sql: '"PITCHED__C"'
+
+  opp_billing_clause:
+    sql: '"OPP_BILLING_CLAUSE"'
+
+  pitched_yes__c:
+    sql: '"PITCHED_YES__C"'
+
+  pitch_type__c:
+    sql: '"PITCH_TYPE__C"'
+
+  laststagechangedate:
+    sql: '"LASTSTAGECHANGEDATE"'
+
+  special_billing_notes:
+    sql: '"SPECIAL_BILLING_NOTES"'
+
+  opportunity_leadsource_category:
+    sql: '"OPPORTUNITY_LEADSOURCE_CATEGORY"'
+
+  opportunity_leadsource:
+    sql: '"OPPORTUNITY_LEADSOURCE"'
+
+  previous_service:
+    sql: '"PREVIOUS_SERVICE"'
+
+  opportunity_deal_source:
+    sql: '"OPPORTUNITY_DEAL_SOURCE"'
+
+  opportunity_deal_source_category:
+    sql: '"OPPORTUNITY_DEAL_SOURCE_CATEGORY"'
+
+  opportunity_url:
+    sql: '"OPPORTUNITY_URL"'
+
+  fiscalquarter:
+    sql: '"FISCALQUARTER"'
+
+  fiscal:
+    sql: '"FISCAL"'
+
+  fiscalyear:
+    sql: '"FISCALYEAR"'
+
+  opportunity_create_date:
+    sql: '"OPPORTUNITY_CREATE_DATE"'
+
+  opportunity_create_year:
+    sql: '"OPPORTUNITY_CREATE_YEAR"'
+
+  marqii_fiscal_quarter_opportunity_create:
+    sql: '"MARQII_FISCAL_QUARTER_OPPORTUNITY_CREATE"'
+
+  opportunity_create_year_fiscal:
+    sql: '"OPPORTUNITY_CREATE_YEAR_FISCAL"'
+
+  marqii_fiscal_quarter_opportunity_create_date:
+    sql: '"MARQII_FISCAL_QUARTER_OPPORTUNITY_CREATE_DATE"'
+
+  closedate:
+    sql: '"CLOSEDATE"'
+
+  current_pain_points:
+    sql: '"CURRENT_PAIN_POINTS"'
+
+  past_issues:
+    sql: '"PAST_ISSUES"'
+
+  metrics_for_success:
+    sql: '"METRICS_FOR_SUCCESS"'
+
+  location_notes_structre:
+    sql: '"LOCATION_NOTES_STRUCTRE"'
+
+  structure_of_locations:
+    sql: '"STRUCTURE_OF_LOCATIONS"'
+
+  custom_term_lengths:
+    sql: '"CUSTOM_TERM_LENGTHS"'
+
+measures:
+  count:
+    aggregate_type: count

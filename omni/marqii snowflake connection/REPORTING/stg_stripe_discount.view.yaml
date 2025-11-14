@@ -1,0 +1,30 @@
+# Reference this view as reporting__stg_stripe_discount
+schema: REPORTING
+table_name: STG_STRIPE_DISCOUNT
+
+dimensions:
+  fivetran_discount_id:
+    sql: '"FIVETRAN_DISCOUNT_ID"'
+    format: ID
+
+  fivetran_discount_start:
+    sql: '"FIVETRAN_DISCOUNT_START"'
+
+  fivetran_discount_end:
+    sql: '"FIVETRAN_DISCOUNT_END"'
+
+  fivetran_coupon_id:
+    sql: '"FIVETRAN_COUPON_ID"'
+    format: ID
+
+  fivetran_customer_id:
+    sql: '"FIVETRAN_CUSTOMER_ID"'
+    format: ID
+
+  fivetran_subscription_id:
+    sql: '"FIVETRAN_SUBSCRIPTION_ID"'
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

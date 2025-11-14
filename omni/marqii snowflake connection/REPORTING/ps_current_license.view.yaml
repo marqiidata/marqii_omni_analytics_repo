@@ -1,0 +1,56 @@
+# Reference this view as reporting__ps_current_license
+schema: REPORTING
+table_name: PS_CURRENT_LICENSE
+
+dimensions:
+  sl__airbyte_raw_id:
+    sql: '"SL__AIRBYTE_RAW_ID"'
+    format: ID
+
+  sl__airbyte_extracted_at:
+    sql: '"SL__AIRBYTE_EXTRACTED_AT"'
+
+  sl__airbyte_meta:
+    sql: '"SL__AIRBYTE_META"'
+
+  sl__airbyte_generation_id:
+    sql: '"SL__AIRBYTE_GENERATION_ID"'
+    format: ID
+
+  sl_id:
+    sql: '"SL_ID"'
+    format: ID
+
+  sl_reason:
+    sql: '"SL_REASON"'
+
+  sl_storeid:
+    sql: '"SL_STOREID"'
+
+  sl_metadata:
+    sql: '"SL_METADATA"'
+
+  sl_createdat:
+    sql: '"SL_CREATEDAT"'
+
+  sl_licenseid:
+    sql: '"SL_LICENSEID"'
+
+  sl_storecode:
+    sql: '"SL_STORECODE"'
+
+  sl_updatedat:
+    sql: '"SL_UPDATEDAT"'
+
+  sl_updatedby:
+    sql: '"SL_UPDATEDBY"'
+
+  sl_storetitle:
+    sql: '"SL_STORETITLE"'
+
+  sl_updatedbyemail:
+    sql: '"SL_UPDATEDBYEMAIL"'
+
+measures:
+  count:
+    aggregate_type: count

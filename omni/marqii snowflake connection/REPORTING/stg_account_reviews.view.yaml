@@ -1,0 +1,25 @@
+# Reference this view as reporting__stg_account_reviews
+schema: REPORTING
+table_name: STG_ACCOUNT_REVIEWS
+
+dimensions:
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  airbyte_sync_date:
+    sql: '"AIRBYTE_SYNC_DATE"'
+
+  account_deleted:
+    sql: '"ACCOUNT_DELETED"'
+
+  account_airbyte_gen_id:
+    sql: '"ACCOUNT_AIRBYTE_GEN_ID"'
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

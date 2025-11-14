@@ -1,0 +1,109 @@
+# Reference this view as reporting__stg_gsheets_payroll
+schema: REPORTING
+table_name: STG_GSHEETS_PAYROLL
+
+dimensions:
+  _row:
+    sql: '"_ROW"'
+    hidden: true
+
+  sales_expense_promotional_materials:
+    sql: '"SALES_EXPENSE_PROMOTIONAL_MATERIALS"'
+
+  marketing_trade_shows:
+    sql: '"MARKETING_TRADE_SHOWS"'
+
+  marketing_events_and_conferences:
+    sql: '"MARKETING_EVENTS_AND_CONFERENCES"'
+
+  marketing_promotional_materials:
+    sql: '"MARKETING_PROMOTIONAL_MATERIALS"'
+
+  marketing:
+    sql: '"MARKETING"'
+
+  sales_expense_market_research_analytics:
+    sql: '"SALES_EXPENSE_MARKET_RESEARCH_ANALYTICS"'
+
+  derpartment:
+    sql: '"DERPARTMENT"'
+
+  total_expenses:
+    sql: '"TOTAL_EXPENSES"'
+
+  sales_expense:
+    sql: '"SALES_EXPENSE"'
+
+  marketing_market_research_analytics:
+    sql: '"MARKETING_MARKET_RESEARCH_ANALYTICS"'
+
+  marketing_advertising:
+    sql: '"MARKETING_ADVERTISING"'
+
+  revenue:
+    sql: '"REVENUE"'
+
+  marketing_other:
+    sql: '"MARKETING_OTHER"'
+
+  marketing_marketing_contractors:
+    sql: '"MARKETING_MARKETING_CONTRACTORS"'
+
+  sales_expense_software:
+    sql: '"SALES_EXPENSE_SOFTWARE"'
+
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+  revenue_payroll_total:
+    sql: '"REVENUE_PAYROLL_TOTAL"'
+
+  marketing_payroll_gross_wages:
+    sql: '"MARKETING_PAYROLL_GROSS_WAGES"'
+
+  revenue_payroll_payroll_taxes:
+    sql: '"REVENUE_PAYROLL_PAYROLL_TAXES"'
+
+  revenue_payroll_gross_wages:
+    sql: '"REVENUE_PAYROLL_GROSS_WAGES"'
+
+  revenue_payroll_commissions:
+    sql: '"REVENUE_PAYROLL_COMMISSIONS"'
+
+  marketing_payroll_benefits:
+    sql: '"MARKETING_PAYROLL_BENEFITS"'
+
+  marketing_payroll_payroll_service_fees:
+    sql: '"MARKETING_PAYROLL_PAYROLL_SERVICE_FEES"'
+
+  revenue_payroll_payroll_service_fees:
+    sql: '"REVENUE_PAYROLL_PAYROLL_SERVICE_FEES"'
+
+  total_payroll:
+    sql: '"TOTAL_PAYROLL"'
+
+  marketing_payroll_total:
+    sql: '"MARKETING_PAYROLL_TOTAL"'
+
+  marketing_payroll_commissions:
+    sql: '"MARKETING_PAYROLL_COMMISSIONS"'
+
+  revenue_payroll_benefits:
+    sql: '"REVENUE_PAYROLL_BENEFITS"'
+
+  marketing_payroll_payroll_taxes:
+    sql: '"MARKETING_PAYROLL_PAYROLL_TAXES"'
+
+  department_line:
+    sql: '"DEPARTMENT_LINE"'
+
+  marketing_public_relations:
+    sql: '"MARKETING_PUBLIC_RELATIONS"'
+
+  sales_expense_trade_shows:
+    sql: '"SALES_EXPENSE_TRADE_SHOWS"'
+
+measures:
+  count:
+    aggregate_type: count

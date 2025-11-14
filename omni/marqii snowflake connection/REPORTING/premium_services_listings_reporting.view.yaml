@@ -1,0 +1,122 @@
+# Reference this view as reporting__premium_services_listings_reporting
+schema: REPORTING
+table_name: PREMIUM_SERVICES_LISTINGS_REPORTING
+
+dimensions:
+  airbyte_sync_ps_store_listing:
+    sql: '"AIRBYTE_SYNC_PS_STORE_LISTING"'
+
+  ps_store_listing_id:
+    sql: '"PS_STORE_LISTING_ID"'
+    format: ID
+
+  ps_store_listing_enabled:
+    sql: '"PS_STORE_LISTING_ENABLED"'
+
+  storeid:
+    sql: '"STOREID"'
+
+  ps_store_listing_provider:
+    sql: '"PS_STORE_LISTING_PROVIDER"'
+
+  store_listing_created:
+    sql: '"STORE_LISTING_CREATED"'
+
+  ps_store_listing_menus_enabled:
+    sql: '"PS_STORE_LISTING_MENUS_ENABLED"'
+
+  ps_store_listing_reviews_enabled:
+    sql: '"PS_STORE_LISTING_REVIEWS_ENABLED"'
+
+  ps_store_listing_listings_enabled:
+    sql: '"PS_STORE_LISTING_LISTINGS_ENABLED"'
+
+  ps_store_listing_managed_by_marqii:
+    sql: '"PS_STORE_LISTING_MANAGED_BY_MARQII"'
+
+  ps_store_listing_analytics_enabled:
+    sql: '"PS_STORE_LISTING_ANALYTICS_ENABLED"'
+
+  ps_store_listing_hours_widget_enabled:
+    sql: '"PS_STORE_LISTING_HOURS_WIDGET_ENABLED"'
+
+  ps_store_listing_connectiondata:
+    sql: '"PS_STORE_LISTING_CONNECTIONDATA"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  package_id:
+    sql: '"PACKAGE_ID"'
+    format: ID
+
+  location_id:
+    sql: '"LOCATION_ID"'
+    format: ID
+
+  ps_account_id:
+    sql: '"PS_ACCOUNT_ID"'
+    format: ID
+
+  airbyte_sync_ps:
+    sql: '"AIRBYTE_SYNC_PS"'
+
+  ps_account_name:
+    sql: '"PS_ACCOUNT_NAME"'
+
+  ps_account_deleted:
+    sql: '"PS_ACCOUNT_DELETED"'
+
+  ps_account_create_date:
+    sql: '"PS_ACCOUNT_CREATE_DATE"'
+
+  account_features_menus_enabled:
+    sql: '"ACCOUNT_FEATURES_MENUS_ENABLED"'
+
+  account_features_reviewmonitoring_enabled:
+    sql: '"ACCOUNT_FEATURES_REVIEWMONITORING_ENABLED"'
+
+  account_features_listings_enabled:
+    sql: '"ACCOUNT_FEATURES_LISTINGS_ENABLED"'
+
+  account_features_suggested_review_response_enabled:
+    sql: '"ACCOUNT_FEATURES_SUGGESTED_REVIEW_RESPONSE_ENABLED"'
+
+  account_features_managed_reviews_enabled:
+    sql: '"ACCOUNT_FEATURES_MANAGED_REVIEWS_ENABLED"'
+
+  account_features_social_management_enabled:
+    sql: '"ACCOUNT_FEATURES_SOCIAL_MANAGEMENT_ENABLED"'
+
+  salesforceid:
+    sql: '"SALESFORCEID"'
+
+  stripeid:
+    sql: '"STRIPEID"'
+
+  account_current_package:
+    sql: '"ACCOUNT_CURRENT_PACKAGE"'
+
+  salesforce_account_name:
+    sql: '"SALESFORCE_ACCOUNT_NAME"'
+
+  salesforce_account_status:
+    sql: '"SALESFORCE_ACCOUNT_STATUS"'
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+
+  account_owner_team:
+    sql: '"ACCOUNT_OWNER_TEAM"'
+
+  master_stripe_id:
+    sql: '"MASTER_STRIPE_ID"'
+    format: ID
+
+  data_last_refreshed:
+    sql: '"DATA_LAST_REFRESHED"'
+
+measures:
+  count:
+    aggregate_type: count

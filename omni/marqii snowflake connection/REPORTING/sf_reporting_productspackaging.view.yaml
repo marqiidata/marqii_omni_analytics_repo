@@ -1,0 +1,104 @@
+# Reference this view as reporting__sf_reporting_productspackaging
+schema: REPORTING
+table_name: SF_REPORTING_PRODUCTSPACKAGING
+
+dimensions:
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  account_status:
+    sql: '"ACCOUNT_STATUS"'
+
+  stagename:
+    sql: '"STAGENAME"'
+
+  opportunity_id:
+    sql: '"OPPORTUNITY_ID"'
+    format: ID
+
+  opportunity_rev_category:
+    sql: '"OPPORTUNITY_REV_CATEGORY"'
+
+  opportunity_name:
+    sql: '"OPPORTUNITY_NAME"'
+
+  rev_reporting_date:
+    sql: '"REV_REPORTING_DATE"'
+
+  month_date_rev_reporting:
+    sql: '"MONTH_DATE_REV_REPORTING"'
+
+  amount:
+    sql: '"AMOUNT"'
+
+  account_current_package:
+    sql: '"ACCOUNT_CURRENT_PACKAGE"'
+
+  opportunity_package:
+    sql: '"OPPORTUNITY_PACKAGE"'
+
+  num_opportunity_locations:
+    sql: '"NUM_OPPORTUNITY_LOCATIONS"'
+
+  product_id:
+    sql: '"PRODUCT_ID"'
+    format: ID
+
+  product_name:
+    sql: '"PRODUCT_NAME"'
+
+  product_family:
+    sql: '"PRODUCT_FAMILY"'
+
+  product_amount:
+    sql: '"PRODUCT_AMOUNT"'
+
+  product_mrr:
+    sql: '"PRODUCT_MRR"'
+
+  product_quantity:
+    sql: '"PRODUCT_QUANTITY"'
+
+  line_item_has_yelp:
+    sql: '"LINE_ITEM_HAS_YELP"'
+
+  product_discount:
+    sql: '"PRODUCT_DISCOUNT"'
+
+  product_listprice:
+    sql: '"PRODUCT_LISTPRICE"'
+
+  product_unit_price:
+    sql: '"PRODUCT_UNIT_PRICE"'
+
+  product_total_price:
+    sql: '"PRODUCT_TOTAL_PRICE"'
+
+  product_or_opportunity_package:
+    sql: '"PRODUCT_OR_OPPORTUNITY_PACKAGE"'
+
+  normalized_product_arr:
+    sql: '"NORMALIZED_PRODUCT_ARR"'
+
+  normalized_product_quantity:
+    sql: '"NORMALIZED_PRODUCT_QUANTITY"'
+
+  normalized_opportunity_locations_or_quantity:
+    sql: '"NORMALIZED_OPPORTUNITY_LOCATIONS_OR_QUANTITY"'
+
+  normalized_product_mrr:
+    sql: '"NORMALIZED_PRODUCT_MRR"'
+
+  product_or_opportunity_net_arr:
+    sql: '"PRODUCT_OR_OPPORTUNITY_NET_ARR"'
+
+  product_or_opportunity_net_mrr:
+    sql: '"PRODUCT_OR_OPPORTUNITY_NET_MRR"'
+
+measures:
+  count:
+    aggregate_type: count

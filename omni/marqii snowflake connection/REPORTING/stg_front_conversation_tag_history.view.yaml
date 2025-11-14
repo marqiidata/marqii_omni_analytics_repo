@@ -1,0 +1,37 @@
+# Reference this view as reporting__stg_front_conversation_tag_history
+schema: REPORTING
+table_name: STG_FRONT_CONVERSATION_TAG_HISTORY
+
+dimensions:
+  conversation_id:
+    sql: '"CONVERSATION_ID"'
+    format: ID
+
+  tag_id:
+    sql: '"TAG_ID"'
+    format: ID
+
+  updated_at:
+    sql: '"UPDATED_AT"'
+
+  source_teammate_id:
+    sql: '"SOURCE_TEAMMATE_ID"'
+    format: ID
+
+  source_rule_id:
+    sql: '"SOURCE_RULE_ID"'
+    format: ID
+
+  source_type:
+    sql: '"SOURCE_TYPE"'
+
+  event_type:
+    sql: '"EVENT_TYPE"'
+
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+measures:
+  count:
+    aggregate_type: count

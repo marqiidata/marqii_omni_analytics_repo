@@ -1,0 +1,64 @@
+# Reference this view as reporting_planhat_export__planthat_users_table
+schema: REPORTING_PLANHAT_EXPORT
+table_name: PLANTHAT_USERS_TABLE
+
+dimensions:
+  data_as_of: {}
+
+  user_id:
+    sql: '"USER_ID"'
+    format: ID
+
+  user_email:
+    sql: '"USER_EMAIL"'
+
+  user_enabled:
+    sql: '"USER_ENABLED"'
+
+  user_account_id:
+    sql: '"USER_ACCOUNT_ID"'
+    format: ID
+
+  userstatus:
+    sql: '"USERSTATUS"'
+
+  user_email_verified:
+    sql: '"USER_EMAIL_VERIFIED"'
+
+  user_first_name:
+    sql: '"USER_FIRST_NAME"'
+
+  user_last_name:
+    sql: '"USER_LAST_NAME"'
+
+  user_full_name:
+    sql: '"USER_FULL_NAME"'
+
+  user_salesforceid:
+    sql: '"USER_SALESFORCEID"'
+
+  master_stripe_id:
+    sql: '"MASTER_STRIPE_ID"'
+    format: ID
+
+  salesforce_account_name:
+    sql: '"SALESFORCE_ACCOUNT_NAME"'
+
+  salesforce_account_status:
+    sql: '"SALESFORCE_ACCOUNT_STATUS"'
+
+  account_current_package:
+    sql: '"ACCOUNT_CURRENT_PACKAGE"'
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+
+  sf_stage:
+    sql: '"SF_STAGE"'
+
+  stripe_account_url:
+    sql: '"STRIPE_ACCOUNT_URL"'
+
+measures:
+  count:
+    aggregate_type: count

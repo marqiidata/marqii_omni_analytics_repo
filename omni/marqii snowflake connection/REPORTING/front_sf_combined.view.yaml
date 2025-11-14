@@ -1,0 +1,147 @@
+# Reference this view as reporting__front_sf_combined
+schema: REPORTING
+table_name: FRONT_SF_COMBINED
+
+dimensions:
+  conversation_id:
+    sql: '"CONVERSATION_ID"'
+    format: ID
+
+  author_id:
+    sql: '"AUTHOR_ID"'
+    format: ID
+
+  type:
+    sql: '"TYPE"'
+
+  is_inbound:
+    sql: '"IS_INBOUND"'
+
+  blurb:
+    sql: '"BLURB"'
+
+  body:
+    sql: '"BODY"'
+
+  text:
+    sql: '"TEXT"'
+
+  duration:
+    sql: '"DURATION"'
+
+  have_been_answered:
+    sql: '"HAVE_BEEN_ANSWERED"'
+
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+  message_id:
+    sql: '"MESSAGE_ID"'
+    format: ID
+
+  index:
+    sql: '"INDEX"'
+
+  handle:
+    sql: '"HANDLE"'
+
+  role:
+    sql: '"ROLE"'
+
+  contact_id:
+    sql: '"CONTACT_ID"'
+    format: ID
+
+  description:
+    sql: '"DESCRIPTION"'
+
+  is_spammer:
+    sql: '"IS_SPAMMER"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  custom_location_cohort:
+    sql: '"CUSTOM_LOCATION_COHORT"'
+
+  contact_name:
+    sql: '"CONTACT_NAME"'
+
+  message_created_at:
+    sql: '"MESSAGE_CREATED_AT"'
+
+  teammate_id:
+    sql: '"TEAMMATE_ID"'
+    format: ID
+
+  last_message_id:
+    sql: '"LAST_MESSAGE_ID"'
+    format: ID
+
+  subject:
+    sql: '"SUBJECT"'
+
+  status:
+    sql: '"STATUS"'
+
+  recipient_handle:
+    sql: '"RECIPIENT_HANDLE"'
+
+  recipient_role:
+    sql: '"RECIPIENT_ROLE"'
+
+  _fivetran_deleted:
+    sql: '"_FIVETRAN_DELETED"'
+    hidden: true
+
+  concatenated_tags:
+    sql: '"CONCATENATED_TAGS"'
+
+  modified_tags:
+    sql: '"MODIFIED_TAGS"'
+
+  conversation_created_at:
+    sql: '"CONVERSATION_CREATED_AT"'
+
+  front_domain:
+    sql: '"FRONT_DOMAIN"'
+
+  sf_account_name:
+    sql: '"SF_ACCOUNT_NAME"'
+
+  account_status:
+    sql: '"ACCOUNT_STATUS"'
+
+  churn_date:
+    sql: '"CHURN_DATE"'
+
+  num_account_locations:
+    sql: '"NUM_ACCOUNT_LOCATIONS"'
+
+  account_url:
+    sql: '"ACCOUNT_URL"'
+
+  gross_arr:
+    sql: '"GROSS_ARR"'
+
+  net_arr:
+    sql: '"NET_ARR"'
+
+  sf_account_id:
+    sql: '"SF_ACCOUNT_ID"'
+    format: ID
+
+  sf_net_num_account_locations:
+    sql: '"SF_NET_NUM_ACCOUNT_LOCATIONS"'
+
+  original_close_date:
+    sql: '"ORIGINAL_CLOSE_DATE"'
+
+  sf_sync_date_time:
+    sql: '"SF_SYNC_DATE_TIME"'
+
+measures:
+  count:
+    aggregate_type: count

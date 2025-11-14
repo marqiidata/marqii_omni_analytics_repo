@@ -1,0 +1,25 @@
+# Reference this view as reporting__stg_gsheets_sku_costs
+schema: REPORTING
+table_name: STG_GSHEETS_SKU_COSTS
+
+dimensions:
+  _row:
+    sql: '"_ROW"'
+    hidden: true
+
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+  dervied_sku:
+    sql: '"DERVIED_SKU"'
+
+  monthly_price:
+    sql: '"MONTHLY_PRICE"'
+
+  service:
+    sql: '"SERVICE"'
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,92 @@
+# Reference this view as reporting__listings_tasks_results
+schema: REPORTING
+table_name: LISTINGS_TASKS_RESULTS
+
+dimensions:
+  listings_id:
+    sql: '"LISTINGS_ID"'
+    format: ID
+
+  listings_created:
+    sql: '"LISTINGS_CREATED"'
+
+  listings_listingsenabled:
+    sql: '"LISTINGS_LISTINGSENABLED"'
+
+  listings_updatedat:
+    sql: '"LISTINGS_UPDATEDAT"'
+
+  listings_provider_enabled:
+    sql: '"LISTINGS_PROVIDER_ENABLED"'
+
+  task_createdat:
+    sql: '"TASK_CREATEDAT"'
+
+  task_airbyte_meta:
+    sql: '"TASK_AIRBYTE_META"'
+
+  task_airbyte_generation_id:
+    sql: '"TASK_AIRBYTE_GENERATION_ID"'
+    format: ID
+
+  task_id:
+    sql: '"TASK_ID"'
+    format: ID
+
+  task_airbyte_raw_id:
+    sql: '"TASK_AIRBYTE_RAW_ID"'
+    format: ID
+
+  task_airbyte_extracted_at:
+    sql: '"TASK_AIRBYTE_EXTRACTED_AT"'
+
+  task_storelistingid:
+    sql: '"TASK_STORELISTINGID"'
+
+  task_updatedat:
+    sql: '"TASK_UPDATEDAT"'
+
+  task_jobid:
+    sql: '"TASK_JOBID"'
+
+  task_result:
+    sql: '"TASK_RESULT"'
+
+  is_most_recent_task:
+    sql: '"IS_MOST_RECENT_TASK"'
+
+  most_recent_task:
+    sql: '"MOST_RECENT_TASK"'
+
+  last_successful_task:
+    sql: '"LAST_SUCCESSFUL_TASK"'
+
+  successful_tasks:
+    sql: '"SUCCESSFUL_TASKS"'
+
+  failed_tasks:
+    sql: '"FAILED_TASKS"'
+
+  is_most_recent_task_success:
+    sql: '"IS_MOST_RECENT_TASK_SUCCESS"'
+
+  is_most_recent_task_fail:
+    sql: '"IS_MOST_RECENT_TASK_FAIL"'
+
+  days_since_created:
+    sql: '"DAYS_SINCE_CREATED"'
+
+  updates_to_listing_ever_attempted:
+    sql: '"UPDATES_TO_LISTING_EVER_ATTEMPTED"'
+
+  store_id:
+    sql: '"STORE_ID"'
+    format: ID
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

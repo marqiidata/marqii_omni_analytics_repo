@@ -1,0 +1,167 @@
+# Reference this view as reporting__stores_reporting
+schema: REPORTING
+table_name: STORES_REPORTING
+
+dimensions:
+  store_id:
+    sql: '"STORE_ID"'
+    format: ID
+
+  store_postalcode:
+    sql: '"STORE_POSTALCODE"'
+
+  store_addressregion:
+    sql: '"STORE_ADDRESSREGION"'
+
+  store_streetaddress:
+    sql: '"STORE_STREETADDRESS"'
+
+  store_addresslocality:
+    sql: '"STORE_ADDRESSLOCALITY"'
+
+  store_streetaddressdetail:
+    sql: '"STORE_STREETADDRESSDETAIL"'
+
+  store_title:
+    sql: '"STORE_TITLE"'
+
+  store_country:
+    sql: '"STORE_COUNTRY"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  yelp_success:
+    sql: '"YELP_SUCCESS"'
+
+  yelp_fail:
+    sql: '"YELP_FAIL"'
+
+  google_success:
+    sql: '"GOOGLE_SUCCESS"'
+
+  google_fail:
+    sql: '"GOOGLE_FAIL"'
+
+  facebook_success:
+    sql: '"FACEBOOK_SUCCESS"'
+
+  facebook_fail:
+    sql: '"FACEBOOK_FAIL"'
+
+  bing_success:
+    sql: '"BING_SUCCESS"'
+
+  bing_fail:
+    sql: '"BING_FAIL"'
+
+  yext_success:
+    sql: '"YEXT_SUCCESS"'
+
+  yext_fail:
+    sql: '"YEXT_FAIL"'
+
+  apple_success:
+    sql: '"APPLE_SUCCESS"'
+
+  apple_fail:
+    sql: '"APPLE_FAIL"'
+
+  any_store_listing_fail:
+    sql: '"ANY_STORE_LISTING_FAIL"'
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+
+  account_owner_team:
+    sql: '"ACCOUNT_OWNER_TEAM"'
+
+measures:
+  count:
+    aggregate_type: count
+
+  store_id_count_distinct:
+    sql: ${reporting__stores_reporting.store_id}
+    label: "# of Stores"
+    group_label: Measures
+    format: NUMBER_0
+    drill_fields: []
+    aggregate_type: count_distinct
+
+  store_id_count_distinct_copy:
+    sql: ${reporting__stores_reporting.store_id}
+    label: "# of Stores with Any Failure"
+    group_label: Measures
+    format: NUMBER_0
+    drill_fields: []
+    aggregate_type: count_distinct
+    filters:
+      any_store_listing_fail:
+        is: Y
+
+  apple_fail_stores:
+    sql: ${reporting__stores_reporting.store_id}
+    label: "# Of Stores: Apple Failures"
+    group_label: Measures
+    format: NUMBER_0
+    drill_fields: []
+    aggregate_type: count_distinct
+    filters:
+      apple_fail:
+        is: Y
+
+  bing_fail_stores:
+    sql: ${reporting__stores_reporting.store_id}
+    label: "# Of Stores: Bing Failure"
+    group_label: Measures
+    format: NUMBER_0
+    drill_fields: []
+    aggregate_type: count_distinct
+    filters:
+      bing_fail:
+        is: Y
+
+  fbook_fail_stores:
+    sql: ${reporting__stores_reporting.store_id}
+    label: "# Of Stores: Facebook Failure"
+    group_label: Measures
+    format: NUMBER_0
+    drill_fields: []
+    aggregate_type: count_distinct
+    filters:
+      facebook_fail:
+        is: Y
+
+  google_fail_store:
+    sql: ${reporting__stores_reporting.store_id}
+    label: "# Of Stores: Google Failure"
+    group_label: Measures
+    format: NUMBER_0
+    drill_fields: []
+    aggregate_type: count_distinct
+    filters:
+      google_fail:
+        is: Y
+
+  yext_fail_store:
+    sql: ${reporting__stores_reporting.store_id}
+    label: "# Of Stores: Yext Failure"
+    group_label: Measures
+    format: NUMBER_0
+    drill_fields: []
+    aggregate_type: count_distinct
+    filters:
+      yext_fail:
+        is: Y
+
+  yelp_fail_store:
+    sql: ${reporting__stores_reporting.store_id}
+    label: "# Of Stores: Yelp Failure"
+    group_label: Measures
+    format: NUMBER_0
+    drill_fields: []
+    aggregate_type: count_distinct
+    filters:
+      yelp_fail:
+        is: Y

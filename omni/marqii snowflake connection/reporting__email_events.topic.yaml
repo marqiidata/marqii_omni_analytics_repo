@@ -1,0 +1,11 @@
+base_view: reporting__email_events
+label: Marqii Notifications
+description: This data set beings with every event (send, open, click, etc) for
+  an email that marqii sends through SES. We then map in associated recipient
+  account information as well as reports that are sent.
+
+joins: {}
+
+ai_context: This data set beings with every event (send, open, click, etc) for
+  an email that marqii sends through SES. We then map in associated recipient
+  account information as well as reports that are sent.

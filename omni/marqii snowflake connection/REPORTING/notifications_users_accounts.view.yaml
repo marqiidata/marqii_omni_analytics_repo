@@ -1,0 +1,34 @@
+# Reference this view as reporting__notifications_users_accounts
+schema: REPORTING
+table_name: NOTIFICATIONS_USERS_ACCOUNTS
+
+dimensions:
+  user_id:
+    sql: '"USER_ID"'
+    format: ID
+
+  user_created_at:
+    sql: '"USER_CREATED_AT"'
+
+  user_updated_at:
+    sql: '"USER_UPDATED_AT"'
+
+  user_status:
+    sql: '"USER_STATUS"'
+
+  user_email_verified:
+    sql: '"USER_EMAIL_VERIFIED"'
+
+  user_enabled:
+    sql: '"USER_ENABLED"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,42 @@
+# Reference this view as reporting__ps_yelp_sub_map
+schema: REPORTING
+table_name: PS_YELP_SUB_MAP
+
+dimensions:
+  _airbyte_generation_id:
+    format: ID
+    hidden: true
+
+  _airbyte_meta:
+    hidden: true
+
+  id:
+    format: ID
+    primary_key: true
+
+  _airbyte_raw_id:
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    hidden: true
+
+  yelp_business_id:
+    sql: '"yelpBusinessId"'
+    format: ID
+
+  subscription_type:
+    sql: '"subscriptionType"'
+
+  subscribed_at:
+    sql: '"subscribedAt"'
+
+  created_at:
+    sql: '"createdAt"'
+
+  updated_at:
+    sql: '"updatedAt"'
+
+measures:
+  count:
+    aggregate_type: count

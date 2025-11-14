@@ -1,0 +1,75 @@
+# Reference this view as reporting__stg_quickbooks_account
+schema: REPORTING
+table_name: STG_QUICKBOOKS_ACCOUNT
+
+dimensions:
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  currency_id:
+    sql: '"CURRENCY_ID"'
+    format: ID
+
+  description:
+    sql: '"DESCRIPTION"'
+
+  fully_qualified_name:
+    sql: '"FULLY_QUALIFIED_NAME"'
+
+  account_type:
+    sql: '"ACCOUNT_TYPE"'
+
+  name:
+    sql: '"NAME"'
+
+  active:
+    sql: '"ACTIVE"'
+
+  classification:
+    sql: '"CLASSIFICATION"'
+
+  sub_account:
+    sql: '"SUB_ACCOUNT"'
+
+  account_sub_type:
+    sql: '"ACCOUNT_SUB_TYPE"'
+
+  sync_token:
+    sql: '"SYNC_TOKEN"'
+
+  created_at:
+    sql: '"CREATED_AT"'
+
+  updated_at:
+    sql: '"UPDATED_AT"'
+
+  _fivetran_deleted:
+    sql: '"_FIVETRAN_DELETED"'
+    hidden: true
+
+  balance_with_sub_accounts:
+    sql: '"BALANCE_WITH_SUB_ACCOUNTS"'
+
+  balance:
+    sql: '"BALANCE"'
+
+  account_number:
+    sql: '"ACCOUNT_NUMBER"'
+
+  parent_account_id:
+    sql: '"PARENT_ACCOUNT_ID"'
+    format: ID
+
+  tax_code_id:
+    sql: '"TAX_CODE_ID"'
+    format: ID
+
+  _fivetran_synced:
+    sql: '"_FIVETRAN_SYNCED"'
+    hidden: true
+
+measures:
+  count:
+    aggregate_type: count

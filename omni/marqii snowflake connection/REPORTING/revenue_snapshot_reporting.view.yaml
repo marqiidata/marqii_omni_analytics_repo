@@ -1,0 +1,55 @@
+# Reference this view as reporting__revenue_snapshot_reporting
+schema: REPORTING
+table_name: REVENUE_SNAPSHOT_REPORTING
+
+dimensions:
+  snapshot_date:
+    sql: '"SNAPSHOT_DATE"'
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  account_status:
+    sql: '"ACCOUNT_STATUS"'
+
+  stagename:
+    sql: '"STAGENAME"'
+
+  last_updated_at:
+    sql: '"LAST_UPDATED_AT"'
+
+  dbt_scd_id:
+    sql: '"DBT_SCD_ID"'
+    format: ID
+
+  dbt_updated_at:
+    sql: '"DBT_UPDATED_AT"'
+
+  dbt_valid_from:
+    sql: '"DBT_VALID_FROM"'
+
+  dbt_valid_to:
+    sql: '"DBT_VALID_TO"'
+
+  arr:
+    sql: '"ARR"'
+
+  prior_arr:
+    sql: '"PRIOR_ARR"'
+
+  arr_variance:
+    sql: '"ARR_VARIANCE"'
+
+  variance_percentage:
+    sql: '"VARIANCE_PERCENTAGE"'
+
+  variance_breach_test:
+    sql: '"VARIANCE_BREACH_TEST"'
+
+measures:
+  count:
+    aggregate_type: count

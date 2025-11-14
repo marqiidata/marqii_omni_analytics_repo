@@ -1,0 +1,77 @@
+# Reference this view as reporting__stg_gsheets_pnl_pivot
+schema: REPORTING
+table_name: STG_GSHEETS_PNL_PIVOT
+
+dimensions:
+  field_name:
+    sql: '"FIELD_NAME"'
+
+  total_other_expenses:
+    sql: '"Total Other Expenses"'
+
+  total_sales_expense:
+    sql: '"Total Sales Expense"'
+
+  total_travel:
+    sql: '"Total Travel"'
+
+  total_gross_wages:
+    sql: '"Total Gross Wages"'
+
+  total_it_expense:
+    sql: '"Total IT Expense"'
+
+  net_income:
+    sql: '"Net Income"'
+
+  net_other_income:
+    sql: '"Net Other Income"'
+
+  total_income:
+    sql: '"Total Income"'
+
+  total_professional_fees:
+    sql: '"Total Professional Fees"'
+
+  total_payroll:
+    sql: '"Total Payroll"'
+
+  total_sales:
+    sql: '"Total Sales"'
+
+  net_operating_income:
+    sql: '"Net Operating Income"'
+
+  total_expenses:
+    sql: '"Total Expenses"'
+
+  gross_profit:
+    sql: '"Gross Profit"'
+
+  total_cost_of_goods_sold:
+    sql: '"Total Cost of Goods Sold"'
+
+  total_other_income:
+    sql: '"Total Other Income"'
+
+  total_general___administrative:
+    sql: '"Total General & Administrative"'
+
+  total_merchant_processing_fees:
+    sql: '"Total Merchant Processing Fees"'
+
+  total_marketing:
+    sql: '"Total Marketing"'
+
+  eom_date:
+    sql: '"EOM_DATE"'
+
+  first_of_month:
+    sql: '"FIRST_OF_MONTH"'
+
+  pnl_sync:
+    sql: '"PNL_SYNC"'
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,366 @@
+base_view: reporting__sf_reporting_all_stages_reporting
+label: Core Salesforce Reporting
+description: "Topic contains opportunity and account level information from
+  salesforce including: ARR (revenue), MRR, location counts, account counts,
+  pipeline, and closed revenue by account executives (reps), historical
+  revenue."
+
+fields:
+  [
+    all_views.*,
+    -reporting__sf_reporting_all_stages_reporting.account_owner_last_login_date,
+    -reporting__sf_reporting_all_stages_reporting.account_vertical__c,
+    -reporting__sf_reporting_all_stages_reporting.acv_eligible_opprtunity_id,
+    -reporting__sf_reporting_all_stages_reporting.adjustment_amount,
+    -reporting__sf_reporting_all_stages_reporting.airbyte_latest_sync,
+    -reporting__sf_reporting_all_stages_reporting.churn_month,
+    -reporting__sf_reporting_all_stages_reporting.churn_quarter_year,
+    reporting__sf_reporting_all_stages_reporting.churn_reason,
+    -reporting__sf_reporting_all_stages_reporting.churn_year,
+    -reporting__sf_reporting_all_stages_reporting.fiscal,
+    -reporting__sf_reporting_all_stages_reporting.fiscalquarter,
+    -reporting__sf_reporting_all_stages_reporting.fiscalyear,
+    -reporting__sf_reporting_all_stages_reporting.gmb_link__c,
+    -reporting__sf_reporting_all_stages_reporting.goal,
+    -reporting__sf_reporting_all_stages_reporting.laststagechangedate,
+    -reporting__sf_reporting_all_stages_reporting.marqii_fiscal_quarter,
+    -reporting__sf_reporting_all_stages_reporting.marqii_fiscal_quarter_date,
+    -reporting__sf_reporting_all_stages_reporting.marqii_fiscal_quarter_opportunity_create,
+    -reporting__sf_reporting_all_stages_reporting.marqii_fiscal_quarter_opportunity_create_date,
+    -reporting__sf_reporting_all_stages_reporting.marqii_fiscal_quarter_year,
+    -reporting__sf_reporting_all_stages_reporting.marqii_fiscal_year,
+    -reporting__sf_reporting_all_stages_reporting.month_date_rev_reporting,
+    -reporting__sf_reporting_all_stages_reporting.month_date_churndate,
+    -reporting__sf_reporting_all_stages_reporting.nrr_date,
+    -reporting__sf_reporting_all_stages_reporting.nrr_month,
+    -reporting__sf_reporting_all_stages_reporting.nrr_year,
+    -reporting__sf_reporting_all_stages_reporting.num_account_locations,
+    -reporting__sf_reporting_all_stages_reporting.number_of_calls,
+    -reporting__sf_reporting_all_stages_reporting.number_of_emails,
+    -reporting__sf_reporting_all_stages_reporting.opportunity_create_year,
+    -reporting__sf_reporting_all_stages_reporting.opportunity_create_year_fiscal,
+    -reporting__sf_reporting_all_stages_reporting.opportunity_owner_last_login_date,
+    -reporting__sf_reporting_all_stages_reporting.pitch_type__c,
+    -reporting__sf_reporting_all_stages_reporting.pitched__c,
+    -reporting__sf_reporting_all_stages_reporting.pitched_yes__c,
+    -reporting__sf_reporting_all_stages_reporting.product_combined,
+    -reporting__sf_reporting_all_stages_reporting.quarter_date_churndate,
+    -reporting__sf_reporting_all_stages_reporting.quarter_date_rev_reporting,
+    -reporting__sf_reporting_all_stages_reporting.quarter_text_churndate,
+    -reporting__sf_reporting_all_stages_reporting.quarter_text_rev_reporting,
+    -reporting__sf_reporting_all_stages_reporting.rev_reporting_month,
+    -reporting__sf_reporting_all_stages_reporting.rev_reporting_quarter_year,
+    -reporting__sf_reporting_all_stages_reporting.rev_reporting_year,
+    -reporting__sf_reporting_all_stages_reporting.sp_link__c,
+    -reporting__sf_reporting_all_stages_reporting.structure_of_locations,
+    -reporting__sf_reporting_all_stages_reporting.subscription_start_month,
+    -reporting__sf_reporting_all_stages_reporting.subscription_end_month
+  ]
+
+joins: {}
+
+ai_context: |-
+  Whenever asked for revenue, use revenue reporting date not close date.
+  When asked f0r revenue, make sure to ask for clarification whether they want to use fiscal year or fiscal quarter. We have a special fiscal time frame.
+  When asked for ARR, MRR, or revenue, or sales use this topic. Ensure in the result you state: this recurring revenue is from salesforce. State whether it is net or gross.
+
+  Use this for historical revenue reporting.
+
+
+  For all future revenue by team queries, default to showing gross ARR sum by team across multiple fiscal quarters (the requested quarter ±2-3 quarters), using revenue reporting date.
+
+  When Avi Goren asks you a question, please state the topic you are using and repeat the description of the field you are aggregating.
+
+sample_queries:
+  Open Pipeline by Commercial Rep:
+    query:
+      fields:
+        [
+          reporting__sf_reporting_all_stages_reporting.opportunity_owner_name,
+          reporting__sf_reporting_all_stages_reporting.pipeline_arr
+        ]
+      base_view: reporting__sf_reporting_all_stages_reporting
+      filters:
+        reporting__sf_reporting_all_stages_reporting.stagename:
+          not: [ Closed Won, Closed Lost ]
+        reporting__sf_reporting_all_stages_reporting.opportunity_owner_team:
+          is: Commercial
+      limit: 1000
+      sorts:
+        - field: reporting__sf_reporting_all_stages_reporting.pipeline_arr
+          desc: true
+      topic: reporting__sf_reporting_all_stages_reporting
+    description: Breakdown of potential revenue by commercial sales reps
+    prompt: For reps on our commercial team how much open pipeline do we have?
+    ai_context: "For open pipeline filter for
+      sf_reporting_all_stages_reporting.stagename not being equal to Closed Won
+      or Closed Lost. When asked about open pipeline only include
+      sf_reporting_all_stages_reporting.pipeline_arr "
+    hidden: true
+    vis_config:
+      spec:
+        x:
+          field:
+            name: reporting__sf_reporting_all_stages_reporting.opportunity_owner_name
+        y:
+          color:
+            _stack: group
+        y2:
+          color:
+            _stack: group
+        mark:
+          type: bar
+        color:
+          _stack: group
+          legendPosition: bottom
+        series:
+          - mark:
+              _mark_color: "#8657C2"
+            field:
+              name: reporting__sf_reporting_all_stages_reporting.pipeline_arr
+            yAxis: y
+            manual: true
+        tooltip:
+          - field:
+              name: reporting__sf_reporting_all_stages_reporting.opportunity_owner_name
+          - field:
+              name: reporting__sf_reporting_all_stages_reporting.pipeline_arr
+        version: 0
+        configType: cartesian
+        _dependentAxis: y
+      fields:
+        [
+          reporting__sf_reporting_all_stages_reporting.opportunity_owner_name,
+          reporting__sf_reporting_all_stages_reporting.pipeline_arr
+        ]
+      version: 0
+      visType: basic
+      chartType: columnGrouped
+  Average Deal Length by Commercial Rep:
+    query:
+      fields:
+        [
+          reporting__sf_reporting_all_stages_reporting.opportunity_owner_name,
+          reporting__sf_reporting_all_stages_reporting.avg_days_open
+        ]
+      base_view: reporting__sf_reporting_all_stages_reporting
+      filters:
+        reporting__sf_reporting_all_stages_reporting.stagename:
+          not: [ Closed Won, Closed Lost ]
+        reporting__sf_reporting_all_stages_reporting.opportunity_owner_team:
+          is: Commercial
+      limit: 1000
+      sorts:
+        - field: reporting__sf_reporting_all_stages_reporting.avg_days_open
+          desc: true
+      topic: reporting__sf_reporting_all_stages_reporting
+    description: Breakdown of potential revenue by commercial sales reps
+    prompt: For reps on our commercial team how long do their deals stay open on
+      average?
+    ai_context: For open pipeline filter for
+      sf_reporting_all_stages_reporting.stagename not being equal to Closed Won
+      or Closed Lost. When asked about open pipeline only include
+      sf_reporting_all_stages_reporting.avg_days_open
+    hidden: true
+    vis_config:
+      spec:
+        x:
+          field:
+            name: reporting__sf_reporting_all_stages_reporting.opportunity_owner_name
+        y:
+          color:
+            _stack: group
+        y2:
+          color:
+            _stack: group
+        mark:
+          type: bar
+        color:
+          _stack: group
+          legendPosition: bottom
+        series:
+          - mark:
+              _mark_color: "#F4633A"
+            field:
+              name: reporting__sf_reporting_all_stages_reporting.avg_days_open
+            yAxis: y
+            manual: true
+        tooltip:
+          - field:
+              name: reporting__sf_reporting_all_stages_reporting.opportunity_owner_name
+          - field:
+              name: reporting__sf_reporting_all_stages_reporting.avg_days_open
+        version: 0
+        configType: cartesian
+        _dependentAxis: y
+      fields:
+        [
+          reporting__sf_reporting_all_stages_reporting.opportunity_owner_name,
+          reporting__sf_reporting_all_stages_reporting.avg_days_open
+        ]
+      version: 0
+      visType: basic
+      chartType: columnGrouped
+  Marketing Generated Pipeline QoQ:
+    query:
+      fields:
+        [
+          "reporting__sf_reporting_all_stages_reporting.opportunity_create_da\
+            te[fiscal_quarter]",
+          omni_period_pivot,
+          reporting__sf_reporting_all_stages_reporting.pipeline_arr
+        ]
+      base_view: reporting__sf_reporting_all_stages_reporting
+      filters:
+        reporting__sf_reporting_all_stages_reporting.stagename:
+          not: [ Closed Won, Closed Lost ]
+        reporting__sf_reporting_all_stages_reporting.opportunity_create_date:
+          time_for_duration: [ 1 complete fiscal quarters ago, 1 quarters ]
+        reporting__sf_reporting_all_stages_reporting.is_marketing_influenced_:
+          is: Y
+      limit: 1000
+      sorts:
+        - field: reporting__sf_reporting_all_stages_reporting.opportunity_create_date[fiscal_quarter]
+      topic: reporting__sf_reporting_all_stages_reporting
+      period_over_period:
+        - field_name: reporting__sf_reporting_all_stages_reporting.opportunity_create_date
+          is_dynamic_previous_period: true
+      pivots: [ omni_period_pivot ]
+      column_limit: 50
+    description: Analyze marketing-influenced pipeline revenue by fiscal quarter
+    prompt: How much marketing generated pipeline did we have this quarter vs last
+      quarter?
+    ai_context: When asked for if pipeline is marketing generated use
+      reporting__sf_reporting_all_stages_reporting.is_marketing_influenced_
+    hidden: true
+    vis_config:
+      spec:
+        x:
+          field:
+            name: reporting__sf_reporting_all_stages_reporting.opportunity_create_date[fiscal_quarter]
+        y:
+          color:
+            _stack: group
+        y2:
+          color:
+            _stack: group
+        mark:
+          type: bar
+        color:
+          field:
+            name: omni_period_pivot
+          _stack: group
+        series:
+          - field:
+              name: reporting__sf_reporting_all_stages_reporting.pipeline_arr
+            yAxis: y
+        tooltip:
+          - field:
+              name: reporting__sf_reporting_all_stages_reporting.opportunity_create_date[fiscal_quarter]
+          - field:
+              name: reporting__sf_reporting_all_stages_reporting.pipeline_arr
+          - field:
+              name: omni_period_pivot
+        version: 0
+        configType: cartesian
+        _dependentAxis: y
+      fields:
+        [
+          "reporting__sf_reporting_all_stages_reporting.opportunity_create_da\
+            te[fiscal_quarter]",
+          omni_period_pivot,
+          reporting__sf_reporting_all_stages_reporting.pipeline_arr
+        ]
+      version: 0
+      visType: basic
+      chartType: columnGrouped
+  Accounts by Gross ARR:
+    query:
+      fields:
+        [
+          reporting__sf_reporting_all_stages_reporting.account_id,
+          reporting__sf_reporting_all_stages_reporting.gross_arr_sum
+        ]
+      base_view: reporting__sf_reporting_all_stages_reporting
+      filters:
+        reporting__sf_reporting_all_stages_reporting.gross_arr_sum:
+          greater_than: 100000
+      limit: 1000
+      sorts:
+        - field: reporting__sf_reporting_all_stages_reporting.gross_arr_sum
+          desc: true
+      topic: reporting__sf_reporting_all_stages_reporting
+    description: Salesforce accounts ranked by gross ARR sum, filtered to show only
+      accounts exceeding $100,000 in recurring revenue
+    prompt: Which accounts are grossing over 100k?
+    ai_context: This is meant to show my highest grossing accounts so my CSMs can
+      focus on retention efforts
+  "Yext Transfer Gross ARR ":
+    query:
+      fields:
+        [
+          reporting__sf_reporting_all_stages_reporting.deal_source_grouping,
+          "reporting__sf_reporting_all_stages_reporting.rev_reporting_date[fi\
+            scal_quarter]",
+          reporting__sf_reporting_all_stages_reporting.gross_arr_sum
+        ]
+      base_view: reporting__sf_reporting_all_stages_reporting
+      filters:
+        reporting__sf_reporting_all_stages_reporting.stagename:
+          is: Closed Won
+      limit: 1000
+      sorts:
+        - field: reporting__sf_reporting_all_stages_reporting.deal_source_grouping
+      topic: reporting__sf_reporting_all_stages_reporting
+      pivots:
+        [
+          "reporting__sf_reporting_all_stages_reporting.rev_reporting_date[fi\
+            scal_quarter]"
+        ]
+      column_limit: 50
+    description: query shows the yext transfer deal source gross arr vs all other
+      deal sources. default filter is set to the last two fiscal years
+    prompt: over the last two years, how much gross arr did we win from yext deal
+      source?
+    ai_context: query shows the yext transfer deal source gross arr vs all other
+      deal sources. default filter is set to the last two fiscal years
+    vis_config:
+      spec:
+        x:
+          field:
+            name: reporting__sf_reporting_all_stages_reporting.rev_reporting_date[fiscal_quarter]
+        y:
+          color:
+            _stack: stack
+        y2:
+          color:
+            _stack: stack
+        mark:
+          type: bar
+        color:
+          field:
+            name: reporting__sf_reporting_all_stages_reporting.deal_source_grouping
+          _stack: stack
+        series:
+          - field:
+              name: reporting__sf_reporting_all_stages_reporting.gross_arr_sum
+            yAxis: y
+        tooltip:
+          - field:
+              name: reporting__sf_reporting_all_stages_reporting.deal_source_grouping
+          - field:
+              name: reporting__sf_reporting_all_stages_reporting.rev_reporting_date[fiscal_quarter]
+          - field:
+              name: reporting__sf_reporting_all_stages_reporting.gross_arr_sum
+        version: 0
+        configType: cartesian
+        _dependentAxis: y
+      fields:
+        [
+          reporting__sf_reporting_all_stages_reporting.deal_source_grouping,
+          "reporting__sf_reporting_all_stages_reporting.rev_reporting_date[fi\
+            scal_quarter]",
+          reporting__sf_reporting_all_stages_reporting.gross_arr_sum
+        ]
+      version: 0
+      visType: basic

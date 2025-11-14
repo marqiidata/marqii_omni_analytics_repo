@@ -1,0 +1,35 @@
+# Reference this view as reporting__s3_stg_review
+schema: REPORTING
+table_name: S3_STG_REVIEW
+
+dimensions:
+  review_id:
+    sql: '"REVIEW_ID"'
+    format: ID
+
+  review_airbyte_extract:
+    sql: '"REVIEW_AIRBYTE_EXTRACT"'
+
+  review_created_at:
+    sql: '"REVIEW_CREATED_AT"'
+
+  review_submitted_at:
+    sql: '"REVIEW_SUBMITTED_AT"'
+
+  review_updated_at:
+    sql: '"REVIEW_UPDATED_AT"'
+
+  review_external_id:
+    sql: '"REVIEW_EXTERNAL_ID"'
+    format: ID
+
+  reviewer_name:
+    sql: '"REVIEWER_NAME"'
+
+  review_store_listing_id:
+    sql: '"REVIEW_STORE_LISTING_ID"'
+    format: ID
+
+measures:
+  count:
+    aggregate_type: count

@@ -1,0 +1,91 @@
+# Reference this view as reporting__stg_salesforce_pricebook_entry
+schema: REPORTING
+table_name: STG_SALESFORCE_PRICEBOOK_ENTRY
+
+dimensions:
+  _airbyte_raw_id:
+    sql: '"_AIRBYTE_RAW_ID"'
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    sql: '"_AIRBYTE_EXTRACTED_AT"'
+    hidden: true
+
+  _airbyte_meta:
+    sql: '"_AIRBYTE_META"'
+    hidden: true
+
+  _airbyte_generation_id:
+    sql: '"_AIRBYTE_GENERATION_ID"'
+    format: ID
+    hidden: true
+
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  name:
+    sql: '"NAME"'
+
+  yelp__c:
+    sql: '"YELP__C"'
+
+  isactive:
+    sql: '"ISACTIVE"'
+
+  isdeleted:
+    sql: '"ISDELETED"'
+
+  unitprice:
+    sql: '"UNITPRICE"'
+
+  isarchived:
+    sql: '"ISARCHIVED"'
+
+  product2id:
+    sql: '"PRODUCT2ID"'
+
+  createdbyid:
+    sql: '"CREATEDBYID"'
+
+  createddate:
+    sql: '"CREATEDDATE"'
+
+  productcode:
+    sql: '"PRODUCTCODE"'
+
+  hard_cost__c:
+    sql: '"HARD_COST__C"'
+
+  opentable__c:
+    sql: '"OPENTABLE__C"'
+
+  pricebook2id:
+    sql: '"PRICEBOOK2ID"'
+
+  systemmodstamp:
+    sql: '"SYSTEMMODSTAMP"'
+
+  lastmodifiedbyid:
+    sql: '"LASTMODIFIEDBYID"'
+
+  lastmodifieddate:
+    sql: '"LASTMODIFIEDDATE"'
+
+  usestandardprice:
+    sql: '"USESTANDARDPRICE"'
+
+  desired_sales_price__c:
+    sql: '"DESIRED_SALES_PRICE__C"'
+
+  stripe_price_id_annual__c:
+    sql: '"STRIPE_PRICE_ID_ANNUAL__C"'
+
+  stripe_price_id_monthly__c:
+    sql: '"STRIPE_PRICE_ID_MONTHLY__C"'
+
+measures:
+  count:
+    aggregate_type: count

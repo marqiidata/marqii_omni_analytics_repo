@@ -1,0 +1,14 @@
+# Reference this view as reporting__listingd_by_provider_counts
+schema: REPORTING
+table_name: LISTINGD_BY_PROVIDER_COUNTS
+
+dimensions:
+  listing_provider:
+    sql: '"LISTING_PROVIDER"'
+
+  listing_counts:
+    sql: '"LISTING_COUNTS"'
+
+measures:
+  count:
+    aggregate_type: count

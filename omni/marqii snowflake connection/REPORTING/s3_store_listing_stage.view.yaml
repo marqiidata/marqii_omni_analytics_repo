@@ -1,0 +1,65 @@
+# Reference this view as reporting__s3_store_listing_stage
+schema: REPORTING
+table_name: S3_STORE_LISTING_STAGE
+
+dimensions:
+  provider: {}
+  deleted: {}
+  enabled: {}
+
+  _airbyte_raw_id:
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    hidden: true
+
+  _airbyte_meta:
+    hidden: true
+
+  created_at:
+    sql: '"createdAt"'
+
+  _airbyte_generation_id:
+    format: ID
+    hidden: true
+
+  id:
+    format: ID
+    primary_key: true
+
+  reviews_enabled:
+    sql: '"reviewsEnabled"'
+
+  listings_enabled:
+    sql: '"listingsEnabled"'
+
+  managed_by_marqii:
+    sql: '"managedByMarqii"'
+
+  analytics_enabled:
+    sql: '"analyticsEnabled"'
+
+  hours_widget_enabled:
+    sql: '"hoursWidgetEnabled"'
+
+  store_id:
+    sql: '"storeId"'
+    format: ID
+
+  menus_enabled:
+    sql: '"menusEnabled"'
+
+  oauth_vault_id:
+    sql: '"oauthVaultId"'
+    format: ID
+
+  connection_data:
+    sql: '"connectionData"'
+
+  updated_at:
+    sql: '"updatedAt"'
+
+measures:
+  count:
+    aggregate_type: count

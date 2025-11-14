@@ -1,0 +1,38 @@
+# Reference this view as reporting__sf_reporting_opportunity_user
+schema: REPORTING
+table_name: SF_REPORTING_OPPORTUNITY_USER
+
+dimensions:
+  opportunity_ownerid:
+    sql: '"OPPORTUNITY_OWNERID"'
+
+  opportunity_owner_first:
+    sql: '"OPPORTUNITY_OWNER_FIRST"'
+
+  opportunity_owner_last:
+    sql: '"OPPORTUNITY_OWNER_LAST"'
+
+  opportunity_owner_name:
+    sql: '"OPPORTUNITY_OWNER_NAME"'
+
+  is_active_owner:
+    sql: '"IS_ACTIVE_OWNER"'
+
+  opportunity_owner_create_date:
+    sql: '"OPPORTUNITY_OWNER_CREATE_DATE"'
+
+  opportunity_owner_last_login_date:
+    sql: '"OPPORTUNITY_OWNER_LAST_LOGIN_DATE"'
+
+  employment_length_days:
+    sql: '"EMPLOYMENT_LENGTH_DAYS"'
+
+  opportunity_owner_team:
+    sql: '"OPPORTUNITY_OWNER_TEAM"'
+
+  opportunity_employee_start_date:
+    sql: '"OPPORTUNITY_EMPLOYEE_START_DATE"'
+
+measures:
+  count:
+    aggregate_type: count

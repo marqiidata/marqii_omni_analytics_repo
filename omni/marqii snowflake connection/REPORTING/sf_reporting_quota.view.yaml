@@ -1,0 +1,33 @@
+# Reference this view as reporting__sf_reporting_quota
+schema: REPORTING
+table_name: SF_REPORTING_QUOTA
+
+dimensions:
+  start_date__c:
+    sql: '"START_DATE__C"'
+
+  end_date__c:
+    sql: '"END_DATE__C"'
+
+  ownerid:
+    sql: '"OWNERID"'
+
+  quota__c:
+    sql: '"QUOTA__C"'
+
+  goal__c:
+    sql: '"GOAL__C"'
+
+  quota_name:
+    sql: '"QUOTA_NAME"'
+
+  quota_owner_id:
+    sql: '"QUOTA_OWNER_ID"'
+    format: ID
+
+  modified_end_date_for_join:
+    sql: '"MODIFIED_END_DATE_FOR_JOIN"'
+
+measures:
+  count:
+    aggregate_type: count

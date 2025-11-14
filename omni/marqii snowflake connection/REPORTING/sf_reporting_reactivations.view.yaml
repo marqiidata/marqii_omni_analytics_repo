@@ -1,0 +1,37 @@
+# Reference this view as reporting__sf_reporting_reactivations
+schema: REPORTING
+table_name: SF_REPORTING_REACTIVATIONS
+
+dimensions:
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+
+  opportunity_id:
+    sql: '"OPPORTUNITY_ID"'
+    format: ID
+
+  opportunity_name:
+    sql: '"OPPORTUNITY_NAME"'
+
+  opportunity_type:
+    sql: '"OPPORTUNITY_TYPE"'
+
+  churn_date:
+    sql: '"CHURN_DATE"'
+
+  closedate:
+    sql: '"CLOSEDATE"'
+
+  opportunity_rev_category:
+    sql: '"OPPORTUNITY_REV_CATEGORY"'
+
+  amount:
+    sql: '"AMOUNT"'
+
+  mrr:
+    sql: '"MRR"'
+
+measures:
+  count:
+    aggregate_type: count

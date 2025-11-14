@@ -1,0 +1,68 @@
+# Reference this view as reporting__nrr_mom_analysis
+schema: REPORTING
+table_name: NRR_MOM_ANALYSIS
+
+dimensions:
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+
+  num_account_locations:
+    sql: '"NUM_ACCOUNT_LOCATIONS"'
+
+  month_date_rev_reporting:
+    sql: '"MONTH_DATE_REV_REPORTING"'
+
+  net_nrr_amount:
+    sql: '"NET_NRR_AMOUNT"'
+
+  formatted_py_cum_mrr:
+    sql: '"FORMATTED_PY_CUM_MRR"'
+
+  net_nrr_rate:
+    sql: '"NET_NRR_RATE"'
+
+  prev_net_nrr_amount:
+    sql: '"PREV_NET_NRR_AMOUNT"'
+
+  prev_net_nrr_rate:
+    sql: '"PREV_NET_NRR_RATE"'
+
+  change_in_nrr_rate:
+    sql: '"CHANGE_IN_NRR_RATE"'
+
+  month_nrr_rate:
+    sql: '"MONTH_NRR_RATE"'
+
+  month_prev_net_nrr_rate:
+    sql: '"MONTH_PREV_NET_NRR_RATE"'
+
+  month_py_cum_mrr:
+    sql: '"MONTH_PY_CUM_MRR"'
+
+  change_in_month_nrr_rate:
+    sql: '"CHANGE_IN_MONTH_NRR_RATE"'
+
+  month_nrr_rate_3_plus:
+    sql: '"MONTH_NRR_RATE_3_PLUS"'
+
+  month_py_cum_mrr_3_plus:
+    sql: '"MONTH_PY_CUM_MRR_3_PLUS"'
+
+  month_prev_net_nrr_rate_3_plus:
+    sql: '"MONTH_PREV_NET_NRR_RATE_3_PLUS"'
+
+  change_in_month_nrr_rate_3_plus:
+    sql: '"CHANGE_IN_MONTH_NRR_RATE_3_PLUS"'
+
+  weighted_3_plus_rate:
+    sql: '"WEIGHTED_3_PLUS_RATE"'
+
+  total_weighted_3_plus:
+    sql: '"TOTAL_WEIGHTED_3_PLUS"'
+
+  weighted_account_var_contribution_3_plus:
+    sql: '"WEIGHTED_ACCOUNT_VAR_CONTRIBUTION_3_PLUS"'
+
+measures:
+  count:
+    aggregate_type: count

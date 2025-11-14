@@ -1,0 +1,45 @@
+# Reference this view as reporting__ps_reporting_account_provider_enabled
+schema: REPORTING
+table_name: PS_REPORTING_ACCOUNT_PROVIDER_ENABLED
+
+dimensions:
+  ps_account_name:
+    sql: '"PS_ACCOUNT_NAME"'
+
+  ps_account_id:
+    sql: '"PS_ACCOUNT_ID"'
+    format: ID
+
+  listings_provider_yelp_enabled:
+    sql: '"LISTINGS_PROVIDER_YELP_ENABLED"'
+
+  listings_provider_google_enabled:
+    sql: '"LISTINGS_PROVIDER_GOOGLE_ENABLED"'
+
+  listings_provider_bing_enabled:
+    sql: '"LISTINGS_PROVIDER_BING_ENABLED"'
+
+  listings_provider_grubhub_enabled:
+    sql: '"LISTINGS_PROVIDER_GRUBHUB_ENABLED"'
+
+  listings_provider_opentable_enabled:
+    sql: '"LISTINGS_PROVIDER_OPENTABLE_ENABLED"'
+
+  listings_provider_fbook_enabled:
+    sql: '"LISTINGS_PROVIDER_FBOOK_ENABLED"'
+
+  listings_provider_yext_enabled:
+    sql: '"LISTINGS_PROVIDER_YEXT_ENABLED"'
+
+  listings_provider_apple_enabled:
+    sql: '"LISTINGS_PROVIDER_APPLE_ENABLED"'
+
+  listings_provider_ezcater_enabled:
+    sql: '"LISTINGS_PROVIDER_EZCATER_ENABLED"'
+
+  listings_provider_ubereats_enabled:
+    sql: '"LISTINGS_PROVIDER_UBEREATS_ENABLED"'
+
+measures:
+  count:
+    aggregate_type: count

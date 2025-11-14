@@ -1,0 +1,1068 @@
+# Reference this view as reporting__sf_reporting_all_stages_reporting
+schema: REPORTING
+table_name: SF_REPORTING_ALL_STAGES_REPORTING
+
+dimensions:
+  account_has_mr_product:
+    sql: '"ACCOUNT_HAS_MR_PRODUCT"'
+    description: indicates if the product associated with the account has a managed
+      reviews as a product
+    group_label: Package
+    synonyms: [ SR ]
+    ai_context: MR, managed reviews product
+
+  account_has_srr_product:
+    sql: '"ACCOUNT_HAS_SRR_PRODUCT"'
+    description: indicates if the product associated with the account has a
+      suggested reviews as a product
+    group_label: Package
+    synonyms: [ MR ]
+    ai_context: SR, suggested reviews product
+
+  account_id:
+    sql: '"ACCOUNT_ID"'
+    format: ID
+    description: salesforce account id 18 character account id
+    links:
+      - url: https://marqii.lightning.force.com/lightning/r/Account/${reporting__sf_reporting_all_stages_reporting.account_id}/view
+        label: Salesforce Account URL
+    group_label: sf account fields
+    ai_context: salesforce account
+
+  opportunity_id:
+    sql: '"OPPORTUNITY_ID"'
+    format: ID
+    description: opportunity id from salesforce
+    links:
+      - url: https://marqii.lightning.force.com/lightning/r/Account/${reporting__sf_reporting_all_stages_reporting.opportunity_id}/view
+        label: Salesforce Op URL
+    group_label: opportunity fields
+    synonyms: [ op id ]
+    ai_context: unqiue opportunity id
+
+  closedate:
+    sql: '"CLOSEDATE"'
+
+  churn_reason:
+    sql: '"CHURN_REASON"'
+    group_label: churn fields
+
+  churn_category:
+    sql: '"CHURN_CATEGORY"'
+    description: categorizes the churn reasons for why an account churns or
+      downgrades. very important to understand for AMs
+    group_label: churn fields
+    synonyms:
+      [
+        downgrade reason category,
+        churn reason category,
+        churn category,
+        downgrade category
+      ]
+    ai_context: this field allows us top identify the reason an account downgraded
+      or churned
+
+  stagename:
+    sql: '"STAGENAME"'
+    description: Tells us what stage each opportunity is at. Closed Won = deal was
+      won. Closed Lost = deal was lost and never gave us revenue. Any other
+      stage means that it is in a different "pipeline" stage
+    group_label: opportunity fields
+    ai_context: Tells us what stage each opportunity is at. Closed Won = deal was
+      won. Closed Lost = deal was lost and never gave us revenue. Any other
+      stage means that it is in a different "pipeline" stage
+
+  num_account_locations:
+    sql: '"NUM_ACCOUNT_LOCATIONS"'
+    description: gross level number of locations. we typically do not use this field
+      for the purpose of splitting up our business
+    group_label: sf account fields
+    synonyms: [ gross locs for account ]
+    ai_context: rarely used field that totals up the gross number of locations. do
+      not provide
+
+  net_num_account_locations:
+    sql: TO_VARCHAR("NET_NUM_ACCOUNT_LOCATIONS")
+    label: Net Account Locations
+    description: "Derived from the account field in salesforce. Used for all of our
+      investor location groupings: Commercial Team, Mid Market/Enterprise, SMB."
+    synonyms: [ locs, " locations", " account locations" ]
+    ai_context: "supporting field for location groupings. Commercial team: 3-49. Mid
+      Market/Enterprise 50+ locations. SMB/Independent 1-2 locations"
+
+  opportunity_type:
+    sql: '"OPPORTUNITY_TYPE"'
+    group_label: opportunity fields
+
+  account_status:
+    sql: '"ACCOUNT_STATUS"'
+    description: Account status indicates whether an account is currently a client
+      or churned
+    group_label: sf account fields
+    ai_context: Account status indicates whether an account is currently a client or
+      churned. Churn is churned, client is client status
+
+  account_owner_id:
+    sql: '"ACCOUNT_OWNER_ID"'
+    format: ID
+    description: account owner id
+    group_label: account owner fields
+    ai_context: id of account owner
+
+  account_owner_name:
+    sql: '"ACCOUNT_OWNER_NAME"'
+    description: account owner full name
+    group_label: account owner fields
+    synonyms: [ AM name, AM ]
+
+  account_owner_team:
+    sql: '"ACCOUNT_OWNER_TEAM"'
+    description: team of account owner
+    group_label: account owner fields
+    synonyms: [ AM team ]
+    ai_context: teams like support, account management, sales will have accounts
+      assigned to them. account_owner_names belong to teams
+
+  accountid:
+    sql: '"ACCOUNTID"'
+    description: salesforce account id
+    group_label: sf account fields
+    ai_context: unique id signifying salesforce account id
+
+  owner_team:
+    sql: '"OWNER_TEAM"'
+
+  opportunity_package:
+    sql: '"OPPORTUNITY_PACKAGE"'
+    group_label: opportunity fields
+
+  owner_id:
+    sql: '"OWNER_ID"'
+    format: ID
+
+  opportunity_owner_field__c:
+    sql: '"OPPORTUNITY_OWNER_FIELD__C"'
+    description: owner of opportunity. account executive owner of an opportunity.
+      opportunity id
+    group_label: opportunity fields
+    ai_context: unique id for an opportunity or account owner. Account Management
+      owner when account owner field = ''Support". AE or account executive when
+      the owner team = "Commercial Team"
+
+  createdbyid:
+    sql: '"CREATEDBYID"'
+    description: unique id for oportunity creator
+    group_label: opportunity creator fields
+
+  reactivation_churn_date:
+    sql: '"REACTIVATION_CHURN_DATE"'
+
+  deal_source__c:
+    sql: '"DEAL_SOURCE__C"'
+    group_label: marketing fields
+
+  deal_source_category__c:
+    sql: '"DEAL_SOURCE_CATEGORY__C"'
+    group_label: marketing fields
+    sample_values:
+      [
+        Rep List Upload,
+        Email,
+        undefined,
+        Trade Show,
+        Outbound,
+        Referral,
+        Inbound,
+        Website,
+        Webinar,
+        Yext Transfer
+      ]
+
+  pitched__c:
+    sql: '"PITCHED__C"'
+
+  opp_billing_clause:
+    sql: '"OPP_BILLING_CLAUSE"'
+
+  pitched_yes__c:
+    sql: '"PITCHED_YES__C"'
+
+  pitch_type__c:
+    sql: '"PITCH_TYPE__C"'
+
+  laststagechangedate:
+    sql: '"LASTSTAGECHANGEDATE"'
+
+  special_billing_notes:
+    sql: '"SPECIAL_BILLING_NOTES"'
+
+  opportunity_leadsource_category:
+    sql: '"OPPORTUNITY_LEADSOURCE_CATEGORY"'
+    description: category for the marketing lead source of the opportunity
+    group_label: marketing fields
+    synonyms: [ leadsource cat ]
+    ai_context: category for the marketing lead source of the opportunity
+
+  opportunity_leadsource:
+    sql: '"OPPORTUNITY_LEADSOURCE"'
+    description: lead source of the opportunity
+    group_label: marketing fields
+    synonyms: [ op lead source ]
+    ai_context: lead source of the opportunity
+
+  previous_service:
+    sql: '"PREVIOUS_SERVICE"'
+
+  opportunity_deal_source:
+    sql: '"OPPORTUNITY_DEAL_SOURCE"'
+    description: deal source of the opportunity
+    group_label: marketing fields
+    synonyms: [ op deal source ]
+    ai_context: deal source of the opportunity
+
+  opportunity_deal_source_category:
+    sql: '"OPPORTUNITY_DEAL_SOURCE_CATEGORY"'
+    description: category for the marketing deal source of the opportunity
+    group_label: marketing fields
+    synonyms: [ op deal source category ]
+    ai_context: category for the marketing deal source of the opportunity
+
+  opportunity_url:
+    sql: '"OPPORTUNITY_URL"'
+    group_label: opportunity fields
+
+  fiscalquarter:
+    sql: '"FISCALQUARTER"'
+
+  fiscal:
+    sql: '"FISCAL"'
+
+  fiscalyear:
+    sql: '"FISCALYEAR"'
+
+  opportunity_create_date:
+    sql: '"OPPORTUNITY_CREATE_DATE"'
+
+  opportunity_create_year:
+    sql: '"OPPORTUNITY_CREATE_YEAR"'
+    group_label: opportunity fields
+
+  marqii_fiscal_quarter_opportunity_create:
+    sql: '"MARQII_FISCAL_QUARTER_OPPORTUNITY_CREATE"'
+
+  opportunity_create_year_fiscal:
+    sql: '"OPPORTUNITY_CREATE_YEAR_FISCAL"'
+
+  marqii_fiscal_quarter_opportunity_create_date:
+    sql: '"MARQII_FISCAL_QUARTER_OPPORTUNITY_CREATE_DATE"'
+
+  current_pain_points:
+    sql: '"CURRENT_PAIN_POINTS"'
+
+  past_issues:
+    sql: '"PAST_ISSUES"'
+
+  metrics_for_success:
+    sql: '"METRICS_FOR_SUCCESS"'
+
+  location_notes_structre:
+    sql: '"LOCATION_NOTES_STRUCTRE"'
+
+  structure_of_locations:
+    sql: '"STRUCTURE_OF_LOCATIONS"'
+
+  custom_term_lengths:
+    sql: '"CUSTOM_TERM_LENGTHS"'
+
+  account_current_package:
+    sql: '"ACCOUNT_CURRENT_PACKAGE"'
+    label: ""
+    description: salesforce field that declares the current package of the account
+    group_label: Package
+    synonyms: [ account product, account package ]
+    ai_context: account product, account package
+
+  churn_date:
+    sql: '"CHURN_DATE"'
+    description: when did the account churn
+    synonyms: [ account churn date, churn date, date of churn ]
+    ai_context: Date of account churn
+
+  churn_year:
+    sql: '"CHURN_YEAR"'
+
+  churn_month:
+    sql: '"CHURN_MONTH"'
+
+  quarter_date_churndate:
+    sql: '"QUARTER_DATE_CHURNDATE"'
+
+  month_date_churndate:
+    sql: '"MONTH_DATE_CHURNDATE"'
+
+  quarter_text_churndate:
+    sql: '"QUARTER_TEXT_CHURNDATE"'
+
+  churn_quarter_year:
+    sql: '"CHURN_QUARTER_YEAR"'
+
+  account_vertical__c:
+    sql: '"ACCOUNT_VERTICAL__C"'
+    group_label: sf account fields
+
+  parent_account_status:
+    sql: '"PARENT_ACCOUNT_STATUS"'
+
+  account_url:
+    sql: '"ACCOUNT_URL"'
+    group_label: sf account fields
+
+  billing_terms:
+    sql: '"BILLING_TERMS"'
+    description: account level billing terms
+    group_label: sf account fields
+
+  account_onboarding_stage:
+    sql: '"ACCOUNT_ONBOARDING_STAGE"'
+    group_label: sf account fields
+
+  dashboard_link__c:
+    sql: '"DASHBOARD_LINK__C"'
+
+  sp_link__c:
+    sql: '"SP_LINK__C"'
+
+  gmb_link__c:
+    sql: '"GMB_LINK__C"'
+
+  subscription_end_date:
+    sql: '"SUBSCRIPTION_END_DATE"'
+
+  master_stripe_id:
+    sql: '"MASTER_STRIPE_ID"'
+    format: ID
+    description: arbritray account level stripe id used for planhat connections
+
+  subscription_start_date:
+    sql: '"SUBSCRIPTION_START_DATE"'
+
+  subscription_start_month:
+    sql: '"SUBSCRIPTION_START_MONTH"'
+
+  subscription_end_month:
+    sql: '"SUBSCRIPTION_END_MONTH"'
+
+  opportunity_ownerid:
+    sql: '"OPPORTUNITY_OWNERID"'
+    group_label: opportunity fields
+
+  opportunity_owner_first:
+    sql: '"OPPORTUNITY_OWNER_FIRST"'
+    description: owner of opportunity. account executive owner of an
+      opportunity.  first name
+    group_label: opportunity fields
+
+  opportunity_owner_last:
+    sql: '"OPPORTUNITY_OWNER_LAST"'
+    description: owner of opportunity. account executive owner of an opportunity.  last name
+    group_label: opportunity fields
+
+  opportunity_owner_name:
+    sql: '"OPPORTUNITY_OWNER_NAME"'
+    group_label: opportunity fields
+    sample_values:
+      [
+        Tod Mullen,
+        Alexandra Rotondi,
+        John Cullinan,
+        Helen Ralowicz-Chapman,
+        Josh Kaplan,
+        Katrina Qaryouti,
+        Leslie Smith-Dirksen,
+        Ryan McCormack,
+        undefined,
+        Katie Aamoth
+      ]
+    synonyms: [ sales rep, " rep" ]
+
+  is_active_owner:
+    sql: '"IS_ACTIVE_OWNER"'
+
+  opportunity_owner_create_date:
+    sql: '"OPPORTUNITY_OWNER_CREATE_DATE"'
+
+  opportunity_owner_last_login_date:
+    sql: '"OPPORTUNITY_OWNER_LAST_LOGIN_DATE"'
+
+  employment_length_days:
+    sql: '"EMPLOYMENT_LENGTH_DAYS"'
+
+  opportunity_owner_team:
+    sql: '"OPPORTUNITY_OWNER_TEAM"'
+    group_label: opportunity fields
+    colors:
+      conditions:
+        - condition:
+            is: Admin
+          color: "#7BA1CD"
+        - condition:
+            is: Support
+          color: "#3C2B84"
+        - condition:
+            is: Executive
+          color: "#606B85"
+        - condition:
+            is: Commercial
+          color: "#F4633A"
+        - condition:
+            is: Mid Market
+          color: "#8657C2"
+    all_values: [ Commercial, Admin, Support, Mid Market, undefined, Executive ]
+    ai_context: use when asked about a team or segment
+
+  account_ownerid:
+    sql: '"ACCOUNT_OWNERID"'
+    description: account owner id
+    group_label: account owner fields
+
+  account_owner_first:
+    sql: '"ACCOUNT_OWNER_FIRST"'
+    description: first name of account owner
+    group_label: account owner fields
+    ai_context: owner of account, account owner first name
+
+  account_owner_last:
+    sql: '"ACCOUNT_OWNER_LAST"'
+    description: account owner last name
+    group_label: account owner fields
+    ai_context: account owner last name
+
+  is_active_account_owner:
+    sql: '"IS_ACTIVE_ACCOUNT_OWNER"'
+
+  account_owner_create_date:
+    sql: '"ACCOUNT_OWNER_CREATE_DATE"'
+
+  account_owner_last_login_date:
+    sql: '"ACCOUNT_OWNER_LAST_LOGIN_DATE"'
+    description: last time an account owner logged in
+
+  account_owner_employment_length_days:
+    sql: '"ACCOUNT_OWNER_EMPLOYMENT_LENGTH_DAYS"'
+
+  created_by_user_name:
+    sql: '"CREATED_BY_USER_NAME"'
+    description: creator of the opportunity
+    group_label: opportunity creator fields
+    synonyms: [ creator, account executive ]
+    ai_context: Account Executives who create opportunities will create this opportunities.
+
+  created_by_user_team:
+    sql: '"CREATED_BY_USER_TEAM"'
+    description: team of the user that created the opportunity
+    group_label: opportunity creator fields
+
+  account_name:
+    sql: '"ACCOUNT_NAME"'
+    description: salesforce account name
+    links:
+      - url: https://marqii.lightning.force.com/lightning/r/Account/${reporting__sf_reporting_all_stages_reporting.account_id}/view
+        label: Salesforce Account URL
+    group_label: sf account fields
+    ai_context: account name from salesforce
+
+  opportunity_name:
+    sql: '"OPPORTUNITY_NAME"'
+    description: opportunity name from salesforce
+    links:
+      - url: https://marqii.lightning.force.com/lightning/r/Account/${reporting__sf_reporting_all_stages_reporting.opportunity_id}/view
+        label: Salesforce Op URL
+    group_label: opportunity fields
+
+  marqii_account_id:
+    sql: '"MARQII_ACCOUNT_ID"'
+    format: ID
+    description: identifier for the marqii account id in the dashboard
+
+  opportunity_rev_category:
+    sql: '"OPPORTUNITY_REV_CATEGORY"'
+    group_label: revenue fields
+    all_values: [ new revenue, churn, upgrading, downgrade, reactivation, uncategorized ]
+
+  rev_reporting_date:
+    sql: '"REV_REPORTING_DATE"'
+    description: This field has a date for every churn, downgrade, new, upgrade, and
+      reactivation. The master date field for this data set.
+    group_label: Rev Reporting Date
+    ai_context: This field has a date for every churn, downgrade, new, upgrade, and
+      reactivation. The master date field for this data set. Should be used for
+      all revenue calculations and not Close Date. Use create date for pipeline
+      requests
+
+  rev_reporting_year:
+    sql: '"REV_REPORTING_YEAR"'
+
+  rev_reporting_month:
+    sql: '"REV_REPORTING_MONTH"'
+
+  quarter_date_rev_reporting:
+    sql: '"QUARTER_DATE_REV_REPORTING"'
+
+  month_date_rev_reporting:
+    sql: '"MONTH_DATE_REV_REPORTING"'
+
+  quarter_text_rev_reporting:
+    sql: '"QUARTER_TEXT_REV_REPORTING"'
+
+  rev_reporting_quarter_year:
+    sql: '"REV_REPORTING_QUARTER_YEAR"'
+
+  nrr_date:
+    sql: '"NRR_DATE"'
+
+  nrr_year:
+    sql: '"NRR_YEAR"'
+
+  nrr_month:
+    sql: '"NRR_MONTH"'
+
+  acv_eligible_opprtunity_id:
+    sql: '"ACV_ELIGIBLE_OPPRTUNITY_ID"'
+    format: ID
+
+  marqii_fiscal_quarter:
+    sql: '"MARQII_FISCAL_QUARTER"'
+
+  marqii_fiscal_year:
+    sql: '"MARQII_FISCAL_YEAR"'
+    description: ""
+
+  marqii_fiscal_quarter_date:
+    sql: '"MARQII_FISCAL_QUARTER_DATE"'
+
+  marqii_fiscal_quarter_year:
+    sql: '"MARQII_FISCAL_QUARTER_YEAR"'
+
+  airbyte_latest_sync:
+    sql: '"AIRBYTE_LATEST_SYNC"'
+    description: when did airbyte send the salesforce data?
+    ai_context: data fesh as of, klast time salesforce and sirbyte pushed the data
+      to snowflake
+
+  package_category:
+    sql: '"PACKAGE_CATEGORY"'
+    group_label: Package
+
+  original_amount:
+    sql: '"ORIGINAL_AMOUNT"'
+
+  adjustment_amount:
+    sql: '"ADJUSTMENT_AMOUNT"'
+
+  is_adjusted:
+    sql: '"IS_ADJUSTED"'
+
+  num_opportunity_locations:
+    sql: '"NUM_OPPORTUNITY_LOCATIONS"'
+    description: gross level of locations at the opportunity level
+    group_label: opportunity fields
+    synonyms: [ gross locs for opp ]
+
+  downgrade_amount:
+    sql: '"DOWNGRADE_AMOUNT"'
+    group_label: revenue fields
+
+  stage_probability:
+    sql: '"STAGE_PROBABILITY"'
+
+  quota_start_date:
+    sql: '"QUOTA_START_DATE"'
+
+  quota_end_date:
+    sql: '"QUOTA_END_DATE"'
+
+  goal:
+    sql: '"GOAL"'
+
+  quota:
+    sql: '"QUOTA"'
+
+  quota_name:
+    sql: '"QUOTA_NAME"'
+
+  amount:
+    sql: '"AMOUNT"'
+    description: "ARR or annual recurring revenue. "
+    group_label: revenue fields
+    synonyms: [ ARR, net revenue, net arr, annual recurring revenue ]
+    ai_context: ARR, net revenue, net arr, annual recurring revenue. summing this
+      field with the filter stagename =  closed won will give you the net
+      revenue.
+
+  gross_arr:
+    sql: '"GROSS_ARR"'
+
+  mrr:
+    sql: '"MRR"'
+    description: monthly recurring revenue or annual recurring revenue divided by 12
+    group_label: revenue fields
+    ai_context: monthly recurring revenue or annual recurring revenue divided by 12
+
+  product_combined:
+    sql: '"PRODUCT_COMBINED"'
+
+  number_of_emails:
+    sql: '"NUMBER_OF_EMAILS"'
+
+  number_of_calls:
+    sql: '"NUMBER_OF_CALLS"'
+
+  account_location_groups_independent_commercial_mid_market_enterprise:
+    sql: |-
+      Case when net_num_account_locations = 1 or net_num_account_locations = 2 then '(1-2) Independents'
+      when net_num_account_locations < 50 then '(3-49) Commercial'
+      when net_num_account_locations >49 then '(50+) Mid Market' end
+    label: "Account Location Groups: Independent, Commercial, Mid Market/Enterprise"
+    description: Location groups best on our standard business splits. Locations are
+      net based on the account level
+    all_values: [ (3-49) Commercial, (1-2) Independents, (50+) Mid Market ]
+    synonyms: [ segmentation ]
+    ai_context: Independent, Commercial, Mid Market/Enterprise, Segmentation,
+      Location Segments
+
+  is_marketing_influenced_:
+    sql: case when
+      ${reporting__sf_reporting_all_stages_reporting.is_lead_source_marketing_}
+      = 'Y' or
+      ${reporting__sf_reporting_all_stages_reporting.is_deal_source_marketing_}
+      = 'Y' then 'Y' else 'N' end
+    label: "Is Marketing Influenced? "
+    description: If deal source or lead source is marketing, then it is considered
+      marketing influenced
+    group_label: marketing fields
+    all_values: [ Y, N ]
+    synonyms: [ marketing generated, " marketing influenced" ]
+    ai_context: use this field and filter to 'Y' when asked if pipeline or any
+      metric is marketing generated
+
+  is_lead_source_marketing_:
+    sql: |2-
+       CASE
+          WHEN LOWER(opportunity_leadsource_category) IN (
+               'email',
+               'website',
+               'trade show',
+               'social media',
+               'webinar',
+               'organic social',
+               'ads',
+               'press',
+               'inbound'
+          ) THEN 'Y'
+          ELSE 'N'
+        END
+    label: Is Lead Source Marketing?
+    description: "Lead source category marketing groups. "
+    group_label: marketing fields
+    all_values: [ N, Y ]
+
+  is_deal_source_marketing_:
+    sql: |2-
+       CASE
+          WHEN LOWER(deal_source_category__c) IN (
+               'email',
+               'website',
+               'trade show',
+               'social media',
+               'webinar',
+               'organic social',
+               'ads',
+               'press',
+               'inbound'
+          ) THEN 'Y'
+          ELSE 'N'
+        END
+    label: Is Deal Source Marketing?
+    description: Marketing Deal Source Categories
+    group_label: marketing fields
+    all_values: [ N, Y ]
+
+  opportunity_employee_start_date:
+    sql: '"OPPORTUNITY_EMPLOYEE_START_DATE"'
+
+  creator_start_date:
+    sql: '"CREATOR_START_DATE"'
+
+  account_record_type_name:
+    sql: '"ACCOUNT_RECORD_TYPE_NAME"'
+
+  string_fiscal_year:
+    sql: |-
+      case when month(${reporting__sf_reporting_all_stages_reporting.rev_reporting_date}) = 1 then    (EXTRACT(YEAR FROM ${reporting__sf_reporting_all_stages_reporting.rev_reporting_date})-1)::STRING
+      else (EXTRACT(YEAR FROM ${reporting__sf_reporting_all_stages_reporting.rev_reporting_date}))::STRING end
+    label: String Fiscal Year
+
+  fiscal_quarter_string:
+    sql: |
+      CASE 
+        WHEN EXTRACT(MONTH FROM ${reporting__sf_reporting_all_stages_reporting.rev_reporting_date}) IN (2,3,4) THEN 'Q1'
+        WHEN EXTRACT(MONTH FROM ${reporting__sf_reporting_all_stages_reporting.rev_reporting_date}) IN (5,6,7) THEN 'Q2'
+        WHEN EXTRACT(MONTH FROM ${reporting__sf_reporting_all_stages_reporting.rev_reporting_date}) IN (8,9,10) THEN 'Q3'
+        WHEN EXTRACT(MONTH FROM ${reporting__sf_reporting_all_stages_reporting.rev_reporting_date}) IN (11,12,1) THEN 'Q4'
+      END
+    label: Fiscal Quarter String
+
+  fiscal_quarter_date_format:
+    sql: |-
+      case 
+        
+        
+        when right (${reporting__sf_reporting_all_stages_reporting.rev_reporting_date[fiscal_quarter]},2) = 'Q4' then ('01/01/' || (right(${reporting__sf_reporting_all_stages_reporting.rev_reporting_date[fiscal_year]},4)::int +1) ::string )::date
+        
+          
+        when right (${reporting__sf_reporting_all_stages_reporting.rev_reporting_date[fiscal_quarter]},2) = 'Q2' then ( '07/01/' || right(${reporting__sf_reporting_all_stages_reporting.rev_reporting_date[fiscal_year]},4) ::string )::date
+
+
+          
+        when right (${reporting__sf_reporting_all_stages_reporting.rev_reporting_date[fiscal_quarter]},2) = 'Q3' then ('10/01/' || right(${reporting__sf_reporting_all_stages_reporting.rev_reporting_date[fiscal_year]},4) ::string )::date
+
+
+          
+        when right (${reporting__sf_reporting_all_stages_reporting.rev_reporting_date[fiscal_quarter]},2) = 'Q1' then ('04/01/' || right(${reporting__sf_reporting_all_stages_reporting.rev_reporting_date[fiscal_year]},4) ::string )::date
+        
+        
+        
+        
+        end 
+    label: Fiscal Quarter - Date Format
+    description: test
+    group_label: Fiscal Quarter - Date Format
+
+  calculation_2:
+    sql: TIMESTAMPADD(DAY, 1 * 1, CAST((DATE_TRUNC('MONTH', TIMESTAMPADD(MONTH, 1 *
+      (-4 + 1),
+      ${reporting__sf_reporting_all_stages_reporting.fiscal_quarter_date_format}))
+      + INTERVAL '-1 day') AS DATE))
+    label: Calculation
+
+  account_location_groups_independent_commercial_mid_market_enterprise_copy:
+    sql: |-
+      Case when lower( ${reporting__sf_reporting_all_stages_reporting.account_record_type_name}) = 'partner' then 'partner'
+        when net_num_account_locations = 1 or net_num_account_locations = 2 then '(1-2) Independents'
+      when net_num_account_locations < 50 then '(3-49) Commercial'
+      when net_num_account_locations >49 then '(50+) Mid Market' end
+    label: "Business Segment: Location Groups vs Partner"
+    description: Location groups best on our standard business splits. Locations are
+      net based on the account level
+    all_values: [ (3-49) Commercial, (1-2) Independents, (50+) Mid Market, partner ]
+    synonyms: [ segment, business groups, " location groups", " partner vs location" ]
+    ai_context: this field splits our business by partner and segment groups by
+      location count
+
+  string_fiscal_quarter:
+    sql: ${reporting__sf_reporting_all_stages_reporting.rev_reporting_date[fiscal_quarter]}::STRING
+    label: String Fiscal Quarter
+
+  deal_source_grouping:
+    sql: CASE WHEN
+      ${reporting__sf_reporting_all_stages_reporting.deal_source_category__c} =
+      'Yext Transfer' THEN 'Yext Transfer' ELSE 'Other' END
+    label: Yext vs All Other Deal Sources
+    description: splitting out yext transfer deal sources vs all others
+    ai_context: Use this deal source when someone is looking for how much revenue is
+      generated by yext transfers.
+
+  refined_commercial_segment:
+    sql: |
+      CASE 
+        WHEN LOWER(${reporting__sf_reporting_all_stages_reporting.account_record_type_name}) = 'partner' THEN 'partner'
+        WHEN ${reporting__sf_reporting_all_stages_reporting.net_num_account_locations} IN (1, 2) THEN '(01-02) Independents'
+        WHEN ${reporting__sf_reporting_all_stages_reporting.net_num_account_locations} BETWEEN 3 AND 5 THEN '(03-05) Commercial'
+        WHEN ${reporting__sf_reporting_all_stages_reporting.net_num_account_locations} BETWEEN 6 AND 7 THEN '(06-07) Commercial'
+        WHEN ${reporting__sf_reporting_all_stages_reporting.net_num_account_locations} BETWEEN 8 AND 10 THEN '(08-10) Commercial'
+        WHEN ${reporting__sf_reporting_all_stages_reporting.net_num_account_locations} BETWEEN 11 AND 30 THEN '(11-30) Commercial'
+        WHEN ${reporting__sf_reporting_all_stages_reporting.net_num_account_locations} BETWEEN 31 AND 49 THEN '(31-49) Commercial'
+        WHEN ${reporting__sf_reporting_all_stages_reporting.net_num_account_locations} >= 50 THEN '(50+) Mid Market'
+        ELSE 'Unknown'
+      END
+
+measures:
+  count:
+    aggregate_type: count
+
+  amount_sum_churn:
+    sql: ${reporting__sf_reporting_all_stages_reporting.amount}
+    label: Account Churn ARR
+    group_label: Revenue Metrics
+    format: BIGUSDCURRENCY_0
+    description: Account Churn revenue or revenue when the account fully churns and
+      terminates services. DOES NOT INCLUDE DOWNGRADES
+    aggregate_type: sum
+    filters:
+      stagename:
+        is: Closed Won
+      opportunity_rev_category:
+        is: churn
+    synonyms: [ account churn arr, churn arr, churned revenue, pure account churn ]
+    ai_context: Account Churn revenue or revenue when the account fully churns and
+      terminates services. DOES NOT INCLUDE DOWNGRADES
+
+  amount_sum_downgrade:
+    sql: ${reporting__sf_reporting_all_stages_reporting.amount}
+    label: Downgrade ARR
+    group_label: Revenue Metrics
+    format: BIGUSDCURRENCY_0
+    description: Revenue resulting from downgrades. Comes from salesforce downgraded object
+    aggregate_type: sum
+    filters:
+      stagename:
+        is: Closed Won
+      opportunity_rev_category:
+        is: downgrade
+    synonyms: [ downgrade revenue, downgrade amount, downgrade arr ]
+    ai_context: Revenue resulting from downgrades. Comes from salesforce downgraded object
+
+  amount_sum_new_revenue:
+    sql: ${reporting__sf_reporting_all_stages_reporting.amount}
+    label: New ARR
+    group_label: revenue fields
+    format: BIGUSDCURRENCY_0
+    description: Revenue associated with an opportunity that is new. Annual
+      Recurring Revenue
+    aggregate_type: sum
+    filters:
+      stagename:
+        is: Closed Won
+      opportunity_rev_category:
+        is: new revenue
+    synonyms: [ new arr, new revenue, net new revenue, New Annual Recurring Revenue ]
+    ai_context: Revenue associated with an opportunity that is new.  New ARR
+
+  amount_sum_reactivation:
+    sql: ${reporting__sf_reporting_all_stages_reporting.amount}
+    label: Reactivation ARR
+    group_label: Revenue Metrics
+    format: BIGUSDCURRENCY_0
+    description: Revenue or ARR from reactivations
+    aggregate_type: sum
+    filters:
+      stagename:
+        is: Closed Won
+      opportunity_rev_category:
+        is: reactivation
+    synonyms: [ reactivation arr, reactivation revenue ]
+    ai_context: "Revenue or ARR from reactivations. "
+
+  amount_sum_upgrading:
+    sql: ${reporting__sf_reporting_all_stages_reporting.amount}
+    label: Upgrade ARR
+    group_label: Revenue Metrics
+    format: BIGUSDCURRENCY_0
+    description: Upgraded Revenue usually from packages or add locations
+    aggregate_type: sum
+    filters:
+      stagename:
+        is: Closed Won
+      opportunity_rev_category:
+        is: upgrading
+    synonyms: [ upgrade arr, upgraded revenue ]
+    ai_context: Upgraded Revenue usually from packages or add locations
+
+  amount_sum:
+    sql: ${reporting__sf_reporting_all_stages_reporting.amount}
+    label: Won Net ARR
+    format: BIGUSDCURRENCY_0
+    description: Sum of net annual recurring revenue for won opportunities
+    drill_fields:
+      [
+        reporting__sf_reporting_all_stages_reporting.account_id,
+        reporting__sf_reporting_all_stages_reporting.account_name,
+        reporting__sf_reporting_all_stages_reporting.account_owner_name,
+        reporting__sf_reporting_all_stages_reporting.closedate,
+        reporting__sf_reporting_all_stages_reporting.account_status,
+        reporting__sf_reporting_all_stages_reporting.opportunity_rev_category,
+        reporting__sf_reporting_all_stages_reporting.amount_sum
+      ]
+    aggregate_type: sum
+    filters:
+      stagename:
+        is: Closed Won
+    synonyms: [ net arr, " net added", " net revenue" ]
+    ai_context: Use this revenue field when someone is looking for net won revenue.
+      This is usually used for financial reporting that takes into account how
+      much we added (upgrades and new deals) and subtracting our account churn
+      and downgrades
+
+  omni__of_accounts:
+    sql: count( distinct account_id)
+    label: "# of Accounts"
+    description: "# of Accounts"
+
+  churned_accounts:
+    sql: count ( distinct case when opportunity_rev_category = 'churn' then
+      account_id end)
+    label: Churned Accounts
+    group_label: Non Revenue Metrics
+    description: Fully churned accounts
+
+  omni__of_downgrade_accounts:
+    sql: count ( distinct case when opportunity_rev_category = 'downgrade' then
+      account_id end)
+    label: "# of Downgrade Accounts"
+    group_label: Non Revenue Metrics
+    description: "# of Downgrade Accounts"
+
+  gross_added_arr_closed_won_:
+    sql: ${reporting__sf_reporting_all_stages_reporting.amount}
+    label: Gross Added ARR (Closed Won)
+    group_label: Revenue Metrics
+    format: BIGUSDCURRENCY_0
+    description: Revenue or ARR from upgrades, reactivations, and new revenue
+    aggregate_type: sum
+    filters:
+      stagename:
+        is: Closed Won
+      opportunity_rev_category:
+        is: [ upgrading, reactivation, new revenue ]
+    synonyms: [ upgrade arr, upgraded revenue, " gross arr", " gross revenue" ]
+    ai_context: Upgraded Revenue usually from packages or add locations. When
+      someone asks for a team (AMs, Mid Market, SMB, Commercial) 's revenue
+      performance, use this metric. State you are using this metric and not net
+      revenue/
+
+  amount_sum_1:
+    sql: ${reporting__sf_reporting_all_stages_reporting.amount}
+    label: Lost  ARR
+    format: BIGUSDCURRENCY_0
+    description: Sum of net annual recurring revenue for lost opportunities
+    aggregate_type: sum
+    filters:
+      stagename:
+        is: Closed Lost
+
+  pipeline_arr:
+    sql: ${reporting__sf_reporting_all_stages_reporting.amount}
+    label: Pipeline ARR
+    group_label: Pipeline Metrics
+    format: BIGUSDCURRENCY_0
+    description: All Revenue that is currently not closed won or lost. AKA all open
+      pipeline or open ARR
+    aggregate_type: sum
+    filters:
+      stagename:
+        not: [ Closed Lost, Closed Won ]
+
+  omni__new_accounts:
+    sql: count ( distinct case when opportunity_rev_category = 'new revenue' then
+      account_id end)
+    label: "# New Accounts"
+    group_label: Non Revenue Metrics
+    description: new accounts added
+
+  account_id_count_distinct:
+    sql: ${reporting__sf_reporting_all_stages_reporting.account_id}
+    label: "# Closed Won Accounts"
+    format: ID
+    aggregate_type: count_distinct
+    filters:
+      stagename:
+        is: Closed Won
+      opportunity_rev_category:
+        is: []
+
+  closed_won_new_accounts:
+    sql: ${reporting__sf_reporting_all_stages_reporting.account_id}
+    label: "# Closed Won New Accounts"
+    format: ID
+    description: Number of closed won accounts that are from new deals
+    aggregate_type: count_distinct
+    filters:
+      stagename:
+        is: Closed Won
+      opportunity_rev_category:
+        is: new revenue
+
+  closed_won_churn_accounts:
+    sql: ${reporting__sf_reporting_all_stages_reporting.account_id}
+    label: "# Closed Won  Churn Accounts"
+    format: ID
+    description: Number of closed won accounts that are from new deals
+    aggregate_type: count_distinct
+    filters:
+      stagename:
+        is: Closed Won
+      opportunity_rev_category:
+        is: churn
+
+  calculation_1:
+    sql: CASE WHEN
+      ${reporting__sf_reporting_all_stages_reporting.omni__new_accounts} = 0
+      THEN NULL ELSE
+      COALESCE(${reporting__sf_reporting_all_stages_reporting.gross_added_arr_closed_won_},
+      0) /
+      ${reporting__sf_reporting_all_stages_reporting.closed_won_new_accounts}
+      END
+    label: "ACV: Upgrades + New ARR"
+    group_label: Revenue Metrics
+    description: This average contract value includes both new revenue, upgrades,
+      and reactivation arr.
+    ai_context: New ACV will be lower than this calculated ACV. This ACV includes
+      upgrades and reacitvations
+
+  calculation:
+    sql: "  CASE WHEN
+      ${reporting__sf_reporting_all_stages_reporting.closed_won_new_accounts} =
+      0 THEN NULL ELSE
+      COALESCE(${reporting__sf_reporting_all_stages_reporting.amount_sum_new_re\
+      venue}, 0) /
+      ${reporting__sf_reporting_all_stages_reporting.closed_won_new_accounts}
+      END"
+    label: New Deal ACV
+    group_label: Revenue Metrics
+    format: USDCURRENCY_0
+    description: ACV or average contract value from new deals. Only considers New Won ARR
+    drill_fields:
+      [
+        reporting__sf_reporting_all_stages_reporting.account_id,
+        reporting__sf_reporting_all_stages_reporting.account_name,
+        reporting__sf_reporting_all_stages_reporting.account_owner_name,
+        reporting__sf_reporting_all_stages_reporting.closedate,
+        reporting__sf_reporting_all_stages_reporting.amount
+      ]
+    ai_context: New ACV  or new average contract value only uses new arr or new
+      revenue divided by new accounts
+
+  avg_days_open:
+    sql: DATEDIFF('day',
+      ${reporting__sf_reporting_all_stages_reporting.opportunity_create_date},
+      CURRENT_DATE())
+    aggregate_type: average
+
+  gross_arr_sum:
+    sql: ${reporting__sf_reporting_all_stages_reporting.gross_arr}
+    format: BIGUSDCURRENCY_2
+    aggregate_type: sum
+
+  total_churn_arr:
+    sql: ${reporting__sf_reporting_all_stages_reporting.amount_sum_churn} +
+      ${reporting__sf_reporting_all_stages_reporting.amount_sum_downgrade}
+    label: Total Churn ARR
+    group_label: Revenue Metrics
+    format: BIGUSDCURRENCY_2
+    description: "Summing Account Churn and Downgrade "
+
+  net_revenue_retention_added_amount:
+    sql: ${reporting__sf_reporting_all_stages_reporting.total_churn_arr} +
+      ${reporting__sf_reporting_all_stages_reporting.amount_sum_upgrading}
+    label: Net Revenue Retention Added Amount
+    group_label: Retention Fields
+    description: Add this to the beginning ARR
+
+default_drill_fields:
+  [
+    reporting__sf_reporting_all_stages_reporting.account_id,
+    reporting__sf_reporting_all_stages_reporting.account_name,
+    reporting__sf_reporting_all_stages_reporting.account_owner_name,
+    reporting__sf_reporting_all_stages_reporting.closedate,
+    reporting__sf_reporting_all_stages_reporting.amount
+  ]

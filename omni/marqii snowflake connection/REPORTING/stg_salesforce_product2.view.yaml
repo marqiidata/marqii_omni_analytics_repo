@@ -1,0 +1,91 @@
+# Reference this view as reporting__stg_salesforce_product2
+schema: REPORTING
+table_name: STG_SALESFORCE_PRODUCT2
+
+dimensions:
+  _airbyte_raw_id:
+    sql: '"_AIRBYTE_RAW_ID"'
+    format: ID
+    hidden: true
+
+  _airbyte_extracted_at:
+    sql: '"_AIRBYTE_EXTRACTED_AT"'
+    hidden: true
+
+  _airbyte_meta:
+    sql: '"_AIRBYTE_META"'
+    hidden: true
+
+  _airbyte_generation_id:
+    sql: '"_AIRBYTE_GENERATION_ID"'
+    format: ID
+    hidden: true
+
+  id:
+    sql: '"ID"'
+    format: ID
+    primary_key: true
+
+  name:
+    sql: '"NAME"'
+
+  family:
+    sql: '"FAMILY"'
+
+  isactive:
+    sql: '"ISACTIVE"'
+
+  isdeleted:
+    sql: '"ISDELETED"'
+
+  displayurl:
+    sql: '"DISPLAYURL"'
+
+  externalid:
+    sql: '"EXTERNALID"'
+
+  isarchived:
+    sql: '"ISARCHIVED"'
+
+  createdbyid:
+    sql: '"CREATEDBYID"'
+
+  createddate:
+    sql: '"CREATEDDATE"'
+
+  description:
+    sql: '"DESCRIPTION"'
+
+  productcode:
+    sql: '"PRODUCTCODE"'
+
+  lastvieweddate:
+    sql: '"LASTVIEWEDDATE"'
+
+  systemmodstamp:
+    sql: '"SYSTEMMODSTAMP"'
+
+  lastmodifiedbyid:
+    sql: '"LASTMODIFIEDBYID"'
+
+  lastmodifieddate:
+    sql: '"LASTMODIFIEDDATE"'
+
+  stockkeepingunit:
+    sql: '"STOCKKEEPINGUNIT"'
+
+  lastreferenceddate:
+    sql: '"LASTREFERENCEDDATE"'
+
+  externaldatasourceid:
+    sql: '"EXTERNALDATASOURCEID"'
+
+  stripe_product_id__c:
+    sql: '"STRIPE_PRODUCT_ID__C"'
+
+  quantityunitofmeasure:
+    sql: '"QUANTITYUNITOFMEASURE"'
+
+measures:
+  count:
+    aggregate_type: count

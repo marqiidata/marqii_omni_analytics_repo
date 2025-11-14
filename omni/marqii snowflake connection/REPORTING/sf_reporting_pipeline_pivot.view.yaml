@@ -1,0 +1,36 @@
+# Reference this view as reporting__sf_reporting_pipeline_pivot
+schema: REPORTING
+table_name: SF_REPORTING_PIPELINE_PIVOT
+
+dimensions:
+  gross_arr:
+    sql: '"GROSS_ARR"'
+
+  stagename:
+    sql: '"STAGENAME"'
+
+  created_by_user_name:
+    sql: '"CREATED_BY_USER_NAME"'
+
+  created_by_user_team:
+    sql: '"CREATED_BY_USER_TEAM"'
+
+  opportunity_id:
+    sql: '"OPPORTUNITY_ID"'
+    format: ID
+
+  opportunity_stage:
+    sql: '"OPPORTUNITY_STAGE"'
+
+  opportunity_owner_name:
+    sql: '"OPPORTUNITY_OWNER_NAME"'
+
+  opportunity_owner_team:
+    sql: '"OPPORTUNITY_OWNER_TEAM"'
+
+  create_date:
+    sql: '"CREATE_DATE"'
+
+measures:
+  count:
+    aggregate_type: count

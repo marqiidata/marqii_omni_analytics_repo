@@ -1,0 +1,41 @@
+# Reference this view as reporting__stg_s3_task
+schema: REPORTING
+table_name: STG_S3_TASK
+
+dimensions:
+  task_createdat:
+    sql: '"TASK_CREATEDAT"'
+
+  task_airbyte_meta:
+    sql: '"TASK_AIRBYTE_META"'
+
+  task_airbyte_generation_id:
+    sql: '"TASK_AIRBYTE_GENERATION_ID"'
+    format: ID
+
+  task_id:
+    sql: '"TASK_ID"'
+    format: ID
+
+  task_airbyte_raw_id:
+    sql: '"TASK_AIRBYTE_RAW_ID"'
+    format: ID
+
+  task_airbyte_extracted_at:
+    sql: '"TASK_AIRBYTE_EXTRACTED_AT"'
+
+  task_storelistingid:
+    sql: '"TASK_STORELISTINGID"'
+
+  task_updatedat:
+    sql: '"TASK_UPDATEDAT"'
+
+  task_jobid:
+    sql: '"TASK_JOBID"'
+
+  task_result:
+    sql: '"TASK_RESULT"'
+
+measures:
+  count:
+    aggregate_type: count
