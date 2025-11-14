@@ -5,14 +5,10 @@ table_name: CUMULATIVE_ARR_DATA_SET
 dimensions:
   account_id:
     sql: '"ACCOUNT_ID"'
-    label: Salesforce Account ID
     format: ID
-    group_label: Salesforce Account Fields
 
   account_name:
     sql: '"ACCOUNT_NAME"'
-    label: Salesforce Account Name
-    group_label: Salesforce Account Fields
 
   num_account_locations:
     sql: '"NUM_ACCOUNT_LOCATIONS"'
@@ -22,13 +18,9 @@ dimensions:
 
   account_owner_name:
     sql: '"ACCOUNT_OWNER_NAME"'
-    label: Salesforce Account Owner
-    group_label: Salesforce Account Fields
 
   account_owner_team:
     sql: '"ACCOUNT_OWNER_TEAM"'
-    label: Salesforce Account Owner Name
-    group_label: Salesforce Account Fields
 
   record_type:
     sql: '"RECORD_TYPE"'
@@ -44,7 +36,6 @@ dimensions:
 
   cumulative_mrr_sum:
     sql: '"CUMULATIVE_MRR_SUM"'
-    group_label: Raw Fields
 
   account_churn_amount:
     sql: '"ACCOUNT_CHURN_AMOUNT"'
@@ -62,13 +53,9 @@ dimensions:
 
   account_upgrade_reactivation_amount:
     sql: '"ACCOUNT_UPGRADE_REACTIVATION_AMOUNT"'
-    label: Update and Reactivation ARR
-    group_label: Salesforce Account Fields
 
   account_new_revenue_amount:
     sql: '"ACCOUNT_NEW_REVENUE_AMOUNT"'
-    label: New ARR
-    group_label: Salesforce Account Fields
 
   account_uncategorized_amount:
     sql: '"ACCOUNT_UNCATEGORIZED_AMOUNT"'
@@ -81,7 +68,6 @@ dimensions:
 
   filled_cumulative_mrr:
     sql: '"FILLED_CUMULATIVE_MRR"'
-    group_label: Raw Fields
 
   formatted_filled_cumulative_mrr:
     sql: '"FORMATTED_FILLED_CUMULATIVE_MRR"'
@@ -94,55 +80,42 @@ dimensions:
 
   cumulative_filled_arr:
     sql: '"CUMULATIVE_FILLED_ARR"'
-    group_label: Raw Fields
 
   lagged_arr:
     sql: '"LAGGED_ARR"'
 
   final_month_quarter:
     sql: '"FINAL_MONTH_QUARTER"'
-    description: Field is used to determine the last month of the quarter. Given
-      this dataset has accounts repeating per month, if you want to hareport at
-      the quarter level, you need to deploy this filter to avoid duplication of
-      numbers
 
   total_churn_amount:
     sql: '"TOTAL_CHURN_AMOUNT"'
-    description: Total churn amount = downgrades +  account churn
 
   rolling_12_month_churn_amount:
     sql: '"ROLLING_12_MONTH_CHURN_AMOUNT"'
-    group_label: rolling 12 month revenue fields
 
   churn_coalesced:
     sql: '"CHURN_COALESCED"'
 
   downgrade_coalesced:
     sql: '"DOWNGRADE_COALESCED"'
-    group_label: Raw Fields
 
   net_added_amount:
     sql: '"NET_ADDED_AMOUNT"'
 
   rolling_12_month_net_amount:
     sql: '"ROLLING_12_MONTH_NET_AMOUNT"'
-    group_label: rolling 12 month revenue fields
 
   rolling_3_month_churn_amount:
     sql: '"ROLLING_3_MONTH_CHURN_AMOUNT"'
-    group_label: 3 Month Rolling Calcs
 
   rolling_3_month_upgrade_amount:
     sql: '"ROLLING_3_MONTH_UPGRADE_AMOUNT"'
-    group_label: 3 Month Rolling Calcs
 
   rolling_3_month_new_accounts:
     sql: '"ROLLING_3_MONTH_NEW_ACCOUNTS"'
-    group_label: 3 Month Rolling Calcs
 
   rolling_3_account_new_revenue_amount:
     sql: '"ROLLING_3_ACCOUNT_NEW_REVENUE_AMOUNT"'
-    group_label: 3 Month Rolling Calcs
 
   reolling_3_month_total_added:
     sql: '"REOLLING_3_MONTH_TOTAL_ADDED"'
@@ -171,19 +144,15 @@ dimensions:
 
   rolling_3_revenue_payroll:
     sql: '"ROLLING_3_REVENUE_PAYROLL"'
-    group_label: 3 Month Rolling Calcs
 
   rolling_3_marketing_expenses:
     sql: '"ROLLING_3_MARKETING_EXPENSES"'
-    group_label: 3 Month Rolling Calcs
 
   rolling_3_marketing_payroll:
     sql: '"ROLLING_3_MARKETING_PAYROLL"'
-    group_label: 3 Month Rolling Calcs
 
   rolling_3_total_acquisition_cost:
     sql: '"ROLLING_3_TOTAL_ACQUISITION_COST"'
-    group_label: 3 Month Rolling Calcs
 
   rolling_3_pnl_gross_sales:
     sql: '"ROLLING_3_PNL_GROSS_SALES"'
@@ -326,7 +295,6 @@ dimensions:
     sql: ${reporting__cumulative_arr_data_set.total_acquisition_cost}
     label: "Total Acquisition Cost: Quarter"
     format: USDCURRENCY_2
-    description: Level of detail calculation that totals the quarter acquisition cost.
     group_by:
       aggregate_type: sum
       fixed:
@@ -434,15 +402,12 @@ dimensions:
 
   rolling_3_month_account_churn_amount:
     sql: '"ROLLING_3_MONTH_ACCOUNT_CHURN_AMOUNT"'
-    group_label: 3 Month Rolling Calcs
 
   previous_total_acquisition_cost:
     sql: '"PREVIOUS_TOTAL_ACQUISITION_COST"'
 
   total_income:
     sql: '"TOTAL_INCOME"'
-    description: Month level income from quickbooks
-    group_label: Raw Fields
 
   prior_quarter_total_income:
     sql: '"PRIOR_QUARTER_TOTAL_INCOME"'
@@ -474,8 +439,9 @@ dimensions:
 measures:
   total_acquisition_cost:
     sql: ${reporting__cumulative_arr_data_set.marketing_payroll_sum}+${reporting__cumulative_arr_data_set.revenue_payroll_sum}+${reporting__cumulative_arr_data_set.marketing_expenses_sum}
+    label: Total Acquisition Cost
     group_label: Acquisition Cost
-    description: Month level acquisition cost
+    description: Total Acquisition Cost
 
   arr_sum:
     sql: ${reporting__cumulative_arr_data_set.arr}
@@ -490,7 +456,6 @@ measures:
 
   rolling_12_month_net_amount_sum:
     sql: ${reporting__cumulative_arr_data_set.rolling_12_month_net_amount}
-    group_label: Rolling 3M Account Churn
     aggregate_type: sum
 
   rolling_12_month_churn_amount_sum:
@@ -1331,7 +1296,6 @@ measures:
       ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12}
       END, 0) / 12 END
     label: Segment Monthly CHurn Rate
-    group_label: Rolling 12M Monthly Churn Rate
 
   segment_customer_life:
     sql: CASE WHEN ${reporting__cumulative_arr_data_set.segment_monthly_churn_rate}
@@ -1380,7 +1344,6 @@ measures:
       COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_1_2_independents},
       0) * -1, 0)) END, 0) / 12 END
     label: Segment Monthly CHurn Rate 1-2 Independents
-    group_label: Rolling 12M Monthly Churn Rate
     description: "This field leverages the rolling 12 months calculation for churn. "
 
   segment_customer_life_1_2_independents:
@@ -1449,7 +1412,6 @@ measures:
       COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_3_49_commercial},
       0) * -1, 0)) END, 0) / 12 END
     label: Segment Monthly CHurn Rate 3-49 Commercial
-    group_label: Rolling 12M Monthly Churn Rate
 
   segment_customer_life_3_49_commercial:
     sql: CASE WHEN CASE WHEN 12 = 0 THEN NULL ELSE COALESCE(CASE WHEN
@@ -1517,7 +1479,6 @@ measures:
       COALESCE(COALESCE(${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount_sum_50__mid_market},
       0) * -1, 0)) END, 0) / 12 END
     label: Segment Monthly CHurn Rate 50+ Mid Market
-    group_label: Rolling 12M Monthly Churn Rate
     description: "This field leverages the rolling 12 months calculation for churn. "
 
   segment_customer_life_50__mid_market:
@@ -2005,7 +1966,6 @@ measures:
     sql: ${reporting__cumulative_arr_data_set.acquisition_cost_allocation}
     label: Partner Acquisition Cost Allocation Average 1-2 Independents (Partner/Loc
       Segment)
-    group_label: Acquisition Cost Partner v Location Segments
     aggregate_type: average
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -2015,7 +1975,6 @@ measures:
     sql: ${reporting__cumulative_arr_data_set.acquisition_cost_allocation}
     label: Partner Acquisition Cost Allocation Average 3-49 Commercial (Partner/Loc
       Segment)
-    group_label: Acquisition Cost Partner v Location Segments
     aggregate_type: average
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -2025,7 +1984,6 @@ measures:
     sql: ${reporting__cumulative_arr_data_set.acquisition_cost_allocation}
     label: Partner Acquisition Cost Allocation Average 50+ Mid Market (Partner/Loc
       Segment)
-    group_label: Acquisition Cost Partner v Location Segments
     aggregate_type: average
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -2034,7 +1992,6 @@ measures:
   partner_acquisition_cost_allocation_average_partner:
     sql: ${reporting__cumulative_arr_data_set.acquisition_cost_allocation}
     label: Partner Acquisition Cost Allocation Average Partner (Partner/Loc Segment)
-    group_label: Acquisition Cost Partner v Location Segments
     aggregate_type: average
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -2089,7 +2046,6 @@ measures:
       ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_1_2_independents_non_partner}
       END
     label: Partner CAC 1-2 Independents (Non-Partner) Corrected
-    group_label: Acquisition Cost Partner v Location Segments
 
   partner_cac_3_49_commercial_non_partner_corrected:
     sql: CASE WHEN
@@ -2102,7 +2058,6 @@ measures:
       ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_3_49_commercial_non_partner}
       END
     label: Partner CAC 3-49 Commercial (Non-Partner) Corrected
-    group_label: Acquisition Cost Partner v Location Segments
 
   partner_cac_50__mid_market_non_partner_corrected:
     sql: CASE WHEN
@@ -2115,7 +2070,6 @@ measures:
       ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_50__mid_market_non_partner}
       END
     label: Partner CAC 50+ Mid Market (Non-Partner) Corrected
-    group_label: Acquisition Cost Partner v Location Segments
 
   partner_cac_partner_corrected:
     sql: CASE WHEN
@@ -2128,7 +2082,6 @@ measures:
       ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts_sum_partner_accounts}
       END
     label: Partner CAC Partner Segment Corrected
-    group_label: Acquisition Cost Partner v Location Segments
 
   rolling_12_month_churn_amount_sum_1_2_independents_non_partner:
     sql: ${reporting__cumulative_arr_data_set.rolling_12_month_churn_amount}
@@ -2238,7 +2191,6 @@ measures:
       / 12) END
     label: Customer Lifetime Rolling 12M 1-2 Independents Non-Partner (Partner/Loc
       Segment)
-    group_label: "Customer Lifetime 12M: Partner breakout"
 
   customer_lifetime_rolling_12m_3_49_commercial_non_partner:
     sql: CASE WHEN
@@ -2250,7 +2202,6 @@ measures:
       / 12) END
     label: Customer Lifetime Rolling 12M 3-49 Commercial Non-Partner (Partner/Loc
       Segment)
-    group_label: "Customer Lifetime 12M: Partner breakout"
 
   customer_lifetime_rolling_12m_50__mid_market_non_partner:
     sql: CASE WHEN
@@ -2262,7 +2213,6 @@ measures:
       / 12) END
     label: Customer Lifetime Rolling 12M 50+ Mid Market Non-Partner (Partner/Loc
       Segment)
-    group_label: "Customer Lifetime 12M: Partner breakout"
 
   customer_lifetime_rolling_12m_partner:
     sql: CASE WHEN
@@ -2273,13 +2223,11 @@ measures:
       ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12_partner}
       / 12) END
     label: Customer Lifetime Rolling 12M Partner (Partner/Loc Segment)
-    group_label: "Customer Lifetime 12M: Partner breakout"
 
   rolling_3_month_total_added_sum_1_2_independents_non_partner:
     sql: ${reporting__cumulative_arr_data_set.reolling_3_month_total_added}
     label: rolling_3_month_total_added_sum_1_2_independents_non_partner (Partner/Loc
       Segment)
-    group_label: Rolling 3 Month New Accounts Segments
     aggregate_type: sum
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -2289,7 +2237,6 @@ measures:
     sql: ${reporting__cumulative_arr_data_set.reolling_3_month_total_added}
     label: rolling_3_month_total_added_sum_3_49_commercial_non_partner (Partner/Loc
       Segment)
-    group_label: Rolling 3 Month New Accounts Segments
     aggregate_type: sum
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -2299,7 +2246,6 @@ measures:
     sql: ${reporting__cumulative_arr_data_set.reolling_3_month_total_added}
     label: rolling_3_month_total_added_sum_50__mid_market_non_partner (Partner/Loc
       Segment)
-    group_label: Rolling 3 Month New Accounts Segments
     aggregate_type: sum
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -2308,7 +2254,6 @@ measures:
   rolling_3_month_total_added_sum_partner:
     sql: ${reporting__cumulative_arr_data_set.reolling_3_month_total_added}
     label: rolling_3_month_total_added_sum_partner (Partner/Loc Segment)
-    group_label: Rolling 3 Month New Accounts Segments
     aggregate_type: sum
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -2317,7 +2262,6 @@ measures:
   rolling_3_month_new_accounts_sum_partner:
     sql: ${reporting__cumulative_arr_data_set.rolling_3_month_new_accounts}
     label: rolling_3_month_new_accounts_sum_partner (Partner/Loc Segment)
-    group_label: Rolling 3 Month New Accounts Segments
     aggregate_type: sum
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -2481,28 +2425,24 @@ measures:
       *
       ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_1_2_independents_non_partner_margin_adjusted}
     label: Customer Lifetime Value 1-2 Independents Non-Partner (Partner/Loc Segment)
-    group_label: "Customer Lifetime Value 12M: Partner Breakout"
 
   customer_lifetime_value_3_49_commercial_non_partner:
     sql: ${reporting__cumulative_arr_data_set.customer_lifetime_rolling_12m_3_49_commercial_non_partner}
       *
       ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_3_49_commercial_non_partner_margin_adjusted}
     label: Customer Lifetime Value 3-49 Commercial Non-Partner (Partner/Loc Segment)
-    group_label: "Customer Lifetime Value 12M: Partner Breakout"
 
   customer_lifetime_value_50__mid_market_non_partner:
     sql: ${reporting__cumulative_arr_data_set.customer_lifetime_rolling_12m_50__mid_market_non_partner}
       *
       ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_50__mid_market_non_partner_margin_adjusted}
     label: Customer Lifetime Value 50+ Mid Market Non-Partner (Partner/Loc Segment)
-    group_label: "Customer Lifetime Value 12M: Partner Breakout"
 
   customer_lifetime_value_partner:
     sql: ${reporting__cumulative_arr_data_set.customer_lifetime_rolling_12m_partner}
       *
       ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_partner_margin_adjusted}
     label: Customer Lifetime Value Partner (Partner/Loc Segment)
-    group_label: "Customer Lifetime Value 12M: Partner Breakout"
 
   ltv_cac_1_2_independents_non_partner:
     sql: CASE WHEN ${reporting__cumulative_arr_data_set.cac_1_2_independents} = 0 OR
@@ -2587,7 +2527,6 @@ measures:
   partner_acquisition_cost_allocation_percent:
     sql: "10"
     label: Partner Acquisition Cost Allocation %
-    group_label: Acquisition Cost Partner v Location Segments
 
   commercial_acquisition_cost_allocation_percent:
     sql: "60"
@@ -2596,7 +2535,6 @@ measures:
   independents_acquisition_cost_allocation_percent:
     sql: "10"
     label: Independents Acquisition Cost Allocation %
-    group_label: "Beginning Revenue: Partner vs Loc Breakout"
 
   mid_market_acquisition_cost_allocation_percent:
     sql: "20"
@@ -2612,21 +2550,17 @@ measures:
   new_acv_1_2_independents:
     sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_1_2_independents_non_partner}
       * 12
-    group_label: "New ACV: Loc v Partner Breakout"
 
   new_acv_3_49_commercial:
     sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_3_49_commercial_non_partner}
       * 12
-    group_label: "New ACV: Loc v Partner Breakout"
 
   new_acv_50_mid_market:
     sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_50__mid_market_non_partner}
       * 12
-    group_label: "New ACV: Loc v Partner Breakout"
 
   new_acv_partner:
     sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_partner} * 12
-    group_label: "New ACV: Loc v Partner Breakout"
 
   new_average_contract_value_arr_:
     sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer}*12
@@ -2812,7 +2746,6 @@ measures:
 
   rolling_3_month_churn_sum_1_2_independents_non_partner:
     sql: ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount}
-    group_label: Rolling 3M Total Churn
     aggregate_type: sum
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -2820,7 +2753,6 @@ measures:
 
   rolling_3_month_churn_sum_3_49_commercial_non_partner:
     sql: ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount}
-    group_label: Rolling 3M Total Churn
     aggregate_type: sum
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -2828,7 +2760,6 @@ measures:
 
   rolling_3_month_churn_sum_50__mid_market_non_partner:
     sql: ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount}
-    group_label: Rolling 3M Total Churn
     aggregate_type: sum
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -2836,7 +2767,6 @@ measures:
 
   rolling_3_month_churn_sum_partner:
     sql: ${reporting__cumulative_arr_data_set.rolling_3_month_churn_amount}
-    group_label: Rolling 3M Total Churn
     aggregate_type: sum
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -2844,7 +2774,6 @@ measures:
 
   lagged_arr_sum_1_2_independents_non_partner:
     sql: ${reporting__cumulative_arr_data_set.lagged_arr}
-    group_label: "Beginning Revenue: Partner vs Loc Breakout"
     aggregate_type: sum
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -2852,7 +2781,6 @@ measures:
 
   lagged_arr_sum_3_49_commercial_non_partner:
     sql: ${reporting__cumulative_arr_data_set.lagged_arr}
-    group_label: "Beginning Revenue: Partner vs Loc Breakout"
     aggregate_type: sum
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -2864,11 +2792,9 @@ measures:
         null 
         else     ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_partner} / ${reporting__cumulative_arr_data_set.lagged_arr_sum_partner} end
     label: Quarterly Churn Rate Partner
-    group_label: Quarterly Churns By Segment
 
   lagged_arr_sum_partner:
     sql: ${reporting__cumulative_arr_data_set.lagged_arr}
-    group_label: "Beginning Revenue: Partner vs Loc Breakout"
     aggregate_type: sum
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -2876,7 +2802,6 @@ measures:
 
   lagged_arr_sum_50__mid_market_non_partner:
     sql: ${reporting__cumulative_arr_data_set.lagged_arr}
-    group_label: "Beginning Revenue: Partner vs Loc Breakout"
     aggregate_type: sum
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -2890,7 +2815,6 @@ measures:
       /
       ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12_1_2_independents_non_partner}
       END, 0) / 12 END
-    group_label: Rolling 12M Monthly Churn Rate
 
   segment_monthly_churn_rate_3_49_commercial_non_partner:
     sql: CASE WHEN 12 = 0 THEN NULL ELSE COALESCE(CASE WHEN
@@ -2900,7 +2824,6 @@ measures:
       /
       ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12_3_49_commercial_non_partner}
       END, 0) / 12 END
-    group_label: Rolling 12M Monthly Churn Rate
 
   segment_monthly_churn_rate_50__mid_market_non_partner:
     sql: CASE WHEN 12 = 0 THEN NULL ELSE COALESCE(CASE WHEN
@@ -2910,7 +2833,6 @@ measures:
       /
       ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12_50__mid_market_non_partner}
       END, 0) / 12 END
-    group_label: Rolling 12M Monthly Churn Rate
 
   segment_monthly_churn_rate_partner:
     sql: CASE WHEN 12 = 0 THEN NULL ELSE COALESCE(CASE WHEN
@@ -2920,7 +2842,6 @@ measures:
       /
       ${reporting__cumulative_arr_data_set.churn_rate_denominator_rolling_12_partner}
       END, 0) / 12 END
-    group_label: Rolling 12M Monthly Churn Rate
 
   quarterly_churn_rate_1_2_independents_non_partner:
     sql: |-
@@ -2929,14 +2850,12 @@ measures:
         then null else 
         ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_1_2_independents} / ${reporting__cumulative_arr_data_set.lagged_arr_sum_1_2_independents_non_partner} end
     label: Quarterly Churn Rate 1-2 Independents Non-Partner
-    group_label: Quarterly Churns By Segment
 
   quarterly_churn_rate_3_49_commercial_non_partner:
     sql: |-
       case when COALESCE (${reporting__cumulative_arr_data_set.lagged_arr_sum_3_49_commercial_non_partner},0)  = 0
         then null else  ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_3_49_commercial} / ${reporting__cumulative_arr_data_set.lagged_arr_sum_3_49_commercial_non_partner} end
     label: Quarterly Churn Rate 3-49 Commercial Non-Partner
-    group_label: Quarterly Churns By Segment
 
   quarterly_churn_rate_50__mid_market_non_partner:
     sql: case when COALESCE
@@ -2947,7 +2866,6 @@ measures:
       ${reporting__cumulative_arr_data_set.lagged_arr_sum_50__mid_market_non_partner}
       end
     label: Quarterly Churn Rate 50+ Mid Market Non-Partner
-    group_label: Quarterly Churns By Segment
 
   quarterly_customer_lifetime_1_2_independents_non_partner:
     sql: CASE WHEN
@@ -2956,7 +2874,6 @@ measures:
       ${reporting__cumulative_arr_data_set.quarterly_churn_rate_1_2_independents_non_partner}
       END
     label: Quarterly Customer Lifetime 1-2 Independents Non-Partner
-    group_label: Quarterly Lifetime
 
   quarterly_customer_lifetime_3_49_commercial_non_partner:
     sql: CASE WHEN
@@ -2965,7 +2882,6 @@ measures:
       ${reporting__cumulative_arr_data_set.quarterly_churn_rate_3_49_commercial_non_partner}
       END
     label: Quarterly Customer Lifetime 3-49 Commercial Non-Partner
-    group_label: Quarterly Lifetime
 
   quarterly_customer_lifetime_50__mid_market_non_partner:
     sql: CASE WHEN
@@ -2974,7 +2890,6 @@ measures:
       ${reporting__cumulative_arr_data_set.quarterly_churn_rate_50__mid_market_non_partner}
       END
     label: Quarterly Customer Lifetime 50+ Mid Market Non-Partner
-    group_label: Quarterly Lifetime
 
   quarterly_customer_lifetime_partner:
     sql: CASE WHEN
@@ -2982,62 +2897,53 @@ measures:
       THEN 0 ELSE -1 /
       ${reporting__cumulative_arr_data_set.quarterly_churn_rate_partner} END
     label: Quarterly Customer Lifetime Partner
-    group_label: Quarterly Lifetime
 
   ltv_1_2_independents_non_partner:
     sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_1_2_independents_non_partner_margin_adjusted}
       *
       ${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_1_2_independents_non_partner}
     label: LTV 1-2 Independents Non-Partner
-    group_label: LTV 12M Partner Breakout
 
   ltv_3_49_commercial_non_partner:
     sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_3_49_commercial_non_partner_margin_adjusted}
       *
       ${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_3_49_commercial_non_partner}
     label: LTV 3-49 Commercial Non-Partner
-    group_label: LTV 12M Partner Breakout
 
   ltv_50__mid_market_non_partner:
     sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_50__mid_market_non_partner_margin_adjusted}
       *
       ${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_50__mid_market_non_partner}
     label: LTV 50+ Mid Market Non-Partner
-    group_label: LTV 12M Partner Breakout
 
   ltv_partner:
     sql: ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_partner_margin_adjusted}
       *
       ${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_partner}
     label: LTV Partner
-    group_label: LTV 12M Partner Breakout
 
   quarterly_customer_ltv_1_2_independents_non_partner:
     sql: ${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_1_2_independents_non_partner}
       *
       ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_1_2_independents_non_partner_margin_adjusted}
     label: Quarterly Customer LTV 1-2 Independents Non-Partner
-    group_label: Quarterly Lifetime Value
 
   quarterly_customer_ltv_3_49_commercial_non_partner:
     sql: ${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_3_49_commercial_non_partner}
       *
       ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_3_49_commercial_non_partner_margin_adjusted}
     label: Quarterly Customer LTV 3-49 Commercial Non-Partner
-    group_label: Quarterly Lifetime Value
 
   quarterly_customer_ltv_50__mid_market_non_partner:
     sql: ${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_50__mid_market_non_partner}
       *
       ${reporting__cumulative_arr_data_set.avg_new_mrr_by_customer_50__mid_market_non_partner}
     label: Quarterly Customer LTV 50+ Mid Market Non-Partner
-    group_label: Quarterly Lifetime Value
 
   quarterly_customer_ltv_partner:
     sql: ${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_partner} *
       ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_partner_margin_adjusted}
     label: Quarterly Customer LTV Partner
-    group_label: Quarterly Lifetime Value
 
   quarterly_ltv_cac_1_2_independents_non_partner:
     sql: (${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_1_2_independents_non_partner}
@@ -3046,7 +2952,6 @@ measures:
       /
       ${reporting__cumulative_arr_data_set.partner_cac_1_2_independents_non_partner_corrected}
     label: Quarterly LTV:CAC 1-2 Independents Non-Partner
-    group_label: Quarterly LTV:CAC
 
   quarterly_ltv_cac_3_49_commercial_non_partner:
     sql: (${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_3_49_commercial_non_partner}
@@ -3055,7 +2960,6 @@ measures:
       /
       ${reporting__cumulative_arr_data_set.partner_cac_3_49_commercial_non_partner_corrected}
     label: Quarterly LTV:CAC 3-49 Commercial Non-Partner
-    group_label: Quarterly LTV:CAC
 
   quarterly_ltv_cac_50__mid_market_non_partner:
     sql: (${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_50__mid_market_non_partner}
@@ -3064,7 +2968,6 @@ measures:
       /
       ${reporting__cumulative_arr_data_set.partner_cac_50__mid_market_non_partner_corrected}
     label: Quarterly LTV:CAC 50+ Mid Market Non-Partner
-    group_label: Quarterly LTV:CAC
 
   quarterly_ltv_cac_partner:
     sql: (${reporting__cumulative_arr_data_set.quarterly_customer_lifetime_partner}
@@ -3072,12 +2975,10 @@ measures:
       ${reporting__cumulative_arr_data_set.avg_new_and_upgraded_mrr_by_customer_partner_margin_adjusted})
       / ${reporting__cumulative_arr_data_set.partner_cac_partner_corrected}
     label: Quarterly LTV:CAC Partner
-    group_label: Quarterly LTV:CAC
 
   rolling_3_month_account_churn_1_2_independents:
     sql: ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount}
     label: Rolling 3 Month Account Churn 1-2 Independents
-    group_label: Rolling 3M Account Churn
     aggregate_type: sum
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -3086,7 +2987,6 @@ measures:
   rolling_3_month_account_churn_3_49_commercial:
     sql: ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount}
     label: Rolling 3 Month Account Churn 3-49 Commercial
-    group_label: Rolling 3M Account Churn
     aggregate_type: sum
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -3095,7 +2995,6 @@ measures:
   rolling_3_month_account_churn_50_mid_market:
     sql: ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount}
     label: Rolling 3 Month Account Churn 50+ Mid Market
-    group_label: Rolling 3M Account Churn
     aggregate_type: sum
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -3104,7 +3003,6 @@ measures:
   rolling_3_month_account_churn_partner:
     sql: ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount}
     label: Rolling 3 Month Account Churn Partner
-    group_label: Rolling 3M Account Churn
     aggregate_type: sum
     filters:
       business_segments_independent_commercial_mid_market_copy:
@@ -3112,7 +3010,6 @@ measures:
 
   rolling_3_month_account_churn_amount_sum:
     sql: ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount}
-    group_label: Rolling 3M Account Churn
     format: USDCURRENCY_2
     aggregate_type: sum
 
@@ -3120,11 +3017,9 @@ measures:
     sql: ${reporting__cumulative_arr_data_set.quarterly_customer_lifetime} *
       ${reporting__cumulative_arr_data_set.avg_new_mrr_margin_adjusted}
     label: Quarterly Customer LTV
-    group_label: Quarterly Lifetime Value
 
   rolling_3_month_account_churn_sum_1_2_independents_non_partner:
     sql: ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount}
-    group_label: Rolling 3M Account Churn
     format: USDCURRENCY_2
     aggregate_type: sum
     filters:
@@ -3133,7 +3028,6 @@ measures:
 
   rolling_3_month_account_churn_sum_3_49_commercial_non_partner:
     sql: ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount}
-    group_label: Rolling 3M Account Churn
     format: USDCURRENCY_2
     aggregate_type: sum
     filters:
@@ -3142,7 +3036,6 @@ measures:
 
   rolling_3_month_account_churn_sum_50__mid_market_non_partner:
     sql: ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount}
-    group_label: Rolling 3M Account Churn
     format: USDCURRENCY_2
     aggregate_type: sum
     filters:
@@ -3151,7 +3044,6 @@ measures:
 
   rolling_3_month_account_churn_sum_partner:
     sql: ${reporting__cumulative_arr_data_set.rolling_3_month_account_churn_amount}
-    group_label: Rolling 3M Account Churn
     format: USDCURRENCY_2
     aggregate_type: sum
     filters:
@@ -3161,4 +3053,3 @@ measures:
   quarterly_ltv_cac:
     sql: ${reporting__cumulative_arr_data_set.quarterly_customer_ltv}/${reporting__cumulative_arr_data_set.cac}
     label: Quarterly LTV:CAC
-    group_label: Quarterly LTV:CAC
